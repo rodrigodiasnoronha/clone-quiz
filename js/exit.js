@@ -1,4 +1,4 @@
-import { el, rich, countdown } from './utils.js';
+import { el, rich, countdown, media } from './utils.js';
 import { OFFER } from './config.js';
 
 const INCLUDED = [
@@ -47,7 +47,7 @@ function offerPage() {
         el('small', { class: 'ok' }, '✅ Use o cupom no checkout para garantir o desconto'),
       ),
       rich(`<h2 class="ql-align-center">Tudo que você vai levar no Pilates na Parede 21 Dias com ${OFFER.discount} de desconto:</h2>`),
-      el('img', { src: 'assets/yalhd-xrstl-67ee0e15-56f9-413f-8baa-685c61bf79ba.gif', alt: '', class: 'mock' }),
+      media('assets/app-mockup.mp4', { class: 'mock' }),
       el('div', { class: 'incl-title' }, '✅ O que está incluso:'),
       el('div', { class: 'incl main' }, el('b', {}, 'Plataforma Completa do Desafio'),
         el('p', {}, 'Acesso vitalício ao Pilates na Parede 21 Dias — o plano de Pilates na Parede que firma o corpo e acelera a perda de peso treinando poucos minutos por dia. Tudo em casa, sem equipamentos.')),

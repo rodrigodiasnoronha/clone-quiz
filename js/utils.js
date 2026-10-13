@@ -37,5 +37,23 @@ export function countdown(key, minutes) {
   return node;
 }
 
+// Imagem ou vídeo curto em loop (o antigo GIF virou MP4, bem mais leve)
+export function media(src, attrs = {}) {
+  if (src.endsWith('.mp4')) return el('video', { src, autoplay: '', muted: '', loop: '', playsinline: '', preload: 'auto', ...attrs });
+  return el('img', { src, alt: '', decoding: 'async', ...attrs });
+}
+
+// Baixa antes as imagens das próximas telas para elas abrirem na hora
+const preloaded = new Set();
+export function preload(srcs) {
+  for (const src of srcs) {
+    if (!src || preloaded.has(src) || src.endsWith('.mp4')) continue;
+    preloaded.add(src);
+    const img = new Image();
+    img.decoding = 'async';
+    img.src = src;
+  }
+}
+
 // Extrai o valor de classes Tailwind arbitrárias, ex. "h-[2rem]" -> "2rem"
 export const bracket = cls => cls?.match(/\[(.+)\]/)?.[1];

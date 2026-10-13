@@ -1,9 +1,9 @@
-import { el, rich, bracket, fill } from '../utils.js';
+import { el, rich, bracket, fill, media } from '../utils.js';
 import { REDIRECT_URL } from '../config.js';
 
 export const text = ({ content }) => rich(content.text);
 
-export const image = ({ content }) => el('img', { src: content.image.src, alt: '', loading: 'lazy', style: 'margin: 0 auto' });
+export const image = ({ content }) => media(content.image.src, { style: 'margin: 0 auto' });
 
 export const clear = ({ content }) => el('div', { style: `height: ${bracket(content.clear) || '1rem'}` });
 

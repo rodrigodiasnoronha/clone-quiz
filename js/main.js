@@ -1,6 +1,7 @@
 import { state } from './state.js';
 import { layers } from './layers/index.js';
 import { setupExitIntent } from './exit.js';
+import { preload } from './utils.js';
 
 const app = document.getElementById('app');
 const back = document.getElementById('back');
@@ -34,6 +35,9 @@ function width(design = {}) {
   if (design.basis && design.basis < 100) return `${design.basis}%`;
 }
 
+// Todas as imagens referenciadas por uma etapa
+const stepImages = step => [...JSON.stringify(step).matchAll(/assets\/[^"]+\.(?:webp|png|jpe?g)/g)].map(m => m[0]);
+
 function render(i) {
   current = i;
   const myToken = ++token;
@@ -46,11 +50,15 @@ function render(i) {
   };
 
   app.replaceChildren();
+  app.style.animation = 'none';
+  app.offsetWidth; // reinicia a animação de entrada
+  app.style.animation = '';
   for (const layer of steps[i].layers) {
     const node = layers[layer.type]?.(layer, ctx);
     if (!node) continue;
     node.classList.add('layer');
     node.style.width = width(layer.design) || '';
+    node.style.setProperty('--i', app.children.length);
     app.append(node);
   }
 
@@ -60,6 +68,7 @@ function render(i) {
   back.hidden = i === 0;
   progress.style.width = `${((i + 1) / steps.length) * 100}%`;
   window.scrollTo(0, 0);
+  preload(steps.slice(i + 1, i + 4).flatMap(stepImages));
 }
 
 render(0);
