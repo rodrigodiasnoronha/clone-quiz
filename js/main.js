@@ -1,5 +1,6 @@
 import { state } from './state.js';
 import { layers } from './layers/index.js';
+import { setupExitIntent } from './exit.js';
 
 const app = document.getElementById('app');
 const back = document.getElementById('back');
@@ -58,3 +59,4 @@ function render(i) {
 }
 
 render(0);
+setupExitIntent();

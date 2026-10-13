@@ -114,3 +114,43 @@ main { max-width: calc(34rem + 32px); margin: 0 auto; padding: 0 16px 48px; min-
 .price .body { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; color: var(--title); }
 .price .box { text-align: center; background: #f4f4f5; border-radius: 12px; padding: 8px 12px; font-size: 10px; color: #a1a1aa; }
 .price .box b { display: block; font-size: 1.5rem; color: var(--title); font-family: Sora, sans-serif; }
+
+/* exit intent (back redirect) */
+.no-scroll { overflow: hidden; }
+.exit-layer { position: fixed; inset: 0; z-index: 100; background: var(--bg); overflow-y: auto; }
+.gift { max-width: 34rem; margin: 0 auto; padding: 72px 16px 32px; min-height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+.gift mark { background: #fcd34d; color: var(--title); padding: 0 .35em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.gift-box { border: 2px dashed #f472b6; background: #fdf2f8; border-radius: 1.5rem; padding: 24px 16px; display: grid; justify-items: center; gap: 24px; cursor: pointer; }
+.gift-icon { font-size: 7rem; line-height: 1; animation: shake 1.4s infinite; }
+.gift-box .btn { width: auto; border-radius: 99px; padding: 0 28px; box-shadow: 0 8px 20px rgb(221 87 141 / .35); }
+.gift-hint { text-align: center; font-weight: 700; font-size: 14px; color: var(--title); }
+@keyframes shake { 0%, 60%, 100% { transform: rotate(0); } 10%, 30%, 50% { transform: rotate(-8deg); } 20%, 40% { transform: rotate(8deg); } }
+
+.offer-top { position: sticky; top: 0; z-index: 2; background: #0b0b0f; color: #fff; display: flex; justify-content: center; align-items: center; gap: 16px; height: 40px; font-size: 13px; }
+.offer-top b { background: var(--theme); border-radius: 99px; padding: 3px 12px; font-size: 11px; }
+.offer-body { max-width: 34rem; margin: 0 auto; padding: 16px 16px 40px; display: grid; gap: 14px; }
+.offer-emoji { text-align: center; font-size: 2rem; }
+.gift-card { border: 2px dashed #f472b6; border-radius: var(--radius); padding: 16px; text-align: center; display: grid; gap: 8px; justify-items: center; position: relative; margin-top: 8px; }
+.gift-card .tag { position: absolute; top: -12px; background: var(--theme); color: #fff; font-size: 11px; font-weight: 700; border-radius: 99px; padding: 3px 12px; }
+.gift-card .big { font-family: Sora, sans-serif; font-weight: 700; font-size: 2.5rem; line-height: 1.1; color: var(--theme); margin-top: 8px; }
+.gift-card small { font-size: 12px; } .gift-card .ok { color: #16a34a; font-weight: 600; }
+.coupon { width: 100%; background: #0b0b0f; color: #fff; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; font-size: 11px; margin-top: 4px; }
+.coupon b { font-size: 15px; letter-spacing: .05em; }
+.offer .mock { margin: 0 auto; border-radius: var(--radius); }
+.incl-title { font-weight: 700; color: var(--title); }
+.incl { border: 1px solid #e4e4e7; border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.4; }
+.incl.main { background: #fef9c3; border-color: #fde047; }
+.incl b { color: var(--title); display: block; }
+.incl em { font-style: normal; font-size: 10px; font-weight: 700; background: #16a34a; color: #fff; border-radius: 99px; padding: 1px 8px; margin-left: 6px; }
+.incl p { margin-top: 4px; font-size: 12px; }
+.offer-price { background: #fef9c3; border-color: #facc15; }
+.offer-price .feat { background: var(--theme); }
+.offer-price .box { font-size: 12px; } .offer-price .box s { margin: 0 4px; color: #dc2626; }
+.offer-price .box b { font-size: 2.25rem; margin: 4px 0; }
+.guarantee { background: #ecfdf5; border: 1px solid #86efac; border-radius: var(--radius); padding: 14px; font-size: 13px; line-height: 1.4; }
+.guarantee b { color: var(--title); } .guarantee p { margin-top: 6px; }
+.faq-title { color: var(--title); font-family: Sora, sans-serif; }
+.faq { border: 1px solid #e4e4e7; border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+.faq summary { cursor: pointer; font-weight: 600; color: var(--title); }
+.faq p { margin-top: 8px; font-size: 13px; line-height: 1.5; }
+.legal { text-align: center; font-size: 11px; color: #a1a1aa; }
