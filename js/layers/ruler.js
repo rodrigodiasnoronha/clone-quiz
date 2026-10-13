@@ -39,6 +39,25 @@ function ruler({ content }, kind) {
     show(shown);
   });
 
+  // Arrastar com o mouse (no touch o scroll nativo já funciona)
+  let drag = null;
+  track.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { x: e.clientX, left: track.scrollLeft };
+    track.classList.add('dragging');
+    track.setPointerCapture(e.pointerId);
+  });
+  track.addEventListener('pointermove', e => {
+    if (drag) track.scrollLeft = drag.left - (e.clientX - drag.x);
+  });
+  const endDrag = () => {
+    if (!drag) return;
+    drag = null;
+    track.classList.remove('dragging');
+  };
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+
   for (const u of UNITS[kind]) toggle.append(el('button', { onclick: () => { unit = u; build(); } }, u[0]));
   build();
 

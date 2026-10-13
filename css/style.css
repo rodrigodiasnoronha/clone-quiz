@@ -61,6 +61,8 @@ main { max-width: calc(34rem + 32px); margin: 0 auto; padding: 0 16px 48px; min-
 .val small { font-size: 1.25rem; }
 .ruler { position: relative; }
 .ruler .track { overflow-x: scroll; scrollbar-width: none; display: flex; padding: 0 50%; scroll-snap-type: x mandatory; mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent); }
+.ruler .track { cursor: grab; user-select: none; }
+.ruler .track.dragging { cursor: grabbing; scroll-snap-type: none; }
 .ruler .track::-webkit-scrollbar { display: none; }
 .ruler .tick { flex: none; width: 18px; height: 98px; position: relative; scroll-snap-align: center; }
 .ruler .tick::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 16px; background: #d4d4d8; }
