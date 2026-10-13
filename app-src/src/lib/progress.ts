@@ -18,11 +18,13 @@ export const POINTS = {
   card: 5,
   session: 20,
   weekly: 50,
+  water: 10,
+  relax: 15,
 };
 
 export type DayStatus = 'concluido' | 'andamento' | 'disponivel' | 'pendente' | 'bloqueado';
 
-type Data = Pick<State, 'profile' | 'days' | 'missions' | 'journal' | 'activities' | 'quiz' | 'roulette' | 'cards' | 'sessions' | 'settings'>;
+type Data = Pick<State, 'profile' | 'days' | 'missions' | 'journal' | 'activities' | 'quiz' | 'roulette' | 'cards' | 'sessions' | 'settings'> & Partial<Pick<State, 'water' | 'waterGoal'>>;
 
 export function completedDays(s: Data) {
   return DAYS.filter(d => s.days[d.n]?.completedAt).map(d => d.n);
@@ -108,6 +110,11 @@ export const WEEKLY = [
   { id: 'w3', title: 'Semana 3: 8 missões', desc: 'Conclua 8 missões extras ou surpresa dos dias 15 a 21.', check: (s: Data) => DAYS.filter(d => d.n >= 15).flatMap(d => [d.extra.id, d.surprise.id]).filter(id => s.missions[id]).length, goal: 8 },
 ];
 
+/** Dias em que a meta de água foi atingida (registrado no momento em que bateu a meta) */
+export function waterDays(s: Data) {
+  return Object.keys(s.activities).filter(k => k.startsWith('water:')).length;
+}
+
 export function pointsBreakdown(s: Data) {
   const workouts = completedDays(s).length * POINTS.workout;
   const missions = Object.keys(s.missions).length * POINTS.mission;
@@ -120,8 +127,10 @@ export function pointsBreakdown(s: Data) {
   const quiz = quizScore(s).correct * POINTS.quizCorrect;
   const sessions = Object.values(s.sessions).reduce((n, ids) => n + ids.length, 0) * POINTS.session;
   const weekly = WEEKLY.filter(w => w.check(s) >= w.goal).length * POINTS.weekly;
-  const total = workouts + missions + journal + breath + read + roulette + cards + quiz + sessions + weekly;
-  return { workouts, missions, journal, breath, read, roulette, cards, quiz, sessions, weekly, total };
+  const water = waterDays(s) * POINTS.water;
+  const relax = keys.filter(k => k.startsWith('relax:')).length * POINTS.relax;
+  const total = workouts + missions + journal + breath + read + roulette + cards + quiz + sessions + weekly + water + relax;
+  return { workouts, missions, journal, breath, read, roulette, cards, quiz, sessions, weekly, water, relax, total };
 }
 
 export const LEVELS = [
@@ -169,6 +178,8 @@ export const MEDALS: Medal[] = [
   { id: 'p-leitora', name: 'Curiosa', emoji: '📚', desc: 'Ler 5 conteúdos da biblioteca', kind: 'participacao', progress: s => [Math.min(5, Object.keys(s.activities).filter(k => k.startsWith('read:')).length), 5] },
   { id: 'p-quiz', name: 'Sabe Tudo', emoji: '🧠', desc: 'Acertar 15 perguntas do Quiz do Corpo', kind: 'participacao', progress: s => [Math.min(15, quizScore(s).correct), 15] },
   { id: 'p-missoes', name: 'Missão Cumprida', emoji: '🎯', desc: 'Concluir 15 missões', kind: 'participacao', progress: s => [Math.min(15, Object.keys(s.missions).length), 15] },
+  { id: 'p-agua', name: 'Hidratada', emoji: '💧', desc: 'Bater a meta de água em 5 dias', kind: 'participacao', progress: s => [Math.min(5, waterDays(s)), 5] },
+  { id: 'p-relax', name: 'Zen', emoji: '🧘‍♀️', desc: '5 práticas do Modo Relaxamento', kind: 'participacao', progress: s => [Math.min(5, Object.keys(s.activities).filter(k => k.startsWith('relax:')).length), 5] },
   { id: 'p-bonus', name: 'Exploradora', emoji: '🧭', desc: 'Fazer as 3 aulas bônus', kind: 'participacao', progress: s => {
     const ids = new Set(Object.values(s.sessions).flat());
     return [REWARD_SESSIONS.filter(r => ids.has(r.session)).length, 3];
@@ -178,6 +189,7 @@ export const MEDALS: Medal[] = [
 export const earnedMedals = (s: Data) => MEDALS.filter(m => { const [a, b] = m.progress(s); return a >= b; });
 
 export function sessionUnlocked(s: Data, id: string) {
+  if (id === 'alongamento-rapido') return true;
   if (id.startsWith('manutencao')) return !!s.days[21]?.completedAt || s.settings.demo;
   const r = REWARD_SESSIONS.find(r => r.session === id);
   return !!r && (!!s.days[r.day]?.completedAt || s.settings.demo);

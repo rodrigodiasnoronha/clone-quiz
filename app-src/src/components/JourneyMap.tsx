@@ -6,7 +6,7 @@ import { Check, Gift, Lock, Play } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { DAYS, PHASES } from '@/content/program';
 import { dayStatus, MEDALS } from '@/lib/progress';
-import { Luna } from './Luna';
+import { Lili } from './Lili';
 
 const REWARD_DAYS = new Set(MEDALS.filter(m => m.kind === 'marco').map(m => Number(m.id.slice(1))));
 const X = [50, 68, 72, 58, 38, 28, 40]; // zigue-zague da trilha (em %), longe das bordas
@@ -40,7 +40,7 @@ export function JourneyMap() {
                 return (
                   <motion.div key={d.n} className="absolute" style={{ left: `${X[i]}%`, top: i * 92 + 10, x: '-50%' }} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * .04, type: 'spring' }}>
                     <Link href={href} className="relative flex flex-col items-center" aria-label={`Dia ${d.n}: ${d.name}`}>
-                      {current && <div className="absolute -top-3 right-full mr-1"><Luna mood="animada" size={52} /></div>}
+                      {current && <div className="absolute -top-3 right-full mr-1"><Lili mood="animada" size={52} /></div>}
                       <span className={`relative grid h-16 w-16 place-items-center rounded-full border-4 text-lg font-extrabold shadow-card transition
                         ${st === 'concluido' ? 'border-white bg-brand text-white' : current ? 'animate-pulse border-white bg-grape-600 text-white ring-4 ring-rose-200' : st === 'pendente' ? 'border-white bg-rose-100 text-rose-500' : 'border-white bg-lilac-100 text-ink-faint'}`}>
                         {st === 'concluido' ? <Check size={26} strokeWidth={3} /> : current ? <Play size={22} fill="white" /> : st === 'bloqueado' ? <Lock size={20} /> : d.n}

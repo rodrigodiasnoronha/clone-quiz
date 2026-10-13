@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { Bell, Download, Lock, RefreshCcw, Smartphone, Upload, Volume2, Vibrate, FlaskConical, ChevronRight } from 'lucide-react';
-import { Page, SectionTitle, Sheet, Toast } from '@/components/ui';
+import { Page, SectionTitle, Sheet, Toast, TopBar } from '@/components/ui';
 import { Avatar } from '@/components/Avatar';
 import { useStore, type State } from '@/lib/store';
 import { levelFor, pointsBreakdown } from '@/lib/progress';
@@ -48,8 +48,8 @@ export default function Perfil() {
   }
 
   function exportData() {
-    const { profile, days, missions, journal, activities, quiz, roulette, cards, sessions, seenMedals, settings } = useStore.getState();
-    const data = { app: 'pnp21', version: 1, exportedAt: new Date().toISOString(), state: { profile, days, missions, journal, activities, quiz, roulette, cards, sessions, seenMedals, settings } };
+    const { profile, days, missions, journal, activities, quiz, roulette, cards, sessions, seenMedals, water, waterGoal, settings } = useStore.getState();
+    const data = { app: 'pnp21', version: 1, exportedAt: new Date().toISOString(), state: { profile, days, missions, journal, activities, quiz, roulette, cards, sessions, seenMedals, water, waterGoal, settings } };
     download(`backup-pilates-21-dias.json`, 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data)));
     say('Backup baixado (as fotos não entram no backup).');
   }
@@ -66,6 +66,7 @@ export default function Perfil() {
 
   return (
     <Page>
+      <TopBar back="/mais/" title="Perfil e configurações" />
       <div className="flex flex-col items-center text-center">
         <Avatar level={lvl.n} />
         <h1 className="mt-2 text-2xl font-bold">{p.name}</h1>

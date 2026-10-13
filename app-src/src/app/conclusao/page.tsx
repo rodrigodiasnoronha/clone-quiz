@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Confetti } from '@/components/Celebration';
-import { Luna } from '@/components/Luna';
+import { Lili } from '@/components/Lili';
 import { useStore } from '@/lib/store';
 import { bestStreak, completedDays, earnedMedals, levelFor, pointsBreakdown } from '@/lib/progress';
 import { FLEX } from '@/components/JournalForm';
@@ -34,7 +34,7 @@ export default function Conclusao() {
       {finished && <Confetti count={90} />}
       <div className="text-center">
         <motion.div initial={{ scale: .5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 12 }} className="mx-auto w-fit">
-          <Luna mood={finished ? 'orgulhosa' : 'feliz'} size={150} />
+          <Lili mood={finished ? 'orgulhosa' : 'feliz'} size={150} />
         </motion.div>
         <h1 className="mt-3 text-3xl font-bold leading-tight">{finished ? `${s.profile!.name}, você conseguiu! 🏆` : 'Sua jornada até aqui'}</h1>
         <p className="mt-2 text-ink-soft">{finished ? '21 dias de cuidado, presença e força. Olha só tudo o que você construiu:' : `Faltam ${21 - done.length} dias para concluir o desafio.`}</p>
@@ -65,7 +65,7 @@ export default function Conclusao() {
       ) : null}
 
       <div className="mt-4 rounded-3xl bg-white p-5 shadow-card">
-        <div className="flex items-center gap-2"><Luna size={44} float={false} /><p className="font-bold">Mensagem da Luna</p></div>
+        <div className="flex items-center gap-2"><Lili size={44} float={false} /><p className="font-bold">Mensagem da Lili</p></div>
         <p className="mt-2 text-sm leading-relaxed text-ink-soft">
           {finished
             ? 'Foi uma honra caminhar ao seu lado. Você aprendeu a respirar, a se mover com controle e, principalmente, a aparecer para você mesma. Isso não tem prazo de validade: continue com a rotina de manutenção, no seu ritmo. Estarei aqui. 💜'

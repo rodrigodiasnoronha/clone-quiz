@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import { Player } from '@/components/Player';
 import { Celebration } from '@/components/Celebration';
-import { Luna } from '@/components/Luna';
+import { Lili } from '@/components/Lili';
 import { useStore } from '@/lib/store';
 import { DAY } from '@/content/program';
 import { buildSteps } from '@/lib/workout';
@@ -23,10 +23,10 @@ export function TrainDay({ n }: { n: number }) {
   if (!celebrate && (status === 'bloqueado' || status === 'pendente')) {
     return (
       <main className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center px-6 text-center">
-        <Luna mood="saudade" size={120} />
+        <Lili mood="saudade" size={120} />
         <h1 className="mt-3 text-2xl font-bold">{status === 'bloqueado' ? 'Esse dia ainda não liberou' : 'Um passo de cada vez'}</h1>
         <p className="mt-2 text-ink-soft">{status === 'bloqueado' ? 'Um novo dia do desafio libera a cada dia. Seu corpo precisa desse intervalo para se recuperar!' : 'Os dias seguem em ordem. Conclua o próximo dia disponível para chegar aqui.'}</p>
-        <Link href="/treinos/" className="btn-primary mt-6 w-full">Ver meu calendário</Link>
+        <Link href="/desafios/" className="btn-primary mt-6 w-full">Ver meu calendário</Link>
       </main>
     );
   }
@@ -70,7 +70,7 @@ export function TrainDay({ n }: { n: number }) {
     <Player
       title={day.name}
       subtitle={`Dia ${n} de 21 · Fase ${day.phase}`}
-      luna={day.luna}
+      lili={day.lili}
       breathing={day.breathing}
       steps={steps}
       initialStep={alreadyDone ? 0 : s.days[n]?.step ?? 0}

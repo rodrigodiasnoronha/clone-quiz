@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Flame, Gift, Lock, Play, Sparkles, Star, Trophy, Bell, ChevronRight } from 'lucide-react';
-import { Page, ProgressBar, Ring, SectionTitle } from '@/components/ui';
-import { Luna, type LunaMood } from '@/components/Luna';
+import { Flame, Gift, Lock, Play, Sparkles, Bell, ChevronRight } from 'lucide-react';
+import { HeroHeader, Logo, Page, ProgressBar, Ring, SectionTitle } from '@/components/ui';
+import { Lili, LiliPose, type LiliMood } from '@/components/Lili';
 import { useStore } from '@/lib/store';
 import { DAY, PHASES } from '@/content/program';
 import { PHRASES, GREETING } from '@/content/extras';
@@ -45,12 +45,12 @@ export default function Home() {
   // missões: do dia liberado mais recente (se o treino de hoje já foi feito, continuam as do dia concluído)
   const mday = DAY(Math.min(next ?? 21, unlockedUntil(s)));
 
-  // Mensagem da Luna conforme o momento da usuária
-  let mood: LunaMood = 'feliz';
-  let msg = day.luna;
+  // Mensagem da Lili conforme o momento da usuária
+  let mood: LiliMood = 'feliz';
+  let msg = day.lili;
   if (finished) { mood = 'orgulhosa'; msg = 'Você completou os 21 dias! Que tal manter o ritmo com a rotina de manutenção?'; }
   else if (away >= 3) { mood = 'saudade'; msg = `Que bom te ver de novo, ${p.name}! Sem culpa: seu desafio esperou por você. Vamos retomar com calma?`; }
-  else if (doneToday && status === 'bloqueado') { mood = 'calma'; msg = 'Treino de hoje feito! Amanhã a Luna libera um novo dia. Que tal uma missão ou o diário?'; }
+  else if (doneToday && status === 'bloqueado') { mood = 'calma'; msg = 'Treino de hoje feito! Amanhã a Lili libera um novo dia. Que tal uma missão ou o diário?'; }
   else if (behind > 0) { mood = 'piscando'; msg = `Você tem ${behind} ${behind > 1 ? 'dias' : 'dia'} para recuperar, sem penalidade nenhuma. Um de cada vez!`; }
 
   const phrase = PHRASES[dayIndex(today, PHRASES.length)];
@@ -58,63 +58,40 @@ export default function Home() {
 
   return (
     <Page>
-      {/* Cabeçalho */}
-      <header className="flex items-center justify-between">
-        <div>
-          <p className="text-sm font-semibold text-ink-soft">{GREETING(hour)},</p>
-          <h1 className="text-2xl font-bold">{p.name}! 💜</h1>
+      {/* Cabeçalho escuro com a Lili */}
+      <HeroHeader art={<LiliPose pose="garrafa" className="h-[24rem] w-[10.5rem]" />}>
+        <div className="flex items-center justify-between pr-1">
+          <Logo compact />
+          <Link href="/conquistas/" aria-label={`Nível ${lvl.n}: ${lvl.name}`} className="relative z-10 flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-1 text-xs font-bold ring-1 ring-white/15">
+            {lvl.emoji} Nível {lvl.n}
+          </Link>
         </div>
-        <Link href="/evolucao/bau/" className="flex items-center gap-1.5 rounded-full bg-white px-3 py-2 shadow-soft ring-1 ring-lilac-100">
-          <span className="text-lg">{lvl.emoji}</span>
-          <span className="text-sm font-extrabold text-grape-700">{pts}</span>
-          <span className="text-xs font-bold text-ink-soft">pts</span>
-        </Link>
-      </header>
-
-      {/* Herói: Luna + dia */}
-      <motion.section initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="relative mt-4 overflow-hidden rounded-4xl bg-brand p-5 text-white shadow-glow">
-        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10" />
-        <div className="absolute -bottom-16 right-10 h-40 w-40 rounded-full bg-white/10" />
-        <div className="relative flex items-center gap-3">
-          <Luna mood={mood} size={84} />
-          <div className="flex-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-white/80">{finished ? 'Desafio concluído' : `Fase ${day.phase} · ${phase.name}`}</p>
-            <p className="font-display text-2xl font-bold leading-tight">{finished ? '21 de 21 dias! 🏆' : `Você está no dia ${day.n} de 21!`}</p>
+        <div className="mt-5 max-w-[62%]">
+          <p className="text-sm font-semibold text-white/75">{GREETING(hour)}, {p.name}! 💜</p>
+          <h1 className="mt-1 text-[1.65rem] font-bold leading-[1.1]">{finished ? 'Você concluiu os 21 dias! 🏆' : <>Você está no dia <span className="text-rose-300">{day.n}</span> de 21</>}</h1>
+          <p className="mt-1 text-xs font-bold uppercase tracking-wider text-rose-200/80">{finished ? 'Desafio concluído' : `Fase ${day.phase} · ${phase.name}`}</p>
+        </div>
+        <div className="mt-4 flex max-w-[62%] flex-col gap-2">
+          <Link href="/desafios/" className="flex items-center gap-3 rounded-2xl bg-white/10 px-3 py-2 ring-1 ring-white/15 backdrop-blur">
+            <Flame className={st ? 'text-rose-400' : 'text-white/50'} size={26} fill={st ? '#FF5FA2' : 'none'} />
+            <span><span className="block font-display text-xl font-bold leading-none">{st}</span><span className="text-[11px] font-semibold text-white/75">{st === 1 ? 'dia seguido' : 'dias seguidos'}</span></span>
+          </Link>
+          <Link href="/conquistas/" className="flex items-center gap-3 rounded-2xl bg-white/10 px-3 py-2 ring-1 ring-white/15 backdrop-blur">
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-yellow-300 to-amber-500 text-sm shadow">💜</span>
+            <span><span className="block font-display text-xl font-bold leading-none">{pts}</span><span className="text-[11px] font-semibold text-white/75">Pontos de Evolução</span></span>
+          </Link>
+        </div>
+        <div className="relative mt-4 rounded-2xl bg-plum-900/75 p-3 ring-1 ring-white/15 backdrop-blur-sm">
+          <div className="flex justify-between text-sm font-bold"><span>Seu progresso</span><span className="text-rose-200">{Math.round((done.length / 21) * 100)}% concluído</span></div>
+          <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-white/15">
+            <motion.div className="h-full rounded-full bg-brand" initial={{ width: 0 }} animate={{ width: `${(done.length / 21) * 100}%` }} transition={{ duration: .9 }} />
           </div>
+          <p className="mt-2 flex items-start gap-2 text-[13px] font-semibold leading-snug text-white/90"><Lili mood={mood} size={30} float={false} /> <span className="pt-1">{msg}</span></p>
         </div>
-        <p className="relative mt-3 rounded-2xl bg-white/15 p-3 text-sm font-semibold leading-snug">{msg}</p>
-        <div className="relative mt-4">
-          <div className="mb-1 flex justify-between text-xs font-bold text-white/90"><span>{done.length} de 21 dias</span><span>{Math.round((done.length / 21) * 100)}%</span></div>
-          <div className="flex gap-[3px]">
-            {Array.from({ length: 21 }, (_, i) => (
-              <motion.div key={i} initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ delay: i * .02 }}
-                className={`h-2.5 flex-1 rounded-full ${done.includes(i + 1) ? 'bg-white' : i + 1 === next ? 'animate-pulse bg-white/60' : 'bg-white/25'}`} />
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Números */}
-      <div className="mt-3 grid grid-cols-3 gap-2">
-        <div className="card flex flex-col items-center py-3">
-          <Flame className={st ? 'text-rose-500' : 'text-ink-faint'} size={22} fill={st ? '#FF9ECB' : 'none'} />
-          <span className="font-display text-xl font-bold">{st}</span>
-          <span className="text-[11px] font-semibold text-ink-soft">{st === 1 ? 'dia seguido' : 'dias seguidos'}</span>
-        </div>
-        <div className="card flex flex-col items-center py-3">
-          <Star className="text-lilac-500" size={22} fill="#DDD0FF" />
-          <span className="font-display text-xl font-bold">{pts}</span>
-          <span className="text-[11px] font-semibold text-ink-soft">pontos</span>
-        </div>
-        <Link href="/evolucao/bau/" className="card flex flex-col items-center py-3">
-          <Trophy className="text-grape-500" size={22} />
-          <span className="font-display text-xl font-bold">{medals.length}</span>
-          <span className="text-[11px] font-semibold text-ink-soft">medalhas</span>
-        </Link>
-      </div>
+      </HeroHeader>
 
       {/* Missão principal */}
-      <SectionTitle>Missão principal de hoje</SectionTitle>
+      <SectionTitle>Treino de hoje</SectionTitle>
       {finished ? (
         <div className="card p-5">
           <p className="font-display text-xl font-bold">Rotina de manutenção</p>
@@ -126,6 +103,11 @@ export default function Home() {
         </div>
       ) : (
         <div className="card overflow-hidden">
+          <div className="relative h-32 overflow-hidden bg-gradient-to-br from-rose-100 to-lilac-100">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/app/fotos/parede.webp" alt="" className="h-full w-full object-cover object-[50%_30%]" />
+            <span className="absolute left-3 top-3 chip bg-white/90 text-grape-700">Dia atual · {day.n} de 21</span>
+          </div>
           <div className="flex items-start gap-4 p-5">
             <Ring value={status === 'andamento' ? (s.days[day.n]?.step ?? 0) / Math.max(1, buildSteps(day, p).length) : 0} size={64}>
               <span className="font-display text-lg font-bold text-grape-700">{day.n}</span>
@@ -166,7 +148,7 @@ export default function Home() {
       {nextMedal && nextMedalDay && (
         <>
           <SectionTitle>Próxima recompensa</SectionTitle>
-          <Link href="/evolucao/bau/" className="card flex items-center gap-4 p-4">
+          <Link href="/conquistas/" className="card flex items-center gap-4 p-4">
             <motion.div animate={{ rotate: [0, -8, 8, 0] }} transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }} className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-rose-200 to-lilac-300 text-3xl">
               <Gift className="text-grape-700" />
             </motion.div>
@@ -182,7 +164,7 @@ export default function Home() {
 
       {/* Nível */}
       <SectionTitle>Seu nível</SectionTitle>
-      <Link href="/evolucao/bau/" className={`block overflow-hidden rounded-3xl bg-gradient-to-br ${lvl.gradient} p-4 shadow-card`}>
+      <Link href="/conquistas/" className={`block overflow-hidden rounded-3xl bg-gradient-to-br ${lvl.gradient} p-4 shadow-card`}>
         <div className="flex items-center gap-3">
           <span className="text-4xl">{lvl.emoji}</span>
           <div className="flex-1">
@@ -219,7 +201,7 @@ export default function Home() {
       {/* Prévia do que vem */}
       {!finished && day.n < 21 && (
         <>
-          <SectionTitle action={{ href: '/treinos/', label: 'Ver jornada' }}>Vem por aí</SectionTitle>
+          <SectionTitle action={{ href: '/desafios/', label: 'Ver jornada' }}>Vem por aí</SectionTitle>
           <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-2">
             {[1, 2, 3].map(k => day.n + k).filter(n => n <= 21).map(n => {
               const dd = DAY(n);

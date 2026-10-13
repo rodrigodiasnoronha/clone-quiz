@@ -6,8 +6,8 @@ import { formatDate } from '@/lib/dates';
 
 const SERIES = [
   { key: 'mood', label: 'Humor', color: '#EC4C93' },
-  { key: 'energy', label: 'Energia', color: '#7C4DDB' },
-  { key: 'sleep', label: 'Sono', color: '#A98BFA' },
+  { key: 'energy', label: 'Energia', color: '#C42A78' },
+  { key: 'sleep', label: 'Sono', color: '#E86AA8' },
 ] as const;
 
 /** Linhas de humor, energia e sono (escala 1 a 5) */

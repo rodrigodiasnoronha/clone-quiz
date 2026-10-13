@@ -35,7 +35,7 @@ export async function showNotification(title: string, body: string) {
 
 const MESSAGES = [
   ['Seu momento de cuidar de você chegou! 💜', 'O treino de hoje está te esperando.'],
-  ['Luna preparou uma nova missão para hoje!', 'Leva só alguns minutos. Vamos juntas?'],
+  ['Lili preparou uma nova missão para hoje!', 'Leva só alguns minutos. Vamos juntas?'],
   ['Um pouquinho de movimento hoje? 🌷', 'Seu corpo vai agradecer.'],
 ];
 

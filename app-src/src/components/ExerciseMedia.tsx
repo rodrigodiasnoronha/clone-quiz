@@ -52,3 +52,19 @@ export function ExerciseMedia({ ex, compact = false }: { ex: Exercise; compact?:
     </div>
   );
 }
+
+/** Miniatura da biblioteca: usa o vídeo quando existir; senão, ícone da categoria */
+export function ExerciseThumb({ ex }: { ex: Exercise }) {
+  return (
+    <div className="relative grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-rose-100 via-rose-50 to-lilac-100">
+      {ex.video ? (
+        <video src={ex.video} className="h-full w-full object-cover" muted playsInline preload="metadata" />
+      ) : (
+        <>
+          <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-rose-200/80 to-transparent" aria-hidden />
+          <span className="text-4xl" aria-hidden>{CAT_EMOJI[ex.category]}</span>
+        </>
+      )}
+    </div>
+  );
+}

@@ -11,7 +11,7 @@ export const DAYS: Day[] = [
   {
     n: 1, phase: 1, type: 'treino', name: 'Primeiro Contato',
     goal: 'Conhecer a parede como apoio e sentir o abdômen profundo pela primeira vez.',
-    luna: 'Hoje não existe certo ou errado: existe começar. Vamos com calma e atenção.',
+    lili: 'Hoje não existe certo ou errado: existe começar. Vamos com calma e atenção.',
     breathing: 'Hoje o foco é só perceber: inspire pelo nariz, solte o ar pela boca, sempre devagar.',
     warmup: [{ ex: 'respiracao-lateral', secs: 60 }, { ex: 'gato-vaca-parede', reps: 8 }, { ex: 'circulos-quadril', reps: 8 }],
     main: [
@@ -22,13 +22,13 @@ export const DAYS: Day[] = [
     ],
     cooldown: [{ ex: 'pernas-na-parede', secs: 60 }, { ex: 'abertura-peito', secs: 30 }],
     extra: { id: 'e1', kind: 'breath', title: 'Respiração 4-6', desc: '2 minutos de respiração guiada para fechar o primeiro dia.', secs: 120 },
-    surprise: { id: 's1', kind: 'card', title: 'Carta da Luna', desc: 'Revele a primeira mensagem do seu desafio.' },
+    surprise: { id: 's1', kind: 'card', title: 'Carta da Lili', desc: 'Revele a primeira mensagem do seu desafio.' },
     reward: 'Você abriu a porta da sua jornada. +100 Pontos de Evolução',
   },
   {
     n: 2, phase: 1, type: 'treino', name: 'Respire e Alinhe',
     goal: 'Mobilizar a coluna e começar a sustentar o corpo com o abdômen.',
-    luna: 'Seu corpo já lembra de ontem. Hoje vamos dar a ele um pouco mais de movimento.',
+    lili: 'Seu corpo já lembra de ontem. Hoje vamos dar a ele um pouco mais de movimento.',
     breathing: 'No rolamento, solte o ar enquanto desce: a expiração ajuda a coluna a se soltar.',
     warmup: [{ ex: 'respiracao-lateral', secs: 60 }, { ex: 'marcha-apoiada', secs: 40 }],
     main: [
@@ -45,7 +45,7 @@ export const DAYS: Day[] = [
   {
     n: 3, phase: 1, type: 'treino', name: 'Centro Ativo',
     goal: 'Aprender a manter a lombar estável enquanto braços e pernas se movem.',
-    luna: 'Três dias seguidos de cuidado! Hoje você ganha sua primeira medalha.',
+    lili: 'Três dias seguidos de cuidado! Hoje você ganha sua primeira medalha.',
     breathing: 'No dead bug, solte o ar sempre que a perna se afastar: é a expiração que firma o abdômen.',
     warmup: [{ ex: 'gato-vaca-parede', reps: 8 }, { ex: 'mobilidade-tornozelo', reps: 8 }],
     main: [
@@ -62,7 +62,7 @@ export const DAYS: Day[] = [
   {
     n: 4, phase: 1, type: 'mobilidade', name: 'Mobilidade Suave',
     goal: 'Dia mais leve: devolver movimento às articulações e recuperar os músculos.',
-    luna: 'Descansar também é treinar. Hoje o corpo agradece o movimento gentil.',
+    lili: 'Descansar também é treinar. Hoje o corpo agradece o movimento gentil.',
     breathing: 'Use cada expiração para entrar um pouquinho mais no movimento, sem forçar.',
     warmup: [{ ex: 'respiracao-lateral', secs: 60 }],
     main: [
@@ -80,7 +80,7 @@ export const DAYS: Day[] = [
   {
     n: 5, phase: 1, type: 'treino', name: 'Base Firme',
     goal: 'Fortalecer glúteos e pernas e sustentar a prancha por mais tempo.',
-    luna: 'Cinco dias! Ao terminar hoje, uma aula bônus de mobilidade fica liberada para você.',
+    lili: 'Cinco dias! Ao terminar hoje, uma aula bônus de mobilidade fica liberada para você.',
     breathing: 'No agachamento isométrico, conte as respirações: é mais fácil sustentar quando o ar circula.',
     warmup: [{ ex: 'marcha-apoiada', secs: 45 }, { ex: 'respiracao-lateral', secs: 45 }],
     main: [
@@ -97,7 +97,7 @@ export const DAYS: Day[] = [
   {
     n: 6, phase: 1, type: 'treino', name: 'Postura de Rainha',
     goal: 'Abrir o peito, fortalecer as costas e treinar o equilíbrio.',
-    luna: 'Hoje é dia de crescer alguns centímetros… de postura! Ombros longe das orelhas.',
+    lili: 'Hoje é dia de crescer alguns centímetros… de postura! Ombros longe das orelhas.',
     breathing: 'Nos anjos, inspire ao subir os braços e sinta as costelas se abrindo para os lados.',
     warmup: [{ ex: 'rolamento-coluna', reps: 5 }, { ex: 'gato-vaca-parede', reps: 8 }],
     main: [
@@ -108,13 +108,13 @@ export const DAYS: Day[] = [
     ],
     cooldown: [{ ex: 'inclinacao-lateral', secs: 25 }, { ex: 'abertura-peito', secs: 30 }],
     extra: { id: 'e6', kind: 'read', title: 'Postura no cotidiano', desc: 'Pequenos ajustes no celular, no computador e ao carregar peso.', article: 'postura' },
-    surprise: { id: 's6', kind: 'card', title: 'Carta da Luna', desc: 'Uma nova mensagem está esperando por você.' },
+    surprise: { id: 's6', kind: 'card', title: 'Carta da Lili', desc: 'Uma nova mensagem está esperando por você.' },
     reward: 'Postura mais aberta e confiante. +100 Pontos de Evolução',
   },
   {
     n: 7, phase: 1, type: 'celebracao', name: 'Integração da Semana 1',
     goal: 'Juntar tudo o que você aprendeu na semana em uma sequência fluida.',
-    luna: 'Uma semana inteira! Hoje é dia de perceber o quanto você já evoluiu.',
+    lili: 'Uma semana inteira! Hoje é dia de perceber o quanto você já evoluiu.',
     breathing: 'Hoje, tente coordenar sozinha: expire sempre no momento de maior esforço.',
     warmup: [{ ex: 'respiracao-lateral', secs: 60 }, { ex: 'circulos-quadril', reps: 8 }],
     main: [
@@ -134,7 +134,7 @@ export const DAYS: Day[] = [
   {
     n: 8, phase: 2, type: 'treino', name: 'Força que Desperta',
     goal: 'Entrar na fase de força com glúteos, pernas e o primeiro Hundred.',
-    luna: 'Bem-vinda à Fase 2! Seu corpo está pronto para um pouco mais de desafio.',
+    lili: 'Bem-vinda à Fase 2! Seu corpo está pronto para um pouco mais de desafio.',
     breathing: 'No Hundred: inspire em 5 bombeadas de braço, expire em 5. Ritmo de música.',
     warmup: [{ ex: 'marcha-apoiada', secs: 45 }, { ex: 'gato-vaca-parede', reps: 8 }],
     main: [
@@ -151,7 +151,7 @@ export const DAYS: Day[] = [
   {
     n: 9, phase: 2, type: 'treino', name: 'Abdômen em Foco',
     goal: 'Trabalhar o abdômen profundo de quatro formas diferentes.',
-    luna: 'Hoje o centro do corpo é a estrela. Qualidade vale mais que velocidade.',
+    lili: 'Hoje o centro do corpo é a estrela. Qualidade vale mais que velocidade.',
     breathing: 'Se a lombar descolar do chão, pare, expire e reencaixe antes de continuar.',
     warmup: [{ ex: 'respiracao-lateral', secs: 60 }, { ex: 'basculamento-pelvico', reps: 10 }],
     main: [
@@ -168,7 +168,7 @@ export const DAYS: Day[] = [
   {
     n: 10, phase: 2, type: 'treino', name: 'Glúteos em Ação',
     goal: 'Fortalecer glúteos em diferentes ângulos para um quadril estável.',
-    luna: 'Dia 10! Hoje você libera uma sessão especial de relaxamento. Você merece.',
+    lili: 'Dia 10! Hoje você libera uma sessão especial de relaxamento. Você merece.',
     breathing: 'Na concha, expire ao abrir o joelho e mantenha o quadril parado.',
     warmup: [{ ex: 'circulos-quadril', reps: 10 }, { ex: 'mobilidade-tornozelo', reps: 8 }],
     main: [
@@ -179,13 +179,13 @@ export const DAYS: Day[] = [
     ],
     cooldown: [{ ex: 'figura-quatro', secs: 40 }, { ex: 'quadriceps-apoio', secs: 30 }],
     extra: { id: 'e10', kind: 'journal', title: 'Registro do dia 10', desc: 'Como está sua energia comparada ao primeiro dia?' },
-    surprise: { id: 's10', kind: 'card', title: 'Carta da Luna', desc: 'Uma mensagem especial de metade do caminho.' },
+    surprise: { id: 's10', kind: 'card', title: 'Carta da Lili', desc: 'Uma mensagem especial de metade do caminho.' },
     reward: 'Sessão Especial de Relaxamento desbloqueada! +100 Pontos de Evolução',
   },
   {
     n: 11, phase: 2, type: 'recuperacao', name: 'Respiro e Recupero',
     goal: 'Recuperação ativa: soltar a musculatura trabalhada e acalmar o sistema nervoso.',
-    luna: 'Depois de dias fortes, um dia de cuidado. É aqui que o corpo se reconstrói.',
+    lili: 'Depois de dias fortes, um dia de cuidado. É aqui que o corpo se reconstrói.',
     breathing: 'Hoje, alongue a expiração até o dobro da inspiração em todas as posições.',
     warmup: [{ ex: 'respiracao-lateral', secs: 90 }],
     main: [
@@ -201,7 +201,7 @@ export const DAYS: Day[] = [
   {
     n: 12, phase: 2, type: 'treino', name: 'Estabilidade Total',
     goal: 'Treinar o corpo para se manter firme em apoios menores.',
-    luna: 'Equilíbrio é treino de foco. Olhar em um ponto fixo ajuda muito!',
+    lili: 'Equilíbrio é treino de foco. Olhar em um ponto fixo ajuda muito!',
     breathing: 'Nas sustentações, respire pelas laterais das costelas sem soltar o abdômen.',
     warmup: [{ ex: 'marcha-apoiada', secs: 45 }, { ex: 'anjos-parede', reps: 8 }],
     main: [
@@ -218,7 +218,7 @@ export const DAYS: Day[] = [
   {
     n: 13, phase: 2, type: 'treino', name: 'Pernas Fortes',
     goal: 'Fortalecer coxas, glúteos e panturrilhas com controle.',
-    luna: 'Pernas fortes carregam você por todos os lugares. Hoje é por elas!',
+    lili: 'Pernas fortes carregam você por todos os lugares. Hoje é por elas!',
     breathing: 'No afundo, inspire ao descer e solte o ar empurrando o chão para subir.',
     warmup: [{ ex: 'mobilidade-tornozelo', reps: 8 }, { ex: 'marcha-apoiada', secs: 45 }],
     main: [
@@ -235,7 +235,7 @@ export const DAYS: Day[] = [
   {
     n: 14, phase: 2, type: 'celebracao', name: 'Controle e Poder',
     goal: 'Circuito de força que fecha a Fase 2 mostrando sua evolução.',
-    luna: 'Duas semanas! Você está provando para si mesma que consegue. Medalha chegando!',
+    lili: 'Duas semanas! Você está provando para si mesma que consegue. Medalha chegando!',
     breathing: 'No circuito, use a expiração como motor de cada movimento.',
     warmup: [{ ex: 'respiracao-lateral', secs: 45 }, { ex: 'gato-vaca-parede', reps: 8 }, { ex: 'circulos-quadril', reps: 8 }],
     main: [
@@ -247,7 +247,7 @@ export const DAYS: Day[] = [
     ],
     cooldown: [{ ex: 'pernas-na-parede', secs: 90 }],
     extra: { id: 'e14', kind: 'win', title: 'Conquista da Fase 2', desc: 'O que você consegue fazer hoje que não conseguia no dia 1?' },
-    surprise: { id: 's14', kind: 'card', title: 'Carta da Luna', desc: 'Uma mensagem para celebrar duas semanas.' },
+    surprise: { id: 's14', kind: 'card', title: 'Carta da Lili', desc: 'Uma mensagem para celebrar duas semanas.' },
     reward: 'Medalha da Determinação desbloqueada! +100 Pontos de Evolução',
   },
 
@@ -255,7 +255,7 @@ export const DAYS: Day[] = [
   {
     n: 15, phase: 3, type: 'treino', name: 'Fluxo Consciente',
     goal: 'Encadear movimentos com fluidez, como uma aula completa de Pilates.',
-    luna: 'Fase 3! Agora você já conhece os movimentos. Hoje é sobre fazê-los com elegância.',
+    lili: 'Fase 3! Agora você já conhece os movimentos. Hoje é sobre fazê-los com elegância.',
     breathing: 'Tente não pausar entre as repetições: a respiração conduz o ritmo.',
     warmup: [{ ex: 'rolamento-coluna', reps: 6 }, { ex: 'rotacao-toracica', reps: 5 }],
     main: [
@@ -273,7 +273,7 @@ export const DAYS: Day[] = [
   {
     n: 16, phase: 3, type: 'treino', name: 'Core Integrado',
     goal: 'Abdômen trabalhando junto com quadril e ombros.',
-    luna: 'Seu centro está mais forte do que na semana 1. Hoje você vai sentir isso!',
+    lili: 'Seu centro está mais forte do que na semana 1. Hoje você vai sentir isso!',
     breathing: 'Nos círculos de perna, inspire na primeira metade e expire na segunda.',
     warmup: [{ ex: 'respiracao-lateral', secs: 45 }, { ex: 'basculamento-pelvico', reps: 10 }],
     main: [
@@ -291,7 +291,7 @@ export const DAYS: Day[] = [
   {
     n: 17, phase: 3, type: 'mobilidade', name: 'Flexibilidade Viva',
     goal: 'Ganhar amplitude com alongamentos sustentados e mobilidade.',
-    luna: 'Dia 17: alongar é presente para o corpo. E hoje ainda tem aula bônus liberada!',
+    lili: 'Dia 17: alongar é presente para o corpo. E hoje ainda tem aula bônus liberada!',
     breathing: 'Em cada alongamento, a cada expiração, deixe o corpo pesar um pouco mais.',
     warmup: [{ ex: 'rotacao-toracica', reps: 6 }, { ex: 'circulos-quadril', reps: 10 }],
     main: [
@@ -308,7 +308,7 @@ export const DAYS: Day[] = [
   {
     n: 18, phase: 3, type: 'treino', name: 'Equilíbrio e Leveza',
     goal: 'Unir equilíbrio e força em uma perna só.',
-    luna: 'Leveza é força com controle. Use a parede sempre que quiser.',
+    lili: 'Leveza é força com controle. Use a parede sempre que quiser.',
     breathing: 'Respire devagar nas posições de equilíbrio: respiração curta desequilibra.',
     warmup: [{ ex: 'marcha-apoiada', secs: 45 }, { ex: 'mobilidade-tornozelo', reps: 8 }],
     main: [
@@ -326,7 +326,7 @@ export const DAYS: Day[] = [
   {
     n: 19, phase: 3, type: 'treino', name: 'Força Global',
     goal: 'Treino mais completo do desafio: corpo inteiro trabalhando.',
-    luna: 'Este é o treino mais completo do desafio. Vá no seu ritmo e celebre cada série.',
+    lili: 'Este é o treino mais completo do desafio. Vá no seu ritmo e celebre cada série.',
     breathing: 'No agachamento isométrico, faça respirações completas e conte quantas cabem no tempo.',
     warmup: [{ ex: 'respiracao-lateral', secs: 45 }, { ex: 'marcha-apoiada', secs: 45 }, { ex: 'anjos-parede', reps: 8 }],
     main: [
@@ -338,13 +338,13 @@ export const DAYS: Day[] = [
     ],
     cooldown: [{ ex: 'pernas-na-parede', secs: 60 }, { ex: 'abertura-peito', secs: 30 }],
     extra: { id: 'e19', kind: 'read', title: 'Cuidados durante a prática', desc: 'Sinais do corpo que pedem pausa e como se proteger.', article: 'cuidados' },
-    surprise: { id: 's19', kind: 'card', title: 'Carta da Luna', desc: 'Faltam só dois dias. Uma mensagem para a reta final.' },
+    surprise: { id: 's19', kind: 'card', title: 'Carta da Lili', desc: 'Faltam só dois dias. Uma mensagem para a reta final.' },
     reward: 'Corpo inteiro mais forte. +100 Pontos de Evolução',
   },
   {
     n: 20, phase: 3, type: 'treino', name: 'Sua Melhor Postura',
     goal: 'Costas fortes, peito aberto e core firme para levar ao dia a dia.',
-    luna: 'Amanhã é o grande dia! Hoje vamos caprichar na postura que você construiu.',
+    lili: 'Amanhã é o grande dia! Hoje vamos caprichar na postura que você construiu.',
     breathing: 'Nas pranchas laterais, respire pela costela de cima, que fica mais livre.',
     warmup: [{ ex: 'gato-vaca-parede', reps: 8 }, { ex: 'rotacao-toracica', reps: 5 }],
     main: [
@@ -362,7 +362,7 @@ export const DAYS: Day[] = [
   {
     n: 21, phase: 3, type: 'celebracao', name: 'Celebração da Jornada',
     goal: 'Revisitar os movimentos favoritos e perceber toda a sua evolução.',
-    luna: 'Dia 21. Você chegou! Este treino é uma homenagem a cada dia que você não desistiu.',
+    lili: 'Dia 21. Você chegou! Este treino é uma homenagem a cada dia que você não desistiu.',
     breathing: 'Respire como no dia 1, e perceba como agora as costelas se abrem com facilidade.',
     warmup: [{ ex: 'respiracao-lateral', secs: 60 }, { ex: 'rolamento-coluna', reps: 6 }],
     main: [
@@ -375,7 +375,7 @@ export const DAYS: Day[] = [
     ],
     cooldown: [{ ex: 'pernas-na-parede', secs: 120 }, { ex: 'borboleta-parede', secs: 60 }],
     extra: { id: 'e21', kind: 'win', title: 'Carta para a você do dia 1', desc: 'O que você diria para a mulher que começou este desafio?' },
-    surprise: { id: 's21', kind: 'card', title: 'Carta final da Luna', desc: 'A última carta do desafio.' },
+    surprise: { id: 's21', kind: 'card', title: 'Carta final da Lili', desc: 'A última carta do desafio.' },
     reward: 'Certificado Final desbloqueado! Desafio concluído! +100 Pontos de Evolução',
   },
 ];
@@ -384,6 +384,16 @@ export const DAY = (n: number) => DAYS[n - 1];
 
 /** Sessões bônus desbloqueáveis e rotina de manutenção */
 export const SESSIONS: Record<string, Session> = {
+  'alongamento-rapido': {
+    id: 'alongamento-rapido', title: 'Alongamento Rápido', subtitle: 'Livre a qualquer momento · ~6 min',
+    warmup: [{ ex: 'respiracao-lateral', secs: 30 }],
+    main: [
+      { ex: 'abertura-peito', secs: 30, sets: 1, rest: 10 },
+      { ex: 'inclinacao-lateral', secs: 25, sets: 1, rest: 10 },
+      { ex: 'panturrilha-alongamento', secs: 30, sets: 1, rest: 10 },
+    ],
+    cooldown: [{ ex: 'pernas-na-parede', secs: 60 }],
+  },
   'bonus-mobilidade': {
     id: 'bonus-mobilidade', title: 'Aula Bônus: Mobilidade Completa', subtitle: 'Desbloqueada no dia 5 · ~10 min',
     warmup: [{ ex: 'respiracao-lateral', secs: 45 }],

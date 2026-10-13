@@ -8,12 +8,13 @@ import { useStore } from '@/lib/store';
 import { toKey, dayIndex } from '@/lib/dates';
 import { quizFor } from '@/lib/progress';
 import { CARDS, ROULETTE } from '@/content/extras';
-import { Luna } from './Luna';
+import { Lili } from './Lili';
 
 // ───────────────────────── RESPIRAÇÃO ─────────────────────────
 export const BREATH_PATTERNS = {
   calma: { name: 'Calma 4-6', desc: 'Inspire 4s, expire 6s. Desacelera o corpo.', phases: [['Inspire', 4], ['Expire', 6]] as [string, number][] },
   caixa: { name: 'Caixa 4-4-4-4', desc: 'Inspire, segure, expire, segure. Ajuda no foco.', phases: [['Inspire', 4], ['Segure', 4], ['Expire', 4], ['Segure', 4]] as [string, number][] },
+  sono: { name: 'Sono 4-7-8', desc: 'Inspire 4s, segure 7s, expire 8s. Para desacelerar antes de dormir.', phases: [['Inspire', 4], ['Segure', 7], ['Expire', 8]] as [string, number][] },
 };
 
 export function Breathing({ secs = 120, pattern = 'calma', onDone }: { secs?: number; pattern?: keyof typeof BREATH_PATTERNS; onDone?: () => void }) {
@@ -127,7 +128,7 @@ export function DailyQuiz({ onDone }: { onDone?: () => void }) {
     const correct = answers.filter((a, k) => a === qs[k].answer).length;
     return (
       <div className="text-center">
-        <Luna mood={correct === 3 ? 'animada' : 'feliz'} size={110} />
+        <Lili mood={correct === 3 ? 'animada' : 'feliz'} size={110} />
         <p className="mt-2 font-display text-2xl font-bold">{correct} de 3 acertos!</p>
         <p className="text-sm text-ink-soft">+{correct * 5} pontos · Volte amanhã para novas perguntas.</p>
         <div className="mt-4 space-y-2 text-left">
@@ -194,7 +195,7 @@ export function CardReveal({ dayNumber, onDone }: { dayNumber?: number; onDone?:
             </div>
           </div>
           <div className="absolute inset-0 flex flex-col items-center justify-center rounded-4xl bg-white p-6 text-center shadow-card ring-2 ring-lilac-200" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
-            <Luna mood="feliz" size={64} float={false} />
+            <Lili mood="feliz" size={64} float={false} />
             <p className="mt-3 font-display text-xl font-semibold leading-snug text-grape-800">{CARDS[chosen]}</p>
           </div>
         </motion.button>

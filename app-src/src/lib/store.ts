@@ -44,6 +44,9 @@ export interface State {
   cards: Record<string, number>;
   /** sessões bônus/manutenção concluídas: data → ids */
   sessions: Record<string, string[]>;
+  /** hidratação: data → copos */
+  water: Record<string, number>;
+  waterGoal: number;
   /** medalhas já celebradas (para mostrar a animação só uma vez) */
   seenMedals: string[];
   lastVisit?: string;
@@ -63,6 +66,8 @@ export interface State {
   revealCard: (date: string, idx: number) => void;
   completeSession: (id: string) => void;
   markMedalsSeen: (ids: string[]) => void;
+  setWater: (date: string, cups: number) => void;
+  setWaterGoal: (goal: number) => void;
   touchVisit: () => void;
   setSettings: (s: Partial<Settings>) => void;
   importData: (data: Partial<State>) => void;
@@ -80,6 +85,8 @@ const initial = {
   cards: {},
   sessions: {},
   seenMedals: [],
+  water: {},
+  waterGoal: 8,
   lastVisit: undefined,
   previousVisit: undefined,
   settings: { reminders: false, reminderTime: '19:30', sound: true, vibration: true, demo: false, theme: 'padrao' as const },
@@ -122,6 +129,9 @@ export const useStore = create<State>()(
           return list.includes(id) ? s : { sessions: { ...s.sessions, [d]: [...list, id] } };
         }),
 
+      setWater: (date, cups) => set(s => ({ water: { ...s.water, [date]: Math.max(0, Math.min(20, cups)) } })),
+      setWaterGoal: goal => set({ waterGoal: Math.max(4, Math.min(16, goal)) }),
+
       markMedalsSeen: ids => set(s => ({ seenMedals: Array.from(new Set([...s.seenMedals, ...ids])) })),
 
       touchVisit: () =>
@@ -144,7 +154,7 @@ export const useStore = create<State>()(
       },
       storage: createJSONStorage(() => localStorage),
       partialize: s => {
-        const { setProfile, updateProfile, startDay, saveStep, completeDay, completeMission, addActivity, saveJournal, answerQuiz, spinRoulette, revealCard, completeSession, markMedalsSeen, touchVisit, setSettings, importData, reset, ...data } = s;
+        const { setProfile, updateProfile, startDay, saveStep, completeDay, completeMission, addActivity, saveJournal, answerQuiz, spinRoulette, revealCard, completeSession, markMedalsSeen, setWater, setWaterGoal, touchVisit, setSettings, importData, reset, ...data } = s;
         return data;
       },
     },

@@ -21,22 +21,22 @@ export async function renderCertificate(d: CertificateData): Promise<string> {
 
   // fundo
   const bg = g.createLinearGradient(0, 0, W, H);
-  bg.addColorStop(0, '#FFF1F7'); bg.addColorStop(0.6, '#F7F3FF'); bg.addColorStop(1, '#EFE8FF');
+  bg.addColorStop(0, '#FFFBF5'); bg.addColorStop(0.6, '#FFF4EE'); bg.addColorStop(1, '#FDEBF1');
   g.fillStyle = bg; g.fillRect(0, 0, W, H);
 
   // moldura
   const fr = g.createLinearGradient(0, 0, W, 0);
-  fr.addColorStop(0, '#F873AE'); fr.addColorStop(0.55, '#A98BFA'); fr.addColorStop(1, '#7C4DDB');
+  fr.addColorStop(0, '#E9C27A'); fr.addColorStop(0.5, '#F6DFA6'); fr.addColorStop(1, '#C9973F');
   g.strokeStyle = fr; g.lineWidth = 18; round(g, 40, 40, W - 80, H - 80, 48); g.stroke();
-  g.strokeStyle = 'rgba(124,77,219,.25)'; g.lineWidth = 3; round(g, 72, 72, W - 144, H - 144, 36); g.stroke();
+  g.strokeStyle = 'rgba(216,39,117,.35)'; g.lineWidth = 3; round(g, 72, 72, W - 144, H - 144, 36); g.stroke();
 
   // bolhas decorativas
   for (const [x, y, r, a] of [[180, 190, 90, .18], [1440, 220, 120, .14], [1420, 960, 80, .16], [200, 940, 110, .12]] as const) {
-    g.fillStyle = `rgba(169,139,250,${a})`; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
+    g.fillStyle = `rgba(255,95,162,${a * 0.6})`; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
   }
 
   g.textAlign = 'center';
-  g.fillStyle = '#7C4DDB';
+  g.fillStyle = '#C42A78';
   g.font = '700 30px "Plus Jakarta Sans", sans-serif';
   g.fillText('PILATES NA PAREDE · DESAFIO 21 DIAS', W / 2, 190);
 
@@ -49,7 +49,7 @@ export async function renderCertificate(d: CertificateData): Promise<string> {
   g.fillText('Certificamos com muito orgulho que', W / 2, 390);
 
   const nameGrad = g.createLinearGradient(W / 2 - 400, 0, W / 2 + 400, 0);
-  nameGrad.addColorStop(0, '#EC4C93'); nameGrad.addColorStop(1, '#7C4DDB');
+  nameGrad.addColorStop(0, '#EC4C93'); nameGrad.addColorStop(1, '#C42A78');
   g.fillStyle = nameGrad;
   g.font = '700 110px Fredoka, "Plus Jakarta Sans", sans-serif';
   g.fillText(d.name, W / 2, 520, W - 300);
@@ -67,22 +67,35 @@ export async function renderCertificate(d: CertificateData): Promise<string> {
   stats.forEach(([v, l], i) => {
     const x = x0 + i * (bw + gap);
     g.fillStyle = 'rgba(255,255,255,.85)'; round(g, x, 680, bw, 150, 28); g.fill();
-    g.fillStyle = '#7C4DDB'; g.font = `700 ${v.length > 8 ? 34 : 60}px Fredoka, sans-serif`; g.fillText(v, x + bw / 2, 765, bw - 30);
+    g.fillStyle = '#C42A78'; g.font = `700 ${v.length > 8 ? 34 : 60}px Fredoka, sans-serif`; g.fillText(v, x + bw / 2, 765, bw - 30);
     g.fillStyle = '#6B6180'; g.font = '600 26px "Plus Jakarta Sans", sans-serif'; g.fillText(l, x + bw / 2, 805);
   });
 
   g.fillStyle = '#6B6180';
   g.font = '500 30px "Plus Jakarta Sans", sans-serif';
   g.fillText(`Emitido em ${d.date}`, W / 2, 920);
-  g.fillStyle = '#A98BFA';
+  g.fillStyle = '#E86AA8';
   g.font = '700 34px Fredoka, sans-serif';
-  g.fillText('Com carinho, Luna 💜', W / 2, 985);
+  g.fillText('Com carinho, Lili 💖', W / 2, 985);
+
+  // selo dourado
+  g.save();
+  g.translate(250, H - 250);
+  const sg = g.createRadialGradient(-20, -20, 10, 0, 0, 95);
+  sg.addColorStop(0, '#FFF1B8'); sg.addColorStop(0.6, '#E9B949'); sg.addColorStop(1, '#B9842A');
+  g.fillStyle = sg;
+  g.beginPath();
+  for (let i = 0; i < 24; i++) { const a = (i / 24) * Math.PI * 2, rr = i % 2 ? 84 : 96; g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); }
+  g.closePath(); g.fill();
+  g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 4; g.beginPath(); g.arc(0, 0, 62, 0, Math.PI * 2); g.stroke();
+  g.fillStyle = '#7A4E12'; g.font = '700 26px Fredoka, sans-serif'; g.textAlign = 'center'; g.fillText(d.kind === 'final' ? '21' : '7', 0, -4); g.font = '700 17px "Plus Jakarta Sans", sans-serif'; g.fillText('DIAS', 0, 22);
+  g.restore();
 
   if (d.diamond) {
     g.save();
     g.translate(W - 230, H - 230);
     const dg = g.createLinearGradient(-70, -70, 70, 70);
-    dg.addColorStop(0, '#C6B1FF'); dg.addColorStop(1, '#7C4DDB');
+    dg.addColorStop(0, '#FFB3D3'); dg.addColorStop(1, '#C42A78');
     g.fillStyle = dg; g.beginPath(); g.arc(0, 0, 80, 0, Math.PI * 2); g.fill();
     g.fillStyle = '#fff'; g.font = '700 70px sans-serif'; g.textAlign = 'center'; g.fillText('💎', 0, 24);
     g.font = '700 18px "Plus Jakarta Sans", sans-serif'; g.fillText('MELHOR VERSÃO', 0, 60);

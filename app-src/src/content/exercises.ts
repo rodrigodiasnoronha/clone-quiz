@@ -678,3 +678,20 @@ export const CATEGORY_LABEL: Record<Exercise['category'], string> = {
   equilibrio: 'Equilíbrio',
   alongamento: 'Alongamento',
 };
+
+/** Regiões do corpo para os filtros da biblioteca (derivadas dos músculos) */
+export const REGIONS = ['Pernas', 'Glúteos', 'Core', 'Braços e ombros', 'Costas e postura'] as const;
+export type Region = typeof REGIONS[number];
+
+const REGION_RULES: [Region, RegExp][] = [
+  ['Glúteos', /glúteo|piriforme|rotadores do quadril/i],
+  ['Pernas', /quadríceps|posteriores|panturrilha|gastrocnêmio|sóleo|adutores|tornozelo|tibial|pés/i],
+  ['Core', /abdômen|abdominal|transverso|oblíquos|assoalho|core|quadrado lombar/i],
+  ['Braços e ombros', /ombro|deltoide|tríceps|peitoral/i],
+  ['Costas e postura', /coluna|eretores|extensores|trapézio|romboides|dorsal|lombar/i],
+];
+
+export function regionsOf(ex: Exercise): Region[] {
+  const text = ex.muscles.join(' ');
+  return REGION_RULES.filter(([, re]) => re.test(text)).map(([r]) => r);
+}

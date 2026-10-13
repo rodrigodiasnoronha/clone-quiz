@@ -23,18 +23,18 @@ export function Garden({ stage, acts, next }: { stage: number; acts: number; nex
         <motion.ellipse {...grow(3)} cx="100" cy="66" rx="9" ry="12" fill="#FF9ECB" />
         {/* flor principal */}
         <motion.g {...grow(4)} style={{ originX: '100px', originY: '64px' }}>
-          {[0, 60, 120, 180, 240, 300].map(a => <ellipse key={a} cx="100" cy="48" rx="9" ry="16" fill="#F873AE" transform={`rotate(${a} 100 64)`} />)}
+          {[0, 60, 120, 180, 240, 300].map(a => <ellipse key={a} cx="100" cy="48" rx="9" ry="16" fill="#FF5FA2" transform={`rotate(${a} 100 64)`} />)}
           <circle cx="100" cy="64" r="9" fill="#FFD166" />
         </motion.g>
         {/* flores laterais */}
         <motion.g {...grow(5)} style={{ originX: '60px', originY: '118px' }}>
           <path d="M60 140 C60 130 60 124 60 118" stroke="#5BBF8A" strokeWidth="3" />
-          {[0, 72, 144, 216, 288].map(a => <ellipse key={a} cx="60" cy="110" rx="5" ry="9" fill="#A98BFA" transform={`rotate(${a} 60 118)`} />)}
+          {[0, 72, 144, 216, 288].map(a => <ellipse key={a} cx="60" cy="110" rx="5" ry="9" fill="#E86AA8" transform={`rotate(${a} 60 118)`} />)}
           <circle cx="60" cy="118" r="5" fill="#FFD166" />
         </motion.g>
         <motion.g {...grow(5)} style={{ originX: '142px', originY: '114px' }}>
           <path d="M142 140 C142 130 142 120 142 114" stroke="#5BBF8A" strokeWidth="3" />
-          {[0, 72, 144, 216, 288].map(a => <ellipse key={a} cx="142" cy="106" rx="5" ry="9" fill="#C6B1FF" transform={`rotate(${a} 142 114)`} />)}
+          {[0, 72, 144, 216, 288].map(a => <ellipse key={a} cx="142" cy="106" rx="5" ry="9" fill="#FFB3D3" transform={`rotate(${a} 142 114)`} />)}
           <circle cx="142" cy="114" r="5" fill="#FFD166" />
         </motion.g>
         {/* brilhos */}
@@ -42,8 +42,8 @@ export function Garden({ stage, acts, next }: { stage: number; acts: number; nex
           <motion.path key={i} d={`M${x} ${y} l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z`} fill="#FFD166" animate={{ opacity: [0, 1, 0], scale: [.6, 1.1, .6] }} transition={{ repeat: Infinity, duration: 2, delay: i * .4 }} />
         ))}
         {/* vaso */}
-        <path d="M66 140 h68 l-8 26 h-52z" fill="#C6B1FF" />
-        <rect x="62" y="134" width="76" height="10" rx="5" fill="#A98BFA" />
+        <path d="M66 140 h68 l-8 26 h-52z" fill="#FFB3D3" />
+        <rect x="62" y="134" width="76" height="10" rx="5" fill="#E86AA8" />
         {stage === 0 && <ellipse cx="100" cy="137" rx="4" ry="3" fill="#8B6B4A" />}
       </svg>
       <div className="mt-1 text-center">

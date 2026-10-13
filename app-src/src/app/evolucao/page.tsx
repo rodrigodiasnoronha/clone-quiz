@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Award, NotebookPen, Plus } from 'lucide-react';
-import { Page, SectionTitle } from '@/components/ui';
+import { Page, SectionTitle, TopBar } from '@/components/ui';
 import { Garden } from '@/components/Garden';
 import { ConsistencyGrid, HabitsChart } from '@/components/Charts';
 import { FLEX, MOOD, ENERGY, SLEEP } from '@/components/JournalForm';
@@ -23,10 +23,9 @@ export default function Evolucao() {
 
   return (
     <Page>
-      <h1 className="text-2xl font-bold">Minha Jornada</h1>
-      <p className="text-sm text-ink-soft">Seu diário de evolução: hábitos, sensações e conquistas.</p>
+      <TopBar back="/mais/" title="Minha Jornada" subtitle="Diário de evolução: hábitos, sensações e conquistas" />
 
-      <Link href="/evolucao/registro/" className="btn-primary shine mt-4 w-full">
+      <Link href="/evolucao/registro/" className="btn-primary shine w-full">
         {todayEntry?.mood ? <><NotebookPen size={18} /> Editar registro de hoje</> : <><Plus size={18} /> Registrar meu dia</>}
       </Link>
 
@@ -56,9 +55,9 @@ export default function Evolucao() {
         <p className="card p-4 text-center text-sm text-ink-soft">Com dois registros você poderá comparar o começo e o agora. Os testes de flexibilidade e resistência ficam ainda mais legais!</p>
       )}
 
-      <Link href="/evolucao/bau/" className="mt-6 flex items-center gap-3 rounded-3xl bg-gradient-to-r from-grape-600 to-rose-400 p-4 text-white shadow-glow">
+      <Link href="/conquistas/" className="mt-6 flex items-center gap-3 rounded-3xl bg-gradient-to-r from-grape-600 to-rose-400 p-4 text-white shadow-glow">
         <Award size={28} />
-        <div className="flex-1"><p className="font-bold">Meu Baú de Conquistas 🎁</p><p className="text-xs text-white/85">Medalhas, níveis, certificados e aulas desbloqueadas</p></div>
+        <div className="flex-1"><p className="font-bold">Minhas Conquistas 🏆</p><p className="text-xs text-white/85">Medalhas, níveis, certificados e aulas desbloqueadas</p></div>
       </Link>
 
       <SectionTitle>Registros</SectionTitle>

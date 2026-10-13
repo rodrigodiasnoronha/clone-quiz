@@ -7,12 +7,12 @@ import { earnedMedals } from '@/lib/progress';
 import { scheduleReminder } from '@/lib/notifications';
 import { BottomNav } from './BottomNav';
 import { Celebration } from './Celebration';
-import { Luna } from './Luna';
+import { Lili } from './Lili';
 import { InstallGate } from './InstallGate';
 import { INSTALL_KEY, isStandalone } from '@/lib/install';
 
-const NO_NAV = ['/boas-vindas', '/treinar', '/sessao', '/conclusao'];
-const NO_CELEBRATION = ['/boas-vindas', '/treinar', '/sessao', '/conclusao'];
+// telas em tela cheia: onboarding, players de treino e celebração final
+const FULLSCREEN = /^\/(boas-vindas|treinar\/\d+|sessao|praticar|conclusao)/;
 
 export function Providers({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
@@ -61,7 +61,7 @@ export function Providers({ children }: { children: ReactNode }) {
     return (
       <div className="grid min-h-dvh place-items-center">
         <div className="flex flex-col items-center gap-3">
-          <Luna mood="feliz" size={96} />
+          <Lili mood="feliz" size={96} />
           <p className="text-sm font-bold text-grape-500">Preparando seu desafio…</p>
         </div>
       </div>
@@ -70,12 +70,12 @@ export function Providers({ children }: { children: ReactNode }) {
 
   if (askInstall) return <InstallGate onDone={() => setAskInstall(false)} />;
 
-  const showNav = !NO_NAV.some(p => path.startsWith(p));
+  const showNav = !FULLSCREEN.test(path);
   return (
     <>
       {children}
       {showNav && <BottomNav />}
-      {!NO_CELEBRATION.some(p => path.startsWith(p)) && <MedalWatcher />}
+      {showNav && <MedalWatcher />}
     </>
   );
 }

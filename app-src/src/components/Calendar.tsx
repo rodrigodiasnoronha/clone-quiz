@@ -1,16 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { Check, Lock, Moon, Play } from 'lucide-react';
+import { Check, Lock, Moon } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { DAYS } from '@/content/program';
 import { dayStatus, daysBehind, type DayStatus } from '@/lib/progress';
 import { addDays, formatDate } from '@/lib/dates';
 
 export const STATUS_STYLE: Record<DayStatus, { label: string; cls: string }> = {
-  concluido: { label: 'Concluído', cls: 'bg-brand text-white' },
-  andamento: { label: 'Em andamento', cls: 'bg-grape-600 text-white ring-4 ring-rose-200' },
-  disponivel: { label: 'Disponível', cls: 'bg-white text-grape-700 ring-2 ring-grape-500' },
+  concluido: { label: 'Concluído', cls: 'bg-brand text-white shadow-glow' },
+  andamento: { label: 'Em andamento', cls: 'bg-white text-rose-600 ring-[3px] ring-rose-500' },
+  disponivel: { label: 'Disponível', cls: 'bg-white text-rose-600 ring-[3px] ring-rose-500' },
   pendente: { label: 'Pendente', cls: 'bg-rose-100 text-rose-600' },
   bloqueado: { label: 'Bloqueado', cls: 'bg-lilac-50 text-ink-faint' },
 };
@@ -27,15 +27,16 @@ export function Calendar() {
           Você tem {behind} {behind > 1 ? 'dias pendentes' : 'dia pendente'}. Recupere no seu ritmo, sem penalidade — dá até para fazer dois no mesmo dia.
         </div>
       )}
-      <div className="grid grid-cols-7 gap-1.5">
+      <div className="grid grid-cols-7 gap-x-1.5 gap-y-3 pt-2">
         {DAYS.map(d => {
           const st = dayStatus(s, d.n);
           const recovery = d.type === 'recuperacao' || d.type === 'mobilidade';
           return (
             <Link key={d.n} href={`/treinos/dia/${d.n}/`} aria-label={`Dia ${d.n}, ${STATUS_STYLE[st].label}${recovery ? ', recuperação' : ''}`}
-              className={`relative flex aspect-square flex-col items-center justify-center rounded-2xl text-sm font-extrabold transition active:scale-95 ${STATUS_STYLE[st].cls}`}>
-              {st === 'concluido' ? <Check size={18} strokeWidth={3} /> : st === 'andamento' || st === 'disponivel' ? <Play size={14} /> : st === 'bloqueado' ? <Lock size={13} /> : null}
-              <span className={st === 'concluido' || st === 'bloqueado' || st === 'andamento' || st === 'disponivel' ? 'text-[10px]' : ''}>{d.n}</span>
+              className={`relative mx-auto flex aspect-square w-full max-w-[3rem] flex-col items-center justify-center rounded-full text-sm font-extrabold transition active:scale-95 ${STATUS_STYLE[st].cls}`}>
+              {(st === 'andamento' || st === 'disponivel') && <span className="absolute -top-3 text-xs" aria-hidden>👑</span>}
+              {st === 'concluido' && <Check size={11} strokeWidth={4} className="absolute -top-0.5 right-0 rounded-full bg-white p-0.5 text-rose-500 shadow" style={{ width: 16, height: 16 }} />}
+              {st === 'bloqueado' ? <Lock size={13} /> : <span>{d.n}</span>}
               {recovery && <Moon size={10} className="absolute right-1 top-1 opacity-70" />}
             </Link>
           );
@@ -43,7 +44,7 @@ export function Calendar() {
       </div>
       <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-semibold text-ink-soft">
         {(Object.keys(STATUS_STYLE) as DayStatus[]).map(k => (
-          <span key={k} className="flex items-center gap-1"><span className={`h-3 w-3 rounded ${STATUS_STYLE[k].cls.split(' ').slice(0, 1).join(' ')}`} />{STATUS_STYLE[k].label}</span>
+          <span key={k} className="flex items-center gap-1"><span className={`h-3 w-3 rounded-full ${STATUS_STYLE[k].cls.split(' ').slice(0, 3).join(' ')}`} />{STATUS_STYLE[k].label}</span>
         ))}
         <span className="flex items-center gap-1"><Moon size={11} /> Recuperação/mobilidade</span>
       </div>

@@ -35,7 +35,7 @@ export function MissionRunner({ id }: { id: string }) {
   if (day.n > unlockedUntil(s)) {
     return (
       <Page>
-        <TopBar back={true} />
+        <TopBar back="/missoes/" />
         <div className="card mt-10 flex flex-col items-center p-8 text-center">
           <Lock className="text-grape-500" size={32} />
           <p className="mt-3 font-bold">Missão do dia {day.n}</p>
@@ -55,7 +55,7 @@ export function MissionRunner({ id }: { id: string }) {
 
   return (
     <Page>
-      <TopBar back={true} title={day.extra.id === id ? 'Missão extra' : 'Missão surpresa'} />
+      <TopBar back="/missoes/" title={day.extra.id === id ? 'Missão extra' : 'Missão surpresa'} />
       <div className="text-center">
         <p className="text-4xl">{MISSION_ICON[m.kind]}</p>
         <h1 className="mt-2 text-2xl font-bold">{m.title}</h1>
@@ -90,7 +90,7 @@ export function MissionRunner({ id }: { id: string }) {
       )}
       {done && <Link href="/missoes/" className="btn-ghost mt-6 w-full">Ver outras missões</Link>}
 
-      <Celebration open={party} title="Missão cumprida! 🎯" text={`+${POINTS.mission} Pontos de Evolução. A Luna está orgulhosa de você!`} onClose={() => { setParty(false); router.push('/missoes/'); }} />
+      <Celebration open={party} title="Missão cumprida! 🎯" text={`+${POINTS.mission} Pontos de Evolução. A Lili está orgulhosa de você!`} onClose={() => { setParty(false); router.push('/missoes/'); }} />
     </Page>
   );
 }

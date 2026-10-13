@@ -34,25 +34,31 @@ Depois é só publicar o repositório como site estático. A pasta `app/` já va
 > Sempre que mudar algo em `app-src/`, rode `npm run export:site` e faça commit da pasta `app/`.
 > Para o service worker entregar a versão nova a quem já instalou, aumente `VERSION` em `public/sw.js`.
 
+## Navegação e telas
+
+Menu inferior: **Início · Desafios · Treinar · Conquistas · Mais**.
+
+- **Início** (`/`): Lili, dia atual, sequência, pontos, progresso, treino do dia, missões, próxima recompensa.
+- **Desafios** (`/desafios`): calendário / mapa da jornada, dia atual, missões do dia e desafios semanais. Detalhe do dia em `/treinos/dia/[n]`, treino em `/treinar/[n]`.
+- **Treinar** (`/treinar`): biblioteca com os 38 exercícios, busca, filtros por região, detalhes e prática avulsa (`/praticar/[id]`), aulas e sessões.
+- **Conquistas** (`/conquistas`): nível com a Lili, medalhas (todas / em progresso / concluídas), conteúdos desbloqueados, origem dos pontos. Compartilhar em `/compartilhar` (imagem 1080×1920 para Stories). Certificados em `/certificado/[tipo]`.
+- **Mais** (`/mais`): Minha Jornada (`/evolucao`), Hidratação (`/hidratacao`), Modo Relaxamento (`/relaxar`: respiração, alongamento, meditação, sono), Missões e jogos (`/missoes`, `/jogos/*`), Biblioteca VIP (`/biblioteca`), Perfil (`/perfil`).
+
+Endereços antigos `/treinos` e `/evolucao/bau` redirecionam para `/desafios` e `/conquistas`.
+
+## Imagens
+
+- `public/lili/` — a mascote **Lili**, recortada da arte de referência do produto. Os recortes são pequenos (a arte original tinha várias telas em uma imagem); para mais nitidez, substitua pelos arquivos originais em alta resolução mantendo os mesmos nomes.
+- `public/fotos/` — fotos do quiz usadas só como decoração (cards e banners), não como demonstração de exercício.
+
 ## Estrutura
 
 ```
 src/
-  app/                 telas (rotas)
-    page.tsx           Início (dashboard)
-    boas-vindas/       onboarding personalizado (7 perguntas)
-    treinos/           Jornada (mapa), Calendário, Bônus, Biblioteca; treinos/dia/[n] = detalhes do dia
-    treinar/[n]/       player do treino do dia
-    sessao/[id]/       aulas bônus e rotina de manutenção
-    missoes/           missões do dia, desafios semanais, experiências; missoes/[id] = executar missão
-    jogos/             respiração, roleta, quiz do corpo, cartas
-    evolucao/          Minha Jornada (diário, gráficos, jardim), registro, baú de conquistas
-    certificado/[tipo] certificado da semana 1 e final (PNG para baixar/compartilhar)
-    conclusao/         celebração do dia 21
-    perfil/            preferências, lembretes, temas, instalação, backup, modo demonstração
-  components/          Luna (mascote), Player, Games, Charts, Garden, JourneyMap, Calendar…
-  content/             exercises.ts, program.ts (21 dias), library.ts, extras.ts (quiz, cartas, roleta)
-  lib/                 store (localStorage), progress (pontos, níveis, medalhas), workout (adaptação)
+  app/          telas (rotas acima)
+  components/   Lili (mascote), Player, Games, Charts, Garden, JourneyMap, Calendar, ui (TopBar, HeroHeader, Logo…)
+  content/      exercises.ts, program.ts (21 dias e sessões), library.ts, extras.ts (quiz, cartas, roleta)
+  lib/          store (localStorage), progress (pontos, níveis, medalhas), workout (adaptação), shareCard, certificate
 ```
 
 ## Regras principais

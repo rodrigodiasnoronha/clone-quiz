@@ -46,12 +46,12 @@ export function CertificatePage({ kind }: { kind: 'semana1' | 'final' }) {
 
   return (
     <Page>
-      <TopBar back="/evolucao/bau/" title={kind === 'final' ? 'Certificado final' : 'Certificado da semana 1'} />
+      <TopBar back="/conquistas/" title={kind === 'final' ? 'Certificado final' : 'Certificado da semana 1'} />
       {!unlocked ? (
         <div className="card mt-6 flex flex-col items-center p-8 text-center">
           <Lock className="text-grape-500" size={32} />
           <p className="mt-3 font-bold">Libera ao concluir o dia {dayNeeded}</p>
-          <Link href="/treinos/" className="btn-primary mt-4 w-full">Ver minha jornada</Link>
+          <Link href="/desafios/" className="btn-primary mt-4 w-full">Ver minha jornada</Link>
         </div>
       ) : (
         <>

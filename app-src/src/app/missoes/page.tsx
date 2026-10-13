@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Check, Play } from 'lucide-react';
-import { Page, ProgressBar, SectionTitle } from '@/components/ui';
+import { Page, ProgressBar, SectionTitle, TopBar } from '@/components/ui';
 import { MissionCard } from '@/components/MissionCard';
-import { LunaSays } from '@/components/Luna';
+import { LiliSays } from '@/components/Lili';
 import { useStore } from '@/lib/store';
 import { DAY, DAYS } from '@/content/program';
 import { nextDay, unlockedUntil, WEEKLY, POINTS, dayStatus } from '@/lib/progress';
@@ -31,8 +31,8 @@ export default function Missoes() {
 
   return (
     <Page>
-      <h1 className="text-2xl font-bold">Missões</h1>
-      <div className="mt-3"><LunaSays mood={doneCount === 3 ? 'orgulhosa' : 'feliz'} text={doneCount === 3 ? 'Todas as missões do dia cumpridas! Você é demais. 💜' : `Hoje temos 3 missões no dia ${mday.n}. Você já fez ${doneCount}!`} size={60} /></div>
+      <TopBar back="/desafios/" title="Missões e jogos" />
+      <div><LiliSays mood={doneCount === 3 ? 'orgulhosa' : 'feliz'} text={doneCount === 3 ? 'Todas as missões do dia cumpridas! Você é demais. 💜' : `Hoje temos 3 missões no dia ${mday.n}. Você já fez ${doneCount}!`} size={60} /></div>
 
       <div className="card mt-4 p-4">
         <div className="flex items-center justify-between text-sm font-bold"><span>Missões do dia {mday.n}</span><span className="text-grape-600">{doneCount}/3</span></div>

@@ -2,9 +2,9 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMemo, type ReactNode } from 'react';
-import { Luna, type LunaMood } from './Luna';
+import { Lili, type LiliMood } from './Lili';
 
-const COLORS = ['#F873AE', '#A98BFA', '#7C4DDB', '#FFD166', '#FF9ECB', '#C6B1FF'];
+const COLORS = ['#FF5FA2', '#E86AA8', '#C42A78', '#FFD166', '#FF9ECB', '#FFB3D3'];
 
 export function Confetti({ count = 70 }: { count?: number }) {
   const pieces = useMemo(
@@ -37,7 +37,7 @@ export function Confetti({ count = 70 }: { count?: number }) {
 }
 
 export function Celebration({ open, onClose, title, text, mood = 'animada', emoji, children, cta = 'Continuar' }: {
-  open: boolean; onClose: () => void; title: string; text?: string; mood?: LunaMood; emoji?: string; children?: ReactNode; cta?: string;
+  open: boolean; onClose: () => void; title: string; text?: string; mood?: LiliMood; emoji?: string; children?: ReactNode; cta?: string;
 }) {
   return (
     <AnimatePresence>
@@ -56,9 +56,9 @@ export function Celebration({ open, onClose, title, text, mood = 'animada', emoj
                     {emoji}
                   </motion.div>
                 ) : (
-                  <Luna mood={mood} size={120} />
+                  <Lili mood={mood} size={120} />
                 )}
-                {emoji && <div className="absolute -bottom-3 -right-6"><Luna mood={mood} size={60} /></div>}
+                {emoji && <div className="absolute -bottom-3 -right-6"><Lili mood={mood} size={60} /></div>}
               </div>
               <h2 className="mt-3 text-2xl font-bold text-ink">{title}</h2>
               {text && <p className="mt-2 text-sm text-ink-soft">{text}</p>}

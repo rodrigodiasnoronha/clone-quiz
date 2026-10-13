@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Download, Share, SquarePlus, Wifi, Maximize, Smartphone, MoreVertical } from 'lucide-react';
 import { useState } from 'react';
-import { Luna } from './Luna';
+import { Lili } from './Lili';
 import { INSTALL_KEY, isIOS, useInstall } from '@/lib/install';
 
 /** Tela da primeira abertura: instalar o app ou continuar no navegador */
@@ -27,7 +27,7 @@ export function InstallGate({ onDone }: { onDone: () => void }) {
     <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-8 pt-10">
       <div className="flex flex-1 flex-col items-center text-center">
         <motion.div initial={{ scale: .6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 14 }}>
-          <Luna mood={installed ? 'orgulhosa' : 'animada'} size={130} />
+          <Lili mood={installed ? 'orgulhosa' : 'animada'} size={130} />
         </motion.div>
 
         {installed ? (

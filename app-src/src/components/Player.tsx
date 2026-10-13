@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, ChevronLeft, ChevronRight, Pause, Play, Plus, SkipForward, Sparkles, X, Wand2, Wind } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ExerciseMedia } from './ExerciseMedia';
-import { Luna, LunaSays } from './Luna';
+import { Lili, LiliSays } from './Lili';
 import { Sheet } from './ui';
 import { beep, chime, keepAwake, vibrate } from '@/lib/device';
 import { estimateMinutes, STAGE_LABEL, type ExerciseStep, type Step } from '@/lib/workout';
@@ -12,7 +12,7 @@ import { estimateMinutes, STAGE_LABEL, type ExerciseStep, type Step } from '@/li
 interface Props {
   title: string;
   subtitle: string;
-  luna: string;
+  lili: string;
   breathing?: string;
   steps: Step[];
   initialStep?: number;
@@ -23,7 +23,7 @@ interface Props {
 
 const SECONDS_PER_REP = 4;
 
-export function Player({ title, subtitle, luna, breathing, steps, initialStep = 0, onProgress, onExit, onFinish }: Props) {
+export function Player({ title, subtitle, lili, breathing, steps, initialStep = 0, onProgress, onExit, onFinish }: Props) {
   const [phase, setPhase] = useState<'intro' | 'countdown' | 'run' | 'finish'>('intro');
   const [idx, setIdx] = useState(Math.min(initialStep, steps.length - 1));
   const [left, setLeft] = useState(0);
@@ -104,7 +104,7 @@ export function Player({ title, subtitle, luna, breathing, steps, initialStep = 
         </div>
         <p className="label mt-5">{subtitle}</p>
         <h1 className="text-3xl font-bold leading-tight">{title}</h1>
-        <div className="mt-4"><LunaSays text={luna} mood="animada" size={64} /></div>
+        <div className="mt-4"><LiliSays text={lili} mood="animada" size={64} /></div>
         {breathing && (
           <div className="card mt-4 flex gap-3 p-4">
             <Wind className="mt-0.5 shrink-0 text-lilac-500" size={20} />
@@ -163,7 +163,7 @@ export function Player({ title, subtitle, luna, breathing, steps, initialStep = 
     const opts = [[2, '😌', 'Leve'], [3, '🙂', 'Na medida'], [4, '😤', 'Desafiador']] as const;
     return (
       <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col items-center justify-center px-5 text-center">
-        <Luna mood="orgulhosa" size={140} />
+        <Lili mood="orgulhosa" size={140} />
         <h1 className="mt-3 text-3xl font-bold">Treino concluído!</h1>
         <p className="mt-1 text-ink-soft">Como foi para você hoje?</p>
         <div className="mt-5 grid w-full grid-cols-3 gap-2">
@@ -196,7 +196,7 @@ export function Player({ title, subtitle, luna, breathing, steps, initialStep = 
         <motion.div key={idx} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: .22 }} className="flex flex-1 flex-col">
           {step.kind === 'rest' ? (
             <div className="flex flex-1 flex-col items-center justify-center text-center">
-              <Luna mood="calma" size={110} />
+              <Lili mood="calma" size={110} />
               <p className="label mt-3">Descanso</p>
               <p className="font-display text-7xl font-bold text-grape-700" aria-live="polite">{Math.max(0, left)}s</p>
               <p className="mt-1 text-sm text-ink-soft">Respire fundo e solte os ombros.</p>
@@ -300,7 +300,7 @@ function TimerRing({ total, left, label, sub }: { total: number; left: number; l
   return (
     <div className="relative grid shrink-0 place-items-center" style={{ width: size, height: size }} aria-live="polite">
       <svg width={size} height={size} className="-rotate-90">
-        <defs><linearGradient id="tr" x1="0" x2="1"><stop offset="0" stopColor="#F873AE" /><stop offset="1" stopColor="#7C4DDB" /></linearGradient></defs>
+        <defs><linearGradient id="tr" x1="0" x2="1"><stop offset="0" stopColor="#FF5FA2" /><stop offset="1" stopColor="#C42A78" /></linearGradient></defs>
         <circle cx={size / 2} cy={size / 2} r={r} stroke="#EFE8FF" strokeWidth={stroke} fill="none" />
         <circle cx={size / 2} cy={size / 2} r={r} stroke="url(#tr)" strokeWidth={stroke} fill="none" strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - pct)} style={{ transition: 'stroke-dashoffset 1s linear' }} />
       </svg>

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { ChevronLeft, Check } from 'lucide-react';
-import { Luna, LunaSays } from '@/components/Luna';
+import { Lili, LiliSays } from '@/components/Lili';
 import { Confetti } from '@/components/Celebration';
 import { useStore } from '@/lib/store';
 import { toKey } from '@/lib/dates';
@@ -62,8 +62,8 @@ export default function Onboarding() {
   const screens = [
     // 0 — boas-vindas + nome
     <div key="0" className="flex flex-col items-center text-center">
-      <Luna mood="animada" size={140} />
-      <h1 className="mt-4 text-3xl font-bold leading-tight">Oi! Eu sou a <span className="bg-brand bg-clip-text text-transparent">Luna</span> 💜</h1>
+      <Lili mood="animada" size={140} />
+      <h1 className="mt-4 text-3xl font-bold leading-tight">Oi! Eu sou a <span className="bg-brand bg-clip-text text-transparent">Lili</span> 💜</h1>
       <p className="mt-2 text-ink-soft">Vou ser sua companheira nos próximos 21 dias. Antes de começar, quero te conhecer um pouquinho.</p>
       <label className="mt-6 w-full text-left">
         <span className="label">Como você gostaria de ser chamada?</span>
@@ -77,32 +77,32 @@ export default function Onboarding() {
     </div>,
 
     // 1 — objetivo
-    <Q key="1" title={`${d.name?.trim()}, qual é o seu principal objetivo?`} luna="Vou dar um foco especial a ele em todos os treinos.">
+    <Q key="1" title={`${d.name?.trim()}, qual é o seu principal objetivo?`} lili="Vou dar um foco especial a ele em todos os treinos.">
       {GOALS.map(g => <Opt key={g.v} on={d.goal === g.v} onClick={() => pick('goal', g.v)} emoji={g.e} title={GOAL_LABEL[g.v]} />)}
     </Q>,
 
     // 2 — nível
-    <Q key="2" title="Qual é o seu nível de experiência?" luna="Sem pressão! Tudo tem versão mais fácil.">
+    <Q key="2" title="Qual é o seu nível de experiência?" lili="Sem pressão! Tudo tem versão mais fácil.">
       {LEVELS.map(l => <Opt key={l.v} on={d.level === l.v} onClick={() => pick('level', l.v)} emoji={l.e} title={l.t} desc={l.d} />)}
     </Q>,
 
     // 3 — tempo
-    <Q key="3" title="Quanto tempo você tem por dia?" luna="Eu ajusto as séries para caber no seu dia.">
+    <Q key="3" title="Quanto tempo você tem por dia?" lili="Eu ajusto as séries para caber no seu dia.">
       {MINUTES.map(m => <Opt key={m.v} on={d.minutes === m.v} onClick={() => pick('minutes', m.v)} emoji="⏱️" title={`${m.v} minutos`} desc={m.d} />)}
     </Q>,
 
     // 4 — período
-    <Q key="4" title="Em qual período prefere treinar?" luna="Assim posso te lembrar na hora certa (se você quiser).">
+    <Q key="4" title="Em qual período prefere treinar?" lili="Assim posso te lembrar na hora certa (se você quiser).">
       {PERIODS.map(p => <Opt key={p.v} on={d.period === p.v} onClick={() => pick('period', p.v)} emoji={p.e} title={p.t} />)}
     </Q>,
 
     // 5 — obstáculo
-    <Q key="5" title="O que mais dificulta sua constância?" luna="Todo mundo tem um desafio. Vamos pensar juntas no seu.">
+    <Q key="5" title="O que mais dificulta sua constância?" lili="Todo mundo tem um desafio. Vamos pensar juntas no seu.">
       {OBSTACLES.map(o => <Opt key={o.v} on={d.obstacle === o.v} onClick={() => pick('obstacle', o.v)} emoji={o.e} title={o.t} />)}
     </Q>,
 
     // 6 — limitações
-    <Q key="6" title="Você possui alguma limitação de movimento?" luna="Marque todas que se aplicam. Eu troco os exercícios que podem incomodar.">
+    <Q key="6" title="Você possui alguma limitação de movimento?" lili="Marque todas que se aplicam. Eu troco os exercícios que podem incomodar.">
       <div className="grid grid-cols-2 gap-2">
         {LIMITS.map(l => {
           const on = d.limitations.includes(l.v);
@@ -122,7 +122,7 @@ export default function Onboarding() {
     </Q>,
 
     // 7 — cuidados
-    <Q key="7" title="Um combinado importante" luna="Quero que você evolua com segurança.">
+    <Q key="7" title="Um combinado importante" lili="Quero que você evolua com segurança.">
       <div className="card space-y-2 p-4 text-sm text-ink-soft">
         <p>• Este desafio é um conteúdo de bem-estar e não substitui orientação médica ou de um profissional de Educação Física.</p>
         <p>• Se estiver grávida, em pós-parto recente, com doença cardíaca, pressão alta não controlada, hérnia ou cirurgia recente, converse com um profissional antes.</p>
@@ -161,10 +161,10 @@ export default function Onboarding() {
   );
 }
 
-function Q({ title, luna, children }: { title: string; luna: string; children: React.ReactNode }) {
+function Q({ title, lili, children }: { title: string; lili: string; children: React.ReactNode }) {
   return (
     <div>
-      <LunaSays text={luna} size={60} />
+      <LiliSays text={lili} size={60} />
       <h1 className="mb-4 mt-5 text-2xl font-bold leading-tight">{title}</h1>
       <div className="space-y-2">{children}</div>
     </div>
@@ -197,7 +197,7 @@ function Ready({ d, onStart }: { d: Draft; onStart: () => void }) {
     <div className="text-center">
       <Confetti count={50} />
       <motion.div initial={{ scale: .6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 14 }} className="mx-auto w-fit">
-        <Luna mood="orgulhosa" size={140} />
+        <Lili mood="orgulhosa" size={140} />
       </motion.div>
       <h1 className="mt-3 text-3xl font-bold leading-tight">Seu desafio personalizado está pronto! 💜</h1>
       <p className="mt-2 text-ink-soft">Bem-vinda, {d.name?.trim()}! São 21 dias, 3 fases e um treino novo a cada dia, feito para você.</p>

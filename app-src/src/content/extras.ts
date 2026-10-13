@@ -61,7 +61,7 @@ export const CARDS: string[] = [
   'O equilíbrio que você treina na parede você leva para a vida.',
   'Faltam dois dias. Você já é outra mulher: mais forte, mais presente.',
   'Amanhã é dia de celebrar. Hoje, sinta orgulho do caminho.',
-  'Você chegou ao fim do desafio, mas este é só o começo da sua nova rotina. Obrigada por não desistir de você. 💜 — Luna',
+  'Você chegou ao fim do desafio, mas este é só o começo da sua nova rotina. Obrigada por não desistir de você. 💜 — Lili',
   'Você continua aparecendo para si mesma. Isso é lindo.',
   'Movimento é uma forma de dizer "eu me importo comigo".',
   'Hoje vale mais feito do que perfeito.',
@@ -69,18 +69,18 @@ export const CARDS: string[] = [
 
 /** Roleta do Bem-Estar: pequenas atividades saudáveis */
 export const ROULETTE: { emoji: string; title: string; desc: string; color: string }[] = [
-  { emoji: '💧', title: 'Copo de água', desc: 'Beba um copo de água agora, com calma.', color: '#A98BFA' },
-  { emoji: '🌬️', title: '5 respirações', desc: 'Faça 5 respirações lentas, expirando por mais tempo.', color: '#F873AE' },
-  { emoji: '🚶‍♀️', title: 'Mini caminhada', desc: 'Caminhe por 3 minutos, dentro ou fora de casa.', color: '#7C4DDB' },
+  { emoji: '💧', title: 'Copo de água', desc: 'Beba um copo de água agora, com calma.', color: '#E86AA8' },
+  { emoji: '🌬️', title: '5 respirações', desc: 'Faça 5 respirações lentas, expirando por mais tempo.', color: '#FF5FA2' },
+  { emoji: '🚶‍♀️', title: 'Mini caminhada', desc: 'Caminhe por 3 minutos, dentro ou fora de casa.', color: '#C42A78' },
   { emoji: '🧘‍♀️', title: 'Alongue o pescoço', desc: 'Incline a cabeça para cada lado por 20 segundos.', color: '#FF9ECB' },
-  { emoji: '☀️', title: 'Luz natural', desc: 'Fique 2 minutos perto de uma janela ou ao ar livre.', color: '#C6B1FF' },
+  { emoji: '☀️', title: 'Luz natural', desc: 'Fique 2 minutos perto de uma janela ou ao ar livre.', color: '#FFB3D3' },
   { emoji: '🎶', title: 'Música favorita', desc: 'Ouça uma música que te deixa feliz e se mexa como quiser.', color: '#EC4C93' },
-  { emoji: '📵', title: 'Pausa da tela', desc: 'Fique 5 minutos sem olhar para nenhuma tela.', color: '#8E6CF0' },
-  { emoji: '🍎', title: 'Fruta do dia', desc: 'Inclua uma fruta no seu próximo lanche.', color: '#F873AE' },
-  { emoji: '✍️', title: '3 gratidões', desc: 'Pense em 3 coisas boas que aconteceram hoje.', color: '#A98BFA' },
-  { emoji: '🧍‍♀️', title: 'Teste da parede', desc: 'Encoste calcanhares, quadril, costas e cabeça na parede por 30 segundos.', color: '#7C4DDB' },
+  { emoji: '📵', title: 'Pausa da tela', desc: 'Fique 5 minutos sem olhar para nenhuma tela.', color: '#A61F66' },
+  { emoji: '🍎', title: 'Fruta do dia', desc: 'Inclua uma fruta no seu próximo lanche.', color: '#FF5FA2' },
+  { emoji: '✍️', title: '3 gratidões', desc: 'Pense em 3 coisas boas que aconteceram hoje.', color: '#E86AA8' },
+  { emoji: '🧍‍♀️', title: 'Teste da parede', desc: 'Encoste calcanhares, quadril, costas e cabeça na parede por 30 segundos.', color: '#C42A78' },
   { emoji: '💬', title: 'Mensagem carinhosa', desc: 'Mande uma mensagem gentil para alguém de quem você gosta.', color: '#FF9ECB' },
-  { emoji: '😌', title: 'Ombros soltos', desc: 'Suba os ombros até as orelhas, segure 3 segundos e solte. Repita 5 vezes.', color: '#C6B1FF' },
+  { emoji: '😌', title: 'Ombros soltos', desc: 'Suba os ombros até as orelhas, segure 3 segundos e solte. Repita 5 vezes.', color: '#FFB3D3' },
 ];
 
 export const PHRASES: string[] = [

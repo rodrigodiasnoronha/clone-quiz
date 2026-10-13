@@ -5,14 +5,14 @@ import { EARLY_INSTALL_SCRIPT } from '@/lib/install';
 
 export const metadata: Metadata = {
   title: 'Pilates na Parede · Desafio 21 Dias',
-  description: 'Seu desafio de Pilates na Parede de 21 dias: treinos guiados, missões, conquistas e a Luna como companheira.',
+  description: 'Seu desafio de Pilates na Parede de 21 dias: treinos guiados, missões, conquistas e a Lili como companheira.',
   manifest: '/app/manifest.webmanifest',
   icons: { icon: '/app/icons/icon-192.png', apple: '/app/icons/apple-touch-icon.png' },
   appleWebApp: { capable: true, title: 'Pilates 21', statusBarStyle: 'default' },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#F873AE',
+  themeColor: '#2A0C23',
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',

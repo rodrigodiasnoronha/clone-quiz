@@ -7,7 +7,7 @@ html { -webkit-tap-highlight-color: transparent; }
 body { @apply bg-brand-soft text-ink font-sans antialiased; min-height: 100dvh; overscroll-behavior-y: none; }
 h1, h2, h3 { @apply font-display; }
 button { -webkit-user-select: none; user-select: none; }
-:focus-visible { outline: 3px solid #A98BFA; outline-offset: 2px; border-radius: 12px; }
+:focus-visible { outline: 3px solid #F03E8A; outline-offset: 2px; border-radius: 12px; }
 
 @layer components {
   .card { @apply rounded-3xl bg-white/90 shadow-card ring-1 ring-lilac-100 backdrop-blur; }
@@ -27,8 +27,6 @@ button { -webkit-user-select: none; user-select: none; }
 
 /* Temas de fundo desbloqueados por nível */
 body[data-theme="lilas"] { background: linear-gradient(160deg, #F7F3FF 0%, #EFE8FF 50%, #DDD0FF 100%) fixed; }
-body[data-theme="noite"] { background: radial-gradient(120% 80% at 50% 0%, #5529A3 0%, #3E1D78 45%, #2A1452 100%) fixed; }
+body[data-theme="noite"] { background: radial-gradient(120% 80% at 50% 0%, #6E2457 0%, #3D1333 45%, #2A0C23 100%) fixed; }
 body[data-theme="noite"] main > h1, body[data-theme="noite"] main > p, body[data-theme="noite"] main > header h1, body[data-theme="noite"] main > header p,
 body[data-theme="noite"] main > div > h2, body[data-theme="noite"] main h2.text-base { color: #fff; }
-body[data-theme="noite"] header.sticky { background: transparent; }
-body[data-theme="noite"] header.sticky h1 { color: #fff; }

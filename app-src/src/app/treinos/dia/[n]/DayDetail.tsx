@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 import { ChevronDown, Lock, Play, RotateCcw, Wand2 } from 'lucide-react';
 import { Page, TopBar } from '@/components/ui';
 import { ExerciseMedia } from '@/components/ExerciseMedia';
-import { LunaSays } from '@/components/Luna';
+import { LiliSays } from '@/components/Lili';
 import { MissionCard } from '@/components/MissionCard';
 import { STATUS_STYLE } from '@/components/Calendar';
 import { useStore } from '@/lib/store';
@@ -31,7 +31,7 @@ export function DayDetail({ n }: { n: number }) {
 
   return (
     <Page>
-      <TopBar back="/treinos/" title={`Dia ${n}`} right={<span className={`chip ${STATUS_STYLE[st].cls}`}>{STATUS_STYLE[st].label}</span>} />
+      <TopBar back="/desafios/" title={`Dia ${n}`} right={<span className={`chip ${STATUS_STYLE[st].cls}`}>{STATUS_STYLE[st].label}</span>} />
       <p className="label">Fase {day.phase} · {PHASES[day.phase - 1].name} · {TYPE_LABEL[day.type]}</p>
       <h1 className="text-3xl font-bold leading-tight">{day.name}</h1>
       <p className="mt-1 text-ink-soft">{day.goal}</p>
@@ -44,7 +44,7 @@ export function DayDetail({ n }: { n: number }) {
       {!unlocked ? (
         <div className="card mt-5 flex items-center gap-3 p-4 text-sm font-semibold text-grape-700"><Lock size={20} /> Este dia libera conforme você avança no calendário. Dá para espiar o que vem por aí!</div>
       ) : (
-        <div className="mt-4"><LunaSays text={day.luna} /></div>
+        <div className="mt-4"><LiliSays text={day.lili} /></div>
       )}
 
       {(['aquecimento', 'principal', 'bonus', 'alongamento'] as const).map(stage => {

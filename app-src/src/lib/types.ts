@@ -72,7 +72,7 @@ export interface Day {
   type: DayType;
   name: string;
   goal: string;
-  luna: string;
+  lili: string;
   breathing: string;
   warmup: Block[];
   main: Block[];
