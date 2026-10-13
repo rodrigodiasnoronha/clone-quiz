@@ -18,5 +18,24 @@ export const rich = (html, cls = '') => el('div', { class: `rich ${cls}`, html: 
 
 export const plain = html => el('div', { html }).textContent.trim();
 
+// Contagem regressiva cujo prazo fica salvo no navegador (não reinicia ao recarregar)
+export function countdown(key, minutes) {
+  const node = el('b', {});
+  let end;
+  try { end = Number(localStorage.getItem(key)); } catch {}
+  if (!end || end < Date.now()) {
+    end = Date.now() + minutes * 60e3;
+    try { localStorage.setItem(key, end); } catch {}
+  }
+  const tick = () => {
+    const left = Math.max(0, Math.round((end - Date.now()) / 1000));
+    node.textContent = `${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`;
+    return left > 0 && node.isConnected;
+  };
+  tick();
+  const id = setInterval(() => tick() || clearInterval(id), 1000);
+  return node;
+}
+
 // Extrai o valor de classes Tailwind arbitrárias, ex. "h-[2rem]" -> "2rem"
 export const bracket = cls => cls?.match(/\[(.+)\]/)?.[1];

@@ -9,9 +9,9 @@ const UNITS = {
   weight: [['kg', 30, 200, 1], ['lb', 66, 440, 2.2046]],
 };
 
-function ruler({ content }, kind) {
+function ruler({ content }, kind, ctx) {
   const name = content.name;
-  state.vars[name] ??= content.value;
+  state.vars[name] ??= name === 'objetivo' && state.vars.peso ? state.vars.peso - 5 : content.value;
   let unit = UNITS[kind][0];
 
   const value = el('div', { class: 'val' });
@@ -61,10 +61,17 @@ function ruler({ content }, kind) {
   for (const u of UNITS[kind]) toggle.append(el('button', { onclick: () => { unit = u; build(); } }, u[0]));
   build();
 
+  const hint = el('div', { class: 'hint' }, 'Arraste para ajustar');
+  if (name === 'objetivo') ctx.validate(() => {
+    const ok = !state.vars.peso || state.vars.objetivo < state.vars.peso;
+    hint.textContent = ok ? 'Arraste para ajustar' : `Sua meta precisa ser menor que o seu peso atual (${state.vars.peso} kg)`;
+    hint.classList.toggle('err', !ok);
+    return ok;
+  });
+
   return el('div', {}, toggle, value,
-    el('div', { class: 'ruler' }, track, el('div', { class: 'needle' })),
-    el('div', { class: 'hint' }, 'Arraste para ajustar'));
+    el('div', { class: 'ruler' }, track, el('div', { class: 'needle' })), hint);
 }
 
-export const height = layer => ruler(layer, 'height');
-export const weight = layer => ruler(layer, 'weight');
+export const height = (layer, ctx) => ruler(layer, 'height', ctx);
+export const weight = (layer, ctx) => ruler(layer, 'weight', ctx);

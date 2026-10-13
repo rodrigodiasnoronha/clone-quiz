@@ -1,13 +1,13 @@
-import { el, rich } from './utils.js';
+import { el, rich, countdown } from './utils.js';
 import { OFFER } from './config.js';
 
 const INCLUDED = [
-  ['BÓNUS 1: Protocolo Postura de Ferro', 'Sequência pra alinhar a coluna e acabar com a dor nas costas de quem passa o dia sentada.'],
-  ['BÓNUS 2: Protocolo Anti-Flacidez', 'Treinos focados em firmar braços, barriga e pernas junto com o desafio.'],
-  ['BÓNUS 3: Dieta 100% Personalizada', 'Plano alimentar montado pro seu objetivo, com refeições simples do dia a dia — pra emagrecer sem passar fome.'],
-  ['BÓNUS 4: 51 Receitas Proteicas', 'Receitas rápidas e gostosas — incluindo a panqueca de 3 ingredientes que vale muito a pena.'],
-  ['BÓNUS 5: Protocolo Treino Express', 'Treinos de 10 minutos pra quem tem dias corridos sem perder o ritmo.'],
-  ['BÓNUS SECRETO: Presente Surpresa', 'Revelado no seu primeiro login. Não é treino, não é receita — é algo completamente diferente.'],
+  ['BÔNUS 1: Protocolo Postura de Ferro', 'Sequência pra alinhar a coluna e acabar com a dor nas costas de quem passa o dia sentada.'],
+  ['BÔNUS 2: Protocolo Anti-Flacidez', 'Treinos focados em firmar braços, barriga e pernas junto com o desafio.'],
+  ['BÔNUS 3: Dieta 100% Personalizada', 'Plano alimentar montado pro seu objetivo, com refeições simples do dia a dia — pra emagrecer sem passar fome.'],
+  ['BÔNUS 4: 51 Receitas Proteicas', 'Receitas rápidas e gostosas — incluindo a panqueca de 3 ingredientes que vale muito a pena.'],
+  ['BÔNUS 5: Protocolo Treino Express', 'Treinos de 10 minutos pra quem tem dias corridos sem perder o ritmo.'],
+  ['BÔNUS SECRETO: Presente Surpresa', 'Revelado no seu primeiro login. Não é treino, não é receita — é algo completamente diferente.'],
 ];
 
 const FAQ = [
@@ -21,16 +21,16 @@ const goOffer = () => (location.href = OFFER.url);
 const cta = () => el('button', { class: 'btn pulse offer-cta', onclick: goOffer }, `QUERO MEU DESAFIO COM ${OFFER.discount} OFF →`);
 
 function timer() {
-  const label = el('span', {});
-  let left = OFFER.minutes * 60;
-  const tick = () => {
-    const m = String(Math.floor(left / 60)).padStart(2, '0');
-    label.textContent = `${m}:${String(left % 60).padStart(2, '0')}`;
-    if (left > 0) left--;
-  };
-  tick();
-  setInterval(tick, 1000);
-  return el('div', { class: 'offer-top' }, el('b', {}, `${OFFER.discount} DE DESCONTO`), el('span', {}, '⏰ ', label));
+  return el('div', { class: 'offer-top' }, el('b', {}, `${OFFER.discount} DE DESCONTO`), el('span', {}, '⏰ ', countdown('offer-deadline', OFFER.minutes)));
+}
+
+// Toque no cupom copia o código
+function coupon() {
+  const hint = el('span', {}, 'toque para copiar');
+  return el('button', {
+    class: 'coupon',
+    onclick: () => navigator.clipboard?.writeText(OFFER.coupon).then(() => (hint.textContent = '✔ copiado')),
+  }, el('span', {}, 'CUPOM'), el('b', {}, OFFER.coupon), hint);
 }
 
 function offerPage() {
@@ -42,15 +42,15 @@ function offerPage() {
       el('div', { class: 'gift-card' },
         el('div', { class: 'tag' }, '🎁 SEU PRESENTE'),
         el('div', { class: 'big' }, `${OFFER.discount} de desconto`),
-        el('small', {}, 'no acesso completo ao ', el('b', {}, 'Desafio 21 Dias')),
-        el('div', { class: 'coupon' }, el('span', {}, 'CUPOM'), el('b', {}, OFFER.coupon), el('span', {}, '✔ aplicado')),
-        el('small', { class: 'ok' }, '✅ Cupom já aplicado no botão abaixo'),
+        el('small', {}, 'no acesso completo ao ', el('b', {}, 'Pilates na Parede 21 Dias')),
+        coupon(),
+        el('small', { class: 'ok' }, '✅ Use o cupom no checkout para garantir o desconto'),
       ),
-      rich(`<h2 class="ql-align-center">Tudo que você vai levar no Desafio 21 Dias com ${OFFER.discount} de desconto:</h2>`),
+      rich(`<h2 class="ql-align-center">Tudo que você vai levar no Pilates na Parede 21 Dias com ${OFFER.discount} de desconto:</h2>`),
       el('img', { src: 'assets/yalhd-xrstl-67ee0e15-56f9-413f-8baa-685c61bf79ba.gif', alt: '', class: 'mock' }),
       el('div', { class: 'incl-title' }, '✅ O que está incluso:'),
       el('div', { class: 'incl main' }, el('b', {}, 'Plataforma Completa do Desafio'),
-        el('p', {}, 'Acesso vitalício ao Desafio 21 Dias — o plano de Pilates na Parede que firma o corpo e acelera a perda de peso treinando poucos minutos por dia. Tudo em casa, sem equipamentos.')),
+        el('p', {}, 'Acesso vitalício ao Pilates na Parede 21 Dias — o plano de Pilates na Parede que firma o corpo e acelera a perda de peso treinando poucos minutos por dia. Tudo em casa, sem equipamentos.')),
       ...INCLUDED.map(([t, d]) => el('div', { class: 'incl' }, el('b', {}, '✅ ' + t, el('em', {}, 'GRÁTIS')), el('p', {}, d))),
       el('div', { class: 'price offer-price' },
         el('div', { class: 'feat' }, `${OFFER.discount} DE DESCONTO APLICADO`),
@@ -63,7 +63,7 @@ function offerPage() {
       el('h3', { class: 'faq-title' }, '❓ Perguntas frequentes:'),
       ...FAQ.map(([q, a]) => el('details', { class: 'faq' }, el('summary', {}, q), el('p', {}, a))),
       cta(),
-      el('small', { class: 'legal' }, 'Desafio 21 Dias · Pilates na Parede'),
+      el('small', { class: 'legal' }, 'Pilates na Parede 21 Dias · Pilates na Parede'),
     ),
   );
 }

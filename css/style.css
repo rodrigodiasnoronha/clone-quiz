@@ -171,3 +171,7 @@ main { min-height: calc(100vh - 92px); }
 .price .feat { font-size: 13px; padding: 6px; letter-spacing: .04em; }
 .price .box b { font-size: 2rem; }
 .opts.vertical .opt .pic { max-height: 280px; }
+.hint.err { color: #dc2626; font-weight: 700; }
+.summary { border: 2px solid color-mix(in srgb, var(--theme) 40%, #fff); background: color-mix(in srgb, var(--theme) 6%, #fff); border-radius: var(--radius); padding: 14px 18px; display: grid; gap: 4px; }
+.summary p { margin: 0; color: var(--title); }
+button.coupon { font: inherit; color: #fff; }

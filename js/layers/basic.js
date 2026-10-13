@@ -14,7 +14,7 @@ export function button({ content, design }, ctx) {
   const btn = el('button', {
     class: cls.filter(Boolean).join(' '),
     html: fill(content.label),
-    onclick: () => content.type === 'redirect' ? (location.href = REDIRECT_URL) : ctx.next(content.destination),
+    onclick: () => content.type === 'redirect' ? (location.href = content.destination || REDIRECT_URL) : ctx.next(content.destination),
   });
   if (content.type !== 'redirect') return btn;
   // Botão de compra: reforça confiança logo abaixo

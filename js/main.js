@@ -56,7 +56,7 @@ function render(i) {
 
   // Gatilho de compromisso: mostra quanto falta pro plano
   const left = steps.length - 1 - i;
-  stepsLeft.textContent = !left ? '✅ Seu plano está pronto!' : left <= 10 ? `🔥 Faltam só ${left} etapas para o seu plano` : '⏱️ Leva só 3 minutos · Plano 100% personalizado';
+  stepsLeft.textContent = !left ? '✅ Seu plano está pronto!' : left === 1 ? '🔥 Falta só 1 etapa para o seu plano' : left <= 10 ? `🔥 Faltam só ${left} etapas para o seu plano` : '⏱️ Responda com calma: seu plano é montado a partir das suas respostas';
   back.hidden = i === 0;
   progress.style.width = `${((i + 1) / steps.length) * 100}%`;
   window.scrollTo(0, 0);
