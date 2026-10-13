@@ -5,6 +5,7 @@ import { setupExitIntent } from './exit.js';
 const app = document.getElementById('app');
 const back = document.getElementById('back');
 const progress = document.getElementById('progress');
+const stepsLeft = document.getElementById('steps-left');
 
 const { design, steps } = await (await fetch('data/quiz.json')).json();
 const indexById = Object.fromEntries(steps.map((s, i) => [s.id, i]));
@@ -16,7 +17,7 @@ root.setProperty('--theme', design.themeColor);
 root.setProperty('--title', design.titleColor);
 root.setProperty('--content', design.contentColor);
 root.setProperty('--bg', design.backgroundColor);
-root.setProperty('--el', design.elementSize);
+root.setProperty('--el', '68px');
 
 function go(dest = 'next') {
   const next = dest === 'next' ? current + 1 : indexById[dest];
@@ -53,6 +54,9 @@ function render(i) {
     app.append(node);
   }
 
+  // Gatilho de compromisso: mostra quanto falta pro plano
+  const left = steps.length - 1 - i;
+  stepsLeft.textContent = !left ? '✅ Seu plano está pronto!' : left <= 10 ? `🔥 Faltam só ${left} etapas para o seu plano` : '⏱️ Leva só 3 minutos · Plano 100% personalizado';
   back.hidden = i === 0;
   progress.style.width = `${((i + 1) / steps.length) * 100}%`;
   window.scrollTo(0, 0);

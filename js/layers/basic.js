@@ -11,9 +11,12 @@ export const alert = ({ content, design }) => rich(content.text, `alert ${design
 
 export function button({ content, design }, ctx) {
   const cls = ['btn', design.style === 'success' && 'success', design.pulse && 'pulse', design.fixed && 'fixed'];
-  return el('button', {
+  const btn = el('button', {
     class: cls.filter(Boolean).join(' '),
     html: fill(content.label),
     onclick: () => content.type === 'redirect' ? (location.href = REDIRECT_URL) : ctx.next(content.destination),
   });
+  if (content.type !== 'redirect') return btn;
+  // Botão de compra: reforça confiança logo abaixo
+  return el('div', {}, btn, el('div', { class: 'trust' }, '🔒 Compra 100% segura · 🛡️ Garantia de 90 dias · ⚡ Acesso imediato'));
 }
