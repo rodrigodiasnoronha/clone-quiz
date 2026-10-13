@@ -1,0 +1,3 @@
+[      23ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ http://localhost:8080/favicon.ico:0
+[   19118ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:5179/favicon.ico:0
+[  177973ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:5179/assets/0mekr-d68e06e4c163e4518aee9e60efa9fa96-removebg-preview.png:0
