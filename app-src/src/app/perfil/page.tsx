@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Bell, Download, Lock, RefreshCcw, Smartphone, Upload, Volume2, Vibrate, FlaskConical, ChevronRight } from 'lucide-react';
 import { Page, SectionTitle, Sheet, Toast } from '@/components/ui';
 import { Avatar } from '@/components/Avatar';
@@ -11,9 +11,8 @@ import { GOAL_LABEL } from '@/lib/workout';
 import { notificationsSupported, requestPermission, scheduleReminder, showNotification } from '@/lib/notifications';
 import { download } from '@/lib/device';
 import { formatDate } from '@/lib/dates';
+import { useInstall } from '@/lib/install';
 import type { Goal, Level, Limitation, Obstacle, Period, Profile } from '@/lib/types';
-
-type BIPEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: string }> };
 
 const OPTIONS = {
   goal: Object.entries(GOAL_LABEL) as [Goal, string][],
@@ -35,18 +34,10 @@ export default function Perfil() {
   const lvl = levelFor(pointsBreakdown(s).total);
   const [toast, setToast] = useState('');
   const [confirmReset, setConfirmReset] = useState(false);
-  const [install, setInstall] = useState<BIPEvent | null>(null);
-  const [installed, setInstalled] = useState(false);
+  const { canPrompt, installed, install } = useInstall();
   const fileRef = useRef<HTMLInputElement>(null);
 
   const say = (t: string) => { setToast(t); setTimeout(() => setToast(''), 2600); };
-
-  useEffect(() => {
-    const onPrompt = (e: Event) => { e.preventDefault(); setInstall(e as BIPEvent); };
-    window.addEventListener('beforeinstallprompt', onPrompt);
-    setInstalled(window.matchMedia('(display-mode: standalone)').matches);
-    return () => window.removeEventListener('beforeinstallprompt', onPrompt);
-  }, []);
 
   async function toggleReminders() {
     if (s.settings.reminders) { s.setSettings({ reminders: false }); say('Lembretes desativados.'); return; }
@@ -142,8 +133,8 @@ export default function Perfil() {
           <div className="flex-1 text-sm">
             <p className="font-bold">{installed ? 'App instalado ✓' : 'Instale na tela inicial'}</p>
             <p className="text-ink-soft">{installed ? 'Você está usando a versão instalada.' : 'Abre como um aplicativo, em tela cheia, e funciona sem internet depois do primeiro acesso.'}</p>
-            {!installed && (install ? (
-              <button className="btn-primary mt-3 w-full" onClick={async () => { await install.prompt(); setInstall(null); }}>Instalar app</button>
+            {!installed && (canPrompt ? (
+              <button className="btn-primary mt-3 w-full" onClick={() => install().then(ok => ok && say('App instalado! Abra pelo ícone na tela inicial.'))}>Instalar app</button>
             ) : (
               <p className="mt-2 rounded-xl bg-lilac-50 p-2 text-xs text-grape-800"><b>Android (Chrome):</b> menu ⋮ → “Instalar app” ou “Adicionar à tela inicial”. <b>iPhone (Safari):</b> botão Compartilhar → “Adicionar à Tela de Início”.</p>
             ))}

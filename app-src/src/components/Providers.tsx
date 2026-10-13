@@ -8,12 +8,21 @@ import { scheduleReminder } from '@/lib/notifications';
 import { BottomNav } from './BottomNav';
 import { Celebration } from './Celebration';
 import { Luna } from './Luna';
+import { InstallGate } from './InstallGate';
+import { INSTALL_KEY, isStandalone } from '@/lib/install';
 
 const NO_NAV = ['/boas-vindas', '/treinar', '/sessao', '/conclusao'];
 const NO_CELEBRATION = ['/boas-vindas', '/treinar', '/sessao', '/conclusao'];
 
 export function Providers({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
+  // primeira abertura no navegador: oferece instalar o PWA antes de tudo
+  const [askInstall, setAskInstall] = useState(false);
+  useEffect(() => {
+    let answered = true;
+    try { answered = !!localStorage.getItem(INSTALL_KEY); } catch {}
+    setAskInstall(!answered && !isStandalone());
+  }, []);
   const path = usePathname();
   const router = useRouter();
   const profile = useStore(s => s.profile);
@@ -58,6 +67,8 @@ export function Providers({ children }: { children: ReactNode }) {
       </div>
     );
   }
+
+  if (askInstall) return <InstallGate onDone={() => setAskInstall(false)} />;
 
   const showNav = !NO_NAV.some(p => path.startsWith(p));
   return (
