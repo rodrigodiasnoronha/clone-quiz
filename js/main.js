@@ -17,7 +17,7 @@ root.setProperty('--theme', design.themeColor);
 root.setProperty('--title', design.titleColor);
 root.setProperty('--content', design.contentColor);
 root.setProperty('--bg', design.backgroundColor);
-root.setProperty('--el', '68px');
+root.setProperty('--el', '74px');
 
 function go(dest = 'next') {
   const next = dest === 'next' ? current + 1 : indexById[dest];
