@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; --safe-bottom: env(safe-area-inset-bottom, 0px); }
+html { -webkit-tap-highlight-color: transparent; }
+body { @apply bg-brand-soft text-ink font-sans antialiased; min-height: 100dvh; overscroll-behavior-y: none; }
+h1, h2, h3 { @apply font-display; }
+button { -webkit-user-select: none; user-select: none; }
+:focus-visible { outline: 3px solid #A98BFA; outline-offset: 2px; border-radius: 12px; }
+
+@layer components {
+  .card { @apply rounded-3xl bg-white/90 shadow-card ring-1 ring-lilac-100 backdrop-blur; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 font-bold transition active:scale-[.97] disabled:opacity-50 disabled:active:scale-100; min-height: 52px; }
+  .btn-primary { @apply btn bg-brand text-white shadow-glow; }
+  .btn-soft { @apply btn bg-lilac-100 text-grape-700; }
+  .btn-ghost { @apply btn bg-white text-grape-700 ring-1 ring-lilac-200; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold; }
+  .label { @apply text-[11px] font-extrabold uppercase tracking-wider text-grape-500; }
+}
+
+.pb-nav { padding-bottom: calc(96px + var(--safe-bottom)); }
+.shine { position: relative; overflow: hidden; }
+.shine::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / .35) 50%, transparent 65%); transform: translateX(-100%); animation: shine 3s ease-in-out infinite 1.2s; }
+@keyframes shine { 0%, 55% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* Temas de fundo desbloqueados por nível */
+body[data-theme="lilas"] { background: linear-gradient(160deg, #F7F3FF 0%, #EFE8FF 50%, #DDD0FF 100%) fixed; }
+body[data-theme="noite"] { background: radial-gradient(120% 80% at 50% 0%, #5529A3 0%, #3E1D78 45%, #2A1452 100%) fixed; }
+body[data-theme="noite"] main > h1, body[data-theme="noite"] main > p, body[data-theme="noite"] main > header h1, body[data-theme="noite"] main > header p,
+body[data-theme="noite"] main > div > h2, body[data-theme="noite"] main h2.text-base { color: #fff; }
+body[data-theme="noite"] header.sticky { background: transparent; }
+body[data-theme="noite"] header.sticky h1 { color: #fff; }
