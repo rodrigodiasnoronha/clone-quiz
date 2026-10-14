@@ -257,3 +257,12 @@ cakto-upsell-reject::part(button) {
 .deal-sm { margin: 2cqw 22cqw 0; padding-top: 1.4cqw; }
 .deal-sm .deal-pct { font-size: 18cqw; }
 .deal-sm .deal-off { font-size: 6cqw; margin-bottom: 0; padding-bottom: 1.6cqw; }
+.deal-big { margin: 3cqw 10cqw 0; padding-top: 1.6cqw; }
+.deal-big .deal-pct { font-size: 28cqw; }
+.deal-big .deal-off { margin-bottom: 0; padding-bottom: 2cqw; }
+.deal-big + .d-text { margin-top: 4cqw; }
+.d-title.mid .k { font-size: 6.5cqw; }
+.d-title.mid .p { font-size: 8.4cqw; }
+.d-title.mid ~ .deal .deal-name { font-size: 2.8cqw; padding: 1.2cqw 3cqw; }
+.d-title.mid ~ .deal .deal-pct { font-size: 28cqw; margin-top: 1cqw; }
+.d-title > span { white-space: nowrap; }
