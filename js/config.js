@@ -4,7 +4,7 @@ export const REDIRECT_URL = 'https://pay.cakto.com.br/3dqkyya_1198209';
 
 // Oferta mostrada quando a pessoa tenta sair (botão voltar do navegador)
 export const OFFER = {
-  url: REDIRECT_URL, // troque pelo link do checkout com o desconto
+  url: 'https://pay.cakto.com.br/3g64u9w', // checkout do back redirect (já com o desconto)
   coupon: 'PILATES39',
   discount: '39%',
   oldPrice: 'R$ 27,90',
