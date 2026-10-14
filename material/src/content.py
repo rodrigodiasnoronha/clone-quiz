@@ -294,17 +294,17 @@ MATERIALS.append({
     ],
 })
 
-# 4) BÔNUS 3 — DIETA PERSONALIZADA
+# 4) BÔNUS 3 — GUIA DO PRATO INTELIGENTE
 MATERIALS.append({
     'slug': 'bonus-3-dieta-personalizada',
     'group': 'bonus',
-    'title': 'Dieta 100%',
-    'title2': 'Personalizada',
+    'title': 'Guia do Prato',
+    'title2': 'Inteligente',
     'kicker': 'BÔNUS 3',
-    'desc': 'Monte o seu plano alimentar com refeições simples do dia a dia, para emagrecer sem passar fome.',
+    'desc': 'Monte refeições com o que você já come — sem cardápio proibido, sem balança e sem contar calorias.',
     'cover': 'app/fotos/agua.webp',
     'body': [
-        ('h2', 'Uma dieta feita para a sua rotina'),
+        ('h2', 'Sem dieta: refeições feitas para a sua rotina'),
         ('p', 'Não existe um cardápio único que sirva para todas as mulheres. Por isso, em vez de uma lista rígida, '
               'este guia ensina você a <b>montar o seu próprio plano</b> com o método do prato e das porções na mão: '
               'simples, sem balança e sem contar calorias.'),
