@@ -289,3 +289,12 @@ cakto-upsell-reject::part(button) {
 .tks .d-love { margin-top: 3.4cqw; }
 @keyframes pop { from { transform: scale(.4); opacity: 0; } }
 .tks .d-text { font-size: max(14px, 3.3cqw); padding: 0 5cqw; }
+
+/* Downsells: recusa da Cakto com o visual de link sublinhado (.d-no) */
+.down cakto-upsell-accept { margin-top: 3cqw; }
+.down cakto-upsell-reject { margin-top: 3.4cqw; }
+.down cakto-upsell-reject::part(button) {
+  padding: 0; border: 0; border-radius: 0; background: none; cursor: pointer;
+  color: #4a5470; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 500; font-size: max(11px, 2.05cqw);
+  text-decoration: underline; text-underline-offset: .4cqw;
+}
