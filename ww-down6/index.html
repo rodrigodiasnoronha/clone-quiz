@@ -43,9 +43,22 @@
     <div class="deal-pct">50%</div>
     <div class="deal-off">DE DESCONTO</div>
   </div>
-  <a class="cta" data-go="yes" href="#"><span>Sim, quero desbloquear todos os produtos!</span><svg><use href="/ww/icons.svg#chev"/></svg></a>
-  <a class="d-no" data-go="no" href="#">Não, prefiro continuar sem aproveitar o desconto.</a>
+  <!-- Botões de downsell da Cakto (oferta 342werq) -->
+  <cakto-upsell-buttons>
+    <cakto-upsell-accept
+      bg-color="#ff0066ff"
+      text-color="#ffffff"
+      upsell-accept-url="https://www.digitalapp.blog/ww-tks"
+      offer-id="342werq"
+      app-base-url="https://app.cakto.com.br"
+      offer-type="downsell"
+      upsell-reject-url="https://www.digitalapp.blog/ww-tks"
+    >SIM, QUERO DESBLOQUEAR TODOS OS PRODUTOS!</cakto-upsell-accept>
+    <cakto-upsell-reject
+      upsell-reject-url="https://www.digitalapp.blog/ww-tks"
+    >Não, eu não quero aproveitar a oferta</cakto-upsell-reject>
+  </cakto-upsell-buttons>
 </div></main>
-<script src="/ww/config.js"></script>
+<script src="https://caktoscripts.nyc3.cdn.digitaloceanspaces.com/upsell.js"></script>
 </body>
 </html>
