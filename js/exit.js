@@ -1,4 +1,5 @@
 import { el, rich, countdown, media } from './utils.js';
+import { track, trackAndGo } from './track.js';
 import { OFFER } from './config.js';
 
 const INCLUDED = [
@@ -17,7 +18,7 @@ const FAQ = [
   ['Como é a garantia?', 'Garantia incondicional de 90 dias: se não gostar, devolvemos 100% do valor.'],
 ];
 
-const goOffer = () => (location.href = OFFER.url);
+const goOffer = () => trackAndGo(OFFER.url, 'InitiateCheckout', { value: 17.0, currency: 'BRL', content_name: 'Back redirect 39%' });
 const cta = () => el('button', { class: 'btn pulse offer-cta', onclick: goOffer }, `QUERO MEU DESAFIO COM ${OFFER.discount} OFF →`);
 
 function timer() {
@@ -79,6 +80,7 @@ export function setupExitIntent() {
     const layer = el('div', { class: 'exit-layer' });
     const show = node => { layer.replaceChildren(node); layer.scrollTo(0, 0); };
     show(giftPage(() => show(offerPage())));
+    track('ViewContent', { content_name: 'Back redirect 39%' });
     document.body.append(layer);
     document.body.classList.add('no-scroll');
     history.pushState({ exit: true }, ''); // próximo "voltar" sai de verdade

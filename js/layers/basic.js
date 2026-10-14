@@ -1,5 +1,6 @@
 import { el, rich, bracket, fill, media } from '../utils.js';
 import { REDIRECT_URL } from '../config.js';
+import { trackAndGo } from '../track.js';
 
 export const text = ({ content }) => rich(content.text);
 
@@ -14,7 +15,7 @@ export function button({ content, design }, ctx) {
   const btn = el('button', {
     class: cls.filter(Boolean).join(' '),
     html: fill(content.label),
-    onclick: () => content.type === 'redirect' ? (location.href = content.destination || REDIRECT_URL) : ctx.next(content.destination),
+    onclick: () => content.type === 'redirect' ? trackAndGo(content.destination || REDIRECT_URL, 'InitiateCheckout', { value: 27.9, currency: 'BRL', content_name: 'Pilates na Parede 21 Dias' }) : ctx.next(content.destination),
   });
   if (content.type !== 'redirect') return btn;
   // Botão de compra: reforça confiança logo abaixo
