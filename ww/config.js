@@ -10,7 +10,8 @@ const FUNNEL = {
   'ww-down3': { yes: '/ww-up4', no: '/ww-up4' }, // downsell do up3
   'ww-up4': { yes: '/ww-up5', no: '/ww-up5' },
   'ww-up5': { yes: '/ww-up6', no: '/ww-up6' },
-  'ww-up6': { yes: '/ww-tks', no: '/ww-tks' },
+  'ww-up6': { yes: '/ww-tks', no: '/ww-down6' },
+  'ww-down6': { yes: '/ww-tks', no: '/ww-tks' }, // downsell do up6
 };
 
 // Repassa os parâmetros da URL (utm, src, dados do comprador...) para o próximo link.

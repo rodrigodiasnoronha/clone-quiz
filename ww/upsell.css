@@ -212,3 +212,48 @@ cakto-upsell-reject::part(button) {
 .d-title.accel .p { font-size: 15cqw; line-height: .92; }
 .d-title.accel + .pill { font-size: 5.6cqw; padding: .4cqw 6.5cqw; }
 .d-title.accel + .pill + .d-text { margin-top: 2.6cqw; }
+
+/* ww-down6: vitrine de aparelhos + vantagens */
+.d6-pill { font-size: 5.4cqw; padding: .3cqw 5cqw; margin-top: .4cqw; }
+.d6-text { margin-top: 2.4cqw; }
+.showcase { position: relative; height: 36cqw; margin: 3cqw -2cqw 0; overflow: hidden; }
+.showcase::after { content: ''; position: absolute; inset: auto 0 0; height: 9cqw; background: linear-gradient(transparent, rgba(253, 240, 246, .9)); z-index: 3; }
+.side { position: absolute; top: 5cqw; width: 23cqw; height: auto; filter: brightness(.6) saturate(.9); }
+.side.l { left: 6cqw; transform: perspective(60cqw) rotateY(28deg); }
+.side.r { right: 6cqw; transform: perspective(60cqw) rotateY(-28deg); }
+.side.far { top: 10cqw; width: 17cqw; filter: brightness(.35); }
+.side.far.l { left: -3cqw; }
+.side.far.r { right: -3cqw; }
+.laptop {
+  position: absolute; z-index: 2; left: 50%; top: 0; width: 55cqw; transform: translateX(-50%);
+  background: #16121a; border: .9cqw solid #2b2730; border-bottom: 0; border-radius: 2.4cqw 2.4cqw 0 0;
+  padding: 1.6cqw 1.8cqw 3cqw; box-shadow: 0 0 4cqw rgba(255, 30, 110, .35);
+}
+.lp-bar { display: flex; align-items: center; gap: 1.2cqw; color: #fff; font-size: 1.5cqw; margin-bottom: 1.6cqw; text-align: left; }
+.lp-bar i { width: 2.2cqw; height: 2.2cqw; border-radius: 50%; background: var(--pink); }
+.lp-bar b { font-weight: 600; flex: 1; }
+.lp-bar span { width: 1.8cqw; height: 1.8cqw; border-radius: 50%; background: #eee; }
+.lp-bar em { font-style: normal; font-size: 1.2cqw; border: .2cqw solid var(--pink); border-radius: 1cqw; padding: .2cqw 1cqw; }
+.lp-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2cqw; }
+.lp-row figure {
+  position: relative; aspect-ratio: 3 / 4; border-radius: 1cqw; overflow: hidden;
+  background: #6a1030 center / cover no-repeat;
+}
+.lp-row figure::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(110, 8, 40, .6) 0%, rgba(110, 8, 40, .15) 45%, rgba(40, 0, 15, .45)); }
+.lp-row figcaption {
+  position: relative; padding-top: 2cqw; font-family: Oswald, 'Arial Narrow', sans-serif; font-weight: 700;
+  color: #fff; text-transform: uppercase; font-size: 2.1cqw; line-height: 1;
+}
+.lp-row small { display: table; margin: .5cqw auto 0; background: var(--pink); border-radius: .6cqw; padding: .2cqw .8cqw; font-size: 1.1cqw; }
+.lp-row svg { position: absolute; left: 50%; bottom: 1.4cqw; width: 2.6cqw; height: 2.6cqw; transform: translateX(-50%); color: #fff; }
+
+.perks { position: relative; z-index: 4; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1cqw; margin: -7cqw 2cqw 0; }
+.perks > div { background: rgba(255, 255, 255, .92); border-radius: 2cqw; padding: 2.4cqw 1cqw 2.6cqw; box-shadow: 0 .6cqw 2.4cqw rgba(240, 5, 88, .08); }
+.perks svg { width: 7cqw; height: 7cqw; color: var(--pink); }
+.perks svg.wide { width: 9.4cqw; }
+.perks h3 { color: var(--pink); font-weight: 800; font-size: 2.15cqw; line-height: 1.05; letter-spacing: -.04em; text-transform: uppercase; margin-top: 1cqw; }
+.perks p { color: #2a3346; font-weight: 500; font-size: max(9px, 1.75cqw); line-height: 1.2; margin-top: .8cqw; }
+
+.deal-sm { margin: 2cqw 22cqw 0; padding-top: 1.4cqw; }
+.deal-sm .deal-pct { font-size: 18cqw; }
+.deal-sm .deal-off { font-size: 6cqw; margin-bottom: 0; padding-bottom: 1.6cqw; }
