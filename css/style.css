@@ -159,7 +159,7 @@ main { max-width: calc(48rem + 40px); margin: 0 auto; padding: 0 20px 64px; min-
 
 /* persuasão */
 .head-mid { display: grid; justify-items: center; gap: 6px; }
-#steps-left { font-size: 12px; font-weight: 700; color: var(--theme); }
+#steps-left { font-size: 12px; font-weight: 700; color: var(--theme); text-align: center; padding: 0 64px; }
 header { height: 92px; }
 main { min-height: calc(100vh - 92px); }
 .trust { text-align: center; font-size: 12px; font-weight: 600; color: #52525b; margin-top: 10px; }
