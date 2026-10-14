@@ -195,3 +195,13 @@ video { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 .field-hint { color: #dc2626; font-weight: 700; border-top: 0; margin-top: 8px; }
 .field-hint:empty { display: none; }
+
+/* resultados das alunas */
+.results { display: grid; gap: 20px; }
+.result p { text-align: center; margin-top: 10px; }
+.result-pic { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: 0 8px 20px -8px rgb(0 0 0 / .3); }
+.result-pic img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.result-kg { position: absolute; top: 10px; left: 10px; background: linear-gradient(135deg, var(--theme-2), var(--theme)); color: #fff; font-weight: 800; font-size: 1.5rem; padding: 4px 14px; border-radius: 99px; box-shadow: 0 4px 12px rgb(244 63 126 / .5); }
+.results.compact { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.results.compact .result small { display: block; text-align: center; margin-top: 6px; font-size: 12px; }
+.results.compact .result-kg { top: 6px; left: 6px; font-size: .85rem; padding: 2px 8px; }
