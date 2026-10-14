@@ -193,3 +193,5 @@ main > .layer { animation: rise .5s cubic-bezier(.2, .8, .2, 1) both; animation-
 @keyframes float { 50% { transform: translateY(-3px); } }
 video { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+.field-hint { color: #dc2626; font-weight: 700; border-top: 0; margin-top: 8px; }
+.field-hint:empty { display: none; }

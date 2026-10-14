@@ -8,3 +8,9 @@ export function trackAndGo(url, event, params) {
   track(event, params);
   setTimeout(() => (location.href = url), window.fbq ? 300 : 0);
 }
+
+// Envia o lead para o webhook configurado (não trava o quiz se falhar)
+export function sendLead(url, data) {
+  if (!url) return;
+  try { fetch(url, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) }); } catch (e) {}
+}

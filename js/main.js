@@ -46,7 +46,7 @@ function render(i) {
     go,
     alive: () => myToken === token,
     validate: fn => validators.push(fn),
-    next: dest => validators.every(fn => fn()) && go(dest),
+    next: dest => validators.every(fn => fn()) && (go(dest), true),
   };
 
   app.replaceChildren();
