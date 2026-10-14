@@ -1,0 +1,112 @@
+[
+ {
+  "slug": "pilates-na-parede-21-dias",
+  "group": "programa",
+  "title": "Pilates na Parede",
+  "title2": "Desafio 21 Dias",
+  "kicker": "GUIA COMPLETO",
+  "desc": "O plano dia a dia dos 21 dias e a biblioteca com todos os exercícios explicados passo a passo.",
+  "cover": "app/fotos/parede.webp",
+  "kb": 1179
+ },
+ {
+  "slug": "bonus-1-postura-de-ferro",
+  "group": "bonus",
+  "title": "Protocolo",
+  "title2": "Postura de Ferro",
+  "kicker": "BÔNUS 1",
+  "desc": "Sequência para alinhar a coluna e aliviar a tensão de quem passa o dia sentada.",
+  "cover": "app/fotos/alongamento.webp",
+  "kb": 698
+ },
+ {
+  "slug": "bonus-2-anti-flacidez",
+  "group": "bonus",
+  "title": "Protocolo",
+  "title2": "Anti-Flacidez",
+  "kicker": "BÔNUS 2",
+  "desc": "Treinos focados em firmar braços, barriga e pernas junto com o desafio.",
+  "cover": "app/fotos/fase2.webp",
+  "kb": 762
+ },
+ {
+  "slug": "bonus-3-dieta-personalizada",
+  "group": "bonus",
+  "title": "Dieta 100%",
+  "title2": "Personalizada",
+  "kicker": "BÔNUS 3",
+  "desc": "Monte o seu plano alimentar com refeições simples do dia a dia, para emagrecer sem passar fome.",
+  "cover": "app/fotos/agua.webp",
+  "kb": 625
+ },
+ {
+  "slug": "bonus-4-51-receitas-proteicas",
+  "group": "bonus",
+  "title": "51 Receitas",
+  "title2": "Proteicas",
+  "kicker": "BÔNUS 4",
+  "desc": "Receitas rápidas e gostosas, incluindo a famosa panqueca de 3 ingredientes.",
+  "cover": "ww/img/tile-segredo.webp",
+  "kb": 456
+ },
+ {
+  "slug": "bonus-5-treino-express",
+  "group": "bonus",
+  "title": "Protocolo",
+  "title2": "Treino Express",
+  "kicker": "BÔNUS 5",
+  "desc": "Treinos de 10 minutos para os dias corridos, sem perder o ritmo.",
+  "cover": "app/fotos/energia.webp",
+  "kb": 675
+ },
+ {
+  "slug": "acelerador-de-resultados-turbo-3x",
+  "group": "extra",
+  "title": "Acelerador de Resultados",
+  "title2": "Turbo 3X",
+  "kicker": "ATALHO DA TRANSFORMAÇÃO",
+  "desc": "Estratégias para queimar mais gordura e ver resultado mais rápido, sem academia e sem dieta maluca.",
+  "cover": "ww/img/tablet1.webp",
+  "kb": 736
+ },
+ {
+  "slug": "codigo-proibido-do-corpo-violao",
+  "group": "extra",
+  "title": "Código Proibido do",
+  "title2": "Corpo Violão",
+  "kicker": "MÉTODO VIP",
+  "desc": "Cintura definida, barriga mais seca e curvas realçadas com um método simples, rápido e sem academia.",
+  "cover": "ww/img/tablet2.webp",
+  "kb": 833
+ },
+ {
+  "slug": "preguicosa-gostosa",
+  "group": "extra",
+  "title": "Preguiçosa Gostosa",
+  "title2": "Corpo Durinho Sem Academia",
+  "kicker": "MÉTODO",
+  "desc": "Exercícios rápidos e simples, a maioria deitada, para tonificar o corpo sem sair de casa.",
+  "cover": "ww/img/tablet3.webp",
+  "kb": 954
+ },
+ {
+  "slug": "ritual-secreto-da-gostosa",
+  "group": "extra",
+  "title": "Ritual Secreto da",
+  "title2": "Gostosa",
+  "kicker": "5 MINUTOS POR DIA",
+  "desc": "Um ritual de 5 minutos por dia para cintura definida, bumbum empinado e corpo mais firme.",
+  "cover": "ww/img/tablet4.webp",
+  "kb": 947
+ },
+ {
+  "slug": "o-segredo-das-mulheres-que-nao-engordam",
+  "group": "extra",
+  "title": "O Segredo das Mulheres",
+  "title2": "que Não Engordam",
+  "kicker": "HÁBITOS SIMPLES E REAIS",
+  "desc": "Os hábitos que mantêm o corpo em forma, sem dietas malucas e sem passar fome.",
+  "cover": "ww/img/tablet5.webp",
+  "kb": 829
+ }
+]

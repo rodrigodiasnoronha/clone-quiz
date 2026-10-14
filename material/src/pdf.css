@@ -1,0 +1,104 @@
+@page { size: A4; margin: 16mm 15mm 18mm; @bottom-center { content: counter(page); font: 600 9pt 'Plus Jakarta Sans', sans-serif; color: #B0628F; } }
+@page :first { margin: 0; @bottom-center { content: none; } }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font: 400 10.5pt/1.5 'Plus Jakarta Sans', sans-serif; color: #2B1626; }
+b { font-weight: 800; color: #861852; }
+h1, h2, h3, h4 { font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif; margin: 0; }
+
+/* Capa */
+.cover {
+  height: 297mm; padding: 26mm 18mm 18mm; display: flex; flex-direction: column; align-items: center; text-align: center; color: #fff;
+  background: radial-gradient(90% 60% at 50% 38%, rgba(255,255,255,.22), transparent 70%), linear-gradient(160deg, #FF6FAE 0%, #F03E8A 50%, #A61F66 100%);
+  page-break-after: always; overflow: hidden;
+}
+.c-k { font: 800 10pt 'Plus Jakarta Sans'; letter-spacing: .18em; background: rgba(255,255,255,.2); padding: 2.5mm 6mm; border-radius: 99px; }
+.cover h1 { margin-top: 8mm; font-size: 30pt; font-weight: 600; line-height: 1.05; }
+.cover h1 span { display: block; font-size: 44pt; font-weight: 700; }
+.c-img { flex: 1; display: flex; align-items: center; justify-content: center; margin: 8mm 0; min-height: 0; width: 100%; }
+.c-img img { max-height: 120mm; max-width: 140mm; border-radius: 8mm; object-fit: cover; box-shadow: 0 8mm 20mm rgba(61,12,43,.35); }
+.c-d { font-size: 13pt; font-weight: 500; max-width: 140mm; margin: 0; }
+.c-f { margin-top: 10mm; font-size: 9pt; font-weight: 700; letter-spacing: .12em; opacity: .85; text-transform: uppercase; }
+
+/* Texto */
+main > *:first-child { margin-top: 0; }
+h2 { font-size: 19pt; color: #861852; margin: 9mm 0 3mm; page-break-after: avoid; }
+h2::after { content: ''; display: block; width: 14mm; height: 1.2mm; border-radius: 1mm; background: #F03E8A; margin-top: 2mm; }
+h3 { font-size: 14pt; color: #A61F66; margin: 6mm 0 2mm; page-break-after: avoid; }
+p { margin: 0 0 3mm; }
+.ul, .ol { margin: 0 0 4mm; padding-left: 6mm; }
+.ul li, .ol li { margin-bottom: 1.6mm; }
+.ul li::marker { color: #F03E8A; }
+.ol li::marker { color: #F03E8A; font-weight: 800; }
+.tip { background: #FFF0F6; border-left: 1.6mm solid #F03E8A; border-radius: 3mm; padding: 4mm 5mm; margin: 4mm 0; page-break-inside: avoid; }
+.tip > b { display: block; font-family: 'Fredoka'; font-size: 12pt; color: #C42A78; margin-bottom: 1mm; }
+.tip p { margin: 0; }
+.pb { page-break-after: always; }
+
+/* Tabelas */
+.tb { width: 100%; border-collapse: separate; border-spacing: 0; margin: 2mm 0 5mm; font-size: 9.5pt; border-radius: 3mm; overflow: hidden; border: .3mm solid #F0D0E1; }
+.tb th { background: #C42A78; color: #fff; text-align: left; padding: 2.4mm 3mm; font-weight: 700; }
+.tb td { padding: 2.2mm 3mm; border-top: .3mm solid #F8E7F0; vertical-align: top; }
+.tb tr:nth-child(even) td { background: #FCF4F8; }
+.tb tr { page-break-inside: avoid; }
+
+/* Treino resumido */
+.wo { background: #fff; border: .4mm solid #FFC2DD; border-radius: 4mm; padding: 4mm 5mm; margin: 3mm 0 5mm; page-break-inside: avoid; }
+.wo-t { font: 700 9pt 'Plus Jakarta Sans'; color: #fff; background: linear-gradient(135deg, #FF6FAE, #D82775); display: inline-block; padding: 1.4mm 4mm; border-radius: 99px; margin-bottom: 2.5mm; }
+.wo table { width: 100%; border-collapse: collapse; }
+.wo td { padding: 1.8mm 1mm; border-bottom: .3mm dashed #F0D0E1; }
+.wo tr:last-child td { border-bottom: 0; }
+.wo td:first-child { width: 8mm; font-weight: 800; color: #F03E8A; }
+.wo td:last-child { text-align: right; font-weight: 700; color: #861852; white-space: nowrap; }
+.wo-n { font-size: 9pt; color: #6E5A68; margin-top: 2mm; }
+
+/* Ficha de exercício */
+.ex { background: #FCF4F8; border-radius: 4mm; padding: 4mm 5mm; margin: 0 0 4mm; page-break-inside: avoid; font-size: 9.8pt; }
+.ex-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+.ex h4 { font-size: 12.5pt; color: #861852; }
+.presc { flex: none; font-weight: 800; font-size: 8.5pt; color: #fff; background: #F03E8A; padding: 1mm 3mm; border-radius: 99px; }
+.chips { margin: 1.5mm 0 2mm; }
+.chips span { display: inline-block; font-size: 7.8pt; font-weight: 700; color: #A61F66; background: #FFE1EE; padding: .6mm 2.4mm; border-radius: 99px; margin: 0 1.2mm 1.2mm 0; }
+.ex ol { margin: 0 0 2mm; padding-left: 5mm; }
+.ex ol li { margin-bottom: .8mm; }
+.ex p { margin: 0 0 1.4mm; }
+.ex .safe { color: #6E5A68; }
+
+/* Plano de 21 dias */
+.phase { background: linear-gradient(135deg, #FF6FAE, #C42A78); color: #fff; border-radius: 5mm; padding: 7mm 8mm; margin-bottom: 6mm; }
+.phase span { font-weight: 800; font-size: 9pt; letter-spacing: .16em; opacity: .9; }
+.phase h2 { color: #fff; margin: 1mm 0 2mm; font-size: 24pt; }
+.phase h2::after { display: none; }
+.phase p { margin: 0; font-size: 11pt; }
+.day { border: .4mm solid #F0D0E1; border-radius: 4mm; padding: 4mm 5mm; margin-bottom: 4mm; page-break-inside: avoid; }
+.day-h { display: flex; align-items: center; gap: 3mm; }
+.dn { font-weight: 800; font-size: 8.5pt; color: #fff; background: #F03E8A; border-radius: 99px; padding: 1mm 3mm; }
+.day h3 { margin: 0; font-size: 13pt; color: #861852; }
+.goal { color: #6E5A68; margin: 2mm 0; }
+.seg { margin-bottom: 2mm; }
+.seg > b { font-size: 8.5pt; text-transform: uppercase; letter-spacing: .08em; color: #C42A78; }
+.seg ul { list-style: none; margin: 1mm 0 0; padding: 0; }
+.seg li { display: flex; justify-content: space-between; gap: 4mm; padding: 1mm 0; border-bottom: .3mm dashed #F8E7F0; }
+.seg li em { font-style: normal; font-weight: 700; color: #861852; white-space: nowrap; }
+.lili { margin: 2mm 0 0; font-style: italic; color: #A61F66; }
+h3.cat { font-size: 15pt; margin-top: 8mm; }
+
+/* Receitas */
+.rc { border: .4mm solid #F0D0E1; border-radius: 4mm; padding: 4mm 5mm; margin-bottom: 4mm; page-break-inside: avoid; }
+.rc-h { display: flex; align-items: center; gap: 3mm; }
+.rc-n { font: 700 11pt 'Fredoka'; color: #fff; background: #F03E8A; width: 9mm; height: 9mm; border-radius: 50%; display: grid; place-items: center; flex: none; }
+.rc h4 { font-size: 13pt; color: #861852; }
+.rc-m { font-size: 9pt; color: #6E5A68; margin: 1.5mm 0 2mm 12mm; }
+.rc-b { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5mm; font-size: 9.6pt; }
+.rc-b b { font-size: 8.5pt; text-transform: uppercase; letter-spacing: .06em; color: #C42A78; }
+.rc-b ul, .rc-b ol { margin: 1mm 0 0; padding-left: 4.5mm; }
+
+/* Checklist e calendário */
+.ck { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm 6mm; margin: 2mm 0 5mm; }
+.ck div { display: flex; align-items: center; gap: 2.5mm; }
+.ck i { width: 5mm; height: 5mm; border: .5mm solid #F03E8A; border-radius: 1.4mm; flex: none; }
+.g30 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3mm; margin: 3mm 0 6mm; page-break-inside: avoid; }
+.g30 div { aspect-ratio: 1; border: .5mm solid #FFC2DD; border-radius: 3mm; position: relative; }
+.g30 span { position: absolute; top: 1.5mm; left: 2mm; font: 700 9pt 'Fredoka'; color: #F03E8A; }
+
+.disc { margin-top: 10mm; padding-top: 4mm; border-top: .3mm solid #F0D0E1; font-size: 8.5pt; color: #8a7684; page-break-inside: avoid; }

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F03E8A">
+<title>Seus materiais — Pilates na Parede</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --rose: #F03E8A; --rose-50: #FFF0F6; --rose-100: #FFE1EE; --lilac-100: #F8E7F0; --lilac-200: #F0D0E1; --grape-500: #C42A78; --grape-700: #861852; --ink: #2B1626; --soft: #6E5A68; }
+  * { box-sizing: border-box; margin: 0; }
+  html { -webkit-tap-highlight-color: transparent; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: var(--ink); background: linear-gradient(170deg, #FFF0F6 0%, #FFF6FA 50%, #FBEFF6 100%) fixed; min-height: 100dvh; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif; }
+  main { max-width: 560px; margin: 0 auto; padding: 28px 16px calc(40px + env(safe-area-inset-bottom)); }
+  .hero { text-align: center; }
+  .avatar { width: 104px; height: 104px; margin: 0 auto; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, #FF6FAE, #D82775); box-shadow: 0 10px 28px -8px rgb(240 62 138 / .55); }
+  .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #fff; display: block; }
+  .hero h1 { margin-top: 16px; font-size: 28px; font-weight: 700; line-height: 1.15; }
+  .hero p { margin-top: 8px; color: var(--soft); font-size: 15px; line-height: 1.45; }
+  .label { margin: 30px 4px 10px; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--grape-500); }
+  .list { display: grid; gap: 12px; }
+  .card { display: flex; gap: 14px; align-items: center; padding: 12px; border-radius: 24px; background: rgb(255 255 255 / .92); text-decoration: none; color: inherit;
+    box-shadow: 0 2px 10px -2px rgb(134 24 82 / .08), 0 14px 32px -16px rgb(134 24 82 / .22); outline: 1px solid var(--lilac-100); transition: transform .15s; }
+  .card:active { transform: scale(.98); }
+  .thumb { flex: none; width: 76px; height: 92px; border-radius: 16px; overflow: hidden; background: linear-gradient(160deg, #FF6FAE, #C42A78); display: grid; place-items: center; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb.tab img { object-fit: contain; padding: 6px 4px; }
+  .info { flex: 1; min-width: 0; }
+  .kick { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .06em; color: var(--grape-500); background: var(--rose-100); padding: 3px 8px; border-radius: 99px; }
+  .info h3 { margin-top: 5px; font-size: 16.5px; font-weight: 600; line-height: 1.2; }
+  .info p { margin-top: 3px; font-size: 12.5px; color: var(--soft); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .dl { margin-top: 7px; display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 800; color: var(--rose); }
+  .dl svg { width: 15px; height: 15px; }
+  .go { flex: none; width: 40px; height: 40px; border-radius: 14px; background: linear-gradient(135deg, #FF6FAE, #F03E8A 55%, #D82775); display: grid; place-items: center; color: #fff; box-shadow: 0 8px 18px -8px rgb(240 62 138 / .7); }
+  .go svg { width: 20px; height: 20px; }
+  .card.done .go { background: #fff; color: var(--rose); outline: 2px solid var(--rose-100); }
+  .app { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; min-height: 52px; border-radius: 18px; font-weight: 800; text-decoration: none; color: var(--grape-700); background: #fff; outline: 1px solid var(--lilac-200); }
+  .help { margin-top: 26px; padding: 14px 16px; border-radius: 20px; background: rgb(255 255 255 / .7); font-size: 13px; color: var(--soft); line-height: 1.5; }
+  .help b { color: var(--grape-700); }
+  .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); transform: translate(-50%, 140%); background: var(--ink); color: #fff; font-size: 14px; font-weight: 700; padding: 12px 18px; border-radius: 16px; transition: transform .3s; white-space: nowrap; }
+  .toast.on { transform: translate(-50%, 0); }
+  @media (prefers-reduced-motion: reduce) { .card, .toast { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="avatar"><img src="/app/lili/lili-rosto-1.webp" alt="Lili"></div>
+    <h1>Seus materiais 💗</h1>
+    <p>Toque em um material para baixar o PDF. Salve no celular para ler quando quiser, mesmo sem internet.</p>
+  </section>
+  <div class="label">Seu programa</div><div class="list">
+  <a class="card" data-slug="pilates-na-parede-21-dias" href="/material/pdf/pilates-na-parede-21-dias.pdf" download="pilates-na-parede-21-dias.pdf"><div class="thumb"><img src="/app/fotos/parede.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">GUIA COMPLETO</span><h3>Pilates na Parede Desafio 21 Dias</h3><p>O plano dia a dia dos 21 dias e a biblioteca com todos os exercícios explicados passo a passo.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 1,2 MB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  </div>
+  <div class="label">Seus bônus</div><div class="list">
+  <a class="card" data-slug="bonus-1-postura-de-ferro" href="/material/pdf/bonus-1-postura-de-ferro.pdf" download="bonus-1-postura-de-ferro.pdf"><div class="thumb"><img src="/app/fotos/alongamento.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">BÔNUS 1</span><h3>Protocolo Postura de Ferro</h3><p>Sequência para alinhar a coluna e aliviar a tensão de quem passa o dia sentada.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 698 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  <a class="card" data-slug="bonus-2-anti-flacidez" href="/material/pdf/bonus-2-anti-flacidez.pdf" download="bonus-2-anti-flacidez.pdf"><div class="thumb"><img src="/app/fotos/fase2.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">BÔNUS 2</span><h3>Protocolo Anti-Flacidez</h3><p>Treinos focados em firmar braços, barriga e pernas junto com o desafio.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 762 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  <a class="card" data-slug="bonus-3-dieta-personalizada" href="/material/pdf/bonus-3-dieta-personalizada.pdf" download="bonus-3-dieta-personalizada.pdf"><div class="thumb"><img src="/app/fotos/agua.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">BÔNUS 3</span><h3>Dieta 100% Personalizada</h3><p>Monte o seu plano alimentar com refeições simples do dia a dia, para emagrecer sem passar fome.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 625 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  <a class="card" data-slug="bonus-4-51-receitas-proteicas" href="/material/pdf/bonus-4-51-receitas-proteicas.pdf" download="bonus-4-51-receitas-proteicas.pdf"><div class="thumb"><img src="/ww/img/tile-segredo.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">BÔNUS 4</span><h3>51 Receitas Proteicas</h3><p>Receitas rápidas e gostosas, incluindo a famosa panqueca de 3 ingredientes.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 458 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  <a class="card" data-slug="bonus-5-treino-express" href="/material/pdf/bonus-5-treino-express.pdf" download="bonus-5-treino-express.pdf"><div class="thumb"><img src="/app/fotos/energia.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">BÔNUS 5</span><h3>Protocolo Treino Express</h3><p>Treinos de 10 minutos para os dias corridos, sem perder o ritmo.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 675 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  </div>
+  <div class="label">Conteúdos extras</div><div class="list">
+  <a class="card" data-slug="acelerador-de-resultados-turbo-3x" href="/material/pdf/acelerador-de-resultados-turbo-3x.pdf" download="acelerador-de-resultados-turbo-3x.pdf"><div class="thumb tab"><img src="/ww/img/tablet1.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">ATALHO DA TRANSFORMAÇÃO</span><h3>Acelerador de Resultados Turbo 3X</h3><p>Estratégias para queimar mais gordura e ver resultado mais rápido, sem academia e sem dieta maluca.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 736 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  <a class="card" data-slug="codigo-proibido-do-corpo-violao" href="/material/pdf/codigo-proibido-do-corpo-violao.pdf" download="codigo-proibido-do-corpo-violao.pdf"><div class="thumb tab"><img src="/ww/img/tablet2.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">MÉTODO VIP</span><h3>Código Proibido do Corpo Violão</h3><p>Cintura definida, barriga mais seca e curvas realçadas com um método simples, rápido e sem academia.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 833 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  <a class="card" data-slug="preguicosa-gostosa" href="/material/pdf/preguicosa-gostosa.pdf" download="preguicosa-gostosa.pdf"><div class="thumb tab"><img src="/ww/img/tablet3.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">MÉTODO</span><h3>Preguiçosa Gostosa Corpo Durinho Sem Academia</h3><p>Exercícios rápidos e simples, a maioria deitada, para tonificar o corpo sem sair de casa.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 954 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  <a class="card" data-slug="ritual-secreto-da-gostosa" href="/material/pdf/ritual-secreto-da-gostosa.pdf" download="ritual-secreto-da-gostosa.pdf"><div class="thumb tab"><img src="/ww/img/tablet4.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">5 MINUTOS POR DIA</span><h3>Ritual Secreto da Gostosa</h3><p>Um ritual de 5 minutos por dia para cintura definida, bumbum empinado e corpo mais firme.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 947 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  <a class="card" data-slug="o-segredo-das-mulheres-que-nao-engordam" href="/material/pdf/o-segredo-das-mulheres-que-nao-engordam.pdf" download="o-segredo-das-mulheres-que-nao-engordam.pdf"><div class="thumb tab"><img src="/ww/img/tablet5.webp" alt="" loading="lazy"></div><div class="info"><span class="kick">HÁBITOS SIMPLES E REAIS</span><h3>O Segredo das Mulheres que Não Engordam</h3><p>Os hábitos que mantêm o corpo em forma, sem dietas malucas e sem passar fome.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar PDF · 829 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
+  </div>
+  <a class="app" href="/app/">Abrir o app do Desafio 21 Dias</a>
+  <div class="help"><b>Não conseguiu baixar?</b> No iPhone, o PDF abre na tela: toque em <b>Compartilhar</b> e depois em <b>Salvar em Arquivos</b>. No Android, ele fica na pasta <b>Downloads</b>.</div>
+</main>
+<div class="toast" id="toast">⬇️ Baixando o seu material…</div>
+<script>
+  // Marca o que já foi baixado (só neste aparelho) e mostra um aviso rápido.
+  const KEY = 'material-baixado';
+  let done = [];
+  try { done = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) {}
+  const toast = document.getElementById('toast');
+  document.querySelectorAll('.card').forEach((a) => {
+    if (done.includes(a.dataset.slug)) a.classList.add('done');
+    a.addEventListener('click', () => {
+      a.classList.add('done');
+      if (!done.includes(a.dataset.slug)) done.push(a.dataset.slug);
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+      toast.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => toast.classList.remove('on'), 2200);
+    });
+  });
+</script>
+</body>
+</html>
