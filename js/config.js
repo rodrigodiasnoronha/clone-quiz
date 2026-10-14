@@ -1,6 +1,6 @@
 // URL para onde os botões finais ("OBTER MEU PLANO...") redirecionam.
 // Usada só quando o botão do quiz.json não tem "destination".
-export const REDIRECT_URL = 'https://wvltrack.com/t/obqtdteste';
+export const REDIRECT_URL = 'https://pay.cakto.com.br/3dqkyya_1198209';
 
 // Oferta mostrada quando a pessoa tenta sair (botão voltar do navegador)
 export const OFFER = {
