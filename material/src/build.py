@@ -192,6 +192,12 @@ def doc(m):
 
 
 def main():
+    if sys.argv[1:] == ['--page']:  # só a página /material, sem gerar os PDFs de novo
+        meta = [{k: m[k] for k in ('slug', 'group', 'title', 'title2', 'kicker', 'desc', 'cover')} for m in MATERIALS]
+        for x in meta:
+            f = os.path.join(OUT, x['slug'] + '.pdf')
+            x['kb'] = round(os.path.getsize(f) / 1024) if os.path.exists(f) else None
+        return write_page(meta)
     only = set(sys.argv[1:])
     os.makedirs(OUT, exist_ok=True)
     tmp = tempfile.mkdtemp()
@@ -217,6 +223,24 @@ DL = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="
       'stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>')
 
 
+def make_thumb(slug, cover, contain=False):
+    """Miniatura 228x276 (3x do tamanho exibido) para a lista de /material."""
+    from PIL import Image
+    os.makedirs(os.path.join(ROOT, 'material', 'thumbs'), exist_ok=True)
+    rel = f'material/thumbs/{slug}.webp'
+    im = Image.open(os.path.join(ROOT, cover)).convert('RGBA' if contain else 'RGB')
+    W, H = 228, 276
+    if contain:
+        im.thumbnail((W - 24, H - 36), Image.LANCZOS)
+    else:
+        r = max(W / im.width, H / im.height)
+        im = im.resize((round(im.width * r), round(im.height * r)), Image.LANCZOS)
+        l, t = (im.width - W) // 2, (im.height - H) // 2
+        im = im.crop((l, t, l + W, t + H))
+    im.save(os.path.join(ROOT, rel), 'WEBP', quality=80, method=6)
+    return rel
+
+
 def write_page(meta):
     """Gera material/index.html com a lista de PDFs."""
     parts = []
@@ -228,9 +252,10 @@ def write_page(meta):
         for m in items:
             size = f' · {m["kb"] / 1024:.1f} MB'.replace('.', ',') if m['kb'] and m['kb'] >= 1024 else (f' · {m["kb"]} KB' if m['kb'] else '')
             tab = ' tab' if 'tablet' in m['cover'] else ''
+            thumb = make_thumb(m['slug'], m['cover'], contain=bool(tab))
             parts.append(
                 f'<a class="card" data-slug="{m["slug"]}" href="/material/pdf/{m["slug"]}.pdf" download="{m["slug"]}.pdf">'
-                f'<div class="thumb{tab}"><img src="/{m["cover"]}" alt="" loading="lazy"></div>'
+                f'<div class="thumb{tab}"><img src="/{thumb}" alt="" width="76" height="92" loading="lazy" decoding="async"></div>'
                 f'<div class="info"><span class="kick">{e(m["kicker"])}</span><h3>{e(m["title"])} {e(m["title2"])}</h3>'
                 f'<p>{e(m["desc"])}</p><span class="dl">{DL}Baixar PDF{size}</span></div>'
                 f'<span class="go">{DL}</span></a>')
