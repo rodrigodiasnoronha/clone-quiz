@@ -144,7 +144,7 @@ h1 .p { color: var(--pink); }
 .no-thanks {
   display: table; margin: 3.2cqw auto 0; padding: 2cqw 4.4cqw; border-radius: 2cqw;
   border: .22cqw solid #3a4562; background: rgba(255, 255, 255, .7);
-  color: #2c3654; font-weight: 700; font-size: max(10px, 1.95cqw); letter-spacing: -.01em; text-transform: uppercase;
+  color: #2c3654; font-weight: 700; font-size: max(12px, 2.4cqw); letter-spacing: -.01em;
 }
 
 @keyframes pulse { 50% { transform: scale(1.025); box-shadow: 0 1.8cqw 5.5cqw rgba(255, 10, 100, .55), inset 0 .3cqw 0 rgba(255, 255, 255, .22); } }
@@ -172,7 +172,7 @@ cakto-upsell-reject::part(button) {
   display: inline-block; margin: 0; padding: 2cqw 4.4cqw; border-radius: 2cqw; cursor: pointer;
   border: .22cqw solid #3a4562; background: rgba(255, 255, 255, .7);
   color: #2c3654; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-weight: 700; font-size: max(10px, 1.95cqw); letter-spacing: -.01em; text-transform: uppercase; text-decoration: none;
+  font-weight: 700; font-size: max(12px, 2.4cqw); letter-spacing: -.01em; text-decoration: none;
 }
 @media (prefers-reduced-motion: reduce) { cakto-upsell-accept::part(button) { animation: none; } }
 
