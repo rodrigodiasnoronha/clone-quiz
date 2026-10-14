@@ -150,3 +150,28 @@ h1 .p { color: var(--pink); }
 @keyframes pulse { 50% { transform: scale(1.025); box-shadow: 0 1.8cqw 5.5cqw rgba(255, 10, 100, .55), inset 0 .3cqw 0 rgba(255, 255, 255, .22); } }
 @keyframes in { from { opacity: 0; transform: translateY(8px); } }
 @media (prefers-reduced-motion: reduce) { .cta, .wrap { animation: none; } }
+
+/* Botões da Cakto (<cakto-upsell-accept> / <cakto-upsell-reject>) com o mesmo visual de .cta e .no-thanks */
+cakto-upsell-buttons, cakto-upsell-accept, cakto-upsell-reject { display: block; }
+cakto-upsell-accept { margin-top: 3.4cqw; }
+cakto-upsell-reject { margin-top: 3.2cqw; text-align: center; }
+cakto-upsell-accept::part(button) {
+  display: flex; align-items: center; justify-content: center; gap: 2.4cqw;
+  width: 100%; margin: 0; padding: 3.2cqw 2cqw; border: 0; border-radius: 2.4cqw; cursor: pointer;
+  background: linear-gradient(180deg, #ff2a7e 0%, #f90461 55%, #ea0358 100%);
+  color: #fff; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 800; font-size: 3.6cqw; line-height: 1.2; letter-spacing: -.03em; text-transform: uppercase; white-space: nowrap;
+  box-shadow: 0 1.4cqw 4.5cqw rgba(255, 10, 100, .42), inset 0 .3cqw 0 rgba(255, 255, 255, .22);
+  animation: pulse 2s ease-in-out infinite;
+}
+cakto-upsell-accept::part(button)::after {
+  content: ''; width: 3cqw; height: 3cqw; flex: none; background: currentColor;
+  -webkit-mask: url(/ww/chev.svg) center / contain no-repeat; mask: url(/ww/chev.svg) center / contain no-repeat;
+}
+cakto-upsell-reject::part(button) {
+  display: inline-block; margin: 0; padding: 2cqw 4.4cqw; border-radius: 2cqw; cursor: pointer;
+  border: .22cqw solid #3a4562; background: rgba(255, 255, 255, .7);
+  color: #2c3654; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 700; font-size: max(10px, 1.95cqw); letter-spacing: -.01em; text-transform: uppercase; text-decoration: none;
+}
+@media (prefers-reduced-motion: reduce) { cakto-upsell-accept::part(button) { animation: none; } }
