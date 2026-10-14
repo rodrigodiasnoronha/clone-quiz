@@ -175,3 +175,36 @@ cakto-upsell-reject::part(button) {
   font-weight: 700; font-size: max(10px, 1.95cqw); letter-spacing: -.01em; text-transform: uppercase; text-decoration: none;
 }
 @media (prefers-reduced-motion: reduce) { cakto-upsell-accept::part(button) { animation: none; } }
+
+/* Páginas de downsell (ww-downN) */
+.down .badge { margin-bottom: .6cqw; }
+.d-title { text-transform: uppercase; letter-spacing: -.045em; line-height: .98; margin-top: 2.6cqw; }
+.d-title .k { font-size: 5.9cqw; }
+.d-title .p { font-size: 9.9cqw; }
+.d-title .u svg { bottom: -3cqw; height: 2.4cqw; }
+.d-title.big .k { font-size: 9.2cqw; }
+.d-title.big .p { font-size: 9.6cqw; }
+.d-text { margin-top: 5cqw; font-weight: 500; font-size: 3.15cqw; line-height: 1.24; letter-spacing: -.01em; color: #1d2230; padding: 0 9cqw; }
+.d-text b { color: var(--pink); font-weight: 800; }
+.deal + .d-text { margin-top: 7cqw; }
+.d-love { margin-top: 2.4cqw; color: var(--pink); font-weight: 800; font-size: 3.35cqw; letter-spacing: -.02em; }
+.deal {
+  position: relative; margin: 4.4cqw 10cqw 0; padding: 0 0 .5cqw; border-radius: 3cqw;
+  background: rgba(255, 255, 255, .6); box-shadow: 0 .4cqw 3cqw rgba(240, 5, 88, .05);
+}
+.deal-name {
+  display: inline-block; position: relative; top: -2.4cqw; margin-bottom: -2.4cqw;
+  background: #fde3ee; color: var(--pink); border-radius: 99px; padding: 1.2cqw 4.4cqw;
+  font-weight: 800; font-size: 3.2cqw; letter-spacing: -.03em; white-space: nowrap;
+}
+.deal-tag {
+  display: table; margin: 1cqw auto 0; background: var(--pink); color: #fff; border-radius: 99px;
+  padding: .6cqw 2.6cqw; font-weight: 800; font-size: 2.1cqw; letter-spacing: -.01em;
+}
+.deal-pct { color: var(--pink); font-family: Montserrat, 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 26cqw; line-height: .95; letter-spacing: -.05em; margin-top: .4cqw; }
+.deal-off { font-weight: 800; font-size: 6.6cqw; letter-spacing: -.04em; line-height: 1; margin-bottom: -3.4cqw; position: relative; }
+.down .cta { margin-top: 3cqw; }
+.d-no {
+  display: inline-block; margin-top: 3.4cqw; color: #4a5470; font-weight: 500; font-size: max(11px, 2.05cqw);
+  text-decoration: underline; text-underline-offset: .4cqw;
+}

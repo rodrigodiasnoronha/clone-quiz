@@ -3,8 +3,10 @@
 // no  = botão "AGORA NÃO..." (próxima página do funil)
 const FUNNEL = {
   'ww-up1': { yes: '/ww-up2', no: '/ww-up2' },
-  'ww-up2': { yes: '/ww-up3', no: '/ww-up3' },
-  'ww-up3': { yes: '/ww-up4', no: '/ww-up4' },
+  'ww-up2': { yes: '/ww-up3', no: '/ww-down2' },
+  'ww-down2': { yes: '/ww-up3', no: '/ww-up3' }, // downsell do up2
+  'ww-up3': { yes: '/ww-up4', no: '/ww-down3' },
+  'ww-down3': { yes: '/ww-up4', no: '/ww-up4' }, // downsell do up3
   'ww-up4': { yes: '/ww-up5', no: '/ww-up5' },
   'ww-up5': { yes: '/ww-up6', no: '/ww-up6' },
   'ww-up6': { yes: '/ww-tks', no: '/ww-tks' },
