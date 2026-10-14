@@ -5,7 +5,7 @@ import { OFFER } from './config.js';
 const INCLUDED = [
   ['BÔNUS 1: Protocolo Postura de Ferro', 'Sequência pra alinhar a coluna e acabar com a dor nas costas de quem passa o dia sentada.'],
   ['BÔNUS 2: Protocolo Anti-Flacidez', 'Treinos focados em firmar braços, barriga e pernas junto com o desafio.'],
-  ['BÔNUS 3: Dieta 100% Personalizada', 'Plano alimentar montado pro seu objetivo, com refeições simples do dia a dia — pra emagrecer sem passar fome.'],
+  ['BÔNUS 3: Guia do Prato Inteligente', 'Monte refeições com o que você já come — sem cardápio proibido, sem balança e sem contar calorias.'],
   ['BÔNUS 4: 51 Receitas Proteicas', 'Receitas rápidas e gostosas — incluindo a panqueca de 3 ingredientes que vale muito a pena.'],
   ['BÔNUS 5: Protocolo Treino Express', 'Treinos de 10 minutos pra quem tem dias corridos sem perder o ritmo.'],
   ['BÔNUS SECRETO: Presente Surpresa', 'Revelado no seu primeiro login. Não é treino, não é receita — é algo completamente diferente.'],

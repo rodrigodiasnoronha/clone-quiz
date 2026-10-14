@@ -10,3 +10,7 @@ export const OFFER = {
   price: 'R$ 17,00',
   minutes: 5,
 };
+
+// Para onde vão os leads (nome, e-mail e respostas) quando a pessoa informa o e-mail.
+// Cole aqui a URL de um webhook (n8n, Make, Zapier, Google Apps Script...). Vazio = não envia.
+export const LEAD_WEBHOOK = '';

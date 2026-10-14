@@ -294,17 +294,17 @@ MATERIALS.append({
     ],
 })
 
-# 4) BÔNUS 3 — DIETA PERSONALIZADA
+# 4) BÔNUS 3 — GUIA DO PRATO INTELIGENTE
 MATERIALS.append({
     'slug': 'bonus-3-dieta-personalizada',
     'group': 'bonus',
-    'title': 'Dieta 100%',
-    'title2': 'Personalizada',
+    'title': 'Guia do Prato',
+    'title2': 'Inteligente',
     'kicker': 'BÔNUS 3',
-    'desc': 'Monte o seu plano alimentar com refeições simples do dia a dia, para emagrecer sem passar fome.',
+    'desc': 'Monte refeições com o que você já come — sem cardápio proibido, sem balança e sem contar calorias.',
     'cover': 'app/fotos/agua.webp',
     'body': [
-        ('h2', 'Uma dieta feita para a sua rotina'),
+        ('h2', 'Sem dieta: refeições feitas para a sua rotina'),
         ('p', 'Não existe um cardápio único que sirva para todas as mulheres. Por isso, em vez de uma lista rígida, '
               'este guia ensina você a <b>montar o seu próprio plano</b> com o método do prato e das porções na mão: '
               'simples, sem balança e sem contar calorias.'),
@@ -449,6 +449,64 @@ MATERIALS.append({
         ('newex', 'polichinelo-sem-salto'),
         ('newex', 'corrida-parada'),
         ('p', 'Os demais exercícios estão explicados passo a passo no guia <b>Pilates na Parede — Desafio 21 Dias</b>.'),
+    ],
+})
+
+# 6b) BÔNUS EXTRA — CHÁ ASIÁTICO ANTICELULITE (prometido na oferta do quiz)
+MATERIALS.append({
+    'slug': 'bonus-cha-asiatico-anticelulite',
+    'group': 'bonus',
+    'title': 'Chá Asiático',
+    'title2': 'Anticelulite',
+    'kicker': 'BÔNUS EXTRA',
+    'desc': 'O ritual do chá verde para se hidratar, trocar as bebidas doces e somar ao Pilates no cuidado com a celulite.',
+    'cover': 'app/fotos/agua.webp',
+    'body': [
+        ('h2', 'A plantinha verde-escura'),
+        ('p', 'O "chá asiático" é o <b>chá verde</b>, feito das folhas da <i>Camellia sinensis</i> — a mesma planta tomada há séculos '
+              'na China e no Japão. Você encontra em qualquer mercado: em folhas soltas, em sachê ou em pó (o <b>matcha</b>).'),
+        ('h2', 'O que o chá faz — e o que ele não faz'),
+        ('p', 'A celulite depende de genética, hormônios, gordura e firmeza da pele e dos músculos. <b>Nenhum chá, sozinho, '
+              'faz a celulite sumir.</b> O chá entra como aliado do seu plano:'),
+        ('list', [
+            '<b>Hidratação:</b> ajuda você a beber mais líquido ao longo do dia, o que deixa a pele com melhor aspecto.',
+            '<b>Troca inteligente:</b> sem açúcar, tem praticamente zero calorias e substitui refrigerante e sucos de caixinha.',
+            '<b>Ritual:</b> uma xícara no mesmo horário todo dia lembra você de cuidar do corpo — e de fazer o seu treino.',
+        ]),
+        ('tip', 'A dupla que funciona', 'Enquanto o chá cuida da hidratação, o <b>Pilates na Parede firma glúteos e pernas</b>. '
+              'Músculo mais firme por baixo da pele é o que mais melhora o aspecto da celulite.'),
+        ('h2', 'Como preparar do jeito certo'),
+        ('steps', [
+            'Aqueça a água até começar a soltar as primeiras bolhinhas (70 a 80 °C). <b>Não use água fervendo</b>: o chá fica amargo.',
+            'Use 1 colher (chá) de folhas ou 1 sachê para cada xícara (200 ml).',
+            'Abafe por <b>2 a 3 minutos</b> e coe. Mais tempo que isso também amarga.',
+            'Tome sem açúcar. Se precisar, use um pouco de canela, limão ou hortelã para dar sabor.',
+        ]),
+        ('h2', '5 receitas para não enjoar'),
+        ('h3', '1. Clássico morno'),
+        ('p', '1 sachê de chá verde + 200 ml de água morna. Abafe 3 minutos. Ideal pela manhã.'),
+        ('h3', '2. Chá verde com gengibre e limão'),
+        ('p', '1 sachê + 2 rodelas finas de gengibre + 200 ml de água morna. Abafe 3 minutos e finalize com gotas de limão.'),
+        ('h3', '3. Gelado com hortelã'),
+        ('p', 'Prepare 500 ml de chá, deixe esfriar e leve à geladeira com folhas de hortelã e rodelas de limão. Substitui o refrigerante do almoço.'),
+        ('h3', '4. Matcha latte'),
+        ('p', '1 colher (chá) de matcha + 50 ml de água morna (mexa até dissolver) + 150 ml de leite ou bebida vegetal quente. Polvilhe canela.'),
+        ('h3', '5. Chá verde com canela e maçã'),
+        ('p', '1 sachê + 1 pau de canela + algumas lascas de maçã + 250 ml de água morna. Abafe 5 minutos com a maçã e retire o sachê aos 3.'),
+        ('h2', 'Seu ritual diário'),
+        ('table', ['Momento', 'O que fazer'], [
+            ['Manhã', '1 xícara do clássico ou com gengibre, junto com o café da manhã.'],
+            ['Almoço', 'Troque o refrigerante pelo chá gelado com hortelã.'],
+            ['Tarde', 'Matcha latte ou chá com canela no lanche — nada depois das 17h.'],
+            ['Noite', 'Só água. O chá verde tem cafeína e pode atrapalhar o sono.'],
+        ]),
+        ('warn', '<b>Cuidados:</b> no máximo 3 xícaras por dia. O chá verde tem cafeína — evite à noite e se você tem ansiedade, '
+                 'insônia, pressão alta ou arritmia. Grávidas, lactantes e quem usa anticoagulantes ou outros remédios de uso contínuo '
+                 'devem falar com o médico antes. Prefira o chá da xícara: <b>não use cápsulas de extrato concentrado</b>, '
+                 'que já foram associadas a problemas no fígado.'),
+        ('h2', 'Checklist dos 21 dias'),
+        ('check', ['Comprei chá verde (sachê, folhas ou matcha)', 'Tomei a 1ª xícara sem açúcar',
+                   'Troquei 1 refrigerante pelo chá gelado', 'Fiz o ritual 7 dias seguidos', 'Fiz o ritual 21 dias seguidos']),
     ],
 })
 
