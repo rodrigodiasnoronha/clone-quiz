@@ -24,15 +24,6 @@ function timer() {
   return el('div', { class: 'offer-top' }, el('b', {}, `${OFFER.discount} DE DESCONTO`), el('span', {}, '⏰ ', countdown('offer-deadline', OFFER.minutes)));
 }
 
-// Toque no cupom copia o código
-function coupon() {
-  const hint = el('span', {}, 'toque para copiar');
-  return el('button', {
-    class: 'coupon',
-    onclick: () => navigator.clipboard?.writeText(OFFER.coupon).then(() => (hint.textContent = '✔ copiado')),
-  }, el('span', {}, 'CUPOM'), el('b', {}, OFFER.coupon), hint);
-}
-
 function offerPage() {
   return el('div', { class: 'offer' },
     timer(),
@@ -43,8 +34,7 @@ function offerPage() {
         el('div', { class: 'tag' }, '🎁 SEU PRESENTE'),
         el('div', { class: 'big' }, `${OFFER.discount} de desconto`),
         el('small', {}, 'no acesso completo ao ', el('b', {}, 'Pilates na Parede 21 Dias')),
-        coupon(),
-        el('small', { class: 'ok' }, '✅ Use o cupom no checkout para garantir o desconto'),
+        el('small', { class: 'ok' }, '✅ Desconto já aplicado no checkout. É só clicar no botão abaixo!'),
       ),
       rich(`<h2 class="ql-align-center">Tudo que você vai levar no Pilates na Parede 21 Dias com ${OFFER.discount} de desconto:</h2>`),
       media('assets/app-mockup.mp4', { class: 'mock' }),
