@@ -3,6 +3,7 @@
 // no  = botão "AGORA NÃO..." (próxima página do funil)
 const FUNNEL = {
   'ww-up1': { yes: '/ww-up2', no: '/ww-up2' },
+  'ww-down1': { yes: '/ww-up2', no: '/ww-up2' }, // downsell do up1 (a recusa do up1 é definida no botão da Cakto)
   'ww-up2': { yes: '/ww-up3', no: '/ww-down2' },
   'ww-down2': { yes: '/ww-up3', no: '/ww-up3' }, // downsell do up2
   'ww-up3': { yes: '/ww-up4', no: '/ww-down3' },

@@ -208,3 +208,7 @@ cakto-upsell-reject::part(button) {
   display: inline-block; margin-top: 3.4cqw; color: #4a5470; font-weight: 500; font-size: max(11px, 2.05cqw);
   text-decoration: underline; text-underline-offset: .4cqw;
 }
+.d-title.accel .k { font-size: 9cqw; }
+.d-title.accel .p { font-size: 15cqw; line-height: .92; }
+.d-title.accel + .pill { font-size: 5.6cqw; padding: .4cqw 6.5cqw; }
+.d-title.accel + .pill + .d-text { margin-top: 2.6cqw; }
