@@ -1,6 +1,6 @@
 import { el, rich, countdown, media } from './utils.js';
 import { track, trackAndGo } from './track.js';
-import { OFFER } from './config.js';
+import { OFFER, BACK_REDIRECT_URL } from './config.js';
 
 const INCLUDED = [
   ['BÔNUS 1: Protocolo Postura de Ferro', 'Sequência pra alinhar a coluna e acabar com a dor nas costas de quem passa o dia sentada.'],
@@ -70,7 +70,17 @@ function giftPage(onOpen) {
   );
 }
 
+// Script de back redirect: a partir daqui, "voltar" leva para o link (com os parâmetros da URL)
+function setBackRedirect(url) {
+  const urlBackRedirect = url.trim() + (url.indexOf('?') > 0 ? '&' : '?') + location.search.replace('?', '');
+  history.pushState({}, '', location.href);
+  history.pushState({}, '', location.href);
+  history.pushState({}, '', location.href);
+  addEventListener('popstate', () => setTimeout(() => (location.href = urlBackRedirect), 1));
+}
+
 // Back redirect: ao apertar "voltar" no navegador mostra o presente e depois a oferta.
+// Só nessa tela o script de back redirect é ativado.
 export function setupExitIntent() {
   history.pushState({ exit: true }, '');
   let shown = false;
@@ -83,6 +93,6 @@ export function setupExitIntent() {
     track('ViewContent', { content_name: 'Back redirect 39%' });
     document.body.append(layer);
     document.body.classList.add('no-scroll');
-    history.pushState({ exit: true }, ''); // próximo "voltar" sai de verdade
+    setBackRedirect(BACK_REDIRECT_URL);
   });
 }
