@@ -14,3 +14,7 @@ export const OFFER = {
 // Para onde vão os leads (nome, e-mail e respostas) quando a pessoa informa o e-mail.
 // Cole aqui a URL de um webhook (n8n, Make, Zapier, Google Apps Script...). Vazio = não envia.
 export const LEAD_WEBHOOK = '';
+
+// ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+// da tela do presente ("Antes de sair... resgate o seu presente 🎁"). Padrão: checkout com desconto.
+export const BACK_REDIRECT_URL = OFFER.url;
