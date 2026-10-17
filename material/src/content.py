@@ -18,23 +18,11 @@ DISCLAIMER = (
     'converse com um profissional antes de começar e respeite sempre os limites do seu corpo.'
 )
 
+# Link do grupo VIP no WhatsApp (aparece no PDF do Grupo VIP)
+GRUPO_VIP_LINK = 'https://chat.whatsapp.com/TROQUE-PELO-LINK-DO-GRUPO'
+
 # ─────────────────────────────── EXERCÍCIOS EXTRAS (fora do app) ───────────────────────────────
 NEW_EX = {
-    'vacuo-abdominal': {
-        'name': 'Vácuo abdominal (respiração da cintura)',
-        'muscles': ['Transverso do abdômen', 'Diafragma'],
-        'position': 'Em pé, costas apoiadas na parede, joelhos levemente soltos e mãos na cintura.',
-        'steps': [
-            'Inspire pelo nariz enchendo as costelas para os lados.',
-            'Solte todo o ar pela boca, devagar, até esvaziar os pulmões.',
-            'Sem puxar o ar de novo, leve o umbigo para dentro e para cima, como se fechasse um zíper.',
-            'Segure de 5 a 15 segundos e solte, voltando a respirar normalmente.',
-        ],
-        'breathing': 'A contração acontece com os pulmões vazios. Entre uma repetição e outra, faça 2 respirações normais.',
-        'errors': ['Prender a respiração com os pulmões cheios.', 'Encolher os ombros ou travar o pescoço.'],
-        'easier': 'Faça deitada de barriga para cima, joelhos dobrados, segurando só 5 segundos.',
-        'safety': 'Não faça de estômago cheio, grávida, com pressão alta não controlada ou se sentir tontura.',
-    },
     'polichinelo-sem-salto': {
         'name': 'Polichinelo sem salto',
         'muscles': ['Ombros', 'Pernas', 'Coração'],
@@ -64,63 +52,203 @@ NEW_EX = {
         'easier': 'Troque por uma marcha rápida, sem tirar os dois pés do chão ao mesmo tempo.',
         'safety': 'Com dor no joelho, faça a versão de marcha.',
     },
-    'abdominal-bicicleta-lento': {
-        'name': 'Bicicleta lenta deitada',
-        'muscles': ['Oblíquos', 'Reto abdominal'],
-        'position': 'Deitada de barriga para cima, mãos atrás da cabeça, joelhos dobrados a 90° no ar.',
+    # Pilates Íntimo (assoalho pélvico)
+    'kegel-lento': {
+        'name': 'Contração lenta do assoalho pélvico',
+        'muscles': ['Assoalho pélvico'],
+        'position': 'Deitada de barriga para cima, joelhos dobrados, pés no chão e mãos na barriga.',
         'steps': [
-            'Tire levemente a cabeça e os ombros do chão.',
-            'Estenda a perna direita enquanto gira o tronco levando o cotovelo direito na direção do joelho esquerdo.',
-            'Troque o lado devagar, sentindo a cintura trabalhar.',
+            'Inspire pelo nariz e solte a barriga e a região íntima.',
+            'Ao soltar o ar, feche e puxe para dentro e para cima a região íntima, como se segurasse o xixi e um pum ao mesmo tempo.',
+            'Segure a contração de 3 a 10 segundos, respirando normalmente.',
+            'Solte completamente pelo mesmo tempo que segurou antes da próxima repetição.',
         ],
-        'breathing': 'Expire a cada giro.',
-        'errors': ['Puxar o pescoço com as mãos.', 'Fazer rápido e sem controle.'],
-        'easier': 'Mantenha os pés no chão e faça só o giro do tronco.',
-        'safety': 'Se sentir a lombar, estenda menos a perna (mais alta).',
+        'breathing': 'Contraia ao soltar o ar e nunca prenda a respiração durante a contração.',
+        'errors': ['Apertar o bumbum, as coxas ou a barriga no lugar do assoalho pélvico.', 'Não relaxar entre uma repetição e outra.'],
+        'easier': 'Segure só 3 segundos e faça 5 repetições.',
+        'safety': 'Não use o exercício para interromper o xixi no banheiro: isso atrapalha o esvaziamento da bexiga.',
     },
-    'elevacao-lateral-deitada': {
-        'name': 'Elevação de perna deitada de lado',
-        'muscles': ['Glúteo médio', 'Lateral da coxa'],
-        'position': 'Deitada de lado, cabeça apoiada no braço, pernas estendidas uma sobre a outra.',
+    'kegel-rapido': {
+        'name': 'Contrações rápidas (piscadas)',
+        'muscles': ['Assoalho pélvico'],
+        'position': 'Deitada, sentada ou em pé, conforme a semana do plano.',
         'steps': [
-            'Firme o abdômen e mantenha o quadril empilhado.',
-            'Suba a perna de cima até a altura do quadril, com o pé paralelo ao chão.',
-            'Desça devagar sem encostar totalmente na outra perna.',
+            'Contraia a região íntima com força e rapidez, como uma piscada.',
+            'Solte totalmente logo em seguida.',
+            'Repita no ritmo de mais ou menos uma piscada por segundo.',
         ],
-        'breathing': 'Expire ao subir, inspire ao descer.',
-        'errors': ['Girar o pé para cima.', 'Deixar o quadril cair para trás.'],
-        'easier': 'Dobre o joelho de baixo para ter mais estabilidade.',
-        'safety': 'Movimento curto e controlado vale mais que perna alta.',
-        'perSide': True,
+        'breathing': 'Respire normalmente, sem prender o ar.',
+        'errors': ['Fazer meia contração por pressa.', 'Esquecer de soltar totalmente entre as piscadas.'],
+        'easier': 'Faça 5 piscadas e descanse 10 segundos antes de mais 5.',
+        'safety': 'Se sentir dor na pelve, pare e procure uma fisioterapeuta pélvica.',
     },
-    'quatro-apoios-coice': {
-        'name': 'Coice em quatro apoios',
-        'muscles': ['Glúteo máximo', 'Posteriores de coxa'],
-        'position': 'Em quatro apoios, mãos abaixo dos ombros e joelhos abaixo do quadril (use uma toalha nos joelhos).',
+    'elevador-pelvico': {
+        'name': 'Elevador',
+        'muscles': ['Assoalho pélvico', 'Transverso do abdômen'],
+        'position': 'Sentada em uma cadeira firme, pés no chão e coluna alongada.',
         'steps': [
-            'Firme o abdômen para a lombar não afundar.',
-            'Leve um joelho dobrado para trás e para cima, sola do pé apontando para o teto.',
-            'Aperte o glúteo no alto e desça devagar.',
+            'Imagine que a região íntima é um elevador no térreo.',
+            'Contraia um pouco e suba para o 1º andar. Segure 2 segundos.',
+            'Contraia mais e suba para o 2º andar. Segure 2 segundos.',
+            'Contraia o máximo e chegue ao 3º andar. Segure 2 segundos.',
+            'Desça andar por andar até soltar tudo no térreo.',
         ],
-        'breathing': 'Expire ao subir a perna.',
-        'errors': ['Arquear a lombar para subir mais.', 'Girar o quadril.'],
-        'easier': 'Faça em pé, com as mãos na parede (extensão de quadril).',
-        'safety': 'Com dor nos punhos, apoie os antebraços em uma cadeira ou no sofá.',
-        'perSide': True,
+        'breathing': 'Respire de forma curta e tranquila durante a subida, sem prender o ar.',
+        'errors': ['Subir os ombros ou contrair a barriga com força.'],
+        'easier': 'Use só dois andares.',
+        'safety': 'O controle vale mais que a força: suba e desça devagar.',
     },
-    'superman-deitada': {
-        'name': 'Superman alternado',
-        'muscles': ['Eretores da coluna', 'Glúteos', 'Costas'],
-        'position': 'Deitada de barriga para baixo, braços estendidos à frente, testa apoiada em uma toalha.',
+    # Adeus Braço de Tchauzinho
+    'circulos-bracos': {
+        'name': 'Círculos de braço',
+        'muscles': ['Ombros', 'Parte de trás do braço'],
+        'position': 'Em pé, braços abertos na altura dos ombros e palmas viradas para baixo.',
         'steps': [
-            'Firme o abdômen, como se tirasse o umbigo do chão.',
-            'Eleve o braço direito e a perna esquerda poucos centímetros.',
-            'Segure 2 segundos, desça e troque o lado.',
+            'Faça pequenos círculos para a frente com os braços esticados.',
+            'Na metade do tempo, inverta para trás.',
+            'Mantenha os ombros longe das orelhas.',
         ],
-        'breathing': 'Expire ao subir.',
-        'errors': ['Jogar a cabeça para trás.', 'Subir muito alto, comprimindo a lombar.'],
-        'easier': 'Suba só os braços ou só as pernas.',
-        'safety': 'Pare se sentir incômodo na lombar.',
+        'breathing': 'Respire de forma ritmada, sem prender o ar.',
+        'errors': ['Deixar os braços caírem abaixo da linha dos ombros.', 'Dobrar os cotovelos.'],
+        'easier': 'Descanse os braços por 5 segundos sempre que precisar.',
+        'safety': 'Com dor no ombro, faça círculos menores e com os braços um pouco mais baixos.',
+    },
+    'triceps-parede': {
+        'name': 'Flexão fechada na parede (tríceps)',
+        'muscles': ['Tríceps', 'Peito'],
+        'position': 'De frente para a parede, a um braço de distância, mãos apoiadas na altura do peito e bem próximas uma da outra.',
+        'steps': [
+            'Firme o abdômen e deixe o corpo reto da cabeça aos calcanhares.',
+            'Dobre os cotovelos levando-os para trás, rentes ao corpo, e aproxime o peito da parede.',
+            'Empurre a parede e volte esticando os braços.',
+        ],
+        'breathing': 'Inspire ao descer e solte o ar ao empurrar.',
+        'errors': ['Abrir os cotovelos para os lados.', 'Deixar o quadril ir para trás.'],
+        'easier': 'Chegue os pés mais perto da parede.',
+        'safety': 'Com dor nos punhos, apoie os antebraços e faça só a prancha.',
+    },
+    'mergulho-cadeira': {
+        'name': 'Mergulho na cadeira',
+        'muscles': ['Tríceps', 'Ombros'],
+        'position': 'Sentada na beira de uma cadeira firme encostada na parede, mãos ao lado do quadril com os dedos para a frente e pés no chão.',
+        'steps': [
+            'Tire o quadril da cadeira, apoiando o peso nas mãos.',
+            'Dobre os cotovelos para trás e desça o quadril alguns centímetros.',
+            'Empurre a cadeira e estique os braços para subir.',
+        ],
+        'breathing': 'Inspire ao descer e solte o ar ao subir.',
+        'errors': ['Descer demais, forçando o ombro.', 'Abrir os cotovelos para os lados.'],
+        'easier': 'Aproxime os pés da cadeira e desça bem pouco.',
+        'safety': 'Use só cadeira firme, sem rodinhas. Com dor no ombro, troque pela flexão fechada na parede.',
+    },
+    'remada-toalha': {
+        'name': 'Remada com toalha',
+        'muscles': ['Costas', 'Parte de trás do ombro', 'Bíceps'],
+        'position': 'Em pé, pés afastados na largura do quadril, segurando uma toalha esticada com as duas mãos à frente do peito.',
+        'steps': [
+            'Puxe as pontas da toalha para fora, como se quisesse rasgá-la.',
+            'Mantendo a tensão, leve os cotovelos para trás e junte as escápulas.',
+            'Volte os braços à frente sem soltar a tensão da toalha.',
+        ],
+        'breathing': 'Solte o ar ao levar os cotovelos para trás.',
+        'errors': ['Subir os ombros.', 'Arquear a lombar.'],
+        'easier': 'Faça mais devagar e com menos força na toalha.',
+        'safety': 'Mantenha o pescoço solto durante todo o movimento.',
+    },
+    'extensao-bracos-tras': {
+        'name': 'Batidinha de braços para trás',
+        'muscles': ['Tríceps', 'Parte de trás do ombro'],
+        'position': 'Em pé, tronco levemente inclinado para a frente, joelhos soltos e braços esticados ao lado do corpo, palmas viradas para trás.',
+        'steps': [
+            'Leve os braços esticados para trás o máximo que conseguir.',
+            'Faça pequenos movimentos para cima e para baixo, como batidinhas.',
+            'Sinta a parte de trás do braço queimar.',
+        ],
+        'breathing': 'Respire de forma ritmada.',
+        'errors': ['Dobrar os cotovelos.', 'Arredondar as costas.'],
+        'easier': 'Faça em pé, com o tronco reto.',
+        'safety': 'Mantenha o abdômen firme para proteger a lombar.',
+    },
+    # Yoga Facial
+    'face-testa': {
+        'name': 'Testa lisa',
+        'muscles': ['Músculo da testa (frontal)'],
+        'position': 'Sentada, de frente para o espelho, com os dedos indicadores logo acima das sobrancelhas.',
+        'steps': [
+            'Segure a pele da testa levemente para baixo com os dedos.',
+            'Tente subir as sobrancelhas contra a resistência dos dedos.',
+            'Segure 5 segundos e solte devagar.',
+        ],
+        'breathing': 'Respire pelo nariz durante todo o exercício.',
+        'errors': ['Franzir a testa sem os dedos segurando.', 'Apertar a pele com força.'],
+        'safety': 'Faça com as mãos limpas e sem puxar a pele.',
+    },
+    'face-olhos': {
+        'name': 'Olhar firme',
+        'muscles': ['Músculo ao redor dos olhos (orbicular)'],
+        'position': 'Sentada, dedos indicadores no canto externo dos olhos e dedos médios no canto interno.',
+        'steps': [
+            'Olhe para cima, sem mexer a cabeça.',
+            'Aperte levemente as pálpebras de baixo, como quem aperta os olhos contra o sol.',
+            'Segure 5 segundos e relaxe.',
+        ],
+        'breathing': 'Respire devagar pelo nariz.',
+        'errors': ['Fechar os olhos totalmente.', 'Enrugar a testa junto.'],
+        'safety': 'Retire as lentes de contato antes.',
+    },
+    'face-macas': {
+        'name': 'Maçãs do rosto',
+        'muscles': ['Zigomáticos', 'Bochechas'],
+        'position': 'Sentada, de frente para o espelho.',
+        'steps': [
+            'Faça um "O" com a boca, cobrindo os dentes com os lábios.',
+            'Sorria com os cantos da boca, sem desfazer o "O", sentindo as maçãs subirem.',
+            'Coloque os dedos levemente sobre as maçãs e suba-as um pouco mais.',
+            'Segure 5 segundos e relaxe.',
+        ],
+        'breathing': 'Respire pelo nariz.',
+        'errors': ['Abrir demais a boca.', 'Franzir a testa.'],
+        'safety': 'Pare se sentir dor na articulação da mandíbula.',
+    },
+    'face-bigode': {
+        'name': 'Bochecha de ar (bigode chinês)',
+        'muscles': ['Bochechas', 'Músculos ao redor da boca'],
+        'position': 'Sentada, coluna reta e lábios fechados.',
+        'steps': [
+            'Encha a boca de ar.',
+            'Passe o ar de uma bochecha para a outra, devagar.',
+            'Depois leve o ar para cima do lábio superior e segure 3 segundos.',
+        ],
+        'breathing': 'Respire pelo nariz enquanto segura o ar na boca.',
+        'errors': ['Contrair o pescoço.'],
+        'safety': 'Faça de forma suave, sem forçar.',
+    },
+    'face-papada': {
+        'name': 'Beijo no teto (papada)',
+        'muscles': ['Músculo do pescoço (platisma)', 'Musculatura abaixo do queixo'],
+        'position': 'Sentada, coluna reta e ombros relaxados.',
+        'steps': [
+            'Incline a cabeça para trás, olhando para o teto, sem deixar o pescoço desconfortável.',
+            'Faça bico, como quem manda um beijo para o teto.',
+            'Segure 5 segundos e volte a cabeça ao centro.',
+        ],
+        'breathing': 'Respire pelo nariz.',
+        'errors': ['Jogar a cabeça para trás com força.', 'Subir os ombros.'],
+        'easier': 'Incline só um pouco a cabeça.',
+        'safety': 'Com problemas na coluna cervical ou tontura, faça olhando para a frente.',
+    },
+    'face-lingua': {
+        'name': 'Língua no céu da boca',
+        'muscles': ['Musculatura abaixo do queixo', 'Língua'],
+        'position': 'Sentada, olhando para a frente, lábios fechados.',
+        'steps': [
+            'Encoste toda a língua no céu da boca, como uma ventosa.',
+            'Empurre a língua para cima, sentindo a região abaixo do queixo firmar.',
+            'Segure 5 segundos e solte.',
+        ],
+        'breathing': 'Respire pelo nariz.',
+        'errors': ['Apertar os dentes.'],
+        'safety': 'É discreto: dá para fazer no trânsito ou no computador.',
     },
 }
 
@@ -510,324 +638,507 @@ MATERIALS.append({
     ],
 })
 
-# 7) UPSELL 1 — ACELERADOR DE RESULTADOS TURBO 3X
+# 7) UPSELL 1 — CARDÁPIO DESINCHAÇO 21 DIAS
 MATERIALS.append({
-    'slug': 'acelerador-de-resultados-turbo-3x',
+    'slug': 'cardapio-desinchaco-21-dias',
     'group': 'extra',
-    'title': 'Acelerador de Resultados',
-    'title2': 'Turbo 3X',
-    'kicker': 'ATALHO DA TRANSFORMAÇÃO',
-    'desc': 'Estratégias para queimar mais gordura e ver resultado mais rápido, sem academia e sem dieta maluca.',
-    'cover': 'ww/img/tablet1.webp',
+    'title': 'Cardápio Desinchaço',
+    'title2': '21 Dias',
+    'kicker': 'COMPLEMENTO DO DESAFIO',
+    'desc': 'Cardápio de 21 dias, lista de compras e chás para desinchar a barriga junto com os treinos.',
+    'cover': 'app/fotos/agua.webp',
     'body': [
-        ('h2', 'Os 3 aceleradores'),
-        ('p', 'O Desafio 21 Dias fortalece e alinha o seu corpo. Este guia soma <b>três aceleradores</b> que fazem '
-              'o resultado aparecer mais rápido: <b>mover mais o corpo no dia a dia</b>, <b>circuitos que aceleram o '
-              'coração</b> e <b>hábitos que ajudam o corpo a queimar gordura</b>.'),
-        ('h2', 'Acelerador 1 — Movimento do dia a dia'),
-        ('p', 'Grande parte da energia que gastamos não vem do treino, e sim de tudo o que fazemos fora dele: andar, '
-              'subir escadas, arrumar a casa. Aumentar esse movimento é a forma mais fácil de queimar mais sem treinar mais.'),
-        ('list', [
-            '<b>Meta de passos:</b> descubra a sua média atual no celular e some 1.000 passos por semana até chegar perto de 8.000.',
-            '<b>Escada sempre que possível</b> e estacionar ou descer do ônibus um pouco mais longe.',
-            '<b>Ligações em pé</b> ou caminhando pela casa.',
-            '<b>Regra dos 50 minutos:</b> a cada 50 minutos sentada, levante e se mexa por 2 minutos.',
-            '<b>Caminhada pós-refeição:</b> 10 minutos depois do almoço ou do jantar ajudam a digestão e o controle do açúcar no sangue.',
-        ]),
-        ('h2', 'Acelerador 2 — Circuito Turbo (12 minutos)'),
-        ('p', 'Faça 3 vezes por semana, em dias alternados, depois do treino do desafio ou em outro horário do dia.'),
-        ('workout', '30 s de exercício · 15 s de descanso · 4 voltas', [
-            ('polichinelo-sem-salto', '30 s'), ('agachamento-deslizante', '30 s'),
-            ('escalador-parede', '30 s'), ('ponte-marcha', '30 s'),
-        ], 'Semana 1: 3 voltas. Semana 2: 4 voltas. Semana 3: 40 s de exercício e 15 s de descanso.'),
-        ('newex', 'polichinelo-sem-salto'),
-        ('ex', 'agachamento-deslizante', '30 s'),
-        ('ex', 'escalador-parede', '30 s'),
-        ('ex', 'ponte-marcha', '30 s'),
-        ('h2', 'Acelerador 3 — Hábitos que queimam'),
-        ('table', ['Hábito', 'Por que acelera', 'Como fazer'], [
-            ['Proteína no café da manhã', 'Aumenta a saciedade e ajuda a preservar músculo', 'Ovos, iogurte ou queijo branco já na primeira refeição'],
-            ['Água antes das refeições', 'Ajuda a perceber a saciedade', '1 copo 15 minutos antes do almoço e do jantar'],
-            ['Dormir 7–8 horas', 'Sono ruim aumenta a fome no dia seguinte', 'Mesmo horário para deitar, quarto escuro, sem tela 30 min antes'],
-            ['Vegetais primeiro', 'Mais fibras, menos calorias no prato', 'Comece pela salada em todas as refeições principais'],
-            ['Menos líquidos açucarados', 'Calorias que não dão saciedade', 'Troque refrigerante e suco por água com limão ou chá'],
-            ['Jantar mais cedo e mais leve', 'Melhor sono e digestão', 'Jante 2 a 3 horas antes de dormir'],
-        ]),
-        ('h2', 'Plano Turbo de 21 dias'),
-        ('table', ['Dias', 'Movimento', 'Circuito Turbo', 'Hábito-foco'], [
-            ['1–7', 'Média de passos + 1.000', '2x na semana, 3 voltas', 'Proteína no café + água antes das refeições'],
-            ['8–14', 'Média + 2.000', '3x na semana, 4 voltas', 'Vegetais primeiro + caminhada pós-refeição'],
-            ['15–21', 'Média + 3.000', '3x na semana, 40 s/15 s', 'Sono 7–8 h + jantar mais cedo'],
-        ]),
-        ('h2', 'Checklist Turbo diário'),
-        ('check', ['Treino do Desafio 21 Dias', 'Meta de passos', 'Proteína no café da manhã', '2 litros de água',
-                   'Circuito Turbo (nos dias marcados)', '7 horas de sono']),
-        ('tip', 'Meça o que importa', 'Tire as medidas de cintura, quadril e coxa e uma foto de frente e de lado no dia 1. '
-              'Repita no dia 21, na mesma hora e com a mesma roupa. A fita métrica e o espelho mostram mudanças que a balança não mostra.'),
-    ],
-})
-
-# 8) UPSELL 2 — CÓDIGO PROIBIDO DO CORPO VIOLÃO
-MATERIALS.append({
-    'slug': 'codigo-proibido-do-corpo-violao',
-    'group': 'extra',
-    'title': 'Código Proibido do',
-    'title2': 'Corpo Violão',
-    'kicker': 'MÉTODO VIP',
-    'desc': 'Cintura definida, barriga mais seca e curvas realçadas com um método simples, rápido e sem academia.',
-    'cover': 'ww/img/tablet2.webp',
-    'body': [
-        ('h2', 'O "código" do corpo violão'),
-        ('p', 'O formato de violão vem do <b>contraste</b> entre uma cintura mais fina e um quadril e glúteos mais '
-              'cheios. Não dá para escolher de onde o corpo perde gordura, mas dá para <b>fortalecer o abdômen profundo</b> '
-              '(que funciona como uma cinta natural) e <b>desenvolver os glúteos</b>, o que realça a curva.'),
-        ('list', [
-            '<b>Código 1 — Cintura:</b> respiração, vácuo abdominal e exercícios de core que "fecham" a cintura.',
-            '<b>Código 2 — Curvas:</b> glúteo máximo e médio fortes para levantar e arredondar o bumbum.',
-            '<b>Código 3 — Barriga seca:</b> constância, alimentação com proteína e menos inchaço.',
-        ]),
-        ('h2', 'Código 1 — Treino Cintura (10 minutos)'),
-        ('workout', '3 voltas · 20 s de descanso', [
-            ('vacuo-abdominal', '5 x 10 s'), ('dead-bug-parede', '10 repetições'),
-            ('prancha-lateral-parede', '20 s de cada lado'), ('abdominal-bicicleta-lento', '12 repetições'),
-        ]),
-        ('newex', 'vacuo-abdominal'),
-        ('ex', 'dead-bug-parede', ''),
-        ('ex', 'prancha-lateral-parede', ''),
-        ('newex', 'abdominal-bicicleta-lento'),
-        ('h2', 'Código 2 — Treino Curvas (15 minutos)'),
-        ('workout', '3 voltas · 30 s de descanso', [
-            ('ponte-unilateral', '10 de cada lado'), ('quatro-apoios-coice', '15 de cada lado'),
-            ('abducao-em-pe', '15 de cada lado'), ('afundo-apoiado', '10 de cada lado'),
-            ('elevacao-lateral-deitada', '15 de cada lado'),
-        ], 'Segure 2 segundos no ponto mais alto de cada repetição, apertando o glúteo.'),
-        ('ex', 'ponte-unilateral', ''),
-        ('newex', 'quatro-apoios-coice'),
-        ('ex', 'abducao-em-pe', ''),
-        ('ex', 'afundo-apoiado', ''),
-        ('newex', 'elevacao-lateral-deitada'),
-        ('h2', 'Código 3 — Barriga seca'),
-        ('list', [
-            '<b>Menos inchaço:</b> reduza ultraprocessados, embutidos e excesso de sal; aumente água, frutas e vegetais.',
-            '<b>Proteína + fibra</b> em todas as refeições para controlar a fome.',
-            '<b>Atenção às bebidas:</b> refrigerantes e bebidas alcoólicas aumentam o inchaço e as calorias.',
-            '<b>Postura:</b> abdômen ativo e ombros abertos mudam a silhueta na hora (veja o Bônus 1).',
-        ]),
-        ('h2', 'Plano VIP de 4 semanas'),
-        ('table', ['Dia', 'Semanas 1 e 2', 'Semanas 3 e 4'], [
-            ['Segunda', 'Treino Curvas', 'Treino Curvas (4 voltas)'],
-            ['Terça', 'Treino Cintura', 'Treino Cintura + vácuo 2x no dia'],
-            ['Quarta', 'Descanso ativo (caminhada)', 'Descanso ativo (caminhada)'],
-            ['Quinta', 'Treino Curvas', 'Treino Curvas (4 voltas)'],
-            ['Sexta', 'Treino Cintura', 'Treino Cintura (4 voltas)'],
-            ['Sábado', 'Curvas + Cintura (2 voltas cada)', 'Curvas + Cintura (3 voltas cada)'],
-            ['Domingo', 'Descanso', 'Descanso'],
-        ]),
-        ('h2', 'Acompanhe as suas medidas'),
-        ('table', ['Medida', 'Dia 1', 'Dia 14', 'Dia 28'], [
-            ['Cintura (na altura do umbigo)', '', '', ''],
-            ['Quadril (parte mais larga do bumbum)', '', '', ''],
-            ['Coxa (meio da coxa)', '', '', ''],
-            ['Relação cintura ÷ quadril', '', '', ''],
-        ]),
-        ('tip', 'Dica VIP', 'Meça sempre pela manhã, em jejum, com a fita bem rente à pele sem apertar. '
-              'Quando a cintura diminui e o quadril se mantém ou aumenta, o formato violão está aparecendo.'),
-    ],
-})
-
-# 9) UPSELL 3 — PREGUIÇOSA GOSTOSA
-MATERIALS.append({
-    'slug': 'preguicosa-gostosa',
-    'group': 'extra',
-    'title': 'Preguiçosa Gostosa',
-    'title2': 'Corpo Durinho Sem Academia',
-    'kicker': 'MÉTODO',
-    'desc': 'Exercícios rápidos e simples, a maioria deitada, para tonificar o corpo sem sair de casa.',
-    'cover': 'ww/img/tablet3.webp',
-    'body': [
-        ('h2', 'O método para quem tem preguiça (e tudo bem)'),
-        ('p', 'Você não precisa amar treinar para ter um corpo mais firme. O Preguiçosa Gostosa foi pensado para os dias '
-              'em que a energia está lá embaixo: <b>quase tudo é feito deitada</b>, no tapete ou até na cama, com '
-              'movimentos lentos que trabalham fundo o abdômen, os glúteos e as pernas.'),
-        ('tip', 'A regra de ouro', '<b>Combine o treino com algo que você já faz.</b> Ao acordar, antes de levantar da cama; '
-              'ou à noite, assistindo à sua série. O hábito "pega carona" e você nem percebe que treinou.'),
-        ('h2', 'Treino da Cama — manhã (7 minutos)'),
-        ('workout', '45 s cada · sem descanso · 1 volta', [
-            ('respiracao-lateral', '45 s'), ('basculamento-pelvico', '45 s'), ('ponte-parede', '45 s'),
-            ('concha-parede', '45 s (troque o lado na metade)'), ('toque-pes-parede', '45 s'),
-            ('deslize-pernas', '45 s'), ('pernas-na-parede', '1 min'),
-        ], 'Na cama, use a cabeceira ou a parede ao lado. Se o colchão for muito macio, prefira um tapete.'),
-        ('h2', 'Treino do Sofá — noite (8 minutos)'),
-        ('workout', '40 s cada · 10 s de descanso · 2 voltas', [
-            ('elevacao-lateral-deitada', '40 s (20 s cada lado)'), ('circulos-perna', '40 s (20 s cada lado)'),
-            ('dead-bug-parede', '40 s'), ('superman-deitada', '40 s'),
-        ]),
-        ('h2', 'Treino Preguiça Zero (para os dias com um pouco mais de energia — 10 min)'),
-        ('workout', '40 s / 20 s · 2 voltas', [
-            ('ponte-marcha', '40 s'), ('agachamento-isometrico', '40 s'), ('prancha-parede', '40 s'),
-            ('abducao-em-pe', '40 s (20 s cada lado)'), ('elevacao-panturrilha', '40 s'),
-        ]),
-        ('h2', 'Plano de 14 dias'),
-        ('table', ['Dia', 'Manhã', 'Noite'], [
-            ['1, 2, 3', 'Treino da Cama', '—'],
-            ['4', 'Treino da Cama', 'Treino do Sofá (1 volta)'],
-            ['5', 'Descanso', 'Pernas na parede 3 min'],
-            ['6, 7', 'Treino da Cama', 'Treino do Sofá'],
-            ['8', 'Preguiça Zero', '—'],
-            ['9, 10', 'Treino da Cama', 'Treino do Sofá'],
-            ['11', 'Descanso', 'Pernas na parede 3 min'],
-            ['12, 13', 'Treino da Cama', 'Treino do Sofá'],
-            ['14', 'Preguiça Zero', 'Comemore! Compare suas fotos'],
-        ]),
-        ('h2', 'Os exercícios, passo a passo'),
-        *[('ex', i, '') for i in ['basculamento-pelvico', 'ponte-parede', 'concha-parede', 'toque-pes-parede',
-                                  'deslize-pernas', 'circulos-perna', 'dead-bug-parede']],
-        ('newex', 'elevacao-lateral-deitada'),
-        ('newex', 'superman-deitada'),
-        ('h2', 'Truques da preguiçosa esperta'),
-        ('list', [
-            'Deixe o tapete aberto no quarto: o que está à vista vira hábito.',
-            'Coloque uma música animada de 7 minutos e treine até ela acabar.',
-            'Marque um X no calendário a cada dia feito. Não quebre a corrente!',
-            'Em dias péssimos, faça só 1 exercício. Começar já conta.',
-        ]),
-    ],
-})
-
-# 10) UPSELL 4 — RITUAL SECRETO DA GOSTOSA
-MATERIALS.append({
-    'slug': 'ritual-secreto-da-gostosa',
-    'group': 'extra',
-    'title': 'Ritual Secreto da',
-    'title2': 'Gostosa',
-    'kicker': '5 MINUTOS POR DIA',
-    'desc': 'Um ritual de 5 minutos por dia para cintura definida, bumbum empinado e corpo mais firme.',
-    'cover': 'ww/img/tablet4.webp',
-    'body': [
-        ('h2', 'Cinco minutos que mudam o seu dia'),
-        ('p', 'O Ritual Secreto é uma sequência curta, feita <b>todos os dias no mesmo horário</b>. Cada dia da semana '
-              'tem um ritual diferente, com 5 exercícios de 50 segundos e 10 segundos para trocar: exatamente 5 minutos.'),
-        ('tip', 'O segredo está no ritual', 'Escolha um gatilho fixo: logo depois de escovar os dentes de manhã, ou antes do '
-              'banho. Separe a roupa, abra o tapete e comece. O corpo aprende rápido quando a hora é sempre a mesma.'),
-        ('h2', 'Segunda — Ritual Cintura'),
-        ('workout', '50 s cada · 10 s para trocar', [
-            ('vacuo-abdominal', '50 s (repetições de 10 s)'), ('dead-bug-parede', '50 s'),
-            ('prancha-lateral-parede', '25 s cada lado'), ('abdominal-bicicleta-lento', '50 s'), ('respiracao-lateral', '50 s'),
-        ]),
-        ('h2', 'Terça — Ritual Bumbum'),
-        ('workout', '50 s cada · 10 s para trocar', [
-            ('ponte-parede', '50 s'), ('quatro-apoios-coice', '25 s cada lado'), ('concha-parede', '25 s cada lado'),
-            ('ponte-marcha', '50 s'), ('figura-quatro', '25 s cada lado'),
-        ]),
-        ('h2', 'Quarta — Ritual Pernas'),
-        ('workout', '50 s cada · 10 s para trocar', [
-            ('agachamento-deslizante', '50 s'), ('afundo-apoiado', '25 s cada lado'), ('agachamento-isometrico', '50 s'),
-            ('elevacao-panturrilha', '50 s'), ('quadriceps-apoio', '25 s cada lado'),
-        ]),
-        ('h2', 'Quinta — Ritual Postura'),
-        ('workout', '50 s cada · 10 s para trocar', [
-            ('anjos-parede', '50 s'), ('swan-em-pe', '50 s'), ('flexao-parede', '50 s'),
-            ('rotacao-toracica', '25 s cada lado'), ('abertura-peito', '25 s cada lado'),
-        ]),
-        ('h2', 'Sexta — Ritual Queima'),
-        ('workout', '50 s cada · 10 s para trocar', [
-            ('polichinelo-sem-salto', '50 s'), ('escalador-parede', '50 s'), ('corrida-parada', '50 s'),
-            ('agachamento-deslizante', '50 s'), ('marcha-apoiada', '50 s'),
-        ]),
-        ('h2', 'Sábado — Ritual Curvas'),
-        ('workout', '50 s cada · 10 s para trocar', [
-            ('ponte-unilateral', '25 s cada lado'), ('abducao-em-pe', '25 s cada lado'),
-            ('elevacao-lateral-deitada', '25 s cada lado'), ('extensao-quadril', '25 s cada lado'), ('prancha-parede', '50 s'),
-        ]),
-        ('h2', 'Domingo — Ritual Leveza'),
-        ('workout', '1 minuto em cada posição', [
-            ('pernas-na-parede', '1 min'), ('borboleta-parede', '1 min'), ('posterior-parede', '30 s cada lado'),
-            ('inclinacao-lateral', '30 s cada lado'), ('respiracao-lateral', '1 min'),
-        ]),
-        ('h2', 'Os exercícios exclusivos do Ritual'),
-        ('newex', 'vacuo-abdominal'),
-        ('newex', 'abdominal-bicicleta-lento'),
-        ('newex', 'quatro-apoios-coice'),
-        ('newex', 'elevacao-lateral-deitada'),
-        ('newex', 'polichinelo-sem-salto'),
-        ('newex', 'corrida-parada'),
-        ('p', 'Os demais exercícios estão explicados passo a passo no guia <b>Pilates na Parede — Desafio 21 Dias</b>.'),
-        ('h2', 'Calendário de 30 dias'),
-        ('p', 'Marque cada dia em que fizer o seu ritual. Ao completar 30, você terá criado um hábito para a vida.'),
-        ('grid30',),
-    ],
-})
-
-# 11) UPSELL 5 — O SEGREDO DAS MULHERES QUE NÃO ENGORDAM
-MATERIALS.append({
-    'slug': 'o-segredo-das-mulheres-que-nao-engordam',
-    'group': 'extra',
-    'title': 'O Segredo das Mulheres',
-    'title2': 'que Não Engordam',
-    'kicker': 'HÁBITOS SIMPLES E REAIS',
-    'desc': 'Os hábitos que mantêm o corpo em forma, sem dietas malucas e sem passar fome.',
-    'cover': 'ww/img/tablet5.webp',
-    'body': [
-        ('h2', 'Não é genética. São hábitos.'),
-        ('p', 'Sabe aquela amiga que "come de tudo e não engorda"? Quase sempre ela tem hábitos que ninguém vê: come '
-              'devagar, para quando está satisfeita, se mexe o dia todo e não passa o dia beliscando. Este guia '
-              'reúne esses hábitos para você colocar em prática, <b>um de cada vez</b>.'),
-        ('h2', 'Os 10 hábitos'),
+        ('h2', 'Por que a barriga incha'),
+        ('p', 'Aquela barriga estufada no fim do dia, a calça que fecha de manhã e aperta à noite, nem sempre é gordura. '
+              'Na maioria das vezes é <b>inchaço</b>: líquido retido e gases. Ele vem de excesso de sal e de '
+              'ultraprocessados, pouca água, pouca fibra, intestino preso, comer rápido e, em muitas mulheres, das '
+              'variações hormonais do ciclo e da menopausa.'),
+        ('p', 'A boa notícia: o inchaço responde rápido. Com o cardápio certo, a maioria das mulheres sente a diferença '
+              'na roupa <b>já na primeira semana</b>. O Pilates faz metade do trabalho; este cardápio faz o resto.'),
+        ('h2', 'As 7 regras do desinchaço'),
         ('steps', [
-            '<b>Come devagar.</b> Leva uns 20 minutos para o cérebro perceber a saciedade. Apoie os talheres entre as garfadas.',
-            '<b>Para no "satisfeita", não no "cheia".</b> Use a escala de fome abaixo antes e no meio da refeição.',
-            '<b>Prato colorido primeiro.</b> Metade do prato de vegetais, sempre.',
-            '<b>Proteína em todas as refeições.</b> Ela segura a fome por mais tempo.',
-            '<b>Não belisca.</b> Faz refeições de verdade em horários parecidos.',
-            '<b>Bebe água e não bebe calorias.</b> Refrigerante e suco são exceção, não regra.',
-            '<b>Se mexe o dia todo.</b> Anda, sobe escada, brinca, dança. Não depende só do treino.',
-            '<b>Dorme bem.</b> Noite mal dormida aumenta a vontade de doce no dia seguinte.',
-            '<b>Não proíbe nada.</b> Come o doce com calma, sem culpa, e segue a vida. Proibir aumenta a vontade.',
-            '<b>Tem um plano para o fim de semana.</b> Escolhe onde vai "chutar o balde" e mantém o resto.',
+            '<b>Água ao longo do dia.</b> Uma boa referência é 35 ml por quilo de peso. Parece contraditório, mas quem bebe pouca água retém mais.',
+            '<b>Menos sal escondido.</b> Embutidos, temperos prontos, caldos em cubo, salgadinhos e comida congelada são os campeões.',
+            '<b>Fibra todo dia.</b> Verduras, legumes, frutas com casca, aveia e feijão fazem o intestino funcionar.',
+            '<b>Proteína em todas as refeições.</b> Segura a fome e ajuda a manter os músculos que você está fortalecendo.',
+            '<b>Potássio no prato.</b> Banana, abacate, feijão, tomate e folhas escuras ajudam o corpo a eliminar o excesso de sódio.',
+            '<b>Coma devagar.</b> Quem come rápido engole ar, e ar vira gás.',
+            '<b>Jante mais cedo e mais leve.</b> De 2 a 3 horas antes de dormir.',
         ]),
-        ('h2', 'A escala da fome'),
-        ('table', ['Nota', 'Como você se sente', 'O que fazer'], [
-            ['1–2', 'Fome intensa, irritada, tonta', 'Você esperou demais. Coma algo com proteína agora.'],
-            ['3–4', 'Fome tranquila, estômago "chamando"', 'Hora ideal para comer.'],
-            ['5', 'Neutra', 'Não precisa comer.'],
-            ['6–7', 'Satisfeita, confortável', 'Hora ideal para parar.'],
-            ['8–10', 'Cheia, estufada, sonolenta', 'Passou do ponto. Observe o que levou a isso, sem culpa.'],
+        ('h2', 'O que evitar nos 21 dias'),
+        ('table', ['Evite', 'Troque por'], [
+            ['Refrigerante e água com gás', 'Água, água com limão ou chá gelado sem açúcar'],
+            ['Presunto, salsicha, peito de peru', 'Frango desfiado, ovos ou queijo branco'],
+            ['Caldo em cubo e tempero pronto', 'Alho, cebola, ervas, limão e páprica'],
+            ['Salgadinho e biscoito recheado', 'Pipoca de panela, fruta ou castanhas'],
+            ['Chiclete e bala', 'Cravo, canela em pau ou uma fruta'],
+            ['Pão branco todo dia', 'Pão integral, tapioca com ovo ou cuscuz'],
         ]),
-        ('h2', 'Fome física ou vontade emocional?'),
-        ('table', ['Fome física', 'Fome emocional'], [
-            ['Vem aos poucos', 'Vem de repente'],
-            ['Qualquer comida resolve', 'Pede um alimento específico (doce, salgado)'],
-            ['Passa quando você come', 'Continua mesmo depois de comer'],
-            ['Sem culpa depois', 'Costuma vir com culpa'],
+        ('tip', 'Feijão e repolho estufam?', 'Deixe o feijão de molho por 12 horas e jogue a água fora antes de cozinhar. '
+              'Comece com porções pequenas: o intestino se acostuma em poucos dias.'),
+        ('h2', 'Os chás do desinchaço'),
+        ('p', 'Escolha um por dia e tome de 1 a 2 xícaras, sem açúcar, de preferência entre as refeições.'),
+        ('table', ['Chá', 'Para quê', 'Atenção'], [
+            ['Gengibre com limão', 'Digestão e sensação de estômago leve', 'Evite se tiver gastrite ou usar anticoagulante'],
+            ['Hortelã', 'Gases e estufamento', 'Pode piorar o refluxo em algumas pessoas'],
+            ['Erva-doce', 'Gases e cólica', 'Seguro para a maioria das pessoas'],
+            ['Camomila', 'Digestão e sono (ótimo à noite)', 'Evite se tiver alergia a margarida'],
+            ['Hibisco', 'Ação diurética leve', 'Evite se tiver pressão baixa, estiver grávida ou amamentando'],
         ]),
-        ('tip', 'Pausa de 10 minutos', 'Quando bater a vontade fora de hora, beba um copo de água e espere 10 minutos fazendo '
-              'outra coisa. Se ainda quiser, coma uma porção pequena, sentada e com calma.'),
-        ('h2', 'Como comer fora sem sair do eixo'),
+        ('h2', 'Como montar o prato'),
         ('list', [
-            '<b>Restaurante por quilo:</b> monte primeiro a salada, depois a proteína e por último o carboidrato.',
-            '<b>Lanchonete:</b> prefira sanduíche com proteína e salada; divida a batata frita.',
-            '<b>Pizza:</b> coma 2 fatias com salada antes; escolha sabores com mais recheio e menos borda.',
-            '<b>Festa:</b> não chegue com fome; faça um lanche com proteína antes.',
-            '<b>Bebida alcoólica:</b> intercale cada copo com um copo de água.',
+            '<b>Metade do prato:</b> verduras e legumes (crus e cozidos).',
+            '<b>Um quarto:</b> proteína (frango, peixe, ovos, carne magra, tofu).',
+            '<b>Um quarto:</b> carboidrato de verdade (arroz, feijão, batata, mandioca, milho).',
+            '<b>Tempero:</b> azeite, limão, alho e ervas no lugar do sal em excesso.',
         ]),
-        ('h2', 'Lanches que seguram a fome'),
-        ('list', [
-            'Iogurte natural com fruta e aveia.', 'Ovo cozido e uma fruta.', 'Queijo branco com tomate e orégano.',
-            'Maçã com 1 colher de pasta de amendoim.', 'Pipoca de panela com pouco óleo.', 'Grão-de-bico assado com páprica.',
+        ('pagebreak',),
+        ('h2', 'Semana 1 — Desinchar'),
+        ('p', 'Foco: cortar o sal escondido e fazer o intestino funcionar. As refeições se repetem de propósito, para facilitar as compras.'),
+        ('table', ['Dia', 'Café da manhã', 'Almoço', 'Lanche', 'Jantar'], [
+            ['1', 'Ovos mexidos + mamão', 'Frango grelhado, arroz, feijão e salada verde', 'Iogurte natural + aveia', 'Sopa de abóbora com frango desfiado'],
+            ['2', 'Iogurte + banana + aveia', 'Peixe assado, purê de batata e brócolis', 'Maçã + castanhas', 'Omelete de espinafre + salada de tomate'],
+            ['3', 'Tapioca com ovo + chá de hortelã', 'Carne moída com abobrinha, arroz e salada', 'Banana com canela', 'Sopa de legumes com frango'],
+            ['4', 'Ovos mexidos + mamão', 'Frango grelhado, arroz, feijão e cenoura cozida', 'Iogurte natural + chia', 'Peixe com legumes no vapor'],
+            ['5', 'Cuscuz com ovo', 'Omelete de forno com legumes e salada', 'Pera + castanhas', 'Caldo de frango com legumes'],
+            ['6', 'Iogurte + morango + aveia', 'Peixe, arroz, feijão e salada de folhas', 'Abacate amassado com limão', 'Omelete com tomate e queijo branco'],
+            ['7', 'Panqueca de banana e aveia', 'Livre (com metade do prato de salada)', 'Fruta', 'Sopa de abóbora com frango desfiado'],
         ]),
-        ('h2', 'Plano de 21 dias: um hábito por vez'),
-        ('table', ['Dias', 'Hábito novo', 'Mantenha também'], [
-            ['1–3', 'Comer devagar (20 min por refeição)', '—'],
-            ['4–6', 'Metade do prato com vegetais', 'Comer devagar'],
-            ['7–9', 'Proteína em todas as refeições', 'Os anteriores'],
-            ['10–12', 'Água no lugar de bebidas com açúcar', 'Os anteriores'],
-            ['13–15', 'Usar a escala da fome', 'Os anteriores'],
-            ['16–18', 'Dormir 7 horas', 'Os anteriores'],
-            ['19–21', 'Plano para o fim de semana', 'Todos os hábitos'],
+        ('h2', 'Semana 2 — Firmar'),
+        ('p', 'Foco: mais proteína e mais variedade de vegetais, para segurar a fome e ajudar os músculos.'),
+        ('table', ['Dia', 'Café da manhã', 'Almoço', 'Lanche', 'Jantar'], [
+            ['8', 'Ovos cozidos + abacaxi', 'Frango ao curry com arroz e vagem', 'Iogurte + aveia', 'Salada completa com atum e grão-de-bico'],
+            ['9', 'Pão integral com queijo branco', 'Carne de panela com legumes e arroz', 'Banana + pasta de amendoim', 'Sopa de lentilha'],
+            ['10', 'Iogurte + kiwi + chia', 'Peixe assado, batata-doce e salada', 'Ovo cozido + tomate', 'Frango desfiado com abobrinha refogada'],
+            ['11', 'Tapioca com frango', 'Omelete de legumes, arroz, feijão e salada', 'Maçã + castanhas', 'Caldo verde leve (sem linguiça)'],
+            ['12', 'Ovos mexidos + mamão', 'Frango grelhado, quinoa ou arroz e brócolis', 'Iogurte + morango', 'Peixe com purê de abóbora'],
+            ['13', 'Cuscuz com ovo', 'Carne moída com legumes e salada', 'Pipoca de panela', 'Salada morna de frango e legumes'],
+            ['14', 'Panqueca de banana e aveia', 'Livre (com metade do prato de salada)', 'Fruta', 'Sopa de legumes com ovo'],
         ]),
+        ('h2', 'Semana 3 — Manter'),
+        ('p', 'Foco: transformar o que deu certo em hábito, para o resultado não ir embora depois do dia 21.'),
+        ('table', ['Dia', 'Café da manhã', 'Almoço', 'Lanche', 'Jantar'], [
+            ['15', 'Iogurte + banana + aveia', 'Peixe, arroz, feijão e salada colorida', 'Abacate com cacau', 'Omelete de forno com legumes'],
+            ['16', 'Ovos mexidos + pão integral', 'Frango grelhado, mandioca cozida e salada', 'Pera + castanhas', 'Sopa de abóbora com frango'],
+            ['17', 'Tapioca com queijo branco', 'Carne magra, arroz, feijão e beterraba', 'Iogurte + chia', 'Salada com atum e ovo'],
+            ['18', 'Cuscuz com ovo', 'Escondidinho de frango com abóbora', 'Fruta + castanhas', 'Caldo de legumes com frango'],
+            ['19', 'Iogurte + morango + aveia', 'Peixe assado com legumes e arroz', 'Ovo cozido + cenoura', 'Omelete de espinafre'],
+            ['20', 'Ovos cozidos + mamão', 'Frango ao molho de tomate, arroz e salada', 'Pipoca de panela', 'Sopa de lentilha'],
+            ['21', 'Panqueca de banana e aveia', 'Comemore! Livre, com metade do prato de salada', 'Fruta', 'Sopa de legumes com frango'],
+        ]),
+        ('tip', 'Quantidades', 'Este é um cardápio de referência, não uma dieta fechada. Coma até ficar satisfeita, não cheia. '
+              'Se tiver diabetes, doença nos rins ou outra condição de saúde, ajuste com o seu nutricionista.'),
+        ('h2', 'Trocas livres'),
+        ('table', ['Se não tiver', 'Use'], [
+            ['Frango', 'Ovos, peixe, carne magra ou tofu'],
+            ['Iogurte natural', 'Kefir, coalhada ou queijo branco'],
+            ['Arroz', 'Batata, mandioca, milho, quinoa ou cuscuz'],
+            ['Abóbora', 'Cenoura, mandioquinha ou chuchu'],
+            ['Castanhas', 'Amendoim ou sementes (girassol, abóbora)'],
+        ]),
+        ('h2', 'Lista de compras da semana'),
+        ('check', ['2 dúzias de ovos', '1 kg de peito de frango', '500 g de peixe (tilápia ou merluza)', '500 g de carne moída magra',
+                   '6 potes de iogurte natural', 'Aveia, chia e castanhas', 'Arroz, feijão e lentilha', 'Abóbora, abobrinha, cenoura e brócolis',
+                   'Folhas verdes, tomate e pepino', 'Banana, mamão, maçã e morango', 'Limão, alho, cebola e ervas frescas',
+                   'Chás: gengibre, hortelã, erva-doce, camomila']),
         ('h2', 'Checklist diário'),
-        ('check', ['Comi devagar', 'Metade do prato com vegetais', 'Proteína em todas as refeições', 'Bebi água e evitei bebidas açucaradas',
-                   'Parei no "satisfeita"', 'Me movimentei além do treino', 'Dormi pelo menos 7 horas']),
+        ('check', ['Bebi a minha meta de água', 'Tomei o chá do dia', 'Metade do prato com vegetais', 'Proteína em todas as refeições',
+                   'Evitei embutidos e tempero pronto', 'Comi devagar', 'Fiz o treino do Desafio 21 Dias']),
+    ],
+})
+
+# 8) UPSELL 2 — MENOPAUSA SEM BARRIGA
+MATERIALS.append({
+    'slug': 'menopausa-sem-barriga',
+    'group': 'extra',
+    'title': 'Menopausa',
+    'title2': 'Sem Barriga',
+    'kicker': 'PROTOCOLO NATURAL',
+    'desc': 'Alimentação, treino e hábitos para a barriga hormonal, os calorões e a falta de energia depois dos 40.',
+    'cover': 'app/fotos/energia.webp',
+    'body': [
+        ('h2', 'Não é falta de força de vontade. É hormonal.'),
+        ('p', 'A partir dos 40 anos, muitas mulheres percebem que a barriga cresce mesmo comendo igual. Isso tem explicação: '
+              'na <b>perimenopausa</b> (os anos antes da última menstruação) e depois da menopausa, o <b>estrogênio cai</b>. '
+              'Com isso, a gordura deixa de se acumular no quadril e nas coxas e passa a ir para a <b>barriga</b>. Ao mesmo '
+              'tempo, o corpo perde músculo mais rápido, o metabolismo desacelera e o sono piora.'),
+        ('p', 'Este protocolo trabalha os 5 pilares que fazem diferença nessa fase. Nenhum deles depende de remédio, e todos '
+              'combinam com o Desafio 21 Dias.'),
+        ('warn', 'Converse com seu ginecologista sobre os seus sintomas. Para muitas mulheres, a terapia hormonal é segura e '
+                 'muito eficaz, e só o médico pode avaliar se é indicada para você. Este protocolo funciona com ou sem ela.'),
+        ('h2', 'Pilar 1 — Músculo é o seu remédio'),
+        ('p', 'Músculo gasta energia até em repouso, protege os ossos (que ficam mais frágeis sem estrogênio) e melhora a forma '
+              'como o corpo usa o açúcar. Por isso, nessa fase, <b>exercício de força vale mais que horas de cardio</b>.'),
+        ('list', [
+            'Faça o treino do Desafio 21 Dias todos os dias.',
+            'Some 2 a 3 treinos de força por semana (abaixo), em dias alternados.',
+            'Caminhe 20 a 30 minutos na maioria dos dias: ajuda o coração, o humor e o sono.',
+        ]),
+        ('workout', 'Treino de força 35+ · 3 voltas · 30 s de descanso', [
+            ('agachamento-deslizante', '12 repetições'),
+            ('flexao-parede', '10 repetições'),
+            ('ponte-parede', '15 repetições'),
+            ('afundo-apoiado', '8 de cada lado'),
+            ('prancha-parede', '30 segundos'),
+            ('elevacao-panturrilha', '15 repetições'),
+        ], 'Exercícios em pé e com impacto leve também ajudam a proteger os ossos.'),
+        ('h2', 'Pilar 2 — O prato hormonal'),
+        ('table', ['O que priorizar', 'Por quê', 'Onde encontrar'], [
+            ['Proteína (20 a 30 g por refeição)', 'Preserva o músculo e segura a fome', 'Ovos, frango, peixe, iogurte, queijo, feijão, tofu'],
+            ['Cálcio', 'Protege os ossos', 'Leite, iogurte, queijo, sardinha, brócolis, gergelim'],
+            ['Vitamina D', 'Ajuda o cálcio a chegar aos ossos', 'Sol da manhã por 15 min; peça o exame ao médico'],
+            ['Fibras', 'Controle do açúcar no sangue e intestino', 'Verduras, legumes, aveia, feijão, frutas com casca'],
+            ['Soja e linhaça', 'Têm fitoestrógenos, que ajudam algumas mulheres com os calorões', 'Tofu, edamame, bebida de soja, linhaça moída'],
+            ['Gorduras boas', 'Saúde do coração, que fica mais vulnerável nessa fase', 'Azeite, abacate, castanhas, peixes'],
+        ]),
+        ('h3', 'Um dia no prato hormonal'),
+        ('list', [
+            '<b>Café da manhã:</b> iogurte natural com 1 colher de linhaça moída, aveia e fruta.',
+            '<b>Almoço:</b> metade do prato de vegetais, peixe ou frango, arroz e feijão.',
+            '<b>Lanche:</b> queijo branco com tomate ou um punhado de castanhas.',
+            '<b>Jantar:</b> omelete com legumes ou sopa com frango ou tofu.',
+        ]),
+        ('h2', 'Pilar 3 — Menos calorões'),
+        ('p', 'Descubra os seus gatilhos anotando os calorões por uma semana na tabela do fim deste guia. Os mais comuns são:'),
+        ('list', [
+            '<b>Álcool</b>, principalmente vinho tinto.',
+            '<b>Café em excesso</b> e bebidas muito quentes.',
+            '<b>Comida apimentada.</b>',
+            '<b>Ambiente quente</b> e roupas sintéticas.',
+            '<b>Estresse.</b>',
+        ]),
+        ('tip', 'Respiração para o calorão', 'Quando sentir o calor subindo: inspire pelo nariz contando até 5 e solte pela boca '
+              'contando até 5. Faça por 2 minutos. Praticar 15 minutos por dia, mesmo sem calorão, ajuda a diminuir a frequência deles.'),
+        ('list', [
+            'Vista-se em camadas, que dá para tirar rápido.',
+            'Prefira tecidos de algodão, inclusive no pijama e nos lençóis.',
+            'Deixe um copo de água gelada e um leque perto da cama.',
+            'Mantenha o quarto fresco e ventilado.',
+        ]),
+        ('h2', 'Pilar 4 — Sono que recupera'),
+        ('p', 'Dormir mal aumenta a fome e a vontade de doce no dia seguinte e dificulta a perda de barriga.'),
+        ('list', [
+            'Mesmo horário para dormir e acordar, inclusive no fim de semana.',
+            'Último café até as 14h.',
+            'Jantar leve, 2 a 3 horas antes de deitar.',
+            'Tela desligada 30 minutos antes de dormir.',
+            'Na cama, faça a postura das pernas na parede por 3 minutos.',
+        ]),
+        ('ex', 'pernas-na-parede', '3 minutos antes de dormir'),
+        ('h2', 'Pilar 5 — Humor e estresse'),
+        ('p', 'A irritação, a ansiedade e a "névoa mental" também fazem parte da transição hormonal. O cortisol alto do estresse '
+              'favorece o acúmulo de gordura na barriga.'),
+        ('list', [
+            '<b>5 minutos de respiração</b> por dia (a respiração lateral do desafio é perfeita).',
+            '<b>Sol e caminhada</b> pela manhã.',
+            '<b>Conversar:</b> falar com amigas que passam pelo mesmo ajuda mais do que parece.',
+            '<b>Peça ajuda</b> se a tristeza durar mais de duas semanas.',
+        ]),
+        ('ex', 'respiracao-lateral', '5 minutos'),
+        ('h2', 'Plano de 4 semanas'),
+        ('table', ['Semana', 'Foco', 'Meta'], [
+            ['1', 'Prato hormonal', 'Proteína em todas as refeições + diário de calorões'],
+            ['2', 'Força', '2 treinos de força + caminhada 3x na semana'],
+            ['3', 'Sono', 'Rotina do sono todas as noites + café só até as 14h'],
+            ['4', 'Juntar tudo', '3 treinos de força + respiração diária + evitar os seus gatilhos'],
+        ]),
+        ('h2', 'Diário de sintomas'),
+        ('table', ['Dia', 'Calorões (quantos)', 'Gatilho', 'Sono (0 a 10)', 'Energia (0 a 10)'],
+         [[str(d), '', '', '', ''] for d in range(1, 8)]),
+        ('tip', 'Leve para a consulta', 'Esse diário ajuda muito o seu ginecologista a entender o que está acontecendo.'),
+        ('h2', 'Checklist diário'),
+        ('check', ['Proteína em todas as refeições', 'Linhaça ou soja no dia', 'Treino do desafio ou de força',
+                   'Caminhada ou sol da manhã', '5 minutos de respiração', 'Café só até as 14h', 'Dormi pelo menos 7 horas']),
+    ],
+})
+
+# 9) UPSELL 3 — PILATES ÍNTIMO
+MATERIALS.append({
+    'slug': 'pilates-intimo',
+    'group': 'extra',
+    'title': 'Pilates Íntimo',
+    'title2': 'Assoalho Pélvico Forte',
+    'kicker': '10 MINUTOS POR DIA',
+    'desc': 'Exercícios para o assoalho pélvico contra os escapes de xixi, para a barriga mais firme e para a intimidade.',
+    'cover': 'app/fotos/fase1.webp',
+    'body': [
+        ('h2', 'O músculo que ninguém te apresentou'),
+        ('p', 'O <b>assoalho pélvico</b> é um conjunto de músculos que fica na base da pelve, como uma rede que sustenta a '
+              'bexiga, o útero e o intestino. Gestações, partos, a queda hormonal da menopausa, a prisão de ventre e anos '
+              'de esforço errado deixam essa rede mais fraca.'),
+        ('p', 'Os sinais mais comuns são <b>escapes de xixi</b> ao tossir, espirrar, rir ou pular, vontade urgente de ir ao '
+              'banheiro, sensação de peso na região íntima e menos sensibilidade na relação. Escape de xixi é comum, mas '
+              '<b>não é normal da idade</b>. E o treino do assoalho pélvico é a primeira recomendação para esses casos.'),
+        ('warn', 'Procure um ginecologista ou uma fisioterapeuta pélvica se tiver dor, sangramento, sensação de "bola" saindo '
+                 'pela vagina, infecções urinárias de repetição ou se estiver no pós-parto recente.'),
+        ('h2', 'Encontre o seu assoalho pélvico'),
+        ('steps', [
+            'Sente-se em uma cadeira firme, com os pés no chão.',
+            'Imagine que você está segurando um pum e, ao mesmo tempo, o xixi.',
+            'Você deve sentir a região íntima fechar e subir levemente para dentro.',
+            'Bumbum, coxas e barriga devem continuar relaxados.',
+        ]),
+        ('tip', 'Não sentiu nada?', 'Deite de lado e coloque a mão na região do períneo, entre a vagina e o ânus, por cima da '
+              'roupa. Ao contrair, você vai sentir a região subir, se afastando da mão. Isso é normal no começo: a percepção '
+              'melhora em poucos dias de treino.'),
+        ('h2', 'A Rotina Íntima (10 minutos)'),
+        ('workout', 'Faça na ordem, de preferência no mesmo horário', [
+            ('respiracao-lateral', '1 minuto'),
+            ('kegel-lento', '10 repetições de 5 segundos'),
+            ('kegel-rapido', '10 piscadas'),
+            ('basculamento-pelvico', '10 repetições'),
+            ('ponte-parede', '10 repetições contraindo o assoalho na subida'),
+            ('elevador-pelvico', '5 subidas'),
+            ('concha-parede', '10 de cada lado'),
+            ('pernas-na-parede', '1 minuto relaxando tudo'),
+        ], 'O relaxamento é tão importante quanto a contração: um músculo que não relaxa também funciona mal.'),
+        ('h2', 'Os exercícios, passo a passo'),
+        ('newex', 'kegel-lento'),
+        ('newex', 'kegel-rapido'),
+        ('newex', 'elevador-pelvico'),
+        ('ex', 'basculamento-pelvico', '10 repetições'),
+        ('ex', 'ponte-parede', '10 repetições'),
+        ('ex', 'concha-parede', '10 de cada lado'),
+        ('h2', 'A trava: o truque contra os escapes'),
+        ('p', 'Antes de tossir, espirrar, rir, pegar peso ou levantar da cadeira, <b>contraia o assoalho pélvico um segundo '
+              'antes</b> e mantenha durante o esforço. Com a prática, isso fica automático e os escapes diminuem já nas '
+              'primeiras semanas.'),
+        ('h2', 'Plano de 4 semanas'),
+        ('table', ['Semana', 'Posição', 'Contração lenta', 'Piscadas'], [
+            ['1', 'Deitada', '10 x 3 segundos', '10'],
+            ['2', 'Deitada e sentada', '10 x 5 segundos', '15'],
+            ['3', 'Sentada', '10 x 8 segundos', '20'],
+            ['4', 'Em pé', '10 x 10 segundos', '20 + a trava em todo esforço'],
+        ]),
+        ('p', 'Depois das 4 semanas, mantenha a rotina pelo menos 3 vezes por semana. Os resultados costumam ficar claros entre 6 e 12 semanas.'),
+        ('h2', 'Mais força, mais prazer'),
+        ('p', 'Músculos do assoalho pélvico fortes e bem irrigados estão ligados a <b>mais sensibilidade</b> e mais facilidade '
+              'para chegar ao orgasmo. Conhecer e controlar essa região também traz mais confiança na intimidade. Durante a '
+              'relação, experimente contrair e relaxar devagar.'),
+        ('h2', 'Hábitos que protegem o assoalho pélvico'),
+        ('list', [
+            '<b>Não segure o xixi por horas</b>, mas também não vá ao banheiro "por precaução" o tempo todo.',
+            '<b>Não faça força para fazer cocô.</b> Use um banquinho embaixo dos pés no vaso e capriche nas fibras e na água.',
+            '<b>Ao pegar peso,</b> solte o ar e use a trava.',
+            '<b>Evite excesso de café e refrigerante</b>, que irritam a bexiga.',
+            '<b>Mantenha o peso saudável:</b> o excesso de barriga aumenta a pressão sobre a pelve.',
+        ]),
+        ('h2', 'Diário de escapes'),
+        ('table', ['Semana', 'Escapes por dia (média)', 'Em que situação', 'Como me sinto'],
+         [[str(s), '', '', ''] for s in range(1, 5)]),
+        ('h2', 'Checklist diário'),
+        ('check', ['Fiz a Rotina Íntima', 'Usei a trava ao tossir ou pegar peso', 'Bebi água ao longo do dia', 'Comi fibras',
+                   'Relaxei o assoalho pélvico no fim do treino']),
+    ],
+})
+
+# 10) UPSELL 4 — GRUPO VIP DE ACOMPANHAMENTO
+MATERIALS.append({
+    'slug': 'grupo-vip-acompanhamento',
+    'group': 'extra',
+    'title': 'Grupo VIP',
+    'title2': 'Acompanhamento 21 Dias',
+    'kicker': 'SEU GUIA DO GRUPO',
+    'desc': 'Como entrar e aproveitar o Grupo VIP, o plano anti-desistência e o seu diário dos 21 dias.',
+    'cover': 'app/fotos/grupo.webp',
+    'body': [
+        ('h2', 'Bem-vinda ao Grupo VIP'),
+        ('p', 'Muitas mulheres desistem sozinhas na segunda semana, quando a empolgação '
+              'do começo passa. No Grupo VIP você tem <b>lembrete diário</b>, <b>tira-dúvidas</b> e outras mulheres no mesmo '
+              'desafio torcendo por você até o dia 21.'),
+        ('tip', 'Entre agora no grupo', f'Acesse pelo link: <b>{GRUPO_VIP_LINK}</b>. Salve o grupo nos favoritos do WhatsApp '
+              'para não perder as mensagens.'),
+        ('h2', 'Como o grupo funciona'),
+        ('table', ['Quando', 'O que acontece'], [
+            ['Todo dia de manhã', 'Mensagem com o treino do dia e uma dica'],
+            ['Ao longo do dia', 'Você faz o check-in quando terminar o treino'],
+            ['Toda segunda', 'Meta da semana'],
+            ['Todo domingo', 'Hora de compartilhar as conquistas da semana'],
+            ['Sempre', 'Dúvidas sobre os exercícios são respondidas no grupo'],
+        ]),
+        ('h2', 'Como fazer o seu check-in'),
+        ('p', 'Depois do treino, mande no grupo uma mensagem assim:'),
+        ('p', '<b>✅ Dia 5 feito! Energia: 8/10. Hoje senti: as pernas mais firmes na ponte.</b>'),
+        ('p', 'Só isso. Não precisa foto, não precisa texto longo. O check-in é um compromisso com você mesma.'),
+        ('h2', 'As regras do grupo'),
+        ('list', [
+            'Respeito sempre: aqui ninguém julga corpo, idade ou ritmo.',
+            'Nada de venda, corrente ou propaganda.',
+            'Dúvidas de saúde específicas devem ser levadas ao seu médico.',
+            'Compartilhe fotos só se quiser. Ninguém é obrigada.',
+        ]),
+        ('h2', 'O plano anti-desistência'),
+        ('steps', [
+            '<b>Nunca falhe dois dias seguidos.</b> Perdeu um dia? Normal. O importante é voltar no dia seguinte.',
+            '<b>Em dia ruim, faça o Treino de Emergência</b> (abaixo). Três minutos contam.',
+            '<b>Avise no grupo quando estiver desanimada.</b> Você vai se surpreender com o apoio.',
+            '<b>Olhe para trás, não só para a frente.</b> Compare as suas medidas e fotos do dia 1, não o seu corpo com o de outra pessoa.',
+            '<b>Treine no mesmo horário.</b> O que tem hora marcada acontece.',
+        ]),
+        ('workout', 'Treino de Emergência · 3 minutos', [
+            ('respiracao-lateral', '30 segundos'),
+            ('agachamento-deslizante', '45 segundos'),
+            ('flexao-parede', '45 segundos'),
+            ('ponte-parede', '45 segundos'),
+            ('pernas-na-parede', '15 segundos'),
+        ], 'Fez? Faça o check-in normalmente: dia feito é dia feito.'),
+        ('h2', 'Suas medidas'),
+        ('table', ['Medida', 'Dia 1', 'Dia 11', 'Dia 21'], [
+            ['Cintura (na altura do umbigo)', '', '', ''],
+            ['Quadril (parte mais larga)', '', '', ''],
+            ['Braço (meio do braço)', '', '', ''],
+            ['Coxa (meio da coxa)', '', '', ''],
+            ['Peso', '', '', ''],
+        ]),
+        ('tip', 'Fotos do dia 1', 'Tire uma foto de frente e uma de lado, com a mesma roupa e a mesma luz. Repita no dia 21. '
+              'As fotos mostram mudanças que o espelho do dia a dia esconde.'),
+        ('pagebreak',),
+        ('h2', 'Seu diário dos 21 dias'),
+        ('table', ['Dia', 'Treino feito', 'Check-in no grupo', 'Energia (0 a 10)', 'Uma conquista do dia'],
+         [[str(d), '', '', '', ''] for d in range(1, 22)]),
+        ('h2', 'Carta para você no dia 21'),
+        ('p', 'Escreva hoje, no dia 1, por que você começou. Leia de novo no dia 21.'),
+        ('check', ['Eu comecei porque...', 'No dia 21 eu quero sentir...', 'Quando der vontade de desistir, vou lembrar que...']),
+    ],
+})
+
+# 11) UPSELL 5 — ADEUS BRAÇO DE TCHAUZINHO
+MATERIALS.append({
+    'slug': 'adeus-braco-de-tchauzinho',
+    'group': 'extra',
+    'title': 'Adeus Braço',
+    'title2': 'de Tchauzinho',
+    'kicker': '7 MINUTOS POR DIA',
+    'desc': 'Treinos de 7 minutos, sem pesos, para firmar a parte de trás do braço e a região da axila.',
+    'cover': 'app/fotos/fase3.webp',
+    'body': [
+        ('h2', 'Por que o braço "balança"'),
+        ('p', 'O famoso braço de tchauzinho fica na parte de trás do braço, onde está o <b>tríceps</b>. É um músculo pouco usado '
+              'no dia a dia, que perde força e volume com o passar dos anos. Por cima dele, a pele perde elasticidade e é '
+              'comum acumular gordura nessa região.'),
+        ('p', 'Sendo sincera com você: nenhum exercício queima gordura só do braço. A gordura sai do corpo todo, com o treino '
+              'do desafio e a alimentação. O que este guia faz é <b>firmar e dar volume ao músculo por baixo da pele</b>, e '
+              'é isso que deixa o braço com aspecto durinho e para de balançar.'),
+        ('h2', 'Treino A — Tríceps (7 minutos)'),
+        ('workout', '40 s de exercício · 20 s de descanso · 7 exercícios', [
+            ('circulos-bracos', '40 segundos'),
+            ('triceps-parede', '40 segundos'),
+            ('extensao-bracos-tras', '40 segundos'),
+            ('mergulho-cadeira', '40 segundos'),
+            ('prancha-parede', '40 segundos'),
+            ('triceps-parede', '40 segundos'),
+            ('abertura-peito', '40 segundos'),
+        ]),
+        ('h2', 'Treino B — Braço e axila (7 minutos)'),
+        ('workout', '40 s de exercício · 20 s de descanso · 7 exercícios', [
+            ('anjos-parede', '40 segundos'),
+            ('remada-toalha', '40 segundos'),
+            ('flexao-parede', '40 segundos'),
+            ('extensao-bracos-tras', '40 segundos'),
+            ('swan-em-pe', '40 segundos'),
+            ('circulos-bracos', '40 segundos'),
+            ('abertura-peito', '40 segundos'),
+        ], 'A remada com toalha e os anjos na parede trabalham as costas e a região da axila, onde fica a gordurinha do sutiã.'),
+        ('h2', 'Os exercícios, passo a passo'),
+        ('newex', 'circulos-bracos'),
+        ('newex', 'triceps-parede'),
+        ('newex', 'extensao-bracos-tras'),
+        ('newex', 'mergulho-cadeira'),
+        ('newex', 'remada-toalha'),
+        ('ex', 'flexao-parede', ''),
+        ('ex', 'anjos-parede', ''),
+        ('ex', 'prancha-parede', ''),
+        ('h2', 'Plano de 4 semanas'),
+        ('table', ['Semana', 'O que fazer', 'Como progredir'], [
+            ['1', 'Treino A e B alternados, 5 dias na semana', '30 s de exercício e 30 s de descanso'],
+            ['2', 'Treino A e B alternados, 5 dias na semana', '40 s de exercício e 20 s de descanso'],
+            ['3', 'Treino A e B alternados, 6 dias na semana', 'Afaste mais os pés da parede'],
+            ['4', 'Treino A + B no mesmo dia, 3 dias na semana', '45 s de exercício e 15 s de descanso'],
+        ]),
+        ('h2', 'Para o resultado aparecer mais rápido'),
+        ('list', [
+            '<b>Proteína em todas as refeições:</b> é a matéria-prima do músculo.',
+            '<b>Não pule o Desafio 21 Dias:</b> é ele que ajuda a reduzir a gordura do corpo todo.',
+            '<b>Hidrate a pele</b> do braço depois do banho e use protetor solar quando estiver de manga curta.',
+            '<b>Postura:</b> ombros para trás deixam o braço visualmente mais fino na hora.',
+            '<b>Sutiã do tamanho certo:</b> alça e costas apertadas criam a dobrinha da axila.',
+        ]),
+        ('h2', 'Acompanhe a sua evolução'),
+        ('table', ['Medida', 'Dia 1', 'Dia 14', 'Dia 28'], [
+            ['Braço direito (meio do braço)', '', '', ''],
+            ['Braço esquerdo (meio do braço)', '', '', ''],
+            ['Flexões na parede seguidas', '', '', ''],
+        ]),
+        ('tip', 'O teste da regata', 'No dia 1, tire uma foto de regata, de costas, com os braços abertos. Repita no dia 28.'),
+        ('h2', 'Checklist diário'),
+        ('check', ['Fiz o treino do braço (A ou B)', 'Fiz o treino do Desafio 21 Dias', 'Proteína em todas as refeições',
+                   'Bebi água ao longo do dia', 'Cuidei da postura']),
+    ],
+})
+
+# 12) UPSELL 6 — YOGA FACIAL
+MATERIALS.append({
+    'slug': 'yoga-facial',
+    'group': 'extra',
+    'title': 'Yoga Facial',
+    'title2': '10 Minutos por Dia',
+    'kicker': 'ROSTO FIRME',
+    'desc': 'Exercícios faciais e automassagem para um rosto mais firme, menos papada e mais viço.',
+    'cover': 'app/fotos/sono.webp',
+    'body': [
+        ('h2', 'Academia para o rosto'),
+        ('p', 'O rosto tem mais de 40 músculos. Assim como os do corpo, eles perdem volume e firmeza com os anos, e a pele por '
+              'cima acompanha. A yoga facial é um conjunto de exercícios que <b>trabalha esses músculos</b>, somado à '
+              'automassagem, que ativa a circulação e desincha.'),
+        ('p', 'Em um estudo da Northwestern University (Estados Unidos, 2018), mulheres de 40 a 65 anos que fizeram exercícios '
+              'faciais por 20 semanas tiveram as bochechas mais cheias e aparência mais jovem na avaliação de dermatologistas. '
+              'O estudo foi pequeno, mas o resultado é animador e o método é simples, barato e seguro.'),
+        ('tip', 'Como fazer', 'Faça em frente ao espelho, com as mãos limpas e um pouco de hidratante ou óleo no rosto para os '
+              'dedos deslizarem. O melhor horário é de manhã, para desinchar, ou à noite, junto com a sua rotina de cuidados.'),
+        ('h2', 'Rotina Rosto Firme (10 minutos)'),
+        ('workout', 'Faça na ordem', [
+            ('face-testa', '5 repetições'),
+            ('face-olhos', '5 repetições'),
+            ('face-macas', '5 repetições'),
+            ('face-bigode', '1 minuto'),
+            ('face-papada', '8 repetições'),
+            ('face-lingua', '8 repetições'),
+        ], 'Termine com a automassagem de 3 minutos (abaixo).'),
+        ('h2', 'Os exercícios, passo a passo'),
+        *[('newex', i) for i in ['face-testa', 'face-olhos', 'face-macas', 'face-bigode', 'face-papada', 'face-lingua']],
+        ('h2', 'Automassagem desinchante (3 minutos)'),
+        ('steps', [
+            '<b>Pescoço:</b> com os dedos espalmados, deslize da orelha até a clavícula, 5 vezes de cada lado. Isso "abre o caminho" para o líquido drenar.',
+            '<b>Contorno do rosto:</b> com os nós dos dedos, deslize do queixo até a orelha, seguindo a linha da mandíbula. 5 vezes.',
+            '<b>Maçãs:</b> deslize do canto do nariz até a têmpora, 5 vezes.',
+            '<b>Olhos:</b> com o dedo anelar, bem leve, deslize do canto interno ao externo por baixo do olho. 5 vezes.',
+            '<b>Testa:</b> deslize do centro da testa para as têmporas, alternando as mãos. 5 vezes.',
+            '<b>Final:</b> desça das têmporas até o pescoço e a clavícula, 3 vezes.',
+        ]),
+        ('tip', 'Sempre de dentro para fora e de baixo para cima', 'E sempre com leveza: o rosto não precisa de força, precisa de constância.'),
+        ('h2', 'Plano de 4 semanas'),
+        ('table', ['Semana', 'Rotina', 'Foco'], [
+            ['1', 'Rotina completa 1x por dia', 'Aprender os movimentos em frente ao espelho'],
+            ['2', 'Rotina completa + automassagem toda manhã', 'Desinchar o rosto ao acordar'],
+            ['3', 'Rotina com 8 repetições em cada exercício', 'Mais firmeza nas maçãs e no contorno'],
+            ['4', 'Rotina completa + língua no céu da boca ao longo do dia', 'Papada e pescoço'],
+        ]),
+        ('h2', 'Hábitos que envelhecem (e o que fazer)'),
+        ('table', ['Hábito', 'Troque por'], [
+            ['Sair sem protetor solar', 'Protetor todos os dias, inclusive nublado e dentro de casa perto da janela'],
+            ['Olhar o celular com a cabeça baixa', 'Celular na altura dos olhos (é o que mais marca o pescoço)'],
+            ['Dormir de bruços com o rosto no travesseiro', 'Dormir de costas ou de lado com fronha de cetim'],
+            ['Pouca água e pouco sono', '2 litros de água e 7 a 8 horas de sono'],
+            ['Fumar', 'Procure ajuda para parar: é o que mais envelhece a pele'],
+        ]),
+        ('h2', 'Fotos de progresso'),
+        ('p', 'Tire uma foto de frente e uma de perfil no dia 1, sem maquiagem, com a mesma luz (de preferência perto de uma '
+              'janela). Repita no dia 28. As mudanças são graduais e a foto ajuda a percebê-las.'),
+        ('warn', 'Não faça os exercícios se tiver ferida, inflamação ou procedimento estético recente no rosto (botox, '
+                 'preenchimento, peeling). Nesses casos, pergunte antes ao seu dermatologista quando pode começar.'),
+        ('h2', 'Checklist diário'),
+        ('check', ['Fiz a Rotina Rosto Firme', 'Fiz a automassagem', 'Usei protetor solar', 'Olhei o celular na altura dos olhos',
+                   'Bebi água ao longo do dia']),
     ],
 })
 

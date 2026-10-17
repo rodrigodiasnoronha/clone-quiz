@@ -298,3 +298,14 @@ cakto-upsell-reject::part(button) {
   color: #4a5470; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 500; font-size: max(11px, 2.05cqw);
   text-decoration: underline; text-underline-offset: .4cqw;
 }
+
+/* Capa do produto desenhada em HTML dentro do tablet (.device) */
+.cover {
+  aspect-ratio: 5 / 6.6; border-radius: 3cqw; padding: 3cqw 2.4cqw; color: #fff; text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2cqw;
+  background: radial-gradient(90% 60% at 50% 25%, #ff6aa6 0%, transparent 70%), linear-gradient(165deg, #ff2a7e, #c2084a 65%, #6e0530);
+}
+.cover svg { width: 13cqw; height: 13cqw; }
+.cover b { font-weight: 800; font-size: 5.4cqw; line-height: .98; letter-spacing: -.045em; text-transform: uppercase; }
+.cover i { font-style: normal; background: #fff; color: var(--pink); border-radius: 99px; padding: .6cqw 2.2cqw; font-weight: 800; font-size: 2.2cqw; }
+.cover small { font-weight: 600; font-size: 2.1cqw; line-height: 1.2; opacity: .92; }
