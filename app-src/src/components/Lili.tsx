@@ -35,7 +35,7 @@ export function Lili({ mood = 'feliz', size = 96, float = true, className = '' }
       animate={float ? { y: [0, -5, 0], rotate: mood === 'animada' ? [0, -3, 3, 0] : 0 } : undefined}
       transition={{ duration: mood === 'animada' ? 1.8 : 3.4, repeat: Infinity, ease: 'easeInOut' }}
       role="img"
-      aria-label={`Lili, sua companheira de treino (${mood})`}
+      aria-label="Lili, your workout companion"
     >
       <div className="h-full w-full rounded-full bg-gradient-to-br from-rose-300 via-rose-500 to-grape-600 p-[3px] shadow-glow">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -57,7 +57,7 @@ export function LiliPose({ pose = 'garrafa', className = '' }: { pose?: keyof ty
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={LILI_POSE[pose]}
-      alt="Lili, sua companheira de treino"
+      alt="Lili, your workout companion"
       draggable={false}
       className={`pointer-events-none select-none object-cover ${className}`}
       style={{ maskImage: FADE, WebkitMaskImage: FADE }}

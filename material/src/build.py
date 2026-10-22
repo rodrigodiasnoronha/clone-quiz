@@ -12,9 +12,9 @@ OUT = os.path.join(ROOT, 'material', 'pdf')
 sys.path.insert(0, HERE)
 from content import MATERIALS, NEW_EX, RECIPES, DISCLAIMER  # noqa: E402
 
-CAT = {'respiracao': 'Respiração', 'mobilidade': 'Mobilidade', 'forca': 'Força', 'core': 'Core e abdômen',
-       'equilibrio': 'Equilíbrio', 'alongamento': 'Alongamento'}
-LIMIT = {'joelhos': 'joelhos', 'lombar': 'lombar', 'punhos': 'punhos', 'ombros': 'ombros', 'pescoco': 'pescoço'}
+CAT = {'respiracao': 'Breathing', 'mobilidade': 'Mobility', 'forca': 'Strength', 'core': 'Core and abs',
+       'equilibrio': 'Balance', 'alongamento': 'Stretching'}
+LIMIT = {'joelhos': 'knees', 'lombar': 'lower back', 'punhos': 'wrists', 'ombros': 'shoulders', 'pescoco': 'neck'}
 
 
 def load_app():
@@ -47,23 +47,23 @@ def img(path):
 
 def ex_card(ex_id, presc=''):
     x = EX[ex_id]
-    side = ' · cada lado' if x.get('perSide') and presc and 'lado' not in presc else ''
+    side = ' · per side' if x.get('perSide') and presc and 'side' not in presc else ''
     rows = [
         f'<div class="ex-head"><h4>{e(x["name"])}</h4>' + (f'<span class="presc">{e(presc)}{side}</span>' if presc else '') + '</div>',
         '<div class="chips">' + ''.join(f'<span>{e(m)}</span>' for m in x.get('muscles', [])) + '</div>',
-        f'<p><b>Posição:</b> {e(x["position"])}</p>',
+        f'<p><b>Position:</b> {e(x["position"])}</p>',
         '<ol>' + ''.join(f'<li>{e(s)}</li>' for s in x['steps']) + '</ol>',
-        f'<p><b>Respiração:</b> {e(x["breathing"])}</p>',
+        f'<p><b>Breathing:</b> {e(x["breathing"])}</p>',
     ]
     if x.get('errors'):
-        rows.append('<p><b>Evite:</b> ' + ' '.join(e(s) for s in x['errors']) + '</p>')
+        rows.append('<p><b>Avoid:</b> ' + ' '.join(e(s) for s in x['errors']) + '</p>')
     if x.get('easier'):
-        rows.append(f'<p><b>Versão mais fácil:</b> {e(x["easier"])}</p>')
+        rows.append(f'<p><b>Easier version:</b> {e(x["easier"])}</p>')
     if x.get('safety'):
-        rows.append(f'<p class="safe"><b>Segurança:</b> {e(x["safety"])}</p>')
+        rows.append(f'<p class="safe"><b>Safety:</b> {e(x["safety"])}</p>')
     if x.get('avoid') and x.get('alt') in EX:
-        rows.append(f'<p class="safe"><b>Tem dor ou limitação em {", ".join(LIMIT.get(a, a) for a in x["avoid"])}?</b> '
-                    f'Troque por: {e(EX[x["alt"]]["name"])}.</p>')
+        rows.append(f'<p class="safe"><b>Pain or limitations in your {", ".join(LIMIT.get(a, a) for a in x["avoid"])}?</b> '
+                    f'Swap for: {e(EX[x["alt"]]["name"])}.</p>')
     return '<div class="ex">' + ''.join(rows) + '</div>'
 
 
@@ -83,8 +83,8 @@ def recipe(n, r):
     name, time, yld, ing, steps = r
     return (f'<div class="rc"><div class="rc-h"><span class="rc-n">{n:02d}</span><h4>{e(name)}</h4></div>'
             f'<div class="rc-m">⏱ {e(time)} · 🍽 {e(yld)}</div>'
-            '<div class="rc-b"><div><b>Ingredientes</b><ul>' + ''.join(f'<li>{e(i)}</li>' for i in ing) + '</ul></div>'
-            '<div><b>Modo de preparo</b><ol>' + ''.join(f'<li>{e(s)}</li>' for s in steps) + '</ol></div></div></div>')
+            '<div class="rc-b"><div><b>Ingredients</b><ul>' + ''.join(f'<li>{e(i)}</li>' for i in ing) + '</ul></div>'
+            '<div><b>Directions</b><ol>' + ''.join(f'<li>{e(s)}</li>' for s in steps) + '</ol></div></div></div>')
 
 
 def block(b):
@@ -109,48 +109,48 @@ def block(b):
 def program_body():
     """Guia principal: como usar, os 21 dias e a biblioteca de exercícios do app."""
     out = [
-        ('h2', 'Bem-vinda ao seu Desafio'),
-        ('p', 'Durante 21 dias você vai treinar poucos minutos por dia usando só uma parede e um tapete. '
-              'Os treinos foram organizados em <b>3 fases</b>, que começam com respiração e mobilidade e terminam com '
-              'força, equilíbrio e uma postura nova. Este guia traz o plano completo e a explicação de cada exercício.'),
-        ('tip', 'Como usar este guia', 'Siga um dia por vez, na ordem. Faça o <b>aquecimento</b>, o <b>treino principal</b> e a '
-              '<b>volta à calma</b>. Quando aparecer "2 x 10", faça 2 séries de 10 repetições, descansando o tempo indicado. '
-              'Na dúvida sobre um exercício, procure o nome dele na <b>Biblioteca</b>, no fim do guia.'),
-        ('h2', 'Antes de começar'),
-        ('list', ['Um espaço de 2 metros perto de uma parede livre, sem quadros ou tomadas.',
-                  'Um tapete de yoga ou uma toalha dobrada.', 'Roupa confortável e os pés descalços ou de meia antiderrapante.',
-                  'Uma garrafa de água por perto.', 'Respire sempre: expire no momento de maior esforço.']),
-        ('h2', 'As 3 fases'),
-        ('table', ['Fase', 'Dias', 'O que acontece'],
-         [[f'<b>{e(p["name"])}</b>', f'{p["days"][0]} a {p["days"][1]}', e(p['desc'])] for p in APP['PHASES']]),
+        ('h2', 'Welcome to your Challenge'),
+        ('p', 'For 21 days you\'ll work out a few minutes a day using just a wall and a mat. '
+              'The workouts are organized into <b>3 phases</b>, starting with breathing and mobility and ending with '
+              'strength, balance and a new posture. This guide has the full plan and an explanation of every exercise.'),
+        ('tip', 'How to use this guide', 'Follow one day at a time, in order. Do the <b>warm-up</b>, the <b>main workout</b> and the '
+              '<b>cool-down</b>. When you see "2 x 10", do 2 sets of 10 reps, resting for the time shown. '
+              'If you\'re unsure about an exercise, look up its name in the <b>Library</b> at the end of the guide.'),
+        ('h2', 'Before you start'),
+        ('list', ['About 6 feet of space next to a clear wall, with no pictures or outlets in the way.',
+                  'A yoga mat or a folded towel.', 'Comfortable clothes and bare feet or non-slip socks.',
+                  'A water bottle nearby.', 'Always breathe: exhale at the hardest part of the move.']),
+        ('h2', 'The 3 phases'),
+        ('table', ['Phase', 'Days', 'What happens'],
+         [[f'<b>{e(p["name"])}</b>', f'{p["days"][0]} to {p["days"][1]}', e(p['desc'])] for p in APP['PHASES']]),
     ]
     html_parts = [block(b) for b in out]
 
     def item(i):
         name = e(EX[i['ex']]['name'])
         if i.get('reps') and i.get('sets'): d = f'{i["sets"]} x {i["reps"]}'
-        elif i.get('reps'): d = f'{i["reps"]} repetições'
+        elif i.get('reps'): d = f'{i["reps"]} reps'
         elif i.get('secs') and i.get('sets'): d = f'{i["sets"]} x {i["secs"]} s'
         else: d = f'{i.get("secs", 0)} s'
-        if EX[i['ex']].get('perSide'): d += ' (cada lado)'
-        if i.get('rest'): d += f' · descanso {i["rest"]} s'
+        if EX[i['ex']].get('perSide'): d += ' (per side)'
+        if i.get('rest'): d += f' · rest {i["rest"]} s'
         return f'<li><span>{name}</span><em>{d}</em></li>'
 
     for ph in APP['PHASES']:
-        html_parts.append(f'<div class="pb"></div><div class="phase"><span>FASE {ph["n"]}</span><h2>{e(ph["name"])}</h2>'
+        html_parts.append(f'<div class="pb"></div><div class="phase"><span>PHASE {ph["n"]}</span><h2>{e(ph["name"])}</h2>'
                           f'<p>{e(ph["desc"])}</p></div>')
         for d in APP['DAYS']:
             if d['phase'] != ph['n']:
                 continue
-            parts = [f'<div class="day"><div class="day-h"><span class="dn">DIA {d["n"]}</span><h3>{e(d["name"])}</h3></div>',
+            parts = [f'<div class="day"><div class="day-h"><span class="dn">DAY {d["n"]}</span><h3>{e(d["name"])}</h3></div>',
                      f'<p class="goal">{e(d["goal"])}</p>']
-            for key, label in (('warmup', 'Aquecimento'), ('main', 'Treino principal'), ('cooldown', 'Volta à calma')):
+            for key, label in (('warmup', 'Warm-up'), ('main', 'Main workout'), ('cooldown', 'Cool-down')):
                 if d.get(key):
                     parts.append(f'<div class="seg"><b>{label}</b><ul>' + ''.join(item(i) for i in d[key]) + '</ul></div>')
             parts.append(f'<p class="lili">💗 {e(d["lili"])}</p></div>')
             html_parts.append(''.join(parts))
-    html_parts.append('<div class="pb"></div><h2>Biblioteca de exercícios</h2>'
-                      '<p>Todos os exercícios do desafio, organizados por tipo. Leia com calma antes do primeiro treino.</p>')
+    html_parts.append('<div class="pb"></div><h2>Exercise library</h2>'
+                      '<p>Every exercise in the challenge, organized by type. Read through them before your first workout.</p>')
     for cat, label in CAT.items():
         exs = [x for x in APP['EXERCISES'] if x['category'] == cat]
         if exs:
@@ -160,11 +160,11 @@ def program_body():
 
 def recipes_body():
     parts = [block(b) for b in [
-        ('h2', 'Proteína gostosa, todo dia'),
-        ('p', 'Proteína ajuda a manter a saciedade, preserva os músculos enquanto você emagrece e dá firmeza ao corpo. '
-              'Aqui estão <b>51 receitas</b> rápidas, com ingredientes de supermercado, para todas as refeições do dia.'),
-        ('tip', 'Dicas para a semana', 'Cozinhe ovos e desfie frango no domingo: muitas receitas ficam prontas em 5 minutos. '
-              'Onde aparecer adoçante, use o de sua preferência ou um pouco de mel. "Colher" é colher de sopa, salvo indicação.'),
+        ('h2', 'Tasty protein, every day'),
+        ('p', 'Protein keeps you full, preserves muscle while you lose weight and firms up your body. '
+              'Here are <b>51 quick recipes</b>, with grocery-store ingredients, for every meal of the day.'),
+        ('tip', 'Tips for the week', 'Boil eggs and shred chicken on Sunday: many recipes are ready in 5 minutes. '
+              'Where you see sweetener, use your favorite or a little honey. tbsp = tablespoon, tsp = teaspoon, 1 cup = 8 oz.'),
     ]]
     n = 0
     for k, (sec, items) in enumerate(RECIPES.items()):
@@ -185,8 +185,8 @@ def doc(m):
     cover = (f'<section class="cover"><div class="c-k">{e(m["kicker"])}</div>'
              f'<h1>{e(m["title"])}<br><span>{e(m["title2"])}</span></h1>'
              f'<div class="c-img"><img src="{img(m["cover"])}"></div>'
-             f'<p class="c-d">{e(m["desc"])}</p><div class="c-f">Pilates na Parede · Desafio 21 Dias</div></section>')
-    return (f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>{e(m["title"])} {e(m["title2"])}</title>'
+             f'<p class="c-d">{e(m["desc"])}</p><div class="c-f">Wall Pilates · 21-Day Challenge</div></section>')
+    return (f'<!doctype html><html lang="en-US"><head><meta charset="utf-8"><title>{e(m["title"])} {e(m["title2"])}</title>'
             '<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">'
             f'<style>{CSS}</style></head><body>{cover}<main>{body}<div class="disc">{e(DISCLAIMER)}</div></main></body></html>')
 
@@ -218,7 +218,7 @@ def main():
     shutil.rmtree(tmp)
 
 
-GROUPS = [('programa', 'Seu programa'), ('bonus', 'Seus bônus'), ('extra', 'Conteúdos extras')]
+GROUPS = [('programa', 'Your program'), ('bonus', 'Your bonuses'), ('extra', 'Extra content')]
 DL = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" '
       'stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>')
 
@@ -250,14 +250,14 @@ def write_page(meta):
             continue
         parts.append(f'<div class="label">{label}</div><div class="list">')
         for m in items:
-            size = f' · {m["kb"] / 1024:.1f} MB'.replace('.', ',') if m['kb'] and m['kb'] >= 1024 else (f' · {m["kb"]} KB' if m['kb'] else '')
+            size = f' · {m["kb"] / 1024:.1f} MB' if m['kb'] and m['kb'] >= 1024 else (f' · {m["kb"]} KB' if m['kb'] else '')
             tab = ' tab' if 'tablet' in m['cover'] else ''
             thumb = make_thumb(m['slug'], m['cover'], contain=bool(tab))
             parts.append(
                 f'<a class="card" data-slug="{m["slug"]}" href="/material/pdf/{m["slug"]}.pdf" download="{m["slug"]}.pdf">'
                 f'<div class="thumb{tab}"><img src="/{thumb}" alt="" width="76" height="92" loading="lazy" decoding="async"></div>'
                 f'<div class="info"><span class="kick">{e(m["kicker"])}</span><h3>{e(m["title"])} {e(m["title2"])}</h3>'
-                f'<p>{e(m["desc"])}</p><span class="dl">{DL}Baixar PDF{size}</span></div>'
+                f'<p>{e(m["desc"])}</p><span class="dl">{DL}Download PDF{size}</span></div>'
                 f'<span class="go">{DL}</span></a>')
         parts.append('</div>')
     page = open(os.path.join(HERE, 'page.html'), encoding='utf-8').read().replace('<!--LIST-->', '\n  '.join(parts))

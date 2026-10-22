@@ -99,8 +99,8 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
     return (
       <main className="mx-auto min-h-dvh w-full max-w-md px-4 pb-32 pt-4">
         <div className="flex items-center justify-between">
-          <button aria-label="Fechar" onClick={onExit} className="grid h-10 w-10 place-items-center rounded-full bg-white text-grape-700 shadow-soft"><X size={20} /></button>
-          <span className="chip bg-white text-grape-700 shadow-soft">~{minutes} min · {exerciseSteps.length} etapas</span>
+          <button aria-label="Close" onClick={onExit} className="grid h-10 w-10 place-items-center rounded-full bg-white text-grape-700 shadow-soft"><X size={20} /></button>
+          <span className="chip bg-white text-grape-700 shadow-soft">~{minutes} min · {exerciseSteps.length} steps</span>
         </div>
         <p className="label mt-5">{subtitle}</p>
         <h1 className="text-3xl font-bold leading-tight">{title}</h1>
@@ -108,16 +108,16 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
         {breathing && (
           <div className="card mt-4 flex gap-3 p-4">
             <Wind className="mt-0.5 shrink-0 text-lilac-500" size={20} />
-            <p className="text-sm"><span className="font-bold">Respiração de hoje: </span>{breathing}</p>
+            <p className="text-sm"><span className="font-bold">Today’s breathing: </span>{breathing}</p>
           </div>
         )}
         {adaptations.length > 0 && (
           <div className="mt-3 rounded-3xl bg-rose-50 p-4 text-sm ring-1 ring-rose-100">
-            <p className="flex items-center gap-1.5 font-bold text-rose-600"><Wand2 size={16} /> Adaptado para você</p>
+            <p className="flex items-center gap-1.5 font-bold text-rose-600"><Wand2 size={16} /> Adapted for you</p>
             {adaptations.map(a => <p key={a.ex.id} className="mt-1 text-ink-soft">{a.adapted} → <b className="text-ink">{a.ex.name}</b></p>)}
           </div>
         )}
-        {initialStep > 0 && <p className="mt-3 rounded-2xl bg-lilac-50 p-3 text-sm font-semibold text-grape-700">Você parou na etapa {initialStep + 1}. Vamos continuar de onde parou!</p>}
+        {initialStep > 0 && <p className="mt-3 rounded-2xl bg-lilac-50 p-3 text-sm font-semibold text-grape-700">You stopped at step {initialStep + 1}. Let’s pick up where you left off!</p>}
         {groups.map(g => (
           <section key={g.stage} className="mt-5">
             <h2 className="label mb-2">{STAGE_LABEL[g.stage]}</h2>
@@ -127,16 +127,16 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
                   <div className="h-12 w-16 shrink-0"><MiniThumb cat={s.ex.category} /></div>
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-bold">{s.ex.name}</p>
-                    <p className="text-xs text-ink-soft">{s.secs ? `${s.secs}s` : `${s.reps} repetições`}{s.ex.perSide ? ' cada lado' : ''}{s.sets > 1 ? ` · ${s.sets} séries` : ''}{s.optional ? ' · opcional' : ''}</p>
+                    <p className="text-xs text-ink-soft">{s.secs ? `${s.secs}s` : `${s.reps} reps`}{s.ex.perSide ? ' per side' : ''}{s.sets > 1 ? ` · ${s.sets} sets` : ''}{s.optional ? ' · optional' : ''}</p>
                   </div>
                 </div>
               ))}
             </div>
           </section>
         ))}
-        <p className="mt-5 text-center text-xs text-ink-faint">Você vai precisar de: uma parede livre e um tapete ou toalha.</p>
+        <p className="mt-5 text-center text-xs text-ink-faint">You’ll need: a clear wall and a mat or towel.</p>
         <div className="fixed inset-x-0 bottom-0 mx-auto max-w-md bg-gradient-to-t from-rose-50 via-rose-50/95 to-transparent px-4 pb-6 pt-8" style={{ paddingBottom: 'calc(24px + var(--safe-bottom))' }}>
-          <button onClick={start} className="btn-primary shine w-full text-lg"><Play size={20} fill="white" /> {initialStep > 0 ? 'Continuar treino' : 'Começar'}</button>
+          <button onClick={start} className="btn-primary shine w-full text-lg"><Play size={20} fill="white" /> {initialStep > 0 ? 'Continue workout' : 'Start'}</button>
         </div>
       </main>
     );
@@ -149,10 +149,10 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
         <div className="text-center">
           <AnimatePresence mode="popLayout">
             <motion.p key={count} initial={{ scale: 2, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: .5, opacity: 0 }} className="font-display text-[9rem] font-bold leading-none">
-              {count || 'Vai!'}
+              {count || 'Go!'}
             </motion.p>
           </AnimatePresence>
-          <p className="mt-4 font-bold text-white/85">Posicione-se perto da parede</p>
+          <p className="mt-4 font-bold text-white/85">Get in position near the wall</p>
         </div>
       </main>
     );
@@ -160,12 +160,12 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
 
   // ───────── FIM ─────────
   if (phase === 'finish') {
-    const opts = [[2, '😌', 'Leve'], [3, '🙂', 'Na medida'], [4, '😤', 'Desafiador']] as const;
+    const opts = [[2, '😌', 'Easy'], [3, '🙂', 'Just right'], [4, '😤', 'Challenging']] as const;
     return (
       <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col items-center justify-center px-5 text-center">
         <Lili mood="orgulhosa" size={140} />
-        <h1 className="mt-3 text-3xl font-bold">Treino concluído!</h1>
-        <p className="mt-1 text-ink-soft">Como foi para você hoje?</p>
+        <h1 className="mt-3 text-3xl font-bold">Workout complete!</h1>
+        <p className="mt-1 text-ink-soft">How did it feel today?</p>
         <div className="mt-5 grid w-full grid-cols-3 gap-2">
           {opts.map(([v, e, l]) => (
             <button key={v} onClick={() => setDifficulty(v)} className={`flex flex-col items-center gap-1 rounded-3xl py-4 font-bold transition ${difficulty === v ? 'bg-brand text-white shadow-glow' : 'bg-white shadow-soft'}`}>
@@ -173,7 +173,7 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
             </button>
           ))}
         </div>
-        <button className="btn-primary shine mt-6 w-full" disabled={!difficulty} onClick={() => onFinish(difficulty!)}>Registrar e comemorar 🎉</button>
+        <button className="btn-primary shine mt-6 w-full" disabled={!difficulty} onClick={() => onFinish(difficulty!)}>Log it and celebrate 🎉</button>
       </main>
     );
   }
@@ -187,7 +187,7 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
   return (
     <main className={`mx-auto flex min-h-dvh w-full max-w-md flex-col px-4 pb-6 pt-3 ${step.kind === 'rest' ? 'bg-gradient-to-b from-lilac-100 to-rose-50' : ''}`}>
       <div className="flex items-center gap-3">
-        <button aria-label="Sair do treino" onClick={() => { setPaused(true); setConfirmExit(true); }} className="grid h-10 w-10 place-items-center rounded-full bg-white text-grape-700 shadow-soft"><X size={20} /></button>
+        <button aria-label="Exit workout" onClick={() => { setPaused(true); setConfirmExit(true); }} className="grid h-10 w-10 place-items-center rounded-full bg-white text-grape-700 shadow-soft"><X size={20} /></button>
         <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-lilac-100"><motion.div className="h-full rounded-full bg-brand" animate={{ width: `${progress * 100}%` }} /></div>
         <span className="text-xs font-bold text-ink-soft">{idx + 1}/{steps.length}</span>
       </div>
@@ -197,17 +197,17 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
           {step.kind === 'rest' ? (
             <div className="flex flex-1 flex-col items-center justify-center text-center">
               <Lili mood="calma" size={110} />
-              <p className="label mt-3">Descanso</p>
+              <p className="label mt-3">Rest</p>
               <p className="font-display text-7xl font-bold text-grape-700" aria-live="polite">{Math.max(0, left)}s</p>
-              <p className="mt-1 text-sm text-ink-soft">Respire fundo e solte os ombros.</p>
+              <p className="mt-1 text-sm text-ink-soft">Take a deep breath and relax your shoulders.</p>
               <div className="mt-5 flex gap-2">
                 <button className="btn-ghost" onClick={() => setLeft(x => x + 10)}><Plus size={18} /> 10s</button>
-                <button className="btn-soft" onClick={() => go(idx + 1)}><SkipForward size={18} /> Pular</button>
+                <button className="btn-soft" onClick={() => go(idx + 1)}><SkipForward size={18} /> Skip</button>
               </div>
               {nextEx && (
                 <div className="card mt-6 w-full p-4 text-left">
-                  <p className="label">A seguir</p>
-                  <p className="font-bold">{nextEx.ex.name}{nextEx.side ? ` · lado ${nextEx.side}` : ''}</p>
+                  <p className="label">Up next</p>
+                  <p className="font-bold">{nextEx.ex.name}{nextEx.side ? ` · ${nextEx.side} side` : ''}</p>
                   <p className="mt-1 text-xs text-ink-soft">{nextEx.ex.position}</p>
                 </div>
               )}
@@ -216,9 +216,9 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
             <>
               <div className="mt-3 flex flex-wrap items-center gap-1.5">
                 <span className="chip bg-lilac-100 text-grape-700">{STAGE_LABEL[ex.stage]}</span>
-                {ex.sets > 1 && <span className="chip bg-rose-100 text-rose-600">Série {ex.set} de {ex.sets}</span>}
-                {ex.side && <span className="chip bg-grape-500 text-white">Lado {ex.side}</span>}
-                {ex.adapted && <span className="chip bg-rose-50 text-rose-500"><Wand2 size={12} /> adaptado</span>}
+                {ex.sets > 1 && <span className="chip bg-rose-100 text-rose-600">Set {ex.set} of {ex.sets}</span>}
+                {ex.side && <span className="chip bg-grape-500 text-white">{ex.side} side</span>}
+                {ex.adapted && <span className="chip bg-rose-50 text-rose-500"><Wand2 size={12} /> adapted</span>}
               </div>
               <h1 className="mt-2 text-2xl font-bold leading-tight">{ex.ex.name}</h1>
               <p className="text-xs font-semibold text-ink-soft">{ex.ex.muscles.join(' · ')}</p>
@@ -227,12 +227,12 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
 
               {/* Temporizador */}
               <div className="mt-4 flex items-center gap-4">
-                <TimerRing total={total} left={Math.max(0, left)} label={ex.secs ? `${Math.max(0, left)}s` : `${repsDone}/${ex.reps}`} sub={ex.secs ? 'segundos' : 'repetições'} />
+                <TimerRing total={total} left={Math.max(0, left)} label={ex.secs ? `${Math.max(0, left)}s` : `${repsDone}/${ex.reps}`} sub={ex.secs ? 'seconds' : 'reps'} />
                 <div className="flex-1 text-sm">
                   {ex.secs ? (
-                    <p className="font-semibold text-ink">Sustente com respiração contínua. O app avança sozinho.</p>
+                    <p className="font-semibold text-ink">Hold with steady breathing. The app moves on automatically.</p>
                   ) : (
-                    <p className="font-semibold text-ink">Siga o ritmo: <b>~{SECONDS_PER_REP}s por repetição</b>. Toque em “Concluí” quando terminar.</p>
+                    <p className="font-semibold text-ink">Follow the pace: <b>~{SECONDS_PER_REP}s per rep</b>. Tap “Done” when you finish.</p>
                   )}
                   <p className="mt-1 text-xs text-ink-soft">{ex.ex.breathing}</p>
                 </div>
@@ -240,8 +240,8 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
 
               {/* Mais fácil / como fazer */}
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <button onClick={() => setEasier(e => !e)} className={`flex items-center justify-center gap-1.5 rounded-2xl py-2.5 text-sm font-bold ${easier ? 'bg-rose-400 text-white' : 'bg-rose-50 text-rose-600'}`}><Sparkles size={16} /> Versão mais fácil</button>
-                <button onClick={() => setHowTo(h => !h)} className="flex items-center justify-center gap-1.5 rounded-2xl bg-lilac-50 py-2.5 text-sm font-bold text-grape-700">Como fazer <ChevronDown size={16} className={howTo ? 'rotate-180' : ''} /></button>
+                <button onClick={() => setEasier(e => !e)} className={`flex items-center justify-center gap-1.5 rounded-2xl py-2.5 text-sm font-bold ${easier ? 'bg-rose-400 text-white' : 'bg-rose-50 text-rose-600'}`}><Sparkles size={16} /> Easier version</button>
+                <button onClick={() => setHowTo(h => !h)} className="flex items-center justify-center gap-1.5 rounded-2xl bg-lilac-50 py-2.5 text-sm font-bold text-grape-700">How to <ChevronDown size={16} className={howTo ? 'rotate-180' : ''} /></button>
               </div>
               <AnimatePresence>
                 {easier && (
@@ -250,44 +250,44 @@ export function Player({ title, subtitle, lili, breathing, steps, initialStep = 
                 {howTo && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="mt-2 overflow-hidden">
                     <div className="card space-y-3 p-4 text-sm">
-                      <p className="text-ink-soft"><b className="text-ink">Posição: </b>{ex.ex.position}</p>
+                      <p className="text-ink-soft"><b className="text-ink">Position: </b>{ex.ex.position}</p>
                       <ol className="list-decimal space-y-1 pl-5">{ex.ex.steps.map(t => <li key={t}>{t}</li>)}</ol>
-                      <div><p className="font-bold text-rose-600">Erros comuns</p><ul className="list-disc pl-5 text-ink-soft">{ex.ex.errors.map(t => <li key={t}>{t}</li>)}</ul></div>
-                      <p className="rounded-xl bg-lilac-50 p-2 text-xs text-grape-800"><b>Segurança: </b>{ex.ex.safety}</p>
+                      <div><p className="font-bold text-rose-600">Common mistakes</p><ul className="list-disc pl-5 text-ink-soft">{ex.ex.errors.map(t => <li key={t}>{t}</li>)}</ul></div>
+                      <p className="rounded-xl bg-lilac-50 p-2 text-xs text-grape-800"><b>Safety: </b>{ex.ex.safety}</p>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
 
               <div className="flex-1" />
-              {nextEx && <p className="mt-3 text-center text-xs font-semibold text-ink-soft">A seguir: <b className="text-ink">{nextEx.ex.name}</b></p>}
+              {nextEx && <p className="mt-3 text-center text-xs font-semibold text-ink-soft">Up next: <b className="text-ink">{nextEx.ex.name}</b></p>}
 
               {/* Controles */}
               <div className="mt-3 flex items-center gap-2">
-                <button aria-label="Etapa anterior" disabled={idx === 0} onClick={() => go(idx - 1)} className="grid h-14 w-14 place-items-center rounded-2xl bg-white text-grape-700 shadow-soft disabled:opacity-40"><ChevronLeft /></button>
+                <button aria-label="Previous step" disabled={idx === 0} onClick={() => go(idx - 1)} className="grid h-14 w-14 place-items-center rounded-2xl bg-white text-grape-700 shadow-soft disabled:opacity-40"><ChevronLeft /></button>
                 {ex.secs ? (
                   <button onClick={() => setPaused(p => !p)} className="btn-primary flex-1 text-lg">
-                    {paused ? <><Play size={20} fill="white" /> Continuar</> : <><Pause size={20} fill="white" /> Pausar</>}
+                    {paused ? <><Play size={20} fill="white" /> Resume</> : <><Pause size={20} fill="white" /> Pause</>}
                   </button>
                 ) : (
-                  <button onClick={() => go(idx + 1)} className={`btn-primary flex-1 text-lg ${repsDone >= (ex.reps ?? 0) ? 'animate-pulse' : ''}`}>Concluí ✓</button>
+                  <button onClick={() => go(idx + 1)} className={`btn-primary flex-1 text-lg ${repsDone >= (ex.reps ?? 0) ? 'animate-pulse' : ''}`}>Done ✓</button>
                 )}
-                <button aria-label={ex.optional ? 'Pular bônus' : 'Próxima etapa'} onClick={() => go(idx + 1)} className="grid h-14 w-14 place-items-center rounded-2xl bg-white text-grape-700 shadow-soft"><ChevronRight /></button>
+                <button aria-label={ex.optional ? 'Skip bonus' : 'Next step'} onClick={() => go(idx + 1)} className="grid h-14 w-14 place-items-center rounded-2xl bg-white text-grape-700 shadow-soft"><ChevronRight /></button>
               </div>
               {!ex.secs && (
-                <button onClick={() => setPaused(p => !p)} className="mt-2 text-center text-xs font-bold text-grape-500">{paused ? '▶ Retomar o ritmo' : '⏸ Pausar o ritmo'}</button>
+                <button onClick={() => setPaused(p => !p)} className="mt-2 text-center text-xs font-bold text-grape-500">{paused ? '▶ Resume the pace' : '⏸ Pause the pace'}</button>
               )}
-              {ex.optional && <p className="mt-2 text-center text-xs text-ink-soft">Este é um bônus do seu objetivo: você pode pular.</p>}
+              {ex.optional && <p className="mt-2 text-center text-xs text-ink-soft">This is a bonus for your goal: you can skip it.</p>}
             </>
           )}
         </motion.div>
       </AnimatePresence>
 
-      <Sheet open={confirmExit} onClose={() => { setConfirmExit(false); setPaused(false); }} title="Sair do treino?">
-        <p className="text-sm text-ink-soft">Seu progresso fica salvo. Quando voltar, você continua da etapa {idx + 1}.</p>
+      <Sheet open={confirmExit} onClose={() => { setConfirmExit(false); setPaused(false); }} title="Exit workout?">
+        <p className="text-sm text-ink-soft">Your progress is saved. When you come back, you’ll continue from step {idx + 1}.</p>
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <button className="btn-ghost" onClick={() => { setConfirmExit(false); setPaused(false); }}>Continuar</button>
-          <button className="btn-soft" onClick={onExit}>Sair</button>
+          <button className="btn-ghost" onClick={() => { setConfirmExit(false); setPaused(false); }}>Keep going</button>
+          <button className="btn-soft" onClick={onExit}>Exit</button>
         </div>
       </Sheet>
     </main>

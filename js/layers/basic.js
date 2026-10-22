@@ -26,14 +26,14 @@ export function button({ content, design }, ctx) {
     class: cls.filter(Boolean).join(' '),
     html: fill(content.label),
     onclick: () => {
-      if (content.type === 'redirect') return trackAndGo(checkoutUrl(content.destination || REDIRECT_URL), 'InitiateCheckout', { value: 27.9, currency: 'BRL', content_name: 'Pilates na Parede 21 Dias' });
+      if (content.type === 'redirect') return trackAndGo(checkoutUrl(content.destination || REDIRECT_URL), 'InitiateCheckout', { value: 27, currency: 'USD', content_name: 'Wall Pilates 21 Days' });
       if (ctx.next(content.destination) && content.lead) {
-        track('Lead', { content_name: 'Pilates na Parede 21 Dias' });
+        track('Lead', { content_name: 'Wall Pilates 21 Days' });
         sendLead(LEAD_WEBHOOK, { ...state.vars, data: new Date().toISOString() });
       }
     },
   });
   if (content.type !== 'redirect') return btn;
   // Botão de compra: reforça confiança logo abaixo
-  return el('div', {}, btn, el('div', { class: 'trust' }, '🔒 Compra 100% segura · 🛡️ Garantia de 90 dias · ⚡ Acesso imediato'));
+  return el('div', {}, btn, el('div', { class: 'trust' }, '🔒 100% secure checkout · 🛡️ 90-day guarantee · ⚡ Instant access'));
 }

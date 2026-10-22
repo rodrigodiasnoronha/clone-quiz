@@ -62,7 +62,7 @@ export function Providers({ children }: { children: ReactNode }) {
       <div className="grid min-h-dvh place-items-center">
         <div className="flex flex-col items-center gap-3">
           <Lili mood="feliz" size={96} />
-          <p className="text-sm font-bold text-grape-500">Preparando seu desafio…</p>
+          <p className="text-sm font-bold text-grape-500">Getting your challenge ready…</p>
         </div>
       </div>
     );
@@ -91,10 +91,10 @@ function MedalWatcher() {
       open
       emoji={medal.emoji}
       mood="orgulhosa"
-      title={`Medalha: ${medal.name}!`}
-      text={`${medal.desc}. Ela já está no seu Baú de Conquistas.`}
+      title={`Medal: ${medal.name}!`}
+      text={`${medal.desc}. It’s already in your Achievement Chest.`}
       onClose={() => state.markMedalsSeen([medal.id])}
-      cta={fresh.length > 1 ? 'Próxima conquista' : 'Uhuul!'}
+      cta={fresh.length > 1 ? 'Next achievement' : 'Woohoo!'}
     />
   );
 }

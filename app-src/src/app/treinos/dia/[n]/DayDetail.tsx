@@ -14,7 +14,7 @@ import { buildSteps, estimateMinutes, STAGE_LABEL, type ExerciseStep } from '@/l
 import { dayStatus } from '@/lib/progress';
 import { formatDate } from '@/lib/dates';
 
-const TYPE_LABEL = { treino: 'Treino', mobilidade: 'Mobilidade', recuperacao: 'Recuperação ativa', celebracao: 'Celebração' };
+const TYPE_LABEL = { treino: 'Workout', mobilidade: 'Mobility', recuperacao: 'Active recovery', celebracao: 'Celebration' };
 
 export function DayDetail({ n }: { n: number }) {
   const s = useStore();
@@ -31,18 +31,18 @@ export function DayDetail({ n }: { n: number }) {
 
   return (
     <Page>
-      <TopBar back="/desafios/" title={`Dia ${n}`} right={<span className={`chip ${STATUS_STYLE[st].cls}`}>{STATUS_STYLE[st].label}</span>} />
-      <p className="label">Fase {day.phase} · {PHASES[day.phase - 1].name} · {TYPE_LABEL[day.type]}</p>
+      <TopBar back="/desafios/" title={`Day ${n}`} right={<span className={`chip ${STATUS_STYLE[st].cls}`}>{STATUS_STYLE[st].label}</span>} />
+      <p className="label">Phase {day.phase} · {PHASES[day.phase - 1].name} · {TYPE_LABEL[day.type]}</p>
       <h1 className="text-3xl font-bold leading-tight">{day.name}</h1>
       <p className="mt-1 text-ink-soft">{day.goal}</p>
       <div className="mt-3 flex flex-wrap gap-2 text-xs font-bold">
         <span className="chip bg-white text-grape-700 shadow-soft">⏱️ ~{estimateMinutes(steps)} min</span>
-        <span className="chip bg-white text-grape-700 shadow-soft">🧩 {ex.length} exercícios</span>
-        {s.days[n]?.completedAt && <span className="chip bg-brand text-white">✓ Feito em {formatDate(s.days[n].completedAt!)}</span>}
+        <span className="chip bg-white text-grape-700 shadow-soft">🧩 {ex.length} exercises</span>
+        {s.days[n]?.completedAt && <span className="chip bg-brand text-white">✓ Done on {formatDate(s.days[n].completedAt!)}</span>}
       </div>
 
       {!unlocked ? (
-        <div className="card mt-5 flex items-center gap-3 p-4 text-sm font-semibold text-grape-700"><Lock size={20} /> Este dia libera conforme você avança no calendário. Dá para espiar o que vem por aí!</div>
+        <div className="card mt-5 flex items-center gap-3 p-4 text-sm font-semibold text-grape-700"><Lock size={20} /> This day unlocks as you move through the calendar. You can peek at what’s coming!</div>
       ) : (
         <div className="mt-4"><LiliSays text={day.lili} /></div>
       )}
@@ -63,8 +63,8 @@ export function DayDetail({ n }: { n: number }) {
                       <div className="min-w-0 flex-1">
                         <p className="font-bold">{e.ex.name}</p>
                         <p className="text-xs text-ink-soft">
-                          {e.secs ? `${e.secs}s` : `${e.reps} rep.`}{e.ex.perSide ? ' cada lado' : ''}{e.sets > 1 ? ` · ${e.sets} séries` : ''}
-                          {e.adapted && <span className="ml-1 inline-flex items-center gap-0.5 font-bold text-rose-500"><Wand2 size={11} /> adaptado</span>}
+                          {e.secs ? `${e.secs}s` : `${e.reps} reps`}{e.ex.perSide ? ' per side' : ''}{e.sets > 1 ? ` · ${e.sets} sets` : ''}
+                          {e.adapted && <span className="ml-1 inline-flex items-center gap-0.5 font-bold text-rose-500"><Wand2 size={11} /> adapted</span>}
                         </p>
                       </div>
                       <ChevronDown size={18} className={`text-grape-500 transition ${isOpen ? 'rotate-180' : ''}`} />
@@ -74,10 +74,10 @@ export function DayDetail({ n }: { n: number }) {
                         <ExerciseMedia ex={e.ex} />
                         <p className="text-xs font-semibold text-grape-600">{e.ex.muscles.join(' · ')}</p>
                         <ol className="list-decimal space-y-1 pl-5">{e.ex.steps.map(t => <li key={t}>{t}</li>)}</ol>
-                        <p><b>Respiração: </b>{e.ex.breathing}</p>
-                        <div><b className="text-rose-600">Erros comuns</b><ul className="list-disc pl-5 text-ink-soft">{e.ex.errors.map(t => <li key={t}>{t}</li>)}</ul></div>
-                        <p className="rounded-xl bg-rose-50 p-2"><b>Mais fácil: </b>{e.ex.easier}</p>
-                        <p className="rounded-xl bg-lilac-50 p-2 text-xs"><b>Segurança: </b>{e.ex.safety}</p>
+                        <p><b>Breathing: </b>{e.ex.breathing}</p>
+                        <div><b className="text-rose-600">Common mistakes</b><ul className="list-disc pl-5 text-ink-soft">{e.ex.errors.map(t => <li key={t}>{t}</li>)}</ul></div>
+                        <p className="rounded-xl bg-rose-50 p-2"><b>Easier: </b>{e.ex.easier}</p>
+                        <p className="rounded-xl bg-lilac-50 p-2 text-xs"><b>Safety: </b>{e.ex.safety}</p>
                       </div>
                     )}
                   </div>
@@ -89,25 +89,25 @@ export function DayDetail({ n }: { n: number }) {
       })}
 
       <section className="mt-5">
-        <h2 className="label mb-2">Respiração do dia</h2>
+        <h2 className="label mb-2">Breathing of the day</h2>
         <p className="card p-4 text-sm">{day.breathing}</p>
       </section>
 
       <section className="mt-5">
-        <h2 className="label mb-2">Missões do dia</h2>
+        <h2 className="label mb-2">Missions of the day</h2>
         <div className="space-y-2">
           <MissionCard mission={day.extra} badge="Extra" locked={!unlocked} />
-          <MissionCard mission={day.surprise} badge="Surpresa" surprise locked={!unlocked} />
+          <MissionCard mission={day.surprise} badge="Surprise" surprise locked={!unlocked} />
         </div>
       </section>
 
-      <p className="mt-5 rounded-2xl bg-white/70 p-3 text-center text-sm font-semibold text-grape-700">🎁 Ao concluir: {day.reward}</p>
+      <p className="mt-5 rounded-2xl bg-white/70 p-3 text-center text-sm font-semibold text-grape-700">🎁 When you finish: {day.reward}</p>
 
       {(st === 'disponivel' || st === 'andamento') && (
-        <Link href={`/treinar/${n}/`} className="btn-primary shine mt-5 w-full text-lg"><Play size={20} fill="white" /> {st === 'andamento' ? 'CONTINUAR MEU TREINO' : 'COMEÇAR MEU TREINO'}</Link>
+        <Link href={`/treinar/${n}/`} className="btn-primary shine mt-5 w-full text-lg"><Play size={20} fill="white" /> {st === 'andamento' ? 'CONTINUE MY WORKOUT' : 'START MY WORKOUT'}</Link>
       )}
-      {st === 'concluido' && <Link href={`/treinar/${n}/`} className="btn-ghost mt-5 w-full"><RotateCcw size={18} /> Refazer este treino</Link>}
-      {st === 'pendente' && <p className="mt-5 text-center text-sm font-semibold text-rose-600">Conclua os dias anteriores para chegar aqui.</p>}
+      {st === 'concluido' && <Link href={`/treinar/${n}/`} className="btn-ghost mt-5 w-full"><RotateCcw size={18} /> Redo this workout</Link>}
+      {st === 'pendente' && <p className="mt-5 text-center text-sm font-semibold text-rose-600">Complete the earlier days to get here.</p>}
     </Page>
   );
 }

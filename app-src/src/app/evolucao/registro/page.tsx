@@ -13,10 +13,10 @@ export default function Registro() {
   const [saved, setSaved] = useState(false);
   return (
     <Page>
-      <TopBar back="/evolucao/" title="Registro do dia" />
+      <TopBar back="/evolucao/" title="Daily log" />
       <p className="mb-4 text-sm text-ink-soft">{formatDate(toKey(), { weekday: 'long', day: '2-digit', month: 'long' })} · um registro por dia (+{POINTS.journal} pts)</p>
       <JournalForm onSaved={() => setSaved(true)} />
-      <Celebration open={saved} mood="feliz" title="Registro salvo! 📔" text="Cada registro ajuda você a enxergar sua evolução de verdade." onClose={() => router.push('/evolucao/')} />
+      <Celebration open={saved} mood="feliz" title="Entry saved! 📔" text="Every entry helps you truly see your progress." onClose={() => router.push('/evolucao/')} />
     </Page>
   );
 }

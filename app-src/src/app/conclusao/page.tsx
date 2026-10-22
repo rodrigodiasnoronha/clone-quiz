@@ -21,12 +21,12 @@ export default function Conclusao() {
   const holdFirst = s.journal.find(j => j.hold), holdLast = [...s.journal].reverse().find(j => j.hold);
 
   const stats = [
-    ['🏋️‍♀️', done.length, 'treinos concluídos'],
-    ['🎯', Object.keys(s.missions).length, 'missões realizadas'],
-    ['🏅', medals.length, 'medalhas conquistadas'],
-    ['🔥', bestStreak(s), 'melhor sequência'],
-    ['📔', withMood.length, 'registros no diário'],
-    ['💜', pts, 'Pontos de Evolução'],
+    ['🏋️‍♀️', done.length, 'workouts completed'],
+    ['🎯', Object.keys(s.missions).length, 'missions done'],
+    ['🏅', medals.length, 'medals earned'],
+    ['🔥', bestStreak(s), 'best streak'],
+    ['📔', withMood.length, 'journal entries'],
+    ['💜', pts, 'Evolution Points'],
   ] as const;
 
   return (
@@ -36,8 +36,8 @@ export default function Conclusao() {
         <motion.div initial={{ scale: .5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 12 }} className="mx-auto w-fit">
           <Lili mood={finished ? 'orgulhosa' : 'feliz'} size={150} />
         </motion.div>
-        <h1 className="mt-3 text-3xl font-bold leading-tight">{finished ? `${s.profile!.name}, você conseguiu! 🏆` : 'Sua jornada até aqui'}</h1>
-        <p className="mt-2 text-ink-soft">{finished ? '21 dias de cuidado, presença e força. Olha só tudo o que você construiu:' : `Faltam ${21 - done.length} dias para concluir o desafio.`}</p>
+        <h1 className="mt-3 text-3xl font-bold leading-tight">{finished ? `${s.profile!.name}, you did it! 🏆` : 'Your journey so far'}</h1>
+        <p className="mt-2 text-ink-soft">{finished ? '21 days of self-care, presence and strength. Look at everything you’ve built:' : `${21 - done.length} days left to finish the challenge.`}</p>
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-2">
@@ -51,39 +51,39 @@ export default function Conclusao() {
       </div>
 
       <div className={`mt-3 rounded-3xl bg-gradient-to-r ${lvl.gradient} p-4 text-center shadow-soft`}>
-        <p className="text-xs font-bold uppercase text-grape-900/70">Nível alcançado</p>
+        <p className="text-xs font-bold uppercase text-grape-900/70">Level reached</p>
         <p className="font-display text-2xl font-bold text-grape-900">{lvl.emoji} {lvl.name}</p>
       </div>
 
       {(first && last && first !== last) || (flexFirst && flexLast) || (holdFirst && holdLast) ? (
         <div className="card mt-3 space-y-1.5 p-4 text-sm">
-          <p className="font-bold">Sua evolução registrada</p>
-          {first && last && first !== last && <p>Energia: {first.energy}/5 → <b>{last.energy}/5</b> · Humor: {first.mood}/5 → <b>{last.mood}/5</b></p>}
-          {flexFirst && flexLast && flexFirst !== flexLast && <p>Rolamento: {FLEX[flexFirst.flex! - 1]} → <b>{FLEX[flexLast.flex! - 1]}</b></p>}
-          {holdFirst && holdLast && holdFirst !== holdLast && <p>Agachamento na parede: {holdFirst.hold}s → <b>{holdLast.hold}s</b></p>}
+          <p className="font-bold">Your logged progress</p>
+          {first && last && first !== last && <p>Energy: {first.energy}/5 → <b>{last.energy}/5</b> · Mood: {first.mood}/5 → <b>{last.mood}/5</b></p>}
+          {flexFirst && flexLast && flexFirst !== flexLast && <p>Roll-down: {FLEX[flexFirst.flex! - 1]} → <b>{FLEX[flexLast.flex! - 1]}</b></p>}
+          {holdFirst && holdLast && holdFirst !== holdLast && <p>Wall sit: {holdFirst.hold}s → <b>{holdLast.hold}s</b></p>}
         </div>
       ) : null}
 
       <div className="mt-4 rounded-3xl bg-white p-5 shadow-card">
-        <div className="flex items-center gap-2"><Lili size={44} float={false} /><p className="font-bold">Mensagem da Lili</p></div>
+        <div className="flex items-center gap-2"><Lili size={44} float={false} /><p className="font-bold">A message from Lili</p></div>
         <p className="mt-2 text-sm leading-relaxed text-ink-soft">
           {finished
-            ? 'Foi uma honra caminhar ao seu lado. Você aprendeu a respirar, a se mover com controle e, principalmente, a aparecer para você mesma. Isso não tem prazo de validade: continue com a rotina de manutenção, no seu ritmo. Estarei aqui. 💜'
-            : 'Cada dia que você completou já é uma vitória. Continue no seu ritmo, sem culpa e com carinho.'}
+            ? 'It was an honor to walk beside you. You learned to breathe, to move with control and, above all, to show up for yourself. That has no expiration date: keep going with the maintenance routine, at your own pace. I’ll be here. 💜'
+            : 'Every day you’ve completed is already a win. Keep going at your own pace, guilt-free and with kindness.'}
         </p>
       </div>
 
-      {finished && <Link href="/certificado/final/" className="btn-primary shine mt-5 w-full text-lg">🎓 Ver meu certificado</Link>}
+      {finished && <Link href="/certificado/final/" className="btn-primary shine mt-5 w-full text-lg">🎓 See my certificate</Link>}
       {finished && (
         <div className="mt-3">
-          <p className="mb-2 text-center text-sm font-bold">Continue treinando: rotina de manutenção</p>
+          <p className="mb-2 text-center text-sm font-bold">Keep training: maintenance routine</p>
           <div className="grid grid-cols-3 gap-2">
-            {['a', 'b', 'c'].map(x => <Link key={x} href={`/sessao/manutencao-${x}/`} className="btn-soft">Treino {x.toUpperCase()}</Link>)}
+            {['a', 'b', 'c'].map(x => <Link key={x} href={`/sessao/manutencao-${x}/`} className="btn-soft">Workout {x.toUpperCase()}</Link>)}
           </div>
-          <p className="mt-1 text-center text-[11px] text-ink-faint">Sugestão: 3 vezes por semana, alternando A, B e C.</p>
+          <p className="mt-1 text-center text-[11px] text-ink-faint">Suggestion: 3 times a week, alternating A, B and C.</p>
         </div>
       )}
-      <Link href="/" className="btn-ghost mt-3 w-full">Voltar ao início</Link>
+      <Link href="/" className="btn-ghost mt-3 w-full">Back to home</Link>
     </main>
   );
 }

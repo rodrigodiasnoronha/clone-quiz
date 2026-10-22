@@ -11,8 +11,8 @@ export function Avatar({ level, size = 88 }: { level: number; size?: number }) {
           <Lili size={size} mood={level >= 6 ? 'orgulhosa' : 'feliz'} float={false} />
         </div>
       </div>
-      {level >= 4 && <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-3xl drop-shadow" aria-label="Coroa da Rainha da Constância">👑</span>}
-      {level >= 6 && <span className="absolute -bottom-1 -right-1 text-2xl" aria-label="Selo diamante">💎</span>}
+      {level >= 4 && <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-3xl drop-shadow" aria-label="Consistency Queen crown">👑</span>}
+      {level >= 6 && <span className="absolute -bottom-1 -right-1 text-2xl" aria-label="Diamond seal">💎</span>}
     </div>
   );
 }

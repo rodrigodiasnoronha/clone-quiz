@@ -11,7 +11,7 @@ export interface ExerciseStep {
   reps?: number;
   set: number;
   sets: number;
-  side?: 'direito' | 'esquerdo';
+  side?: 'Right' | 'Left';
   adapted?: string; // nome do exercício original, quando trocado por limitação
   optional?: boolean;
 }
@@ -35,11 +35,11 @@ const GOAL_FINISHER: Record<Goal, Block> = {
 };
 
 export const GOAL_LABEL: Record<Goal, string> = {
-  abdomen: 'Fortalecer o abdômen',
-  postura: 'Melhorar a postura',
-  pernas: 'Tonificar pernas e glúteos',
-  flexibilidade: 'Ganhar flexibilidade',
-  rotina: 'Criar uma rotina saudável',
+  abdomen: 'Strengthen my core',
+  postura: 'Improve my posture',
+  pernas: 'Tone my legs and glutes',
+  flexibilidade: 'Gain flexibility',
+  rotina: 'Build a healthy routine',
 };
 
 /** Troca exercícios que não combinam com as limitações informadas */
@@ -77,7 +77,7 @@ function expand(blocks: Block[], stage: Stage, profile: Profile | undefined, out
     const { reps, secs, rest } = scale(b, profile);
     const sets = stage === 'principal' ? setsFor(b.sets ?? 1, profile) : 1;
     for (let set = 1; set <= sets; set++) {
-      const sides: (ExerciseStep['side'] | undefined)[] = ex.perSide ? ['direito', 'esquerdo'] : [undefined];
+      const sides: (ExerciseStep['side'] | undefined)[] = ex.perSide ? ['Right', 'Left'] : [undefined];
       sides.forEach(side => out.push({ kind: 'exercise', ex, stage, reps, secs, set, sets, side, adapted, optional }));
       const last = bi === blocks.length - 1 && set === sets;
       if (stage === 'principal' && !last) out.push({ kind: 'rest', secs: rest });
@@ -105,8 +105,8 @@ export function stepSeconds(s: Step) {
 export const estimateMinutes = (steps: Step[]) => Math.max(5, Math.round(steps.reduce((n, s) => n + stepSeconds(s), 0) / 60));
 
 export const STAGE_LABEL: Record<Stage, string> = {
-  aquecimento: 'Aquecimento',
-  principal: 'Treino principal',
-  bonus: 'Bônus do seu objetivo',
-  alongamento: 'Alongamento final',
+  aquecimento: 'Warm-up',
+  principal: 'Main workout',
+  bonus: 'Bonus for your goal',
+  alongamento: 'Final stretch',
 };

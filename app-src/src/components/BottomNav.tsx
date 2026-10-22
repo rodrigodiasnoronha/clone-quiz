@@ -6,17 +6,17 @@ import { motion } from 'framer-motion';
 import { Home, CalendarHeart, Dumbbell, Trophy, MoreHorizontal } from 'lucide-react';
 
 const TABS = [
-  { href: '/', label: 'Início', icon: Home, match: (p: string) => p === '/' },
-  { href: '/desafios/', label: 'Desafios', icon: CalendarHeart, match: (p: string) => /^\/(desafios|treinos|missoes)/.test(p) },
-  { href: '/treinar/', label: 'Treinar', icon: Dumbbell, match: (p: string) => p === '/treinar/' || /^\/(praticar|sessao)/.test(p) },
-  { href: '/conquistas/', label: 'Conquistas', icon: Trophy, match: (p: string) => /^\/(conquistas|certificado|compartilhar)/.test(p) },
-  { href: '/mais/', label: 'Mais', icon: MoreHorizontal, match: (p: string) => /^\/(mais|evolucao|perfil|hidratacao|relaxar|jogos|biblioteca)/.test(p) },
+  { href: '/', label: 'Home', icon: Home, match: (p: string) => p === '/' },
+  { href: '/desafios/', label: 'Challenge', icon: CalendarHeart, match: (p: string) => /^\/(desafios|treinos|missoes)/.test(p) },
+  { href: '/treinar/', label: 'Train', icon: Dumbbell, match: (p: string) => p === '/treinar/' || /^\/(praticar|sessao)/.test(p) },
+  { href: '/conquistas/', label: 'Achievements', icon: Trophy, match: (p: string) => /^\/(conquistas|certificado|compartilhar)/.test(p) },
+  { href: '/mais/', label: 'More', icon: MoreHorizontal, match: (p: string) => /^\/(mais|evolucao|perfil|hidratacao|relaxar|jogos|biblioteca)/.test(p) },
 ];
 
 export function BottomNav() {
   const path = usePathname();
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-md px-3" style={{ paddingBottom: 'calc(10px + var(--safe-bottom))' }} aria-label="Navegação principal">
+    <nav className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-md px-3" style={{ paddingBottom: 'calc(10px + var(--safe-bottom))' }} aria-label="Main navigation">
       <div className="flex items-stretch justify-between rounded-3xl bg-white/95 p-1.5 shadow-card ring-1 ring-rose-100 backdrop-blur">
         {TABS.map(t => {
           const on = t.match(path);

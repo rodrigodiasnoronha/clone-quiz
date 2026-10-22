@@ -41,12 +41,12 @@ export function ExerciseMedia({ ex, compact = false }: { ex: Exercise; compact?:
           </motion.div>
           {!compact && <p className="mt-3 max-w-[18rem] text-sm font-semibold leading-snug text-grape-800">{ex.position}</p>}
           <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-bold text-grape-600">
-            <Video size={12} /> Vídeo demonstrativo em breve
+            <Video size={12} /> Demo video coming soon
           </span>
         </div>
       )}
       <span className="absolute left-3 top-3 chip bg-white/85 text-grape-700">{CATEGORY_LABEL[ex.category]}</span>
-      <button onClick={replay} aria-label="Repetir demonstração" className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/85 text-grape-700 shadow-soft active:scale-95">
+      <button onClick={replay} aria-label="Replay demo" className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/85 text-grape-700 shadow-soft active:scale-95">
         <RotateCcw size={16} />
       </button>
     </div>

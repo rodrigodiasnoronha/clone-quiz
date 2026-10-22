@@ -2,7 +2,7 @@
  * - Arquivos estáticos do Next (/_next/static) e ícones: cache primeiro (são imutáveis).
  * - Páginas: rede primeiro, com cópia em cache para funcionar offline.
  */
-const VERSION = 'pnp21-v4';
+const VERSION = 'pnp21-v5';
 const CORE = ['/app/', '/app/manifest.webmanifest', '/app/icons/icon-192.png', '/app/icons/icon-512.png'];
 
 self.addEventListener('install', e => {

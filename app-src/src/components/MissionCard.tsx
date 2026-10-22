@@ -21,7 +21,7 @@ export function MissionCard({ mission, badge, surprise = false, locked = false }
     return (
       <div className="card flex items-center gap-3 p-4 opacity-60">
         <div className="grid h-12 w-12 place-items-center rounded-2xl bg-lilac-50 text-2xl">🔒</div>
-        <div className="flex-1"><p className="font-bold">{badge && `Missão ${badge.toLowerCase()}`}</p><p className="text-xs text-ink-soft">Libera junto com o dia do desafio</p></div>
+        <div className="flex-1"><p className="font-bold">{badge && `${badge} mission`}</p><p className="text-xs text-ink-soft">Unlocks along with the challenge day</p></div>
       </div>
     );
   }
@@ -37,8 +37,8 @@ export function MissionCard({ mission, badge, surprise = false, locked = false }
             <HelpCircle size={26} />
           </motion.div>
           <div className="flex-1">
-            <p className="text-[11px] font-extrabold uppercase tracking-wider text-white/80">Missão surpresa</p>
-            <p className="font-bold">Toque para revelar ✨</p>
+            <p className="text-[11px] font-extrabold uppercase tracking-wider text-white/80">Surprise mission</p>
+            <p className="font-bold">Tap to reveal ✨</p>
           </div>
           <span className="chip bg-white/20">+{POINTS.mission}</span>
         </motion.button>
@@ -49,11 +49,11 @@ export function MissionCard({ mission, badge, surprise = false, locked = false }
               {done ? <Check className="text-white" /> : MISSION_ICON[mission.kind]}
             </div>
             <div className="min-w-0 flex-1">
-              {badge && <p className="label">Missão {badge}</p>}
+              {badge && <p className="label">{badge} mission</p>}
               <p className={`font-bold leading-tight ${done ? 'text-ink-soft line-through' : ''}`}>{mission.title}</p>
               <p className="line-clamp-2 text-xs text-ink-soft">{mission.desc}</p>
             </div>
-            {done ? <span className="chip bg-white text-grape-600">Feita</span> : <span className="flex items-center text-xs font-extrabold text-grape-500">+{POINTS.mission}<ChevronRight size={16} /></span>}
+            {done ? <span className="chip bg-white text-grape-600">Done</span> : <span className="flex items-center text-xs font-extrabold text-grape-500">+{POINTS.mission}<ChevronRight size={16} /></span>}
           </Link>
         </motion.div>
       )}

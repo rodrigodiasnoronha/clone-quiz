@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-const NAMES = ['Sementinha', 'Broto', 'Mudinha', 'Botão', 'Primeira flor', 'Jardim florido', 'Jardim encantado'];
+const NAMES = ['Little seed', 'Sprout', 'Seedling', 'Bud', 'First flower', 'Blooming garden', 'Enchanted garden'];
 
 /** Jardim da Evolução: a planta cresce conforme as atividades concluídas */
 export function Garden({ stage, acts, next }: { stage: number; acts: number; next?: number }) {
@@ -48,7 +48,7 @@ export function Garden({ stage, acts, next }: { stage: number; acts: number; nex
       </svg>
       <div className="mt-1 text-center">
         <p className="font-display text-lg font-bold text-grape-800">{NAMES[stage]}</p>
-        <p className="text-xs font-semibold text-ink-soft">{next ? `Mais ${next - acts} atividades para o próximo estágio` : 'Seu jardim está completo! 🌸'}</p>
+        <p className="text-xs font-semibold text-ink-soft">{next ? `${next - acts} more activities to the next stage` : 'Your garden is complete! 🌸'}</p>
       </div>
     </div>
   );

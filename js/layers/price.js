@@ -1,7 +1,7 @@
 import { el, rich, countdown } from '../utils.js';
 
 export const price = ({ content: c }) => el('div', {},
-  el('div', { class: 'countdown' }, '⏰ Seu desconto expira em ', countdown('quiz-deadline', 10)),
+  el('div', { class: 'countdown' }, '⏰ Your discount expires in ', countdown('quiz-deadline', 10)),
   el('div', { class: 'price' },
     c.featured && el('div', { class: 'feat' }, c.featured),
     el('div', { class: 'body' },

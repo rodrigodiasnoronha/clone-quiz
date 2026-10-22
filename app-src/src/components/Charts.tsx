@@ -5,23 +5,23 @@ import type { JournalEntry } from '@/lib/types';
 import { formatDate } from '@/lib/dates';
 
 const SERIES = [
-  { key: 'mood', label: 'Humor', color: '#EC4C93' },
-  { key: 'energy', label: 'Energia', color: '#C42A78' },
-  { key: 'sleep', label: 'Sono', color: '#E86AA8' },
+  { key: 'mood', label: 'Mood', color: '#EC4C93' },
+  { key: 'energy', label: 'Energy', color: '#C42A78' },
+  { key: 'sleep', label: 'Sleep', color: '#E86AA8' },
 ] as const;
 
 /** Linhas de humor, energia e sono (escala 1 a 5) */
 export function HabitsChart({ entries }: { entries: JournalEntry[] }) {
   const data = entries.filter(e => e.mood).slice(-14);
   if (data.length < 2) {
-    return <p className="rounded-2xl bg-lilac-50 p-4 text-center text-sm text-ink-soft">Faça pelo menos 2 registros no diário para ver seu gráfico de evolução.</p>;
+    return <p className="rounded-2xl bg-lilac-50 p-4 text-center text-sm text-ink-soft">Make at least 2 journal entries to see your progress chart.</p>;
   }
   const W = 320, H = 150, P = 18;
   const x = (i: number) => P + (i / (data.length - 1)) * (W - P * 2);
   const y = (v: number) => H - P - ((v - 1) / 4) * (H - P * 2);
   return (
     <div>
-      <svg viewBox={`0 0 ${W} ${H + 18}`} className="w-full" role="img" aria-label="Gráfico de humor, energia e sono">
+      <svg viewBox={`0 0 ${W} ${H + 18}`} className="w-full" role="img" aria-label="Mood, energy and sleep chart">
         {[1, 2, 3, 4, 5].map(v => <line key={v} x1={P} x2={W - P} y1={y(v)} y2={y(v)} stroke="#EFE8FF" strokeDasharray={v === 3 ? '0' : '3 4'} />)}
         {SERIES.map((s, si) => {
           const pts = data.map((e, i) => [x(i), y((e[s.key] as number) ?? 3)] as const);

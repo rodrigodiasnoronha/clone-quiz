@@ -1,7 +1,7 @@
 {
-  "name": "Pilates na Parede · Desafio 21 Dias",
+  "name": "Wall Pilates · 21-Day Challenge",
   "short_name": "Pilates 21",
-  "description": "Seu desafio de Pilates na Parede de 21 dias, com treinos guiados, missões e conquistas.",
+  "description": "Your 21-day Wall Pilates challenge, with guided workouts, missions and achievements.",
   "id": "/app/",
   "start_url": "/app/",
   "scope": "/app/",
@@ -9,7 +9,7 @@
   "orientation": "portrait",
   "background_color": "#2A0C23",
   "theme_color": "#2A0C23",
-  "lang": "pt-BR",
+  "lang": "en-US",
   "icons": [
     { "src": "/app/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/app/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },

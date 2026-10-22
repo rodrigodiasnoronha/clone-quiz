@@ -15,7 +15,7 @@ export default function Respiracao() {
   const [toast, setToast] = useState('');
   return (
     <Page>
-      <TopBar back="/missoes/" title="Desafio de Respiração" />
+      <TopBar back="/missoes/" title="Breathing Challenge" />
       <div className="grid grid-cols-2 gap-2">
         {(Object.keys(BREATH_PATTERNS) as (keyof typeof BREATH_PATTERNS)[]).map(k => (
           <button key={k} onClick={() => { setPattern(k); setKey(x => x + 1); }} className={`rounded-2xl p-3 text-left ${pattern === k ? 'bg-brand text-white shadow-glow' : 'bg-white shadow-soft'}`}>
@@ -32,7 +32,7 @@ export default function Respiracao() {
       <div className="mt-8">
         <Breathing key={`${key}-${pattern}-${mins}`} secs={mins * 60} pattern={pattern} onDone={() => {
           const first = addActivity(`breath:${toKey()}`);
-          setToast(first ? `+${POINTS.breath} pontos pela respiração de hoje 💜` : 'Respiração concluída! Os pontos de hoje já foram contados.');
+          setToast(first ? `+${POINTS.breath} points for today’s breathing 💜` : 'Breathing complete! Today’s points were already counted.');
           setTimeout(() => setToast(''), 3000);
         }} />
       </div>

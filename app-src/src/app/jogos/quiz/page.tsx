@@ -5,8 +5,8 @@ import { DailyQuiz } from '@/components/Games';
 export default function Quiz() {
   return (
     <Page>
-      <TopBar back="/missoes/" title="Quiz do Corpo" />
-      <p className="mb-5 text-sm text-ink-soft">Músculos, postura, respiração e Pilates. Cada acerto vale +5 pontos.</p>
+      <TopBar back="/missoes/" title="Body Quiz" />
+      <p className="mb-5 text-sm text-ink-soft">Muscles, posture, breathing and Pilates. Each right answer is worth +5 points.</p>
       <DailyQuiz />
     </Page>
   );
