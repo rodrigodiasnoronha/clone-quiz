@@ -28,7 +28,7 @@ export function ArticleView({ article, onRead }: { article: Article; onRead?: ()
         onClick={() => { addActivity(`read:${article.slug}`); onRead?.(); }}
         className={`mt-8 w-full ${read ? 'btn-soft' : 'btn-primary shine'}`}
       >
-        {read ? <><Check size={18} /> Leitura concluída</> : `Li até o fim · +${POINTS.read} pts`}
+        {read ? <><Check size={18} /> Finished reading</> : `I read it all · +${POINTS.read} pts`}
       </button>
     </article>
   );

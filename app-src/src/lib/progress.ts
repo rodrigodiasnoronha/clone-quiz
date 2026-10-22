@@ -105,9 +105,9 @@ export function quizFor(date: string) {
 }
 
 export const WEEKLY = [
-  { id: 'w1', title: 'Semana 1: 5 treinos', desc: 'Conclua 5 treinos entre os dias 1 e 7.', check: (s: Data) => completedDays(s).filter(n => n <= 7).length, goal: 5 },
-  { id: 'w2', title: 'Semana 2: diário em dia', desc: 'Registre o diário 4 vezes durante a Fase 2.', check: (s: Data) => s.journal.filter(j => j.mood && j.day >= 8 && j.day <= 14).length, goal: 4 },
-  { id: 'w3', title: 'Semana 3: 8 missões', desc: 'Conclua 8 missões extras ou surpresa dos dias 15 a 21.', check: (s: Data) => DAYS.filter(d => d.n >= 15).flatMap(d => [d.extra.id, d.surprise.id]).filter(id => s.missions[id]).length, goal: 8 },
+  { id: 'w1', title: 'Week 1: 5 workouts', desc: 'Complete 5 workouts between days 1 and 7.', check: (s: Data) => completedDays(s).filter(n => n <= 7).length, goal: 5 },
+  { id: 'w2', title: 'Week 2: journal up to date', desc: 'Log your journal 4 times during Phase 2.', check: (s: Data) => s.journal.filter(j => j.mood && j.day >= 8 && j.day <= 14).length, goal: 4 },
+  { id: 'w3', title: 'Week 3: 8 missions', desc: 'Complete 8 extra or surprise missions from days 15 to 21.', check: (s: Data) => DAYS.filter(d => d.n >= 15).flatMap(d => [d.extra.id, d.surprise.id]).filter(id => s.missions[id]).length, goal: 8 },
 ];
 
 /** Dias em que a meta de água foi atingida (registrado no momento em que bateu a meta) */
@@ -134,12 +134,12 @@ export function pointsBreakdown(s: Data) {
 }
 
 export const LEVELS = [
-  { n: 1, name: 'Primeiro Passo', min: 0, emoji: '🌱', gradient: 'from-rose-200 to-rose-300', perk: 'Acesso à jornada completa' },
-  { n: 2, name: 'Mulher Determinada', min: 250, emoji: '🌷', gradient: 'from-rose-300 to-lilac-300', perk: 'Nova moldura de avatar' },
-  { n: 3, name: 'Energia em Alta', min: 700, emoji: '⚡', gradient: 'from-lilac-300 to-lilac-500', perk: 'Tema Lilás no app' },
-  { n: 4, name: 'Rainha da Constância', min: 1300, emoji: '👑', gradient: 'from-lilac-400 to-grape-500', perk: 'Coroa no seu avatar' },
-  { n: 5, name: 'Poder Feminino', min: 2000, emoji: '🔥', gradient: 'from-rose-400 to-grape-600', perk: 'Tema Noite Roxa no app' },
-  { n: 6, name: 'Minha Melhor Versão', min: 2800, emoji: '💎', gradient: 'from-grape-500 to-grape-800', perk: 'Certificado com selo diamante' },
+  { n: 1, name: 'First Step', min: 0, emoji: '🌱', gradient: 'from-rose-200 to-rose-300', perk: 'Access to the full journey' },
+  { n: 2, name: 'Determined Woman', min: 250, emoji: '🌷', gradient: 'from-rose-300 to-lilac-300', perk: 'New avatar frame' },
+  { n: 3, name: 'High Energy', min: 700, emoji: '⚡', gradient: 'from-lilac-300 to-lilac-500', perk: 'Lilac theme in the app' },
+  { n: 4, name: 'Consistency Queen', min: 1300, emoji: '👑', gradient: 'from-lilac-400 to-grape-500', perk: 'Crown on your avatar' },
+  { n: 5, name: 'Woman Power', min: 2000, emoji: '🔥', gradient: 'from-rose-400 to-grape-600', perk: 'Purple Night theme in the app' },
+  { n: 6, name: 'My Best Self', min: 2800, emoji: '💎', gradient: 'from-grape-500 to-grape-800', perk: 'Certificate with a diamond seal' },
 ];
 
 export function levelFor(points: number) {
@@ -164,23 +164,23 @@ export interface Medal {
 const done = (n: number) => (s: Data) => [s.days[n]?.completedAt ? 1 : 0, 1] as [number, number];
 
 export const MEDALS: Medal[] = [
-  { id: 'm3', name: 'Primeiros Passos', emoji: '👣', desc: 'Concluir o dia 3', kind: 'marco', progress: done(3) },
-  { id: 'm5', name: 'Mobilidade Bônus', emoji: '🔄', desc: 'Concluir o dia 5 e liberar a aula bônus de mobilidade', kind: 'marco', unlock: { type: 'session', id: 'bonus-mobilidade' }, progress: done(5) },
-  { id: 'm7', name: 'Primeira Semana', emoji: '🎓', desc: 'Concluir o dia 7 e ganhar o certificado da semana 1', kind: 'marco', unlock: { type: 'certificate', id: 'semana1' }, progress: done(7) },
-  { id: 'm10', name: 'Relaxamento Especial', emoji: '🌙', desc: 'Concluir o dia 10 e liberar a sessão de relaxamento', kind: 'marco', unlock: { type: 'session', id: 'relaxamento' }, progress: done(10) },
-  { id: 'm14', name: 'Determinação', emoji: '🏅', desc: 'Concluir o dia 14', kind: 'marco', progress: done(14) },
-  { id: 'm17', name: 'Alongamento Bônus', emoji: '🤸‍♀️', desc: 'Concluir o dia 17 e liberar a aula bônus de alongamento', kind: 'marco', unlock: { type: 'session', id: 'bonus-alongamento' }, progress: done(17) },
-  { id: 'm21', name: 'Desafio Concluído', emoji: '🏆', desc: 'Concluir os 21 dias e ganhar o certificado final', kind: 'marco', unlock: { type: 'certificate', id: 'final' }, progress: done(21) },
-  { id: 'p-streak3', name: 'Em Ritmo', emoji: '🔥', desc: '3 dias seguidos de treino', kind: 'participacao', progress: s => [Math.min(3, bestStreak(s)), 3] },
-  { id: 'p-streak7', name: 'Imparável', emoji: '💫', desc: '7 dias seguidos de treino', kind: 'participacao', progress: s => [Math.min(7, bestStreak(s)), 7] },
-  { id: 'p-diario', name: 'Diário Vivo', emoji: '📔', desc: '5 registros no diário', kind: 'participacao', progress: s => [Math.min(5, s.journal.filter(j => j.mood).length), 5] },
-  { id: 'p-respira', name: 'Respira Fundo', emoji: '🌬️', desc: '5 sessões de respiração', kind: 'participacao', progress: s => [Math.min(5, Object.keys(s.activities).filter(k => k.startsWith('breath:')).length), 5] },
-  { id: 'p-leitora', name: 'Curiosa', emoji: '📚', desc: 'Ler 5 conteúdos da biblioteca', kind: 'participacao', progress: s => [Math.min(5, Object.keys(s.activities).filter(k => k.startsWith('read:')).length), 5] },
-  { id: 'p-quiz', name: 'Sabe Tudo', emoji: '🧠', desc: 'Acertar 15 perguntas do Quiz do Corpo', kind: 'participacao', progress: s => [Math.min(15, quizScore(s).correct), 15] },
-  { id: 'p-missoes', name: 'Missão Cumprida', emoji: '🎯', desc: 'Concluir 15 missões', kind: 'participacao', progress: s => [Math.min(15, Object.keys(s.missions).length), 15] },
-  { id: 'p-agua', name: 'Hidratada', emoji: '💧', desc: 'Bater a meta de água em 5 dias', kind: 'participacao', progress: s => [Math.min(5, waterDays(s)), 5] },
-  { id: 'p-relax', name: 'Zen', emoji: '🧘‍♀️', desc: '5 práticas do Modo Relaxamento', kind: 'participacao', progress: s => [Math.min(5, Object.keys(s.activities).filter(k => k.startsWith('relax:')).length), 5] },
-  { id: 'p-bonus', name: 'Exploradora', emoji: '🧭', desc: 'Fazer as 3 aulas bônus', kind: 'participacao', progress: s => {
+  { id: 'm3', name: 'First Steps', emoji: '👣', desc: 'Complete day 3', kind: 'marco', progress: done(3) },
+  { id: 'm5', name: 'Bonus Mobility', emoji: '🔄', desc: 'Complete day 5 and unlock the bonus mobility class', kind: 'marco', unlock: { type: 'session', id: 'bonus-mobilidade' }, progress: done(5) },
+  { id: 'm7', name: 'First Week', emoji: '🎓', desc: 'Complete day 7 and earn the week 1 certificate', kind: 'marco', unlock: { type: 'certificate', id: 'semana1' }, progress: done(7) },
+  { id: 'm10', name: 'Special Relaxation', emoji: '🌙', desc: 'Complete day 10 and unlock the relaxation session', kind: 'marco', unlock: { type: 'session', id: 'relaxamento' }, progress: done(10) },
+  { id: 'm14', name: 'Determination', emoji: '🏅', desc: 'Complete day 14', kind: 'marco', progress: done(14) },
+  { id: 'm17', name: 'Bonus Stretching', emoji: '🤸‍♀️', desc: 'Complete day 17 and unlock the bonus stretching class', kind: 'marco', unlock: { type: 'session', id: 'bonus-alongamento' }, progress: done(17) },
+  { id: 'm21', name: 'Challenge Complete', emoji: '🏆', desc: 'Complete all 21 days and earn the final certificate', kind: 'marco', unlock: { type: 'certificate', id: 'final' }, progress: done(21) },
+  { id: 'p-streak3', name: 'In the Groove', emoji: '🔥', desc: '3 workout days in a row', kind: 'participacao', progress: s => [Math.min(3, bestStreak(s)), 3] },
+  { id: 'p-streak7', name: 'Unstoppable', emoji: '💫', desc: '7 workout days in a row', kind: 'participacao', progress: s => [Math.min(7, bestStreak(s)), 7] },
+  { id: 'p-diario', name: 'Journal Keeper', emoji: '📔', desc: '5 journal entries', kind: 'participacao', progress: s => [Math.min(5, s.journal.filter(j => j.mood).length), 5] },
+  { id: 'p-respira', name: 'Deep Breather', emoji: '🌬️', desc: '5 breathing sessions', kind: 'participacao', progress: s => [Math.min(5, Object.keys(s.activities).filter(k => k.startsWith('breath:')).length), 5] },
+  { id: 'p-leitora', name: 'Curious Mind', emoji: '📚', desc: 'Read 5 library articles', kind: 'participacao', progress: s => [Math.min(5, Object.keys(s.activities).filter(k => k.startsWith('read:')).length), 5] },
+  { id: 'p-quiz', name: 'Know-It-All', emoji: '🧠', desc: 'Get 15 Body Quiz questions right', kind: 'participacao', progress: s => [Math.min(15, quizScore(s).correct), 15] },
+  { id: 'p-missoes', name: 'Mission Accomplished', emoji: '🎯', desc: 'Complete 15 missions', kind: 'participacao', progress: s => [Math.min(15, Object.keys(s.missions).length), 15] },
+  { id: 'p-agua', name: 'Hydrated', emoji: '💧', desc: 'Hit your water goal on 5 days', kind: 'participacao', progress: s => [Math.min(5, waterDays(s)), 5] },
+  { id: 'p-relax', name: 'Zen', emoji: '🧘‍♀️', desc: '5 Relax Mode sessions', kind: 'participacao', progress: s => [Math.min(5, Object.keys(s.activities).filter(k => k.startsWith('relax:')).length), 5] },
+  { id: 'p-bonus', name: 'Explorer', emoji: '🧭', desc: 'Do all 3 bonus classes', kind: 'participacao', progress: s => {
     const ids = new Set(Object.values(s.sessions).flat());
     return [REWARD_SESSIONS.filter(r => ids.has(r.session)).length, 3];
   } },

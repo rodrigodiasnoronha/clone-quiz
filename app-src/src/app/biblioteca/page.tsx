@@ -11,7 +11,7 @@ export default function Biblioteca() {
   const read = ARTICLES.filter(a => activities[`read:${a.slug}`]).length;
   return (
     <Page>
-      <TopBar back="/mais/" title="Biblioteca VIP" subtitle={`${read} de ${ARTICLES.length} lidos · +${POINTS.read} pts por leitura`} />
+      <TopBar back="/mais/" title="VIP Library" subtitle={`${read} of ${ARTICLES.length} read · +${POINTS.read} pts per article`} />
       <div className="grid grid-cols-2 gap-2">
         {ARTICLES.map(a => {
           const done = !!activities[`read:${a.slug}`];

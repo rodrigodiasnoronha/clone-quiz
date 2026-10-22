@@ -22,7 +22,7 @@ export function addDays(key: string, n: number) {
 }
 
 export function formatDate(key: string, opts: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short' }) {
-  return fromKey(key).toLocaleDateString('pt-BR', opts);
+  return fromKey(key).toLocaleDateString('en-US', opts);
 }
 
 /** Índice estável para conteúdos que mudam por dia */

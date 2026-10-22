@@ -36,7 +36,7 @@ export function Confetti({ count = 70 }: { count?: number }) {
   );
 }
 
-export function Celebration({ open, onClose, title, text, mood = 'animada', emoji, children, cta = 'Continuar' }: {
+export function Celebration({ open, onClose, title, text, mood = 'animada', emoji, children, cta = 'Continue' }: {
   open: boolean; onClose: () => void; title: string; text?: string; mood?: LiliMood; emoji?: string; children?: ReactNode; cta?: string;
 }) {
   return (

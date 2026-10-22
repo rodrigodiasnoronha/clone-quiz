@@ -18,9 +18,9 @@ export function InstallGate({ onDone }: { onDone: () => void }) {
   };
 
   const benefits = [
-    { icon: Smartphone, t: 'Ícone na tela inicial', d: 'Seu desafio a um toque, como qualquer app.' },
-    { icon: Maximize, t: 'Tela cheia', d: 'Sem barra do navegador durante o treino.' },
-    { icon: Wifi, t: 'Funciona sem internet', d: 'Depois do primeiro acesso, treine em qualquer lugar.' },
+    { icon: Smartphone, t: 'Icon on your home screen', d: 'Your challenge one tap away, like any app.' },
+    { icon: Maximize, t: 'Full screen', d: 'No browser bar during your workout.' },
+    { icon: Wifi, t: 'Works offline', d: 'After your first visit, work out anywhere.' },
   ];
 
   return (
@@ -32,16 +32,16 @@ export function InstallGate({ onDone }: { onDone: () => void }) {
 
         {installed ? (
           <>
-            <h1 className="mt-4 text-3xl font-bold leading-tight">App instalado! 💜</h1>
-            <p className="mt-2 text-ink-soft">Procure o ícone <b>Pilates 21</b> na sua tela inicial e abra por lá para a melhor experiência.</p>
-            <img src="/app/icons/icon-192.png" alt="Ícone do app Pilates 21" className="mt-5 h-20 w-20 rounded-3xl shadow-card" />
+            <h1 className="mt-4 text-3xl font-bold leading-tight">App installed! 💜</h1>
+            <p className="mt-2 text-ink-soft">Look for the <b>Pilates 21</b> icon on your home screen and open it from there for the best experience.</p>
+            <img src="/app/icons/icon-192.png" alt="Pilates 21 app icon" className="mt-5 h-20 w-20 rounded-3xl shadow-card" />
             <div className="flex-1" />
-            <button className="btn-primary shine mt-8 w-full" onClick={() => finish('installed')}>Continuar por aqui</button>
+            <button className="btn-primary shine mt-8 w-full" onClick={() => finish('installed')}>Continue here</button>
           </>
         ) : (
           <>
-            <h1 className="mt-4 text-3xl font-bold leading-tight">Instale o app do seu desafio</h1>
-            <p className="mt-2 text-ink-soft">Leva 5 segundos e deixa seus treinos muito mais práticos.</p>
+            <h1 className="mt-4 text-3xl font-bold leading-tight">Install your challenge app</h1>
+            <p className="mt-2 text-ink-soft">It takes 5 seconds and makes your workouts so much easier.</p>
 
             <div className="mt-6 w-full space-y-2 text-left">
               {benefits.map((b, i) => (
@@ -54,18 +54,18 @@ export function InstallGate({ onDone }: { onDone: () => void }) {
 
             {!canPrompt && (
               <div className="mt-4 w-full rounded-3xl bg-white p-4 text-left text-sm shadow-soft ring-1 ring-lilac-100">
-                <p className="font-bold">Como instalar {ios ? 'no iPhone' : 'no seu celular'}:</p>
+                <p className="font-bold">How to install {ios ? 'on iPhone' : 'on your phone'}:</p>
                 {ios ? (
                   <ol className="mt-2 space-y-2">
-                    <li>1. Toque em <Share size={17} className="inline -mt-0.5 text-grape-600" /> <b>Compartilhar</b>, na barra do Safari</li>
-                    <li>2. Escolha <SquarePlus size={17} className="inline -mt-0.5 text-grape-600" /> <b>Adicionar à Tela de Início</b></li>
-                    <li>3. Toque em <b>Adicionar</b> e abra pelo ícone 💜</li>
+                    <li>1. Tap <Share size={17} className="inline -mt-0.5 text-grape-600" /> <b>Share</b> in the Safari toolbar</li>
+                    <li>2. Choose <SquarePlus size={17} className="inline -mt-0.5 text-grape-600" /> <b>Add to Home Screen</b></li>
+                    <li>3. Tap <b>Add</b> and open it from the icon 💜</li>
                   </ol>
                 ) : (
                   <ol className="mt-2 space-y-2">
-                    <li>1. Toque no menu <MoreVertical size={17} className="inline -mt-0.5 text-grape-600" /> do navegador</li>
-                    <li>2. Escolha <b>Instalar app</b> ou <b>Adicionar à tela inicial</b></li>
-                    <li>3. Confirme e abra pelo ícone 💜</li>
+                    <li>1. Tap the browser menu <MoreVertical size={17} className="inline -mt-0.5 text-grape-600" /></li>
+                    <li>2. Choose <b>Install app</b> or <b>Add to Home screen</b></li>
+                    <li>3. Confirm and open it from the icon 💜</li>
                   </ol>
                 )}
               </div>
@@ -74,13 +74,13 @@ export function InstallGate({ onDone }: { onDone: () => void }) {
             <div className="flex-1" />
             {canPrompt && (
               <button className="btn-primary shine mt-8 w-full text-lg" disabled={busy} onClick={async () => { setBusy(true); await install(); setBusy(false); }}>
-                <Download size={20} /> Instalar app
+                <Download size={20} /> Install app
               </button>
             )}
             <button className={`${canPrompt ? 'btn-ghost mt-2' : 'btn-primary mt-8'} w-full`} onClick={() => finish('browser')}>
-              {canPrompt ? 'Agora não, continuar no navegador' : 'Já instalei / continuar no navegador'}
+              {canPrompt ? 'Not now, continue in the browser' : 'I already installed it / continue in the browser'}
             </button>
-            <p className="mt-2 text-[11px] text-ink-faint">Você pode instalar depois, a qualquer momento, pelo Perfil.</p>
+            <p className="mt-2 text-[11px] text-ink-faint">You can install it later, anytime, from your Profile.</p>
           </>
         )}
       </div>

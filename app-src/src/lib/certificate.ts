@@ -38,15 +38,15 @@ export async function renderCertificate(d: CertificateData): Promise<string> {
   g.textAlign = 'center';
   g.fillStyle = '#C42A78';
   g.font = '700 30px "Plus Jakarta Sans", sans-serif';
-  g.fillText('PILATES NA PAREDE · DESAFIO 21 DIAS', W / 2, 190);
+  g.fillText('WALL PILATES · 21-DAY CHALLENGE', W / 2, 190);
 
   g.fillStyle = '#2A1F3D';
   g.font = '700 84px Fredoka, "Plus Jakarta Sans", sans-serif';
-  g.fillText(d.kind === 'final' ? 'Certificado de Conclusão' : 'Certificado da Primeira Semana', W / 2, 300);
+  g.fillText(d.kind === 'final' ? 'Certificate of Completion' : 'First Week Certificate', W / 2, 300);
 
   g.fillStyle = '#6B6180';
   g.font = '500 34px "Plus Jakarta Sans", sans-serif';
-  g.fillText('Certificamos com muito orgulho que', W / 2, 390);
+  g.fillText('We are proud to certify that', W / 2, 390);
 
   const nameGrad = g.createLinearGradient(W / 2 - 400, 0, W / 2 + 400, 0);
   nameGrad.addColorStop(0, '#EC4C93'); nameGrad.addColorStop(1, '#C42A78');
@@ -57,12 +57,12 @@ export async function renderCertificate(d: CertificateData): Promise<string> {
   g.fillStyle = '#2A1F3D';
   g.font = '500 36px "Plus Jakarta Sans", sans-serif';
   const line = d.kind === 'final'
-    ? 'concluiu os 21 dias do Desafio Pilates na Parede, com dedicação e constância.'
-    : 'concluiu a primeira semana do Desafio Pilates na Parede: o Despertar do Corpo.';
+    ? 'has completed all 21 days of the Wall Pilates Challenge with dedication and consistency.'
+    : 'has completed the first week of the Wall Pilates Challenge: Wake Up Your Body.';
   g.fillText(line, W / 2, 610, W - 260);
 
   // estatísticas
-  const stats = [[String(d.workouts), 'treinos'], [String(d.missions), 'missões'], [String(d.medals), 'medalhas'], [d.level, 'nível']];
+  const stats = [[String(d.workouts), 'workouts'], [String(d.missions), 'missions'], [String(d.medals), 'medals'], [d.level, 'level']];
   const bw = 290, gap = 30, x0 = W / 2 - (stats.length * bw + (stats.length - 1) * gap) / 2;
   stats.forEach(([v, l], i) => {
     const x = x0 + i * (bw + gap);
@@ -73,10 +73,10 @@ export async function renderCertificate(d: CertificateData): Promise<string> {
 
   g.fillStyle = '#6B6180';
   g.font = '500 30px "Plus Jakarta Sans", sans-serif';
-  g.fillText(`Emitido em ${d.date}`, W / 2, 920);
+  g.fillText(`Issued on ${d.date}`, W / 2, 920);
   g.fillStyle = '#E86AA8';
   g.font = '700 34px Fredoka, sans-serif';
-  g.fillText('Com carinho, Lili 💖', W / 2, 985);
+  g.fillText('With love, Lili 💖', W / 2, 985);
 
   // selo dourado
   g.save();
@@ -88,7 +88,7 @@ export async function renderCertificate(d: CertificateData): Promise<string> {
   for (let i = 0; i < 24; i++) { const a = (i / 24) * Math.PI * 2, rr = i % 2 ? 84 : 96; g.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); }
   g.closePath(); g.fill();
   g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 4; g.beginPath(); g.arc(0, 0, 62, 0, Math.PI * 2); g.stroke();
-  g.fillStyle = '#7A4E12'; g.font = '700 26px Fredoka, sans-serif'; g.textAlign = 'center'; g.fillText(d.kind === 'final' ? '21' : '7', 0, -4); g.font = '700 17px "Plus Jakarta Sans", sans-serif'; g.fillText('DIAS', 0, 22);
+  g.fillStyle = '#7A4E12'; g.font = '700 26px Fredoka, sans-serif'; g.textAlign = 'center'; g.fillText(d.kind === 'final' ? '21' : '7', 0, -4); g.font = '700 17px "Plus Jakarta Sans", sans-serif'; g.fillText('DAYS', 0, 22);
   g.restore();
 
   if (d.diamond) {
@@ -98,7 +98,7 @@ export async function renderCertificate(d: CertificateData): Promise<string> {
     dg.addColorStop(0, '#FFB3D3'); dg.addColorStop(1, '#C42A78');
     g.fillStyle = dg; g.beginPath(); g.arc(0, 0, 80, 0, Math.PI * 2); g.fill();
     g.fillStyle = '#fff'; g.font = '700 70px sans-serif'; g.textAlign = 'center'; g.fillText('💎', 0, 24);
-    g.font = '700 18px "Plus Jakarta Sans", sans-serif'; g.fillText('MELHOR VERSÃO', 0, 60);
+    g.font = '700 18px "Plus Jakarta Sans", sans-serif'; g.fillText('BEST SELF', 0, 60);
     g.restore();
   }
 

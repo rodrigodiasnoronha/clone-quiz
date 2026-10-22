@@ -53,7 +53,7 @@ export function compressImage(file: File, max = 640, quality = 0.72): Promise<st
       URL.revokeObjectURL(url);
       resolve(canvas.toDataURL('image/jpeg', quality));
     };
-    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Não foi possível ler a imagem.')); };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Couldn’t read the image.')); };
     img.src = url;
   });
 }

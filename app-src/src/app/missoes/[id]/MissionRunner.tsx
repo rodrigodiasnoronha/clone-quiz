@@ -38,8 +38,8 @@ export function MissionRunner({ id }: { id: string }) {
         <TopBar back="/missoes/" />
         <div className="card mt-10 flex flex-col items-center p-8 text-center">
           <Lock className="text-grape-500" size={32} />
-          <p className="mt-3 font-bold">Missão do dia {day.n}</p>
-          <p className="text-sm text-ink-soft">Ela libera junto com o dia {day.n} do desafio.</p>
+          <p className="mt-3 font-bold">Day {day.n} mission</p>
+          <p className="text-sm text-ink-soft">It unlocks along with day {day.n} of the challenge.</p>
         </div>
       </Page>
     );
@@ -55,12 +55,12 @@ export function MissionRunner({ id }: { id: string }) {
 
   return (
     <Page>
-      <TopBar back="/missoes/" title={day.extra.id === id ? 'Missão extra' : 'Missão surpresa'} />
+      <TopBar back="/missoes/" title={day.extra.id === id ? 'Extra mission' : 'Surprise mission'} />
       <div className="text-center">
         <p className="text-4xl">{MISSION_ICON[m.kind]}</p>
         <h1 className="mt-2 text-2xl font-bold">{m.title}</h1>
         <p className="mt-1 text-sm text-ink-soft">{m.desc}</p>
-        <p className="mt-2 inline-block chip bg-lilac-100 text-grape-700">Dia {day.n} · {done ? '✓ concluída' : `+${POINTS.mission} pts`}</p>
+        <p className="mt-2 inline-block chip bg-lilac-100 text-grape-700">Day {day.n} · {done ? '✓ completed' : `+${POINTS.mission} pts`}</p>
       </div>
 
       <div className="mt-6">
@@ -73,24 +73,24 @@ export function MissionRunner({ id }: { id: string }) {
         {m.kind === 'journal' && <JournalForm compact onSaved={complete} />}
         {m.kind === 'win' && (
           <div className="card p-5">
-            <textarea value={win} onChange={e => setWin(e.target.value)} maxLength={280} rows={5} placeholder="Escreva aqui com carinho…" className="w-full rounded-2xl border-2 border-lilac-100 bg-white p-4 font-medium outline-none focus:border-grape-500" />
+            <textarea value={win} onChange={e => setWin(e.target.value)} maxLength={280} rows={5} placeholder="Write here with love…" className="w-full rounded-2xl border-2 border-lilac-100 bg-white p-4 font-medium outline-none focus:border-grape-500" />
             <button disabled={!win.trim()} className="btn-primary mt-3 w-full" onClick={() => {
               s.saveJournal({ ...(winEntry ?? { date: today, day: currentChallengeDay() }), win: win.trim() });
               complete();
-            }}>Guardar minha conquista</button>
+            }}>Save my win</button>
           </div>
         )}
       </div>
 
       {alreadyMet && !done && (
         <div className="card mt-5 p-4 text-center">
-          <p className="text-sm font-semibold">Você já fez esta atividade hoje! 🎉</p>
-          <button className="btn-primary mt-3 w-full" onClick={complete}>Concluir missão</button>
+          <p className="text-sm font-semibold">You already did this activity today! 🎉</p>
+          <button className="btn-primary mt-3 w-full" onClick={complete}>Complete mission</button>
         </div>
       )}
-      {done && <Link href="/missoes/" className="btn-ghost mt-6 w-full">Ver outras missões</Link>}
+      {done && <Link href="/missoes/" className="btn-ghost mt-6 w-full">See other missions</Link>}
 
-      <Celebration open={party} title="Missão cumprida! 🎯" text={`+${POINTS.mission} Pontos de Evolução. A Lili está orgulhosa de você!`} onClose={() => { setParty(false); router.push('/missoes/'); }} />
+      <Celebration open={party} title="Mission accomplished! 🎯" text={`+${POINTS.mission} Evolution Points. Lili is proud of you!`} onClose={() => { setParty(false); router.push('/missoes/'); }} />
     </Page>
   );
 }

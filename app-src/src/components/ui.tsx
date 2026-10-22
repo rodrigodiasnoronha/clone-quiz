@@ -26,7 +26,7 @@ export function TopBar({ title, subtitle, back, right }: { title?: string; subti
       <div className="flex min-h-11 items-center gap-2">
         {back && (
           <button
-            aria-label="Voltar"
+            aria-label="Back"
             onClick={() => (back === true ? router.back() : router.push(back))}
             className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/15 transition active:scale-95"
           >
@@ -70,8 +70,8 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         </g>
       </svg>
       <div className="font-display font-bold leading-[0.95]">
-        <span className={compact ? 'text-base' : 'text-xl'}>Pilates</span><br />
-        <span className={compact ? 'text-xs' : 'text-sm'}>na Parede</span>
+        <span className={compact ? 'text-base' : 'text-xl'}>Wall</span><br />
+        <span className={compact ? 'text-xs' : 'text-sm'}>Pilates</span>
       </div>
     </div>
   );
@@ -128,7 +128,7 @@ export function Sheet({ open, onClose, children, title }: { open: boolean; onClo
           >
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-lg font-bold">{title}</h2>
-              <button aria-label="Fechar" onClick={onClose} className="grid h-9 w-9 place-items-center rounded-full bg-lilac-50 text-grape-700"><X size={18} /></button>
+              <button aria-label="Close" onClick={onClose} className="grid h-9 w-9 place-items-center rounded-full bg-lilac-50 text-grape-700"><X size={18} /></button>
             </div>
             {children}
           </motion.div>

@@ -11,20 +11,20 @@ import { SESSIONS } from '@/content/program';
 import { POINTS, sessionUnlocked } from '@/lib/progress';
 import { toKey } from '@/lib/dates';
 
-const TABS = [['respiracao', 'Respiração'], ['alongamento', 'Alongamento'], ['meditacao', 'Meditação'], ['sono', 'Sono']] as const;
+const TABS = [['respiracao', 'Breathing'], ['alongamento', 'Stretching'], ['meditacao', 'Meditation'], ['sono', 'Sleep']] as const;
 type Tab = typeof TABS[number][0];
 
 interface Practice { id: string; title: string; mins: number; desc: string; steps: string[] }
 
 const MEDITATIONS: Practice[] = [
-  { id: 'escaneamento', title: 'Escaneamento corporal', mins: 5, desc: 'Perceba e solte cada parte do corpo.', steps: ['Sente ou deite confortável e feche os olhos.', 'Leve a atenção aos pés e às pernas. Solte o peso.', 'Perceba o quadril e a barriga subindo e descendo.', 'Solte os ombros, os braços e as mãos.', 'Relaxe a mandíbula, os olhos e a testa.', 'Respire fundo três vezes e abra os olhos devagar.'] },
-  { id: 'gratidao', title: 'Momento de gratidão', mins: 3, desc: 'Termine o dia lembrando do que foi bom.', steps: ['Feche os olhos e respire fundo.', 'Lembre de algo bom que aconteceu hoje.', 'Lembre de alguém por quem você é grata.', 'Agradeça a si mesma por algo que você fez.', 'Sorria e volte devagar.'] },
-  { id: 'presente', title: 'Foco no presente', mins: 2, desc: 'Uma pausa rápida para acalmar a mente.', steps: ['Perceba 5 coisas que você consegue ver.', 'Perceba 4 coisas que consegue tocar.', 'Perceba 3 sons ao seu redor.', 'Respire fundo e volte ao seu dia.'] },
+  { id: 'escaneamento', title: 'Body scan', mins: 5, desc: 'Notice and release each part of your body.', steps: ['Sit or lie down comfortably and close your eyes.', 'Bring your attention to your feet and legs. Let the weight go.', 'Notice your hips and belly rising and falling.', 'Relax your shoulders, arms and hands.', 'Relax your jaw, eyes and forehead.', 'Take three deep breaths and slowly open your eyes.'] },
+  { id: 'gratidao', title: 'Gratitude moment', mins: 3, desc: 'End the day remembering what was good.', steps: ['Close your eyes and take a deep breath.', 'Remember something good that happened today.', 'Think of someone you’re grateful for.', 'Thank yourself for something you did.', 'Smile and slowly come back.'] },
+  { id: 'presente', title: 'Present moment', mins: 2, desc: 'A quick pause to calm your mind.', steps: ['Notice 5 things you can see.', 'Notice 4 things you can touch.', 'Notice 3 sounds around you.', 'Take a deep breath and return to your day.'] },
 ];
 
 const SLEEP: Practice[] = [
-  { id: 'ritual', title: 'Ritual para dormir', mins: 6, desc: 'Prepare corpo e mente para uma boa noite.', steps: ['Diminua as luzes e deixe o celular de lado.', 'Deite com as pernas apoiadas na parede.', 'Respire lento: inspire 4 tempos, expire 6.', 'Solte o peso do corpo no colchão ou tapete.', 'Abrace os joelhos e balance de leve de um lado para o outro.', 'Deite de lado, confortável, e deixe o sono chegar.'] },
-  { id: 'soltar', title: 'Soltar o dia', mins: 4, desc: 'Libere a tensão acumulada nos ombros e pescoço.', steps: ['Suba os ombros até as orelhas e solte. Repita 5 vezes.', 'Incline a cabeça para cada lado devagar.', 'Massageie as têmporas com as pontas dos dedos.', 'Termine com 5 respirações longas.'] },
+  { id: 'ritual', title: 'Bedtime ritual', mins: 6, desc: 'Get your body and mind ready for a good night.', steps: ['Dim the lights and put your phone away.', 'Lie down with your legs up the wall.', 'Breathe slowly: inhale for 4 counts, exhale for 6.', 'Let your body sink into the mattress or mat.', 'Hug your knees and gently rock from side to side.', 'Lie on your side, get comfortable and let sleep come.'] },
+  { id: 'soltar', title: 'Let go of the day', mins: 4, desc: 'Release the tension built up in your shoulders and neck.', steps: ['Lift your shoulders to your ears and drop them. Repeat 5 times.', 'Slowly tilt your head to each side.', 'Massage your temples with your fingertips.', 'Finish with 5 long breaths.'] },
 ];
 
 const PHOTO: Record<Tab, string> = { respiracao: 'energia', alongamento: 'alongamento', meditacao: 'fase2', sono: 'sono' };
@@ -42,13 +42,13 @@ export default function Relaxar() {
   const choose = (t: Tab) => { setTab(t); setActive(null); try { localStorage.setItem('pnp21-tab-relaxar', t); } catch {} };
   const say = (t: string) => { setToast(t); setTimeout(() => setToast(''), 3000); };
 
-  const finishRelax = () => say(s.addActivity(`relax:${today}`) ? `+${POINTS.relax} pontos pelo seu momento de calma 💗` : 'Prática concluída! Os pontos de hoje já foram contados.');
+  const finishRelax = () => say(s.addActivity(`relax:${today}`) ? `+${POINTS.relax} points for your calm moment 💗` : 'Practice complete! Today’s points were already counted.');
 
   return (
     <Page>
-      <TopBar back="/mais/" title="Modo Relaxamento" subtitle="Respire, desacelere e cuide da sua mente" />
+      <TopBar back="/mais/" title="Relax Mode" subtitle="Breathe, slow down and take care of your mind" />
 
-      <div className="-mx-4 flex gap-1.5 overflow-x-auto px-4" role="tablist" aria-label="Tipo de prática">
+      <div className="-mx-4 flex gap-1.5 overflow-x-auto px-4" role="tablist" aria-label="Practice type">
         {TABS.map(([k, l]) => (
           <button key={k} role="tab" aria-selected={tab === k} onClick={() => choose(k)} className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition ${tab === k ? 'bg-brand text-white shadow-glow' : 'bg-white text-ink-soft ring-1 ring-rose-100'}`}>{l}</button>
         ))}
@@ -61,7 +61,7 @@ export default function Relaxar() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`/app/fotos/${PHOTO[tab]}.webp`} alt="" className="absolute -bottom-4 right-0 h-44 object-contain" />
               <p className="absolute bottom-4 left-4 max-w-[55%] font-display text-xl font-bold leading-tight text-grape-800">
-                {{ respiracao: 'Respiração guiada', alongamento: 'Alongar e soltar', meditacao: 'Mente tranquila', sono: 'Durma melhor' }[tab]}
+                {{ respiracao: 'Guided breathing', alongamento: 'Stretch and release', meditacao: 'Calm mind', sono: 'Sleep better' }[tab]}
               </p>
             </div>
           )}
@@ -80,7 +80,7 @@ export default function Relaxar() {
                 {[1, 3, 5].map(m => <button key={m} onClick={() => setMins(m)} className={`flex-1 rounded-xl py-2 text-sm font-bold ${mins === m ? 'bg-grape-600 text-white' : 'bg-rose-50 text-grape-700'}`}>{m} min</button>)}
               </div>
               <div className="mt-6">
-                <Breathing key={`${pattern}-${mins}`} secs={mins * 60} pattern={pattern} onDone={() => say(s.addActivity(`breath:${today}`) ? `+${POINTS.breath} pontos pela respiração de hoje 💗` : 'Respiração concluída! Os pontos de hoje já foram contados.')} />
+                <Breathing key={`${pattern}-${mins}`} secs={mins * 60} pattern={pattern} onDone={() => say(s.addActivity(`breath:${today}`) ? `+${POINTS.breath} points for today’s breathing 💗` : 'Breathing complete! Today’s points were already counted.')} />
               </div>
             </div>
           )}
@@ -98,14 +98,14 @@ export default function Relaxar() {
                 );
                 return open ? <Link key={id} href={`/sessao/${id}/`} className="card flex items-center gap-3 p-3">{inner}</Link> : <div key={id} className="card flex items-center gap-3 p-3 opacity-70">{inner}</div>;
               })}
-              <p className="pt-1 text-center text-[11px] text-ink-faint">As aulas bloqueadas são liberadas conforme você avança no desafio.</p>
+              <p className="pt-1 text-center text-[11px] text-ink-faint">Locked classes unlock as you progress through the challenge.</p>
             </div>
           )}
 
           {(tab === 'meditacao' || tab === 'sono') && (
             active ? (
               <div>
-                <button onClick={() => setActive(null)} className="mb-3 flex items-center gap-1 text-sm font-bold text-rose-600"><ChevronLeft size={16} /> Outras práticas</button>
+                <button onClick={() => setActive(null)} className="mb-3 flex items-center gap-1 text-sm font-bold text-rose-600"><ChevronLeft size={16} /> Other practices</button>
                 <h2 className="text-xl font-bold">{active.title}</h2>
                 <p className="mb-4 text-sm text-ink-soft">{active.desc}</p>
                 <div className="card p-5"><GuidedTimer secs={active.mins * 60} steps={active.steps} onDone={finishRelax} /></div>
@@ -121,7 +121,7 @@ export default function Relaxar() {
                 {tab === 'sono' && (
                   <button onClick={() => { choose('respiracao'); setPattern('sono'); }} className="card flex w-full items-center gap-3 p-3 text-left">
                     <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-night text-xl">🌙</span>
-                    <span className="flex-1"><span className="block font-bold">Respiração 4-7-8</span><span className="block text-xs text-ink-soft">Abre a respiração guiada no ritmo do sono</span></span>
+                    <span className="flex-1"><span className="block font-bold">4-7-8 breathing</span><span className="block text-xs text-ink-soft">Opens guided breathing at a sleep rhythm</span></span>
                   </button>
                 )}
               </div>
@@ -130,8 +130,8 @@ export default function Relaxar() {
         </motion.div>
       </AnimatePresence>
 
-      <SectionTitle>Dica</SectionTitle>
-      <p className="card p-4 text-sm text-ink-soft">Práticas de relaxamento valem +{POINTS.relax} pontos uma vez por dia, e a respiração guiada vale +{POINTS.breath}. O mais importante é o seu bem-estar: faça quantas vezes quiser.</p>
+      <SectionTitle>Tip</SectionTitle>
+      <p className="card p-4 text-sm text-ink-soft">Relaxation practices are worth +{POINTS.relax} points once a day, and guided breathing is worth +{POINTS.breath}. What matters most is your well-being: do them as often as you like.</p>
       <Toast show={!!toast}>{toast}</Toast>
     </Page>
   );

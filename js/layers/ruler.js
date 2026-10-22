@@ -3,15 +3,15 @@ import { state } from '../state.js';
 
 const TICK = 18; // px por unidade, igual ao .tick no CSS
 
-// Cada unidade: [nome, min, max, fator a partir do valor métrico]
+// Cada unidade: [nome, min, max, fator a partir do valor imperial (in / lb)]
 const UNITS = {
-  height: [['cm', 120, 220, 1], ['pol', 47, 87, 1 / 2.54]],
-  weight: [['kg', 30, 200, 1], ['lb', 66, 440, 2.2046]],
+  height: [['in', 47, 87, 1], ['cm', 120, 220, 2.54]],
+  weight: [['lb', 66, 440, 1], ['kg', 30, 200, 1 / 2.2046]],
 };
 
 function ruler({ content }, kind, ctx) {
   const name = content.name;
-  state.vars[name] ??= name === 'objetivo' && state.vars.peso ? state.vars.peso - 5 : content.value;
+  state.vars[name] ??= name === 'objetivo' && state.vars.peso ? state.vars.peso - 10 : content.value;
   let unit = UNITS[kind][0];
 
   const value = el('div', { class: 'val' });
@@ -61,10 +61,10 @@ function ruler({ content }, kind, ctx) {
   for (const u of UNITS[kind]) toggle.append(el('button', { onclick: () => { unit = u; build(); } }, u[0]));
   build();
 
-  const hint = el('div', { class: 'hint' }, 'Arraste para ajustar');
+  const hint = el('div', { class: 'hint' }, 'Drag to adjust');
   if (name === 'objetivo') ctx.validate(() => {
     const ok = !state.vars.peso || state.vars.objetivo < state.vars.peso;
-    hint.textContent = ok ? 'Arraste para ajustar' : `Sua meta precisa ser menor que o seu peso atual (${state.vars.peso} kg)`;
+    hint.textContent = ok ? 'Drag to adjust' : `Your goal must be lower than your current weight (${state.vars.peso} lbs)`;
     hint.classList.toggle('err', !ok);
     return ok;
   });

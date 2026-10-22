@@ -32,36 +32,36 @@ export function CertificatePage({ kind }: { kind: 'semana1' | 'final' }) {
     }).then(setImg);
   }, [unlocked]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const file = `certificado-pilates-${kind}.png`;
+  const file = `wall-pilates-certificate-${kind}.png`;
 
   async function share() {
     if (!img) return;
     try {
       const blob = await (await fetch(img)).blob();
       const f = new File([blob], file, { type: 'image/png' });
-      if (navigator.canShare?.({ files: [f] })) await navigator.share({ files: [f], title: 'Meu certificado 💜' });
-      else { download(file, img); setMsg('Seu navegador não permite compartilhar direto; baixamos a imagem para você.'); }
+      if (navigator.canShare?.({ files: [f] })) await navigator.share({ files: [f], title: 'My certificate 💜' });
+      else { download(file, img); setMsg('Your browser doesn’t support direct sharing, so we downloaded the image for you.'); }
     } catch {}
   }
 
   return (
     <Page>
-      <TopBar back="/conquistas/" title={kind === 'final' ? 'Certificado final' : 'Certificado da semana 1'} />
+      <TopBar back="/conquistas/" title={kind === 'final' ? 'Final certificate' : 'Week 1 certificate'} />
       {!unlocked ? (
         <div className="card mt-6 flex flex-col items-center p-8 text-center">
           <Lock className="text-grape-500" size={32} />
-          <p className="mt-3 font-bold">Libera ao concluir o dia {dayNeeded}</p>
-          <Link href="/desafios/" className="btn-primary mt-4 w-full">Ver minha jornada</Link>
+          <p className="mt-3 font-bold">Unlocks when you complete day {dayNeeded}</p>
+          <Link href="/desafios/" className="btn-primary mt-4 w-full">See my journey</Link>
         </div>
       ) : (
         <>
           <div className="overflow-hidden rounded-3xl shadow-card ring-1 ring-lilac-100">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            {img ? <img src={img} alt="Seu certificado personalizado" className="w-full" /> : <div className="grid aspect-[1.414] place-items-center bg-white text-sm font-bold text-grape-500">Gerando seu certificado…</div>}
+            {img ? <img src={img} alt="Your personalized certificate" className="w-full" /> : <div className="grid aspect-[1.414] place-items-center bg-white text-sm font-bold text-grape-500">Creating your certificate…</div>}
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2">
-            <button className="btn-primary" disabled={!img} onClick={() => img && download(file, img)}><Download size={18} /> Baixar</button>
-            <button className="btn-ghost" disabled={!img} onClick={share}><Share2 size={18} /> Compartilhar</button>
+            <button className="btn-primary" disabled={!img} onClick={() => img && download(file, img)}><Download size={18} /> Download</button>
+            <button className="btn-ghost" disabled={!img} onClick={share}><Share2 size={18} /> Share</button>
           </div>
           {msg && <p className="mt-2 text-center text-xs text-ink-soft">{msg}</p>}
         </>

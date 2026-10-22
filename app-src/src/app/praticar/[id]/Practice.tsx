@@ -21,7 +21,7 @@ export function Practice({ id }: { id: string }) {
   if (done) {
     return (
       <main className="min-h-dvh bg-brand-soft">
-        <Celebration open mood="feliz" title="Prática concluída! 💪" text={`Você praticou ${ex.name}. Os treinos do desafio continuam valendo os seus pontos.`} cta="Voltar aos exercícios" onClose={() => router.replace('/treinar/')} />
+        <Celebration open mood="feliz" title="Practice complete! 💪" text={`You practiced ${ex.name}. Challenge workouts are still where your points come from.`} cta="Back to exercises" onClose={() => router.replace('/treinar/')} />
       </main>
     );
   }
@@ -29,8 +29,8 @@ export function Practice({ id }: { id: string }) {
   return (
     <Player
       title={ex.name}
-      subtitle="Prática livre · 2 séries"
-      lili="Vamos praticar com calma. Use a versão mais fácil sempre que precisar."
+      subtitle="Free practice · 2 sets"
+      lili="Let’s practice calmly. Use the easier version whenever you need to."
       breathing={ex.breathing}
       steps={steps}
       onExit={() => router.push('/treinar/')}

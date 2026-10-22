@@ -8,11 +8,11 @@ import { dayStatus, daysBehind, type DayStatus } from '@/lib/progress';
 import { addDays, formatDate } from '@/lib/dates';
 
 export const STATUS_STYLE: Record<DayStatus, { label: string; cls: string }> = {
-  concluido: { label: 'Concluído', cls: 'bg-brand text-white shadow-glow' },
-  andamento: { label: 'Em andamento', cls: 'bg-white text-rose-600 ring-[3px] ring-rose-500' },
-  disponivel: { label: 'Disponível', cls: 'bg-white text-rose-600 ring-[3px] ring-rose-500' },
-  pendente: { label: 'Pendente', cls: 'bg-rose-100 text-rose-600' },
-  bloqueado: { label: 'Bloqueado', cls: 'bg-lilac-50 text-ink-faint' },
+  concluido: { label: 'Done', cls: 'bg-brand text-white shadow-glow' },
+  andamento: { label: 'In progress', cls: 'bg-white text-rose-600 ring-[3px] ring-rose-500' },
+  disponivel: { label: 'Available', cls: 'bg-white text-rose-600 ring-[3px] ring-rose-500' },
+  pendente: { label: 'Pending', cls: 'bg-rose-100 text-rose-600' },
+  bloqueado: { label: 'Locked', cls: 'bg-lilac-50 text-ink-faint' },
 };
 
 /** Calendário interativo dos 21 dias */
@@ -24,7 +24,7 @@ export function Calendar() {
     <div>
       {behind > 0 && (
         <div className="mb-3 rounded-2xl bg-rose-50 p-3 text-sm font-semibold text-rose-700 ring-1 ring-rose-100">
-          Você tem {behind} {behind > 1 ? 'dias pendentes' : 'dia pendente'}. Recupere no seu ritmo, sem penalidade — dá até para fazer dois no mesmo dia.
+          You have {behind} {behind > 1 ? 'pending days' : 'pending day'}. Make them up at your own pace, with no penalty — you can even do two in one day.
         </div>
       )}
       <div className="grid grid-cols-7 gap-x-1.5 gap-y-3 pt-2">
@@ -32,7 +32,7 @@ export function Calendar() {
           const st = dayStatus(s, d.n);
           const recovery = d.type === 'recuperacao' || d.type === 'mobilidade';
           return (
-            <Link key={d.n} href={`/treinos/dia/${d.n}/`} aria-label={`Dia ${d.n}, ${STATUS_STYLE[st].label}${recovery ? ', recuperação' : ''}`}
+            <Link key={d.n} href={`/treinos/dia/${d.n}/`} aria-label={`Day ${d.n}, ${STATUS_STYLE[st].label}${recovery ? ', recovery' : ''}`}
               className={`relative mx-auto flex aspect-square w-full max-w-[3rem] flex-col items-center justify-center rounded-full text-sm font-extrabold transition active:scale-95 ${STATUS_STYLE[st].cls}`}>
               {(st === 'andamento' || st === 'disponivel') && <span className="absolute -top-3 text-xs" aria-hidden>👑</span>}
               {st === 'concluido' && <Check size={11} strokeWidth={4} className="absolute -top-0.5 right-0 rounded-full bg-white p-0.5 text-rose-500 shadow" style={{ width: 16, height: 16 }} />}
@@ -46,9 +46,9 @@ export function Calendar() {
         {(Object.keys(STATUS_STYLE) as DayStatus[]).map(k => (
           <span key={k} className="flex items-center gap-1"><span className={`h-3 w-3 rounded-full ${STATUS_STYLE[k].cls.split(' ').slice(0, 3).join(' ')}`} />{STATUS_STYLE[k].label}</span>
         ))}
-        <span className="flex items-center gap-1"><Moon size={11} /> Recuperação/mobilidade</span>
+        <span className="flex items-center gap-1"><Moon size={11} /> Recovery/mobility</span>
       </div>
-      <p className="mt-2 text-[11px] text-ink-faint">Início em {formatDate(start, { day: '2-digit', month: 'long' })} · término previsto em {formatDate(addDays(start, 20), { day: '2-digit', month: 'long' })}</p>
+      <p className="mt-2 text-[11px] text-ink-faint">Started {formatDate(start, { day: '2-digit', month: 'long' })} · expected finish {formatDate(addDays(start, 20), { day: '2-digit', month: 'long' })}</p>
     </div>
   );
 }

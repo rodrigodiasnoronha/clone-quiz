@@ -12,10 +12,10 @@ import { nextDay, unlockedUntil, WEEKLY, POINTS, dayStatus } from '@/lib/progres
 import { toKey } from '@/lib/dates';
 
 const GAMES = [
-  { href: '/jogos/respiracao/', emoji: '🌬️', title: 'Desafio de Respiração', desc: 'Respire com a animação', bg: 'from-lilac-200 to-lilac-300' },
-  { href: '/jogos/roleta/', emoji: '🎡', title: 'Roleta do Bem-Estar', desc: '1 giro por dia', bg: 'from-rose-200 to-rose-300' },
-  { href: '/jogos/quiz/', emoji: '🧠', title: 'Quiz do Corpo', desc: '3 perguntas por dia', bg: 'from-lilac-200 to-rose-200' },
-  { href: '/jogos/cartas/', emoji: '💌', title: 'Cartas de Motivação', desc: '1 carta por dia', bg: 'from-rose-200 to-lilac-200' },
+  { href: '/jogos/respiracao/', emoji: '🌬️', title: 'Breathing Challenge', desc: 'Breathe along with the animation', bg: 'from-lilac-200 to-lilac-300' },
+  { href: '/jogos/roleta/', emoji: '🎡', title: 'Wellness Wheel', desc: '1 spin a day', bg: 'from-rose-200 to-rose-300' },
+  { href: '/jogos/quiz/', emoji: '🧠', title: 'Body Quiz', desc: '3 questions a day', bg: 'from-lilac-200 to-rose-200' },
+  { href: '/jogos/cartas/', emoji: '💌', title: 'Motivation Notes', desc: '1 note a day', bg: 'from-rose-200 to-lilac-200' },
 ];
 
 export default function Missoes() {
@@ -31,30 +31,30 @@ export default function Missoes() {
 
   return (
     <Page>
-      <TopBar back="/desafios/" title="Missões e jogos" />
-      <div><LiliSays mood={doneCount === 3 ? 'orgulhosa' : 'feliz'} text={doneCount === 3 ? 'Todas as missões do dia cumpridas! Você é demais. 💜' : `Hoje temos 3 missões no dia ${mday.n}. Você já fez ${doneCount}!`} size={60} /></div>
+      <TopBar back="/desafios/" title="Missions and games" />
+      <div><LiliSays mood={doneCount === 3 ? 'orgulhosa' : 'feliz'} text={doneCount === 3 ? 'All of today’s missions done! You’re amazing. 💜' : `Day ${mday.n} has 3 missions. You’ve done ${doneCount}!`} size={60} /></div>
 
       <div className="card mt-4 p-4">
-        <div className="flex items-center justify-between text-sm font-bold"><span>Missões do dia {mday.n}</span><span className="text-grape-600">{doneCount}/3</span></div>
+        <div className="flex items-center justify-between text-sm font-bold"><span>Day {mday.n} missions</span><span className="text-grape-600">{doneCount}/3</span></div>
         <ProgressBar className="mt-2" value={doneCount / 3} />
       </div>
 
-      <SectionTitle>Missão principal</SectionTitle>
+      <SectionTitle>Main mission</SectionTitle>
       <Link href={mainDone ? `/treinos/dia/${mday.n}/` : `/treinar/${mday.n}/`} className={`flex items-center gap-3 rounded-3xl p-4 shadow-card ${mainDone ? 'bg-lilac-50' : 'bg-brand text-white shadow-glow'}`}>
         <div className={`grid h-12 w-12 place-items-center rounded-2xl ${mainDone ? 'bg-brand text-white' : 'bg-white/20'}`}>{mainDone ? <Check /> : <Play fill="white" />}</div>
         <div className="flex-1">
-          <p className={`text-[11px] font-extrabold uppercase tracking-wider ${mainDone ? 'text-grape-500' : 'text-white/80'}`}>Treino do dia {mday.n}</p>
+          <p className={`text-[11px] font-extrabold uppercase tracking-wider ${mainDone ? 'text-grape-500' : 'text-white/80'}`}>Day {mday.n} workout</p>
           <p className={`font-bold ${mainDone ? 'text-ink-soft line-through' : ''}`}>{mday.name}</p>
         </div>
-        <span className="text-xs font-extrabold">{mainDone ? 'Feito' : status === 'pendente' ? 'Recuperar' : `+${POINTS.workout}`}</span>
+        <span className="text-xs font-extrabold">{mainDone ? 'Done' : status === 'pendente' ? 'Make up' : `+${POINTS.workout}`}</span>
       </Link>
 
-      <SectionTitle>Missão extra</SectionTitle>
+      <SectionTitle>Extra mission</SectionTitle>
       <MissionCard mission={mday.extra} />
-      <SectionTitle>Missão surpresa</SectionTitle>
+      <SectionTitle>Surprise mission</SectionTitle>
       <MissionCard mission={mday.surprise} surprise />
 
-      <SectionTitle>Desafios semanais</SectionTitle>
+      <SectionTitle>Weekly challenges</SectionTitle>
       <div className="space-y-2">
         {WEEKLY.map(w => {
           const v = Math.min(w.goal, w.check(s));
@@ -73,7 +73,7 @@ export default function Missoes() {
         })}
       </div>
 
-      <SectionTitle>Experiências</SectionTitle>
+      <SectionTitle>Experiences</SectionTitle>
       <div className="grid grid-cols-2 gap-2">
         {GAMES.map((g, i) => (
           <motion.div key={g.href} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * .05 }}>
@@ -82,7 +82,7 @@ export default function Missoes() {
               <span className="mt-2 font-bold leading-tight text-grape-900">{g.title}</span>
               <span className="text-[11px] font-semibold text-grape-900/70">{g.desc}</span>
               {((g.href.includes('roleta') && s.activities[`roulette:${today}`]) || (g.href.includes('quiz') && s.quiz[today]) || (g.href.includes('cartas') && today in s.cards) || (g.href.includes('respiracao') && s.activities[`breath:${today}`])) && (
-                <span className="mt-2 w-fit rounded-full bg-white/70 px-2 text-[10px] font-extrabold text-grape-700">✓ feito hoje</span>
+                <span className="mt-2 w-fit rounded-full bg-white/70 px-2 text-[10px] font-extrabold text-grape-700">✓ done today</span>
               )}
             </Link>
           </motion.div>
@@ -91,9 +91,9 @@ export default function Missoes() {
 
       {pending.length > 0 && (
         <>
-          <SectionTitle>Missões de dias anteriores</SectionTitle>
-          <p className="-mt-1 mb-2 text-xs text-ink-soft">Ainda dá tempo! Elas continuam valendo pontos.</p>
-          <div className="space-y-2">{pending.map(({ m, d }) => <MissionCard key={m.id} mission={m} badge={`do dia ${d.n}`} />)}</div>
+          <SectionTitle>Missions from earlier days</SectionTitle>
+          <p className="-mt-1 mb-2 text-xs text-ink-soft">There’s still time! They’re still worth points.</p>
+          <div className="space-y-2">{pending.map(({ m, d }) => <MissionCard key={m.id} mission={m} badge={`from day ${d.n}`} />)}</div>
         </>
       )}
     </Page>

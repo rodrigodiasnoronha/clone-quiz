@@ -23,51 +23,51 @@ export default function Evolucao() {
 
   return (
     <Page>
-      <TopBar back="/mais/" title="Minha Jornada" subtitle="Diário de evolução: hábitos, sensações e conquistas" />
+      <TopBar back="/mais/" title="My Journey" subtitle="Progress journal: habits, feelings and wins" />
 
       <Link href="/evolucao/registro/" className="btn-primary shine w-full">
-        {todayEntry?.mood ? <><NotebookPen size={18} /> Editar registro de hoje</> : <><Plus size={18} /> Registrar meu dia</>}
+        {todayEntry?.mood ? <><NotebookPen size={18} /> Edit today’s entry</> : <><Plus size={18} /> Log my day</>}
       </Link>
 
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-        <div className="card py-3"><p className="font-display text-2xl font-bold">{done.length}</p><p className="text-[11px] font-semibold text-ink-soft">treinos</p></div>
-        <div className="card py-3"><p className="font-display text-2xl font-bold">{streak(s)}</p><p className="text-[11px] font-semibold text-ink-soft">sequência atual</p></div>
-        <div className="card py-3"><p className="font-display text-2xl font-bold">{bestStreak(s)}</p><p className="text-[11px] font-semibold text-ink-soft">melhor sequência</p></div>
+        <div className="card py-3"><p className="font-display text-2xl font-bold">{done.length}</p><p className="text-[11px] font-semibold text-ink-soft">workouts</p></div>
+        <div className="card py-3"><p className="font-display text-2xl font-bold">{streak(s)}</p><p className="text-[11px] font-semibold text-ink-soft">current streak</p></div>
+        <div className="card py-3"><p className="font-display text-2xl font-bold">{bestStreak(s)}</p><p className="text-[11px] font-semibold text-ink-soft">best streak</p></div>
       </div>
 
-      <SectionTitle>Jardim da Evolução</SectionTitle>
+      <SectionTitle>Evolution Garden</SectionTitle>
       <Garden {...g} />
-      <p className="mt-1 text-center text-[11px] text-ink-faint">Cresce com treinos (2 pontos de crescimento), missões e registros no diário.</p>
+      <p className="mt-1 text-center text-[11px] text-ink-faint">It grows with workouts (2 growth points), missions and journal entries.</p>
 
-      <SectionTitle>Consistência dos 21 dias</SectionTitle>
+      <SectionTitle>21-day consistency</SectionTitle>
       <div className="card p-4"><ConsistencyGrid done={done} /></div>
 
-      <SectionTitle>Humor, energia e sono</SectionTitle>
+      <SectionTitle>Mood, energy and sleep</SectionTitle>
       <div className="card p-4"><HabitsChart entries={entries} /></div>
 
-      <SectionTitle>Primeiro × último registro</SectionTitle>
+      <SectionTitle>First × latest entry</SectionTitle>
       {first && last ? (
         <div className="grid grid-cols-2 gap-2">
-          <Compare title={`Dia ${first.day}`} e={first} />
-          <Compare title={`Dia ${last.day}`} e={last} highlight />
+          <Compare title={`Day ${first.day}`} e={first} />
+          <Compare title={`Day ${last.day}`} e={last} highlight />
         </div>
       ) : (
-        <p className="card p-4 text-center text-sm text-ink-soft">Com dois registros você poderá comparar o começo e o agora. Os testes de flexibilidade e resistência ficam ainda mais legais!</p>
+        <p className="card p-4 text-center text-sm text-ink-soft">With two entries you’ll be able to compare the beginning and now. The flexibility and endurance tests make it even more fun!</p>
       )}
 
       <Link href="/conquistas/" className="mt-6 flex items-center gap-3 rounded-3xl bg-gradient-to-r from-grape-600 to-rose-400 p-4 text-white shadow-glow">
         <Award size={28} />
-        <div className="flex-1"><p className="font-bold">Minhas Conquistas 🏆</p><p className="text-xs text-white/85">Medalhas, níveis, certificados e aulas desbloqueadas</p></div>
+        <div className="flex-1"><p className="font-bold">My Achievements 🏆</p><p className="text-xs text-white/85">Medals, levels, certificates and unlocked classes</p></div>
       </Link>
 
-      <SectionTitle>Registros</SectionTitle>
-      {entries.length === 0 ? <p className="text-sm text-ink-soft">Nenhum registro ainda.</p> : (
+      <SectionTitle>Entries</SectionTitle>
+      {entries.length === 0 ? <p className="text-sm text-ink-soft">No entries yet.</p> : (
         <div className="space-y-2">
           {[...entries].reverse().map(e => (
             <div key={e.date} className="card p-4">
               <div className="flex items-center justify-between">
                 <p className="font-bold">{formatDate(e.date, { weekday: 'short', day: '2-digit', month: 'short' })}</p>
-                <span className="chip bg-lilac-100 text-grape-700">Dia {e.day}</span>
+                <span className="chip bg-lilac-100 text-grape-700">Day {e.day}</span>
               </div>
               {e.mood && <p className="mt-1 text-2xl">{MOOD.e[e.mood - 1]} {e.energy && ENERGY.e[e.energy - 1]} {e.sleep && SLEEP.e[e.sleep - 1]}</p>}
               {e.win && <p className="mt-1 text-sm"><b>🏆 </b>{e.win}</p>}
@@ -86,15 +86,15 @@ function Compare({ title, e, highlight = false }: { title: string; e: JournalEnt
     <div className={`card overflow-hidden ${highlight ? 'ring-2 ring-rose-300' : ''}`}>
       {photo ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={photo} alt={`Foto do ${title}`} className="aspect-[3/4] w-full object-cover" />
-      ) : <div className="grid aspect-[3/4] place-items-center bg-lilac-50 text-xs font-semibold text-ink-faint">sem foto</div>}
+        <img src={photo} alt={`${title} photo`} className="aspect-[3/4] w-full object-cover" />
+      ) : <div className="grid aspect-[3/4] place-items-center bg-lilac-50 text-xs font-semibold text-ink-faint">no photo</div>}
       <div className="space-y-0.5 p-3 text-xs">
         <p className="font-bold text-ink">{title} · {formatDate(e.date)}</p>
-        <p>Humor: {e.mood ? MOOD.l[e.mood - 1] : '—'}</p>
-        <p>Energia: {e.energy ? ENERGY.l[e.energy - 1] : '—'}</p>
-        <p>Sono: {e.sleep ? SLEEP.l[e.sleep - 1] : '—'}</p>
-        <p>Rolamento: {e.flex ? FLEX[e.flex - 1] : '—'}</p>
-        <p>Agachamento: {e.hold ? `${e.hold}s` : '—'}</p>
+        <p>Mood: {e.mood ? MOOD.l[e.mood - 1] : '—'}</p>
+        <p>Energy: {e.energy ? ENERGY.l[e.energy - 1] : '—'}</p>
+        <p>Sleep: {e.sleep ? SLEEP.l[e.sleep - 1] : '—'}</p>
+        <p>Roll-down: {e.flex ? FLEX[e.flex - 1] : '—'}</p>
+        <p>Wall sit: {e.hold ? `${e.hold}s` : '—'}</p>
       </div>
     </div>
   );

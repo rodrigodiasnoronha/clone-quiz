@@ -71,7 +71,7 @@ export async function renderShareCard(d: ShareData, template: ShareTemplate): Pr
   g.textAlign = 'left';
   g.fillStyle = t.accent;
   g.font = '800 40px "Plus Jakarta Sans", sans-serif';
-  g.fillText('PILATES NA PAREDE · DESAFIO 21 DIAS', 80, 150);
+  g.fillText('WALL PILATES · 21-DAY CHALLENGE', 80, 150);
 
   g.fillStyle = t.text;
   g.font = '700 150px Fredoka, sans-serif';

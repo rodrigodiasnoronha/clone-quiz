@@ -12,25 +12,25 @@ import { REWARD_SESSIONS, SESSIONS } from '@/content/program';
 import { sessionUnlocked } from '@/lib/progress';
 import type { Exercise } from '@/lib/types';
 
-type Filter = 'Todos' | Region | 'Mobilidade' | 'Alongamento' | 'Respiração';
-const FILTERS: Filter[] = ['Todos', ...REGIONS, 'Mobilidade', 'Alongamento', 'Respiração'];
+type Filter = 'All' | Region | 'Mobility' | 'Stretching' | 'Breathing';
+const FILTERS: Filter[] = ['All', ...REGIONS, 'Mobility', 'Stretching', 'Breathing'];
 const KEY = 'pnp21-treinar-filtro';
 
 const matches = (ex: Exercise, f: Filter) =>
-  f === 'Todos' ||
-  (f === 'Mobilidade' ? ex.category === 'mobilidade' : f === 'Alongamento' ? ex.category === 'alongamento' : f === 'Respiração' ? ex.category === 'respiracao' : regionsOf(ex).includes(f as Region));
+  f === 'All' ||
+  (f === 'Mobility' ? ex.category === 'mobilidade' : f === 'Stretching' ? ex.category === 'alongamento' : f === 'Breathing' ? ex.category === 'respiracao' : regionsOf(ex).includes(f as Region));
 
 const normalize = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 export default function Treinar() {
   const s = useStore();
   const [q, setQ] = useState('');
-  const [filter, setFilter] = useState<Filter>('Todos');
+  const [filter, setFilter] = useState<Filter>('All');
   const [sel, setSel] = useState<Exercise | null>(null);
 
   // preserva busca e filtro ao voltar para a tela
   useEffect(() => {
-    try { const v = JSON.parse(sessionStorage.getItem(KEY) ?? 'null'); if (v) { setQ(v.q ?? ''); setFilter(v.filter ?? 'Todos'); } } catch {}
+    try { const v = JSON.parse(sessionStorage.getItem(KEY) ?? 'null'); if (v) { setQ(v.q ?? ''); setFilter(FILTERS.includes(v.filter) ? v.filter : 'All'); } } catch {}
   }, []);
   useEffect(() => { try { sessionStorage.setItem(KEY, JSON.stringify({ q, filter })); } catch {} }, [q, filter]);
 
@@ -40,38 +40,38 @@ export default function Treinar() {
   }, [q, filter]);
 
   const sessions = [
-    { id: 'alongamento-rapido', label: 'Livre' },
-    ...REWARD_SESSIONS.map(r => ({ id: r.session, label: `Libera no dia ${r.day}` })),
-    ...['a', 'b', 'c'].map(x => ({ id: `manutencao-${x}`, label: 'Libera no dia 21' })),
+    { id: 'alongamento-rapido', label: 'Available' },
+    ...REWARD_SESSIONS.map(r => ({ id: r.session, label: `Unlocks on day ${r.day}` })),
+    ...['a', 'b', 'c'].map(x => ({ id: `manutencao-${x}`, label: 'Unlocks on day 21' })),
   ];
 
   return (
     <Page>
       <HeroHeader className="pb-5">
-        <h1 className="mt-4 text-center text-xl font-bold">Todos os Exercícios</h1>
+        <h1 className="mt-4 text-center text-xl font-bold">All Exercises</h1>
         <label className="mt-4 flex h-12 items-center gap-2 rounded-2xl bg-white px-4 text-ink shadow-soft focus-within:ring-[3px] focus-within:ring-rose-400">
           <Search size={18} className="shrink-0 text-ink-faint" aria-hidden />
-          <span className="sr-only">Buscar exercício</span>
-          <input value={q} onChange={e => setQ(e.target.value)} placeholder="Buscar exercício ou músculo…" className="h-full min-w-0 flex-1 bg-transparent font-semibold outline-none placeholder:font-medium placeholder:text-ink-faint" />
-          {q && <button onClick={() => setQ('')} aria-label="Limpar busca" className="grid h-7 w-7 place-items-center rounded-full bg-rose-50 text-rose-500"><X size={14} /></button>}
+          <span className="sr-only">Search exercises</span>
+          <input value={q} onChange={e => setQ(e.target.value)} placeholder="Search an exercise or muscle…" className="h-full min-w-0 flex-1 bg-transparent font-semibold outline-none placeholder:font-medium placeholder:text-ink-faint" />
+          {q && <button onClick={() => setQ('')} aria-label="Clear search" className="grid h-7 w-7 place-items-center rounded-full bg-rose-50 text-rose-500"><X size={14} /></button>}
         </label>
       </HeroHeader>
 
-      <div className="-mx-4 mt-3 flex gap-1.5 overflow-x-auto px-4 pb-1" role="tablist" aria-label="Filtrar por região">
+      <div className="-mx-4 mt-3 flex gap-1.5 overflow-x-auto px-4 pb-1" role="tablist" aria-label="Filter by area">
         {FILTERS.map(f => (
           <button key={f} role="tab" aria-selected={filter === f} onClick={() => setFilter(f)}
             className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition ${filter === f ? 'bg-brand text-white shadow-glow' : 'bg-white text-ink-soft ring-1 ring-rose-100'}`}>{f}</button>
         ))}
       </div>
 
-      <p className="mt-3 text-xs font-bold text-ink-soft" aria-live="polite">{list.length} {list.length === 1 ? 'exercício' : 'exercícios'}</p>
+      <p className="mt-3 text-xs font-bold text-ink-soft" aria-live="polite">{list.length} {list.length === 1 ? 'exercise' : 'exercises'}</p>
 
       {list.length === 0 ? (
         <div className="card mt-2 p-6 text-center">
           <p className="text-3xl">🔍</p>
-          <p className="mt-2 font-bold">Nenhum exercício encontrado</p>
-          <p className="text-sm text-ink-soft">Tente outra palavra ou outro filtro.</p>
-          <button className="btn-soft mt-4" onClick={() => { setQ(''); setFilter('Todos'); }}>Limpar busca e filtros</button>
+          <p className="mt-2 font-bold">No exercises found</p>
+          <p className="text-sm text-ink-soft">Try another word or filter.</p>
+          <button className="btn-soft mt-4" onClick={() => { setQ(''); setFilter('All'); }}>Clear search and filters</button>
         </div>
       ) : (
         <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -92,7 +92,7 @@ export default function Treinar() {
         </div>
       )}
 
-      <SectionTitle action={{ href: '/relaxar/', label: 'Modo Relaxamento' }}>Aulas e sessões</SectionTitle>
+      <SectionTitle action={{ href: '/relaxar/', label: 'Relax Mode' }}>Classes and sessions</SectionTitle>
       <div className="space-y-2">
         {sessions.map(({ id, label }) => {
           const ses = SESSIONS[id];
@@ -109,7 +109,7 @@ export default function Treinar() {
         })}
         <Link href="/relaxar/" className="flex items-center gap-3 rounded-3xl bg-night p-4 text-white shadow-card">
           <Moon size={22} className="text-rose-300" />
-          <span className="flex-1"><span className="block font-bold">Modo Relaxamento</span><span className="block text-xs text-white/75">Respiração, alongamento, meditação e sono</span></span>
+          <span className="flex-1"><span className="block font-bold">Relax Mode</span><span className="block text-xs text-white/75">Breathing, stretching, meditation and sleep</span></span>
         </Link>
       </div>
 
@@ -118,16 +118,16 @@ export default function Treinar() {
           <div className="space-y-3 text-sm">
             <ExerciseMedia ex={sel} />
             <p className="text-xs font-bold text-rose-600">{sel.muscles.join(' · ')}</p>
-            <p className="text-ink-soft"><b className="text-ink">Posição: </b>{sel.position}</p>
+            <p className="text-ink-soft"><b className="text-ink">Position: </b>{sel.position}</p>
             <ol className="list-decimal space-y-1 pl-5">{sel.steps.map(t => <li key={t}>{t}</li>)}</ol>
-            <p><b>Respiração: </b>{sel.breathing}</p>
-            <div><b className="text-rose-600">Erros comuns</b><ul className="list-disc pl-5 text-ink-soft">{sel.errors.map(t => <li key={t}>{t}</li>)}</ul></div>
-            <p className="rounded-xl bg-rose-50 p-2"><b>Mais fácil: </b>{sel.easier}</p>
-            <p className="rounded-xl bg-lilac-50 p-2 text-xs"><b>Segurança: </b>{sel.safety}</p>
+            <p><b>Breathing: </b>{sel.breathing}</p>
+            <div><b className="text-rose-600">Common mistakes</b><ul className="list-disc pl-5 text-ink-soft">{sel.errors.map(t => <li key={t}>{t}</li>)}</ul></div>
+            <p className="rounded-xl bg-rose-50 p-2"><b>Easier: </b>{sel.easier}</p>
+            <p className="rounded-xl bg-lilac-50 p-2 text-xs"><b>Safety: </b>{sel.safety}</p>
             {s.profile?.limitations.some(l => sel.avoid?.includes(l)) && (
-              <p className="rounded-xl bg-amber-50 p-2 text-xs font-semibold text-amber-800">⚠️ Você marcou uma limitação que pede cuidado com este exercício. Nos treinos do desafio ele é trocado automaticamente.</p>
+              <p className="rounded-xl bg-amber-50 p-2 text-xs font-semibold text-amber-800">⚠️ You marked a limitation that calls for caution with this exercise. In the challenge workouts it’s swapped out automatically.</p>
             )}
-            <Link href={`/praticar/${sel.id}/`} className="btn-primary shine w-full"><Play size={18} fill="white" /> Praticar este exercício</Link>
+            <Link href={`/praticar/${sel.id}/`} className="btn-primary shine w-full"><Play size={18} fill="white" /> Practice this exercise</Link>
           </div>
         )}
       </Sheet>

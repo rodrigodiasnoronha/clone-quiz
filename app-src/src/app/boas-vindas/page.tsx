@@ -15,22 +15,22 @@ const GOALS: { v: Goal; e: string }[] = [
   { v: 'abdomen', e: '🔥' }, { v: 'postura', e: '🧍‍♀️' }, { v: 'pernas', e: '🍑' }, { v: 'flexibilidade', e: '🤸‍♀️' }, { v: 'rotina', e: '🌱' },
 ];
 const LEVELS: { v: Level; t: string; d: string; e: string }[] = [
-  { v: 'iniciante', t: 'Iniciante', d: 'Nunca fiz Pilates ou estou parada há tempo', e: '🌱' },
-  { v: 'intermediaria', t: 'Intermediária', d: 'Me exercito de vez em quando', e: '🌷' },
-  { v: 'avancada', t: 'Avançada', d: 'Treino com frequência e quero desafio', e: '🔥' },
+  { v: 'iniciante', t: 'Beginner', d: 'I’ve never done Pilates or haven’t worked out in a while', e: '🌱' },
+  { v: 'intermediaria', t: 'Intermediate', d: 'I exercise every now and then', e: '🌷' },
+  { v: 'avancada', t: 'Advanced', d: 'I work out often and want a challenge', e: '🔥' },
 ];
 const MINUTES: { v: Profile['minutes']; d: string }[] = [
-  { v: 10, d: 'Express, para dias corridos' }, { v: 15, d: 'Equilíbrio ideal' }, { v: 20, d: 'Treino completo' }, { v: 30, d: 'Quero ir além' },
+  { v: 10, d: 'Express, for busy days' }, { v: 15, d: 'The sweet spot' }, { v: 20, d: 'Full workout' }, { v: 30, d: 'I want to go further' },
 ];
 const PERIODS: { v: Period; t: string; e: string }[] = [
-  { v: 'manha', t: 'De manhã', e: '🌅' }, { v: 'tarde', t: 'À tarde', e: '☀️' }, { v: 'noite', t: 'À noite', e: '🌙' },
+  { v: 'manha', t: 'In the morning', e: '🌅' }, { v: 'tarde', t: 'In the afternoon', e: '☀️' }, { v: 'noite', t: 'In the evening', e: '🌙' },
 ];
 const OBSTACLES: { v: Obstacle; t: string; e: string }[] = [
-  { v: 'tempo', t: 'Falta de tempo', e: '⏰' }, { v: 'motivacao', t: 'Falta de motivação', e: '😮‍💨' }, { v: 'esquecimento', t: 'Eu esqueço', e: '🤔' },
-  { v: 'cansaco', t: 'Cansaço', e: '😴' }, { v: 'dores', t: 'Dores ou desconfortos', e: '🩹' },
+  { v: 'tempo', t: 'Lack of time', e: '⏰' }, { v: 'motivacao', t: 'Lack of motivation', e: '😮‍💨' }, { v: 'esquecimento', t: 'I forget', e: '🤔' },
+  { v: 'cansaco', t: 'Fatigue', e: '😴' }, { v: 'dores', t: 'Aches or discomfort', e: '🩹' },
 ];
 const LIMITS: { v: Limitation; t: string }[] = [
-  { v: 'joelhos', t: 'Joelhos' }, { v: 'lombar', t: 'Lombar' }, { v: 'punhos', t: 'Punhos' }, { v: 'ombros', t: 'Ombros' }, { v: 'pescoco', t: 'Pescoço' },
+  { v: 'joelhos', t: 'Knees' }, { v: 'lombar', t: 'Lower back' }, { v: 'punhos', t: 'Wrists' }, { v: 'ombros', t: 'Shoulders' }, { v: 'pescoco', t: 'Neck' },
 ];
 const REMINDER_TIME: Record<Period, string> = { manha: '07:30', tarde: '13:00', noite: '19:30' };
 
@@ -63,46 +63,46 @@ export default function Onboarding() {
     // 0 — boas-vindas + nome
     <div key="0" className="flex flex-col items-center text-center">
       <Lili mood="animada" size={140} />
-      <h1 className="mt-4 text-3xl font-bold leading-tight">Oi! Eu sou a <span className="bg-brand bg-clip-text text-transparent">Lili</span> 💜</h1>
-      <p className="mt-2 text-ink-soft">Vou ser sua companheira nos próximos 21 dias. Antes de começar, quero te conhecer um pouquinho.</p>
+      <h1 className="mt-4 text-3xl font-bold leading-tight">Hi! I’m <span className="bg-brand bg-clip-text text-transparent">Lili</span> 💜</h1>
+      <p className="mt-2 text-ink-soft">I’ll be your companion for the next 21 days. Before we start, I’d love to get to know you a little.</p>
       <label className="mt-6 w-full text-left">
-        <span className="label">Como você gostaria de ser chamada?</span>
+        <span className="label">What would you like me to call you?</span>
         <input
           autoFocus value={d.name ?? ''} maxLength={24} onChange={e => setD(x => ({ ...x, name: e.target.value }))}
           onKeyDown={e => e.key === 'Enter' && d.name?.trim() && next()}
-          placeholder="Seu nome ou apelido" className="mt-2 h-14 w-full rounded-2xl border-2 border-lilac-200 bg-white px-4 text-lg font-semibold outline-none focus:border-grape-500"
+          placeholder="Your name or nickname" className="mt-2 h-14 w-full rounded-2xl border-2 border-lilac-200 bg-white px-4 text-lg font-semibold outline-none focus:border-grape-500"
         />
       </label>
-      <button className="btn-primary shine mt-4 w-full" disabled={!d.name?.trim()} onClick={next}>Vamos começar</button>
+      <button className="btn-primary shine mt-4 w-full" disabled={!d.name?.trim()} onClick={next}>Let’s get started</button>
     </div>,
 
     // 1 — objetivo
-    <Q key="1" title={`${d.name?.trim()}, qual é o seu principal objetivo?`} lili="Vou dar um foco especial a ele em todos os treinos.">
+    <Q key="1" title={`${d.name?.trim()}, what’s your main goal?`} lili="I’ll give it special focus in every workout.">
       {GOALS.map(g => <Opt key={g.v} on={d.goal === g.v} onClick={() => pick('goal', g.v)} emoji={g.e} title={GOAL_LABEL[g.v]} />)}
     </Q>,
 
     // 2 — nível
-    <Q key="2" title="Qual é o seu nível de experiência?" lili="Sem pressão! Tudo tem versão mais fácil.">
+    <Q key="2" title="What’s your experience level?" lili="No pressure! Everything has an easier version.">
       {LEVELS.map(l => <Opt key={l.v} on={d.level === l.v} onClick={() => pick('level', l.v)} emoji={l.e} title={l.t} desc={l.d} />)}
     </Q>,
 
     // 3 — tempo
-    <Q key="3" title="Quanto tempo você tem por dia?" lili="Eu ajusto as séries para caber no seu dia.">
-      {MINUTES.map(m => <Opt key={m.v} on={d.minutes === m.v} onClick={() => pick('minutes', m.v)} emoji="⏱️" title={`${m.v} minutos`} desc={m.d} />)}
+    <Q key="3" title="How much time do you have each day?" lili="I’ll adjust the sets to fit your day.">
+      {MINUTES.map(m => <Opt key={m.v} on={d.minutes === m.v} onClick={() => pick('minutes', m.v)} emoji="⏱️" title={`${m.v} minutes`} desc={m.d} />)}
     </Q>,
 
     // 4 — período
-    <Q key="4" title="Em qual período prefere treinar?" lili="Assim posso te lembrar na hora certa (se você quiser).">
+    <Q key="4" title="When do you prefer to work out?" lili="That way I can remind you at the right time (if you want).">
       {PERIODS.map(p => <Opt key={p.v} on={d.period === p.v} onClick={() => pick('period', p.v)} emoji={p.e} title={p.t} />)}
     </Q>,
 
     // 5 — obstáculo
-    <Q key="5" title="O que mais dificulta sua constância?" lili="Todo mundo tem um desafio. Vamos pensar juntas no seu.">
+    <Q key="5" title="What makes it hardest to stay consistent?" lili="Everyone has a challenge. Let’s work through yours together.">
       {OBSTACLES.map(o => <Opt key={o.v} on={d.obstacle === o.v} onClick={() => pick('obstacle', o.v)} emoji={o.e} title={o.t} />)}
     </Q>,
 
     // 6 — limitações
-    <Q key="6" title="Você possui alguma limitação de movimento?" lili="Marque todas que se aplicam. Eu troco os exercícios que podem incomodar.">
+    <Q key="6" title="Do you have any movement limitations?" lili="Select all that apply. I’ll swap out exercises that might bother you.">
       <div className="grid grid-cols-2 gap-2">
         {LIMITS.map(l => {
           const on = d.limitations.includes(l.v);
@@ -115,24 +115,24 @@ export default function Onboarding() {
         })}
         <button onClick={() => { setNoLimits(true); setD(x => ({ ...x, limitations: [] })); }}
           className={`flex h-14 items-center justify-between rounded-2xl px-4 font-bold transition ${noLimits ? 'bg-brand text-white shadow-glow' : 'bg-white ring-1 ring-lilac-200'}`}>
-          Nenhuma {noLimits && <Check size={18} />}
+          None {noLimits && <Check size={18} />}
         </button>
       </div>
-      <button className="btn-primary mt-4 w-full" disabled={!noLimits && d.limitations.length === 0} onClick={next}>Continuar</button>
+      <button className="btn-primary mt-4 w-full" disabled={!noLimits && d.limitations.length === 0} onClick={next}>Continue</button>
     </Q>,
 
     // 7 — cuidados
-    <Q key="7" title="Um combinado importante" lili="Quero que você evolua com segurança.">
+    <Q key="7" title="An important agreement" lili="I want you to progress safely.">
       <div className="card space-y-2 p-4 text-sm text-ink-soft">
-        <p>• Este desafio é um conteúdo de bem-estar e não substitui orientação médica ou de um profissional de Educação Física.</p>
-        <p>• Se estiver grávida, em pós-parto recente, com doença cardíaca, pressão alta não controlada, hérnia ou cirurgia recente, converse com um profissional antes.</p>
-        <p>• Pare qualquer exercício se sentir dor aguda, tontura ou falta de ar.</p>
+        <p>• This challenge is wellness content and does not replace guidance from a doctor or a certified fitness professional.</p>
+        <p>• If you’re pregnant, recently gave birth, or have heart disease, uncontrolled high blood pressure, a hernia or recent surgery, talk to a professional first.</p>
+        <p>• Stop any exercise if you feel sharp pain, dizziness or shortness of breath.</p>
       </div>
       <button onClick={() => setAgreed(a => !a)} className="mt-3 flex w-full items-center gap-3 rounded-2xl bg-white p-3 text-left text-sm font-semibold ring-1 ring-lilac-200">
         <span className={`grid h-6 w-6 shrink-0 place-items-center rounded-lg ${agreed ? 'bg-brand text-white' : 'ring-2 ring-lilac-300'}`}>{agreed && <Check size={16} />}</span>
-        Li e vou respeitar os limites do meu corpo
+        I’ve read this and will respect my body’s limits
       </button>
-      <button className="btn-primary mt-4 w-full" disabled={!agreed} onClick={next}>Criar meu desafio</button>
+      <button className="btn-primary mt-4 w-full" disabled={!agreed} onClick={next}>Create my challenge</button>
     </Q>,
 
     // 8 — pronto
@@ -143,7 +143,7 @@ export default function Onboarding() {
     <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-8 pt-4">
       {step > 0 && step < total && (
         <div className="mb-6 flex items-center gap-3">
-          <button aria-label="Voltar" onClick={() => setStep(s => s - 1)} className="grid h-10 w-10 place-items-center rounded-full bg-white text-grape-700 shadow-soft"><ChevronLeft size={22} /></button>
+          <button aria-label="Back" onClick={() => setStep(s => s - 1)} className="grid h-10 w-10 place-items-center rounded-full bg-white text-grape-700 shadow-soft"><ChevronLeft size={22} /></button>
           <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-lilac-100">
             <motion.div className="h-full rounded-full bg-brand" animate={{ width: `${(step / total) * 100}%` }} />
           </div>
@@ -187,11 +187,11 @@ function Opt({ on, onClick, emoji, title, desc }: { on: boolean; onClick: () => 
 
 function Ready({ d, onStart }: { d: Draft; onStart: () => void }) {
   const rows = [
-    ['🎯', 'Objetivo', d.goal && GOAL_LABEL[d.goal]],
-    ['📈', 'Nível', LEVELS.find(l => l.v === d.level)?.t],
-    ['⏱️', 'Treinos de', `${d.minutes} minutos`],
-    ['🕒', 'Período', PERIODS.find(p => p.v === d.period)?.t],
-    ['🩹', 'Adaptações', d.limitations.length ? d.limitations.map(l => LIMITS.find(x => x.v === l)?.t).join(', ') : 'Nenhuma'],
+    ['🎯', 'Goal', d.goal && GOAL_LABEL[d.goal]],
+    ['📈', 'Level', LEVELS.find(l => l.v === d.level)?.t],
+    ['⏱️', 'Workouts of', `${d.minutes} minutes`],
+    ['🕒', 'Time of day', PERIODS.find(p => p.v === d.period)?.t],
+    ['🩹', 'Adaptations', d.limitations.length ? d.limitations.map(l => LIMITS.find(x => x.v === l)?.t).join(', ') : 'None'],
   ];
   return (
     <div className="text-center">
@@ -199,8 +199,8 @@ function Ready({ d, onStart }: { d: Draft; onStart: () => void }) {
       <motion.div initial={{ scale: .6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', damping: 14 }} className="mx-auto w-fit">
         <Lili mood="orgulhosa" size={140} />
       </motion.div>
-      <h1 className="mt-3 text-3xl font-bold leading-tight">Seu desafio personalizado está pronto! 💜</h1>
-      <p className="mt-2 text-ink-soft">Bem-vinda, {d.name?.trim()}! São 21 dias, 3 fases e um treino novo a cada dia, feito para você.</p>
+      <h1 className="mt-3 text-3xl font-bold leading-tight">Your personalized challenge is ready! 💜</h1>
+      <p className="mt-2 text-ink-soft">Welcome, {d.name?.trim()}! That’s 21 days, 3 phases and a new workout every day, made for you.</p>
       <div className="card mt-5 divide-y divide-lilac-100 p-2 text-left">
         {rows.map(([e, k, v], i) => (
           <motion.div key={k} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .3 + i * .1 }} className="flex items-center gap-3 px-3 py-2.5">
@@ -210,7 +210,7 @@ function Ready({ d, onStart }: { d: Draft; onStart: () => void }) {
           </motion.div>
         ))}
       </div>
-      <button className="btn-primary shine mt-6 w-full text-lg" onClick={onStart}>Começar minha jornada</button>
+      <button className="btn-primary shine mt-6 w-full text-lg" onClick={onStart}>Start my journey</button>
     </div>
   );
 }

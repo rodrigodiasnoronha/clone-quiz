@@ -45,12 +45,12 @@ export function JourneyMap() {
                         ${st === 'concluido' ? 'border-white bg-brand text-white' : current ? 'animate-pulse border-white bg-grape-600 text-white ring-4 ring-rose-200' : st === 'pendente' ? 'border-white bg-rose-100 text-rose-500' : 'border-white bg-lilac-100 text-ink-faint'}`}>
                         {st === 'concluido' ? <Check size={26} strokeWidth={3} /> : current ? <Play size={22} fill="white" /> : st === 'bloqueado' ? <Lock size={20} /> : d.n}
                         {REWARD_DAYS.has(d.n) && (
-                          <span className={`absolute -right-3 -top-2 grid h-7 w-7 place-items-center rounded-full shadow-soft ${st === 'concluido' ? 'bg-yellow-300' : 'bg-white'}`} aria-label="Recompensa neste dia">
+                          <span className={`absolute -right-3 -top-2 grid h-7 w-7 place-items-center rounded-full shadow-soft ${st === 'concluido' ? 'bg-yellow-300' : 'bg-white'}`} aria-label="Reward on this day">
                             <Gift size={15} className={st === 'concluido' ? 'text-grape-800' : 'text-grape-400'} />
                           </span>
                         )}
                       </span>
-                      <span className="mt-1 max-w-[9rem] truncate rounded-full bg-white/90 px-2 text-[11px] font-bold text-ink shadow-sm">Dia {d.n} · {d.name}</span>
+                      <span className="mt-1 max-w-[9rem] truncate rounded-full bg-white/90 px-2 text-[11px] font-bold text-ink shadow-sm">Day {d.n} · {d.name}</span>
                     </Link>
                   </motion.div>
                 );

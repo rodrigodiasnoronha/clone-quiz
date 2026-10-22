@@ -34,9 +34,9 @@ export async function showNotification(title: string, body: string) {
 }
 
 const MESSAGES = [
-  ['Seu momento de cuidar de você chegou! 💜', 'O treino de hoje está te esperando.'],
-  ['Lili preparou uma nova missão para hoje!', 'Leva só alguns minutos. Vamos juntas?'],
-  ['Um pouquinho de movimento hoje? 🌷', 'Seu corpo vai agradecer.'],
+  ['It’s time to take care of you! 💜', 'Today’s workout is waiting for you.'],
+  ['Lili has a new mission for you today!', 'It only takes a few minutes. Shall we?'],
+  ['A little movement today? 🌷', 'Your body will thank you.'],
 ];
 
 let timer: ReturnType<typeof setTimeout> | undefined;
