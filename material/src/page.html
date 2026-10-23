@@ -38,12 +38,21 @@
   .go { flex: none; width: 40px; height: 40px; border-radius: 14px; background: linear-gradient(135deg, #FF6FAE, #F03E8A 55%, #D82775); display: grid; place-items: center; color: #fff; box-shadow: 0 8px 18px -8px rgb(240 62 138 / .7); }
   .go svg { width: 20px; height: 20px; }
   .card.done .go { background: #fff; color: var(--rose); outline: 2px solid var(--rose-100); }
-  .app { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; min-height: 52px; border-radius: 18px; font-weight: 800; text-decoration: none; color: var(--grape-700); background: #fff; outline: 1px solid var(--lilac-200); }
+  .appcard { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding: 16px; border-radius: 26px; text-decoration: none; color: #fff; position: relative;
+    background: linear-gradient(135deg, #FF6FAE 0%, #F03E8A 55%, #C42A78 100%); box-shadow: 0 18px 36px -14px rgb(240 62 138 / .75), inset 0 1px 0 rgb(255 255 255 / .35); transition: transform .15s; }
+  .appcard:active { transform: scale(.98); }
+  .appcard img { flex: none; width: 68px; height: 68px; border-radius: 18px; box-shadow: 0 6px 16px -4px rgb(0 0 0 / .3); }
+  .appcard .txt { flex: 1; min-width: 0; }
+  .appcard .tag { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .08em; background: #fff; color: var(--grape-500); padding: 3px 9px; border-radius: 99px; }
+  .appcard h2 { margin-top: 6px; font-size: 21px; font-weight: 700; line-height: 1.1; }
+  .appcard p { margin-top: 4px; font-size: 12.5px; line-height: 1.35; opacity: .95; }
+  .appcard .open { flex: none; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--rose); display: grid; place-items: center; font-size: 22px; font-weight: 800; animation: nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform: translateX(4px); } }
   .help { margin-top: 26px; padding: 14px 16px; border-radius: 20px; background: rgb(255 255 255 / .7); font-size: 13px; color: var(--soft); line-height: 1.5; }
   .help b { color: var(--grape-700); }
   .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); transform: translate(-50%, 140%); background: var(--ink); color: #fff; font-size: 14px; font-weight: 700; padding: 12px 18px; border-radius: 16px; transition: transform .3s; white-space: nowrap; }
   .toast.on { transform: translate(-50%, 0); }
-  @media (prefers-reduced-motion: reduce) { .card, .toast { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .card, .toast, .appcard, .appcard .open { transition: none; animation: none; } }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -70,8 +79,8 @@ src="https://www.facebook.com/tr?id=2955171961507914&ev=PageView&noscript=1"
     <h1>Your materials 💗</h1>
     <p>Tap a material to download the PDF. Save it on your phone to read anytime, even offline.</p>
   </section>
+  <a class="appcard" href="/app/"><img src="/app/icons/icon-192.png" alt="" width="68" height="68"><div class="txt"><span class="tag">START HERE</span><h2>21-Day Challenge App</h2><p>Your daily workouts, step by step. Open it right now.</p></div><span class="open">›</span></a>
   <!--LIST-->
-  <a class="app" href="/app/">Open the 21-Day Challenge app</a>
   <div class="help"><b>Couldn't download it?</b> On iPhone, the PDF opens on screen: tap <b>Share</b> and then <b>Save to Files</b>. On Android, it goes to your <b>Downloads</b> folder.</div>
 </main>
 <div class="toast" id="toast">⬇️ Downloading your material…</div>

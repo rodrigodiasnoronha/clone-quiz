@@ -38,12 +38,21 @@
   .go { flex: none; width: 40px; height: 40px; border-radius: 14px; background: linear-gradient(135deg, #FF6FAE, #F03E8A 55%, #D82775); display: grid; place-items: center; color: #fff; box-shadow: 0 8px 18px -8px rgb(240 62 138 / .7); }
   .go svg { width: 20px; height: 20px; }
   .card.done .go { background: #fff; color: var(--rose); outline: 2px solid var(--rose-100); }
-  .app { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; min-height: 52px; border-radius: 18px; font-weight: 800; text-decoration: none; color: var(--grape-700); background: #fff; outline: 1px solid var(--lilac-200); }
+  .appcard { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding: 16px; border-radius: 26px; text-decoration: none; color: #fff; position: relative;
+    background: linear-gradient(135deg, #FF6FAE 0%, #F03E8A 55%, #C42A78 100%); box-shadow: 0 18px 36px -14px rgb(240 62 138 / .75), inset 0 1px 0 rgb(255 255 255 / .35); transition: transform .15s; }
+  .appcard:active { transform: scale(.98); }
+  .appcard img { flex: none; width: 68px; height: 68px; border-radius: 18px; box-shadow: 0 6px 16px -4px rgb(0 0 0 / .3); }
+  .appcard .txt { flex: 1; min-width: 0; }
+  .appcard .tag { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .08em; background: #fff; color: var(--grape-500); padding: 3px 9px; border-radius: 99px; }
+  .appcard h2 { margin-top: 6px; font-size: 21px; font-weight: 700; line-height: 1.1; }
+  .appcard p { margin-top: 4px; font-size: 12.5px; line-height: 1.35; opacity: .95; }
+  .appcard .open { flex: none; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--rose); display: grid; place-items: center; font-size: 22px; font-weight: 800; animation: nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform: translateX(4px); } }
   .help { margin-top: 26px; padding: 14px 16px; border-radius: 20px; background: rgb(255 255 255 / .7); font-size: 13px; color: var(--soft); line-height: 1.5; }
   .help b { color: var(--grape-700); }
   .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); transform: translate(-50%, 140%); background: var(--ink); color: #fff; font-size: 14px; font-weight: 700; padding: 12px 18px; border-radius: 16px; transition: transform .3s; white-space: nowrap; }
   .toast.on { transform: translate(-50%, 0); }
-  @media (prefers-reduced-motion: reduce) { .card, .toast { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .card, .toast, .appcard, .appcard .open { transition: none; animation: none; } }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -70,6 +79,7 @@ src="https://www.facebook.com/tr?id=2955171961507914&ev=PageView&noscript=1"
     <h1>Your materials 💗</h1>
     <p>Tap a material to download the PDF. Save it on your phone to read anytime, even offline.</p>
   </section>
+  <a class="appcard" href="/app/"><img src="/app/icons/icon-192.png" alt="" width="68" height="68"><div class="txt"><span class="tag">START HERE</span><h2>21-Day Challenge App</h2><p>Your daily workouts, step by step. Open it right now.</p></div><span class="open">›</span></a>
   <div class="label">Your program</div><div class="list">
   <a class="card" data-slug="wall-pilates-21-days" href="/material/pdf/wall-pilates-21-days.pdf" download="wall-pilates-21-days.pdf"><div class="thumb"><img src="/material/thumbs/wall-pilates-21-days.webp" alt="" width="76" height="92" loading="lazy" decoding="async"></div><div class="info"><span class="kick">COMPLETE GUIDE</span><h3>Wall Pilates 21-Day Challenge</h3><p>The day-by-day 21-day plan and the library with every exercise explained step by step.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download PDF · 1.0 MB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
   </div>
@@ -89,7 +99,6 @@ src="https://www.facebook.com/tr?id=2955171961507914&ev=PageView&noscript=1"
   <a class="card" data-slug="bye-bye-bat-wings" href="/material/pdf/bye-bye-bat-wings.pdf" download="bye-bye-bat-wings.pdf"><div class="thumb"><img src="/material/thumbs/bye-bye-bat-wings.webp" alt="" width="76" height="92" loading="lazy" decoding="async"></div><div class="info"><span class="kick">7 MINUTES A DAY</span><h3>Bye-Bye Bat Wings</h3><p>7-minute, no-weight workouts to firm the backs of your arms and underarm area.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download PDF · 669 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
   <a class="card" data-slug="face-yoga" href="/material/pdf/face-yoga.pdf" download="face-yoga.pdf"><div class="thumb"><img src="/material/thumbs/face-yoga.webp" alt="" width="76" height="92" loading="lazy" decoding="async"></div><div class="info"><span class="kick">FIRMER FACE</span><h3>Face Yoga 10 Minutes a Day</h3><p>Facial exercises and self-massage for a firmer face, less double chin and more glow.</p><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download PDF · 619 KB</span></div><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span></a>
   </div>
-  <a class="app" href="/app/">Open the 21-Day Challenge app</a>
   <div class="help"><b>Couldn't download it?</b> On iPhone, the PDF opens on screen: tap <b>Share</b> and then <b>Save to Files</b>. On Android, it goes to your <b>Downloads</b> folder.</div>
 </main>
 <div class="toast" id="toast">⬇️ Downloading your material…</div>
