@@ -6,7 +6,7 @@ const FUNNEL = {
   'ww-up2': { yes: 'https://go.centerpag.com/PPU38CQH94J?upsell=true', no: '/ww-up3' },
   'ww-up3': { yes: 'https://go.centerpag.com/PPU38CQH94N?upsell=true', no: '/ww-up4' },
   'ww-up4': { yes: 'https://go.centerpag.com/PPU38CQH968?upsell=true', no: '/ww-up5' },
-  'ww-up5': { yes: 'https://go.centerpag.com/PPU38CQH94P?upsell=true', no: '/ww-up6' },
+  'ww-up5': { yes: 'https://go.centerpag.com/PPU38CQH94R?upsell=true', no: '/ww-up6' },
   'ww-up6': { yes: 'https://go.centerpag.com/PPU38CQH952?upsell=true', no: '/ww-tks' },
   'ww-tks': { yes: '/material/' }, // botão "Acesse o material"
 };
