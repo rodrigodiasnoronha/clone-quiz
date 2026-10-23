@@ -1,10 +1,10 @@
 // URL para onde os botões finais ("OBTER MEU PLANO...") redirecionam.
 // Usada só quando o botão do quiz.json não tem "destination".
-export const REDIRECT_URL = 'https://pay.cakto.com.br/3dqkyya_1198209';
+export const REDIRECT_URL = 'https://go.centerpag.com/PPU38CQH917?upsell=true';
 
 // Oferta mostrada quando a pessoa tenta sair (botão voltar do navegador)
 export const OFFER = {
-  url: 'https://pay.cakto.com.br/3g64u9w', // checkout do back redirect (já com o desconto)
+  url: 'https://go.centerpag.com/PPU38CQH9BJ?upsell=true', // checkout do back redirect (já com o desconto)
   discount: '37%',
   oldPrice: '$27',
   price: '$17',
