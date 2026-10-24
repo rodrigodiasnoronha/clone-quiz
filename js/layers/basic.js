@@ -11,22 +11,13 @@ export const clear = ({ content }) => el('div', { style: `height: ${bracket(cont
 
 export const alert = ({ content, design }) => rich(content.text, `alert ${design.style || 'info'}`);
 
-// Leva nome e e-mail do quiz para o checkout já vir preenchido
-function checkoutUrl(url) {
-  const u = new URL(url, location.href);
-  const { nome, email } = state.vars;
-  if (email && !u.searchParams.has('email')) u.searchParams.set('email', email);
-  if (nome && !u.searchParams.has('name')) u.searchParams.set('name', nome);
-  return u.href;
-}
-
 export function button({ content, design }, ctx) {
   const cls = ['btn', design.style === 'success' && 'success', design.pulse && 'pulse', design.fixed && 'fixed'];
   const btn = el('button', {
     class: cls.filter(Boolean).join(' '),
     html: fill(content.label),
     onclick: () => {
-      if (content.type === 'redirect') return trackAndGo(checkoutUrl(content.destination || REDIRECT_URL), 'InitiateCheckout', { value: 27, currency: 'USD', content_name: 'Wall Pilates 21 Days' });
+      if (content.type === 'redirect') return trackAndGo(content.destination || REDIRECT_URL, 'InitiateCheckout', { value: 27, currency: 'USD', content_name: 'Wall Pilates 21 Days' });
       if (ctx.next(content.destination) && content.lead) {
         track('Lead', { content_name: 'Wall Pilates 21 Days' });
         sendLead(LEAD_WEBHOOK, { ...state.vars, data: new Date().toISOString() });

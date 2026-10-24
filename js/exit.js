@@ -70,9 +70,9 @@ function giftPage(onOpen) {
   );
 }
 
-// Script de back redirect: a partir daqui, "voltar" leva para o link (com os parâmetros da URL)
+// Script de back redirect: a partir daqui, "voltar" leva para o link
 function setBackRedirect(url) {
-  const urlBackRedirect = url.trim() + (url.indexOf('?') > 0 ? '&' : '?') + location.search.replace('?', '');
+  const urlBackRedirect = url.trim();
   history.pushState({}, '', location.href);
   history.pushState({}, '', location.href);
   history.pushState({}, '', location.href);
