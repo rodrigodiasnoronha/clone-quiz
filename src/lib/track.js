@@ -3,10 +3,14 @@ export function track(event, params) {
   try { window.fbq?.('track', event, params); } catch (e) {}
 }
 
-// Envia o evento e só depois troca de página, para o Pixel ter tempo de disparar.
-export function trackAndGo(url, event, params) {
-  track(event, params);
-  setTimeout(() => (location.href = url), window.fbq ? 300 : 0);
+// Vai para o checkout levando os parâmetros do anúncio (utm_*, fbclid...) que vieram na URL.
+// window.open (e não location.href) porque a UTMify só intercepta links, forms e window.open:
+// assim ela também acrescenta os UTMs que guardou de visitas anteriores.
+// O InitiateCheckout fica com o checkout da PerfectPay, que já envia com eventID (sem duplicar).
+export function goToCheckout(url) {
+  const dest = new URL(url);
+  new URLSearchParams(location.search).forEach((v, k) => { if (!dest.searchParams.has(k)) dest.searchParams.set(k, v); });
+  window.open(dest.href, '_self');
 }
 
 // Envia o lead para o webhook configurado (não trava o quiz se falhar)

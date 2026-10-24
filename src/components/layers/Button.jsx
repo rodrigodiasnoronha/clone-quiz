@@ -1,6 +1,6 @@
 import { useQuiz } from '../../context.js';
 import { REDIRECT_URL, LEAD_WEBHOOK } from '../../config.js';
-import { track, trackAndGo, sendLead } from '../../lib/track.js';
+import { track, goToCheckout, sendLead } from '../../lib/track.js';
 import { fill } from '../../lib/text.js';
 
 export default function Button({ content, design }) {
@@ -8,7 +8,7 @@ export default function Button({ content, design }) {
   const isBuy = content.type === 'redirect';
 
   const click = () => {
-    if (isBuy) return trackAndGo(content.destination || REDIRECT_URL, 'InitiateCheckout', { value: 27, currency: 'USD', content_name: 'Wall Pilates 21 Days' });
+    if (isBuy) return goToCheckout(content.destination || REDIRECT_URL);
     if (next(content.destination) && content.lead) {
       track('Lead', { content_name: 'Wall Pilates 21 Days' });
       sendLead(LEAD_WEBHOOK, { ...answers, data: new Date().toISOString() });

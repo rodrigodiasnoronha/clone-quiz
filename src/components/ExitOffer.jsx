@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { OFFER } from '../config.js';
-import { trackAndGo } from '../lib/track.js';
+import { goToCheckout } from '../lib/track.js';
 import Rich from './Rich.jsx';
 import Media from './Media.jsx';
 import Countdown from './Countdown.jsx';
@@ -22,7 +22,7 @@ const FAQ = [
   ['How does the guarantee work?', "Unconditional 90-day guarantee: if you don't love it, we refund 100% of your money."],
 ];
 
-const goOffer = () => trackAndGo(OFFER.url, 'InitiateCheckout', { value: 17, currency: 'USD', content_name: 'Back redirect 37%' });
+const goOffer = () => goToCheckout(OFFER.url);
 
 const Cta = () => <button className="btn pulse offer-cta" onClick={goOffer}>I WANT MY CHALLENGE WITH {OFFER.discount} OFF →</button>;
 
