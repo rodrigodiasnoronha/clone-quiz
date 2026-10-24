@@ -13,7 +13,8 @@ O build do `members-app` é copiado para `public/app/` e já vai versionado.
 npm install
 npm run dev      # http://localhost:5173 com hot reload
 npm run build    # gera dist/ (é isso que vai pro ar)
-npm test         # Vitest: valida o quiz.json (tipos, destinos, imagens) e o fluxo do App
+npm test         # Vitest: quiz.json (tipos, destinos, imagens), validações das telas, checkout e fluxo do App
+cd members-app && npm test  # Vitest do app de membros: conteúdo, datas, progresso, treino e store
 ```
 
 ## Onde mexer

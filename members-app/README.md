@@ -12,6 +12,7 @@ App web (PWA) entregue após a compra. Fica em **seudominio.com/app**; o quiz de
 cd members-app
 npm install
 npm run dev          # http://localhost:3000/app
+npm test             # Vitest: conteúdo do desafio, datas, progresso/pontos, treino e store
 ```
 
 ## Publicar

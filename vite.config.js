@@ -17,5 +17,5 @@ const folderIndex = {
 export default {
   plugins: [react(), folderIndex],
   build: { assetsDir: 'bundle' }, // 'assets' já é a pasta de imagens em public/
-  test: { environment: 'jsdom', globals: true, setupFiles: ['src/__tests__/setup.js'] },
+  test: { environment: 'jsdom', globals: true, include: ['src/**/*.test.*'], setupFiles: ['src/__tests__/setup.js'] },
 };

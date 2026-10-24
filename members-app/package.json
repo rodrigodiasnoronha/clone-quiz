@@ -7,7 +7,8 @@
     "build": "next build",
     "export:site": "next build && rm -rf ../public/app && cp -r out ../public/app",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "framer-motion": "11.18.2",
@@ -22,8 +23,10 @@
     "@types/react": "18.3.18",
     "@types/react-dom": "18.3.5",
     "autoprefixer": "10.4.20",
+    "jsdom": "^26.1.0",
     "postcss": "8.4.49",
     "tailwindcss": "3.4.19",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^3.2.7"
   }
 }
