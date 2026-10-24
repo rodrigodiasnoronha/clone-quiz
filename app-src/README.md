@@ -20,7 +20,7 @@ O build gera arquivos estáticos e copia para a pasta `app/` na raiz do reposit�
 
 ```bash
 cd app-src
-npm run export:site  # next build + copia out/ para ../app
+npm run export:site  # next build + copia out/ para ../public/app
 ```
 
 Depois é só publicar o repositório como site estático. A pasta `app/` já vai versionada, então **qualquer hospedagem estática** serve o quiz em `/` e o app em `/app`.

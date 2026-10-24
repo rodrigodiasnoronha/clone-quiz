@@ -31,7 +31,7 @@ main { max-width: calc(48rem + 40px); margin: 0 auto; padding: 0 20px 64px; min-
 .btn.success { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 10px 24px -6px rgb(22 163 74 / .6), inset 0 1px 0 rgb(255 255 255 / .3); }
 .btn:disabled { opacity: .7; cursor: default; }
 .btn.pulse { animation: pulse 1.6s infinite; }
-.btn.fixed { position: sticky; bottom: 16px; }
+.layer.sticky { position: sticky; bottom: 16px; }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
 
 /* options */

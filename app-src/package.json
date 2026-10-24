@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export:site": "next build && rm -rf ../app && cp -r out ../app",
+    "export:site": "next build && rm -rf ../public/app && cp -r out ../public/app",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
   },

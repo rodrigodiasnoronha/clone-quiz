@@ -1,4 +1,6 @@
-import { el, fill } from '../utils.js';
+import { useMemo } from 'react';
+import { useQuiz } from '../../context.js';
+import { fill } from '../../lib/text.js';
 
 const W = 500, H = 300, L = 20, R = 480, T = 40, B = 250;
 
@@ -8,13 +10,12 @@ function pill(x, y, text, bg, color, stroke = 'none') {
     <text x="${x}" y="${y - 12}" text-anchor="middle" font-size="14" font-weight="700" fill="${color}">${text}</text>`;
 }
 
-// Gráfico de área com gradiente vermelho -> amarelo -> verde (perda de peso)
-function areaChart(values, { labels = [], tips = [], title = '' }) {
+// Gráfico de área com gradiente vermelho -> amarelo -> verde (perda de peso), como string SVG
+function areaChart(id, values, { labels = [], tips = [], title = '' }) {
   const max = Math.max(...values) || 1;
   const pts = values.map((v, i) => [L + (i / (values.length - 1)) * (R - L), T + (1 - v / max) * (B - T)]);
   const line = pts.map(p => p.join(',')).join(' ');
   const grid = [0, 1, 2, 3].map(i => T + (i * (B - T)) / 4);
-  const id = `g${Math.random().toString(36).slice(2, 7)}`;
 
   return `<svg viewBox="0 0 ${W} ${H}">
     <defs><linearGradient id="${id}">
@@ -31,31 +32,32 @@ function areaChart(values, { labels = [], tips = [], title = '' }) {
   </svg>`;
 }
 
+const Svg = ({ html }) => <div className="chart" dangerouslySetInnerHTML={{ __html: html }} />;
+const useGradientId = () => useMemo(() => `g${Math.random().toString(36).slice(2, 7)}`, []);
+
 // "charts": Hoje -> meta, com {{peso}} e {{objetivo}}
-export function charts({ content }) {
+export function Charts({ content }) {
+  const { answers } = useQuiz();
+  const id = useGradientId();
   const datas = content.datasets[0].datas;
   const last = datas.length - 1;
-  return el('div', {
-    class: 'chart',
-    html: areaChart(datas.map((d, i) => Number(d.value) || (i ? 0 : 100)), {
-      labels: content.xAxis,
-      tips: [
-        { i: 0, text: fill(datas[0].tooltip), bg: '#dc2626', color: '#fff' },
-        { i: last, text: fill(datas[last].tooltip), bg: '#fff', color: '#020617', stroke: '#d4d4d8' },
-      ],
-    }),
-  });
+  return <Svg html={areaChart(id, datas.map((d, i) => Number(d.value) || (i ? 0 : 100)), {
+    labels: content.xAxis,
+    tips: [
+      { i: 0, text: fill(datas[0].tooltip, answers), bg: '#dc2626', color: '#fff' },
+      { i: last, text: fill(datas[last].tooltip, answers), bg: '#fff', color: '#020617', stroke: '#d4d4d8' },
+    ],
+  })} />;
 }
 
 // "chart": evolução semanal
-export function chart({ content }) {
+export function Chart({ content }) {
+  const { answers } = useQuiz();
+  const id = useGradientId();
   const datas = content.datas;
-  return el('div', {
-    class: 'chart',
-    html: areaChart(datas.map(d => Number(d.value)), {
-      title: content.title,
-      labels: datas.map(d => d.legend),
-      tips: datas.map((d, i) => d.featured && d.tooltip && { i, text: fill(d.tooltip), bg: 'var(--theme)', color: '#fff' }).filter(Boolean),
-    }),
-  });
+  return <Svg html={areaChart(id, datas.map(d => Number(d.value)), {
+    title: content.title,
+    labels: datas.map(d => d.legend),
+    tips: datas.map((d, i) => d.featured && d.tooltip && { i, text: fill(d.tooltip, answers), bg: 'var(--theme)', color: '#fff' }).filter(Boolean),
+  })} />;
 }

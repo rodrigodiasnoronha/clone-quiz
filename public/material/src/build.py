@@ -7,7 +7,8 @@ Requer Node 22+ e Playwright (usa o Chromium para imprimir o HTML em PDF).
 import html, json, os, shutil, subprocess, sys, tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
+ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))  # public/
+REPO = os.path.dirname(ROOT)
 OUT = os.path.join(ROOT, 'material', 'pdf')
 sys.path.insert(0, HERE)
 from content import MATERIALS, NEW_EX, RECIPES, DISCLAIMER  # noqa: E402
@@ -19,7 +20,7 @@ LIMIT = {'joelhos': 'knees', 'lombar': 'lower back', 'punhos': 'wrists', 'ombros
 
 def load_app():
     """Lê exercícios e plano de 21 dias direto dos .ts do app."""
-    src = os.path.join(ROOT, 'app-src', 'src', 'content')
+    src = os.path.join(REPO, 'app-src', 'src', 'content')
     tmp = tempfile.mkdtemp()
     for f in ('exercises.ts', 'program.ts'):
         s = open(os.path.join(src, f), encoding='utf-8').read()
