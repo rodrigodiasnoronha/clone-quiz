@@ -1,6 +1,13 @@
 # clone-quiz
 
-Quiz de vendas do Pilates na Parede em **Vite + React**, mais as páginas estáticas que ficam ao redor dele.
+Funil de vendas do Pilates na Parede. São dois projetos independentes:
+
+| Pasta | O que é | Stack | Aparece em |
+|-------|---------|-------|------------|
+| `src/` (raiz) | quiz de vendas | Vite + React | `/` |
+| [`members-app/`](members-app/README.md) | app do Desafio 21 Dias, entregue após a compra | Next.js | `/app` |
+
+O build do `members-app` é copiado para `public/app/` e já vai versionado.
 
 ```bash
 npm install
@@ -45,7 +52,7 @@ public/              arquivos servidos como estão (abaixo)
 - `assets/` — imagens e vídeo do quiz.
 - `ww-up1` … `ww-up6`, `ww-tks`, `ww/` — páginas de upsell (links dos botões em `ww/config.js`).
 - `material/` — PDFs. Para editar textos: `material/src/content.py`, depois `python3 public/material/src/build.py`.
-- `app/` — app do Desafio 21 Dias (código em `app-src/`, ver [`app-src/README.md`](app-src/README.md)).
+- `app/` — app do Desafio 21 Dias (código em `members-app/`, ver [`members-app/README.md`](members-app/README.md)).
 
 ## Deploy (Vercel)
 

@@ -9,29 +9,27 @@ App web (PWA) entregue após a compra. Fica em **seudominio.com/app**; o quiz de
 ## Rodar localmente
 
 ```bash
-cd app-src
+cd members-app
 npm install
 npm run dev          # http://localhost:3000/app
 ```
 
 ## Publicar
 
-O build gera arquivos estáticos e copia para a pasta `app/` na raiz do repositório:
+O build gera arquivos estáticos e copia para `public/app/`:
 
 ```bash
-cd app-src
+cd members-app
 npm run export:site  # next build + copia out/ para ../public/app
 ```
 
-Depois é só publicar o repositório como site estático. A pasta `app/` já vai versionada, então **qualquer hospedagem estática** serve o quiz em `/` e o app em `/app`.
+Depois é só publicar o repositório como site estático. A pasta `public/app/` já vai versionada, então **qualquer hospedagem estática** serve o quiz em `/` e o app em `/app`.
 
 ### Vercel
 
-1. Importe o repositório na Vercel.
-2. *Framework Preset*: **Other**. *Build Command*: deixe vazio. *Output Directory*: `.` (raiz).
-3. Deploy. O quiz abre em `/` e o app em `/app/`.
+O deploy é o do quiz (preset **Vite**, `npm run build`, output `dist`, ver [README da raiz](../README.md)). O app entra pronto via `public/app/`; a Vercel não roda o build do `members-app`.
 
-> Sempre que mudar algo em `app-src/`, rode `npm run export:site` e faça commit da pasta `app/`.
+> Sempre que mudar algo em `members-app/`, rode `npm run export:site` e faça commit da pasta `public/app/`.
 > Para o service worker entregar a versão nova a quem já instalou, aumente `VERSION` em `public/sw.js`.
 
 ## Navegação e telas

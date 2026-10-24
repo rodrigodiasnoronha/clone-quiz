@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera os PDFs de /material/pdf a partir de content.py e do conteúdo do app (app-src/src/content).
+"""Gera os PDFs de /material/pdf a partir de content.py e do conteúdo do app (members-app/src/content).
 
 Uso (na raiz do repositório):  python3 material/src/build.py
 Requer Node 22+ e Playwright (usa o Chromium para imprimir o HTML em PDF).
@@ -20,7 +20,7 @@ LIMIT = {'joelhos': 'knees', 'lombar': 'lower back', 'punhos': 'wrists', 'ombros
 
 def load_app():
     """Lê exercícios e plano de 21 dias direto dos .ts do app."""
-    src = os.path.join(REPO, 'app-src', 'src', 'content')
+    src = os.path.join(REPO, 'members-app', 'src', 'content')
     tmp = tempfile.mkdtemp()
     for f in ('exercises.ts', 'program.ts'):
         s = open(os.path.join(src, f), encoding='utf-8').read()
