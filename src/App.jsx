@@ -3,7 +3,7 @@ import quiz from './quiz.json';
 import { QuizContext } from './context.js';
 import { BACK_REDIRECT_URL } from './config.js';
 import { stepImages, preload } from './lib/text.js';
-import { track } from './lib/track.js';
+import { track, goToCheckout } from './lib/track.js';
 import Header from './components/Header.jsx';
 import ExitOffer from './components/ExitOffer.jsx';
 import layers from './components/layers';
@@ -69,7 +69,7 @@ export default function App() {
       // a partir daqui, "voltar" leva para o link
       const url = BACK_REDIRECT_URL.trim();
       for (let i = 0; i < 3; i++) window.history.pushState({}, '', location.href);
-      addEventListener('popstate', () => setTimeout(() => (location.href = url), 1));
+      addEventListener('popstate', () => setTimeout(() => goToCheckout(url), 1));
     };
     addEventListener('popstate', onBack);
     return () => removeEventListener('popstate', onBack);
