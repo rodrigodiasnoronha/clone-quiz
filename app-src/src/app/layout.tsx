@@ -37,6 +37,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-US">
       <head>
         <script dangerouslySetInnerHTML={{ __html: EARLY_INSTALL_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: META_PIXEL }} />
+        <noscript dangerouslySetInnerHTML={{ __html: META_PIXEL_NOSCRIPT }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
