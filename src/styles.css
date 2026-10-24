@@ -31,7 +31,8 @@ main { max-width: calc(48rem + 40px); margin: 0 auto; padding: 0 20px 64px; min-
 .btn.success { background: linear-gradient(135deg, #22c55e, #16a34a); box-shadow: 0 10px 24px -6px rgb(22 163 74 / .6), inset 0 1px 0 rgb(255 255 255 / .3); }
 .btn:disabled { opacity: .7; cursor: default; }
 .btn.pulse { animation: pulse 1.6s infinite; }
-.layer.sticky { position: sticky; bottom: 16px; }
+/* botões sempre visíveis no celular: grudam no rodapé enquanto o conteúdo rola */
+.layer.sticky { position: sticky; bottom: 0; z-index: 5; padding-bottom: calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(transparent, var(--bg) 24px); }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
 
 /* options */
@@ -161,7 +162,8 @@ main { max-width: calc(48rem + 40px); margin: 0 auto; padding: 0 20px 64px; min-
 .head-mid { display: grid; justify-items: center; gap: 6px; }
 #steps-left { font-size: 12px; font-weight: 700; color: var(--theme); text-align: center; padding: 0 64px; }
 header { height: 92px; }
-main { min-height: calc(100vh - 92px); }
+main { min-height: calc(100vh - 92px); min-height: calc(100dvh - 92px); }
+@media (max-width: 480px) { :root { --el: 60px; } header { height: 72px; } main { min-height: calc(100dvh - 72px); } .btn { font-size: 1rem; } }
 .trust { text-align: center; font-size: 12px; font-weight: 600; color: #52525b; margin-top: 10px; }
 .countdown { background: #0b0b0f; color: #fff; border-radius: 12px; text-align: center; padding: 10px; font-size: 14px; font-weight: 600; margin-top: 8px; }
 .countdown b { color: #facc15; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
@@ -205,3 +207,4 @@ video { max-width: 100%; display: block; }
 .results.compact { grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .results.compact .result small { display: block; text-align: center; margin-top: 6px; font-size: 12px; }
 .results.compact .result-kg { top: 6px; left: 6px; font-size: .85rem; padding: 2px 8px; }
+.btn.offer-cta { position: sticky; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 3; }

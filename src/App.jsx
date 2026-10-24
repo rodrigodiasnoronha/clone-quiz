@@ -85,7 +85,7 @@ export default function App() {
         {step.layers.filter(l => layers[l.type]).map((l, i) => {
           const Layer = layers[l.type];
           return (
-            <div key={l.id} className={`layer ${l.design?.fixed ? 'sticky' : ''}`} style={{ width: width(l.design), '--i': i }}>
+            <div key={l.id} className={`layer ${l.type === 'button' || l.design?.fixed ? 'sticky' : ''}`} style={{ width: width(l.design), '--i': i }}>
               <Layer content={l.content} design={l.design || {}} />
             </div>
           );
