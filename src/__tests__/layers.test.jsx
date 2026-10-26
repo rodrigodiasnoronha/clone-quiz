@@ -118,6 +118,16 @@ describe('Button', () => {
     expect(api.next()).toBe(true);
     delete window.fbq;
   });
+
+  it('Enter ("Ir" do teclado) no campo toca no botão da etapa', () => {
+    window.fbq = vi.fn();
+    mount(<main><Field content={{ name: 'email', mask: 'email', required: true, placeholder: 'email' }} /><Button content={{ type: 'next', label: 'GO', lead: true }} design={{}} /></main>);
+    const input = screen.getByPlaceholderText('email');
+    fireEvent.change(input, { target: { value: 'a@b.com' } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+    expect(window.fbq).toHaveBeenCalledWith('track', 'Lead', expect.anything());
+    delete window.fbq;
+  });
 });
 
 describe('Rich', () => {

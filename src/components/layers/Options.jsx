@@ -5,6 +5,7 @@ import Rich from '../Rich.jsx';
 
 function Pic({ image, vertical, aspect }) {
   if (image?.type === 'emoji') return <span className="emoji">{image.src}</span>;
+  if (image?.type === 'icon') return <span className="ico"><svg><use href={`assets/icons.svg#${image.src}`} /></svg></span>;
   if (!image?.src) return null;
   return <img src={image.src} alt="" className={vertical ? 'pic' : 'thumb'} style={vertical && aspect ? { aspectRatio: aspect } : undefined} />;
 }

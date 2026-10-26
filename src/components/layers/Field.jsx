@@ -33,7 +33,13 @@ export default function Field({ content: c }) {
         type={email ? 'email' : 'text'}
         autoComplete={email ? 'email' : c.name === 'nome' ? 'given-name' : undefined}
         inputMode={c.mask === 'decimal' ? 'numeric' : email ? 'email' : undefined}
+        autoCapitalize={email ? 'none' : 'words'}
+        autoCorrect="off"
+        spellCheck={false}
+        enterKeyHint="go"
         onChange={change}
+        // "Ir" do teclado do celular = tocar no botão da etapa
+        onKeyDown={e => e.key === 'Enter' && e.target.closest('main')?.querySelector('.btn')?.click()}
       />
       {c.error && <div className="hint field-hint">{bad && c.error}</div>}
     </div>
