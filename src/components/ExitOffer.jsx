@@ -26,15 +26,82 @@ const goOffer = () => goToCheckout(OFFER.url);
 
 const Cta = () => <button className="btn pulse offer-cta" onClick={goOffer}>I WANT MY CHALLENGE WITH {OFFER.discount} OFF →</button>;
 
+// Raspadinha: canvas dourado por cima do prêmio; raspou ~45%, revela.
+function Scratch({ onReveal, onStart }) {
+  const canvas = useRef();
+  const down = useRef(false);
+  const moves = useRef(0);
+
+  useEffect(() => {
+    const c = canvas.current;
+    const ctx = c.getContext('2d', { willReadFrequently: true });
+    if (!ctx) return;
+    const { width: w, height: h } = c.getBoundingClientRect();
+    const dpr = devicePixelRatio || 1;
+    c.width = w * dpr; c.height = h * dpr;
+    ctx.scale(dpr, dpr);
+    const g = ctx.createLinearGradient(0, 0, w, h);
+    g.addColorStop(0, '#b8862b'); g.addColorStop(.3, '#f7d774'); g.addColorStop(.5, '#fff1b8');
+    g.addColorStop(.7, '#e9b949'); g.addColorStop(1, '#a8741f');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    // textura de bilhete: estrelinhas espalhadas
+    ctx.fillStyle = 'rgb(255 255 255 / .35)'; ctx.font = '14px sans-serif';
+    for (let y = 18; y < h; y += 30) for (let x = (y / 30 % 2) * 22 + 10; x < w; x += 44) ctx.fillText('✦', x, y);
+    ctx.textAlign = 'center'; ctx.fillStyle = '#5c3d0a';
+    ctx.font = '800 22px Sora, sans-serif'; ctx.fillText('SCRATCH TO WIN', w / 2, h / 2 + 2);
+    ctx.font = '600 12px Montserrat, sans-serif'; ctx.fillText('rub with your finger', w / 2, h / 2 + 24);
+    ctx.globalCompositeOperation = 'destination-out';
+  }, []);
+
+  const scratch = (e) => {
+    if (!down.current) return;
+    const c = canvas.current, ctx = c.getContext('2d', { willReadFrequently: true }), r = c.getBoundingClientRect();
+    ctx.beginPath(); ctx.arc(e.clientX - r.left, e.clientY - r.top, 26, 0, 7); ctx.fill();
+    if (++moves.current % 8) return;
+    const px = ctx.getImageData(0, 0, c.width, c.height).data;
+    let clear = 0;
+    for (let i = 3; i < px.length; i += 32) if (!px[i]) clear++;
+    if (clear / (px.length / 32) > .45) onReveal();
+  };
+
+  return (
+    <canvas ref={canvas} className="scratch-cover"
+      onPointerDown={(e) => { down.current = true; onStart(); scratch(e); }} onPointerMove={scratch}
+      onPointerUp={() => { down.current = false; }} onPointerLeave={() => { down.current = false; }} />
+  );
+}
+
+const CONFETTI = ['#DD578D', '#facc15', '#22c55e', '#38bdf8', '#a855f7', '#f97316'];
+
 function Gift({ onOpen }) {
+  const [touched, setTouched] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const reveal = () => setRevealed(true);
   return (
     <div className="gift">
-      <Rich html={'<h1 class="ql-align-center">Wait!</h1><h1 class="ql-align-center"><mark>Before you go... claim your gift 🎁</mark></h1>'} />
-      <div className="gift-box" onClick={onOpen}>
-        <div className="gift-icon">🎁</div>
-        <button className="btn pulse">👇 TAP TO OPEN</button>
+      <Rich html={'<h1 class="ql-align-center">Wait!</h1><h1 class="ql-align-center"><mark>Before you go... scratch and win a prize 🎁</mark></h1>'} />
+      <div className={`ticket${revealed ? ' won' : ''}`}>
+        <div className="ticket-tag">🎟️ LUCKY TICKET · 1 PER PERSON</div>
+        <div className="scratch">
+          <div className="scratch-prize">
+            <small>🎉 CONGRATULATIONS, YOU WON</small>
+            <b>{OFFER.discount} OFF</b>
+            <span>From <s>{OFFER.oldPrice}</s> to only <strong>{OFFER.price}</strong></span>
+          </div>
+          {!revealed && <Scratch onReveal={reveal} onStart={() => setTouched(true)} />}
+          {!touched && !revealed && <div className="scratch-hand">👆</div>}
+        </div>
+        {revealed && (
+          <div className="confetti">
+            {Array.from({ length: 24 }, (_, i) => (
+              <i key={i} style={{ '--x': `${(i * 37) % 100}%`, '--d': `${(i % 6) * .08}s`, '--r': `${i * 47}deg`, '--dx': `${(i % 7 - 3) * 22}px`, background: CONFETTI[i % 6] }} />
+            ))}
+          </div>
+        )}
       </div>
-      <p className="gift-hint">↑ Tap the gift above to open it</p>
+      {revealed
+        ? <button className="btn pulse" onClick={onOpen}>CLAIM MY {OFFER.discount} OFF →</button>
+        : <button className="gift-hint" onClick={reveal}>Can't scratch? <u>Tap here to reveal</u></button>}
     </div>
   );
 }

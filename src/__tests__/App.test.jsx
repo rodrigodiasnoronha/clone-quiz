@@ -32,4 +32,15 @@ describe('App', () => {
     dispatchEvent(new PopStateEvent('popstate'));
     expect(await screen.findByText('Wait!')).toBeTruthy();
   });
+
+  it('a raspadinha revela o prêmio e leva à oferta', async () => {
+    render(<App />);
+    dispatchEvent(new PopStateEvent('popstate'));
+    expect(await screen.findByText('Wait!')).toBeTruthy();
+    expect(document.querySelector('.scratch-cover')).toBeTruthy();
+    await userEvent.click(screen.getByText(/Tap here to reveal/));
+    expect(document.querySelector('.scratch-cover')).toBeNull();
+    await userEvent.click(screen.getByText(/CLAIM MY/));
+    expect(await screen.findByText('Congratulations!')).toBeTruthy();
+  });
 });
