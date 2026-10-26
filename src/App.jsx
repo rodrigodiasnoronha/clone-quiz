@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import quiz from './quiz.json';
 import { QuizContext } from './context.js';
-import { BACK_REDIRECT_URL } from './config.js';
+import { BACK_REDIRECT_URL, OFFER } from './config.js';
 import { stepImages, preload } from './lib/text.js';
 import { track, goToCheckout } from './lib/track.js';
 import Header from './components/Header.jsx';
@@ -65,7 +65,7 @@ export default function App() {
     const onBack = () => {
       removeEventListener('popstate', onBack);
       setExiting(true);
-      track('ViewContent', { content_name: 'Back redirect 37%' });
+      track('ViewContent', { content_name: `Back redirect ${OFFER.discount}` });
       // a partir daqui, "voltar" leva para o link
       const url = BACK_REDIRECT_URL.trim();
       for (let i = 0; i < 3; i++) window.history.pushState({}, '', location.href);

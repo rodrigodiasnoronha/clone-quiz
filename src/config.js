@@ -5,9 +5,9 @@ export const REDIRECT_URL = 'https://go.centerpag.com/PPU38CQH917?upsell=true';
 // Oferta mostrada quando a pessoa tenta sair (botão voltar do navegador)
 export const OFFER = {
   url: 'https://go.centerpag.com/PPU38CQH9BJ?upsell=true', // checkout do back redirect (já com o desconto)
-  discount: '37%',
-  oldPrice: '$27',
-  price: '$17',
+  discount: '29%',
+  oldPrice: '$7',
+  price: '$5',
   minutes: 5,
 };
 
