@@ -222,3 +222,25 @@ video { max-width: 100%; display: block; }
 .results.compact .result small { display: block; text-align: center; margin-top: 6px; font-size: 12px; }
 .results.compact .result-kg { top: 6px; left: 6px; font-size: .85rem; padding: 2px 8px; }
 .btn.offer-cta { position: sticky; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 3; }
+
+/* celular: tudo um pouco menor e na mesma escala (títulos, opções, ícones, campos e botões) */
+@media (max-width: 480px) {
+  html { font-size: 15px; }
+  :root { --el: 54px; --radius: 1rem; }
+  .rich h1 { font-size: clamp(1.85rem, 7.5vw, 2.2rem); } .rich h2 { font-size: clamp(1.5rem, 6vw, 1.8rem); } .rich h3 { font-size: 1.35rem; }
+  .rich p { font-size: 1rem; }
+  .opts { gap: 7px; }
+  .opt { padding: 10px 14px; gap: 12px; font-size: 1rem; }
+  .opt .emoji { font-size: 1.75rem; }
+  .opt .thumb { width: 42px; height: 42px; }
+  .opt.reverse { padding-left: 14px; }
+  .opt.reverse .thumb { width: 72px; height: 72px; }
+  .opt .mark { width: 24px; height: 24px; }
+  .opt.on .mark::after { font-size: 12px; }
+  .opts.vertical .opt .lbl { padding: 10px 14px; }
+  .opts.vertical .opt .pic { max-height: 210px; }
+  .field { font-size: 1.05rem; }
+  .btn { padding: 10px 16px; }
+  .val { font-size: 3rem; }
+  .units button { padding: 6px 22px; }
+}
